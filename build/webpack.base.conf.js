@@ -4,7 +4,7 @@ module.exports = {
   entry: './examples/main.js',
 
   output: {
-    path: utils.resolve('../dist/'),
+    path: utils.webpackResolve('dist/'),
     filename: '[name].js'
   },
 
@@ -34,11 +34,12 @@ module.exports = {
 
   resolve: {
     extensions: ['.vue', '.js', '.scss', '.json'],
-    modules: [utils.resolve('packages'), 'node_modules'],
+    modules: [utils.webpackResolve('packages'), 'node_modules'],
     alias: {
       'vue$': 'vue/dist/vue.js',
-      'packages': utils.resolve('../../packages/'),
-      'src': utils.resolve('../../src/')
+      'Packages': utils.webpackResolve('packages/'),
+      'Src': utils.webpackResolve('src/'),
+      'Examples': utils.webpackResolve('examples/')
     }
   }
 }

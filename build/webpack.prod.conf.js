@@ -6,7 +6,7 @@ var utils = require('./utils.js')
 module.exports = merge(baseWebpackConfig, {
   entry: entries,
   output: {
-    path: utils.resolve('dist/static'),
+    path: utils.webpackResolve('dist/static'),
     filename: '[name].js'
   },
 })

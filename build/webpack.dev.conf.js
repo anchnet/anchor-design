@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = merge(baseWebpackConfig, {
   devServer: {
-    contentBase: utils.resolve('./examples'),
+    contentBase: utils.webpackResolve('examples'),
     compress: true,
     port: 9088,
     hot: true
@@ -14,8 +14,7 @@ module.exports = merge(baseWebpackConfig, {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      filename: 'index.html',
-      template: 'index.html'
+      template: utils.webpackResolve('examples/index.html')
     })
   ]
 })
