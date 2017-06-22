@@ -1,0 +1,13 @@
+{
+  "lerna": "2.0.0-rc.5",
+  "commands": {
+    "ignore": [
+      "*.md",
+      "node_modules"
+    ]
+  },
+  "packages": [
+    "packages/*"
+  ],
+  "version": "independent"
+}
