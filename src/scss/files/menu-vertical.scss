@@ -1,0 +1,10 @@
+@import "~scss/mixins";
+@import "~scss/variables";
+
+@include b('menu-vertical'){
+  height: 100%;
+  @include e('wrapper'){
+    height: 100%;
+    //background-color: $color-menu-bg;
+  }
+}

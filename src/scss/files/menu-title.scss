@@ -1,0 +1,11 @@
+@import "~scss/mixins";
+@import "~scss/variables";
+
+@include b('menu-title'){
+  display: inline-block;
+  background-color: $color-menu-bg;
+  @include e('text'){
+    color: #fff;
+    line-height: 42px;
+  }
+}

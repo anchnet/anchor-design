@@ -1,0 +1,20 @@
+@import "./variables";
+@import "./mixins";
+
+/* clear float */
+.clearfix {
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+/* single line text */
+.single-line{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

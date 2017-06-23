@@ -1,0 +1,93 @@
+@import "~scss/mixins";
+@import "~scss/variables";
+
+.anchor-icon{
+  display: inline-block;
+  background-image: url('../../img/icons.svg');
+
+  /* device */
+  &__instance     {width: 14px; height: 16px; background-position: 0 0;}
+  &__volume       {width: 14px; height: 16px; background-position: -22px 0px;}
+  &__rdbs         {width: 14px; height: 16px; background-position: -88px 0px;}
+  &__snapshot     {width: 14px; height: 16px; background-position: -111px 0px;}
+  &__ip           {width: 15px; height: 15px; background-position: -96px -98px;}
+  &__vps          {width: 15px; height: 15px; background-position: -46px -192px;}
+  &__network      {width: 16px; height: 16px; background-position: 0 -47px;}
+  &__router       {width: 15px; height: 15px; background-position: -25px -48px;}
+  &__loadBalancer {width: 15px; height: 16px; background-position: -48px -48px;}
+  &__group        {width: 16px; height: 16px; background-position: -70px -48px;}
+  &__keyPair      {width: 16px; height: 16px; background-position: -94px -48px;}
+  &__image        {width: 17px; height: 16px; background-position: -118px -48px;}
+  &__recyclebin   {width: 14px; height: 14px; background-position: -144px -48px;}
+  &__information  {width: 17px; height: 17px; background-position: -120px -94px;}
+  &__account      {width: 18px; height: 17px; background-position: -144px -94px;}
+  &__set          {width: 18px; height: 17px; background-position: -144px -94px;}
+  &__consumption  {width: 18px; height: 17px; background-position: 0 -142px;}
+  &__resource     {width: 18px; height: 17px; background-position: -26px -142px;}
+  &__quota        {width: 18px; height: 17px; background-position: -52px -142px;}
+  &__label        {width: 18px; height: 17px; background-position: -150px -142px;}
+  &__news         {width: 18px; height: 18px; background-position: -78px -142px;}
+  &__support      {width: 18px; height: 17px; background-position: -102px -142px;}
+  &__beian        {width: 18px; height: 17px; background-position: -126px -142px;}
+  &__apikeypair   {width: 18px; height: 16px; background-position: 0 -192px;}
+  &__logs         {width: 18px; height: 17px; background-position: -24px -192px;}
+  &__baremetal    {width: 15px; height: 16px; background-position: 0 -97px;}
+  &__hosting      {width: 15px; height: 16px; background-position: -24px -96px;}
+  &__rack         {width: 15px; height: 16px; background-position: -48px -96px;}
+  &__fastFiber    {width: 15px; height: 16px; background-position: -72px -96px;}
+  &__cos          {width: 12px; height: 10px; background-position: -37px -2px;}
+  &__nas          {width: 12px; height: 14px; background-position: -56px 0px;}
+
+  &__instance--active, &__instance:hover          {background-position: 0px -24px;}
+  &__volume--active, &__volume:hover              {background-position: -22px -24px;}
+  &__rdbs--active, &__rdbs:hover                  {background-position: -88px -24px;}
+  &__snapshot--active, &__snapshot:hover          {background-position: -111px -24px;}
+  &__ip--active, &__ip:hover                      {background-position: -96px -122px;}
+  &__vps--active, &__vps:hover                    {background-position: -70px -192px;}
+  &__network--active, &__network:hover            {background-position: 0 -71px;}
+  &__router--active, &__router:hover              {background-position: -25px -72px;}
+  &__loadBalancer--active, &__loadBalancer:hover  {background-position: -48px -72px;}
+  &__group--active, &__group:hover                {background-position: -70px -72px;}
+  &__keyPair--active, &__keyPair:hover            {background-position: -94px -72px;}
+  &__image--active, &__image:hover                {background-position: -118px -72px;}
+  &__recyclebin--active, &__recyclebin:hover      {background-position: -144px -71px;}
+  &__information--active, &__information:hover    {background-position: -120px -118px;}
+  &__account--active, &__account:hover            {background-position: -144px -118px;}
+  &__set--active, &__set:hover                    {background-position: -144px -118px;}
+  &__consumption--active, &__consumption:hover    {background-position: 0 -166px;}
+  &__resource--active, &__resource:hover          {background-position: -26px -166px;}
+  &__quota--active, &__quota:hover                {background-position: -52px -166px;}
+  &__label--active, &__label:hover                {background-position: -150px -166px;}
+  &__news--active, &__news:hover                  {background-position: -78px -166px;}
+  &__support--active, &__support:hover            {background-position: -102px -166px;}
+  &__beian--active, &__beian:hover                {background-position: -126px -166px;}
+  &__apikeypair--active, &__apikeypair:hover      {background-position: 0px -217px;}
+  &__logs--active, &__logs:hover                  {background-position: -24px -217px;}
+  &__operation--active, &__operation:hover        {background-position: 0 -218px;}
+  &__baremetal--active, &__baremetal:hover        {background-position: 0 -121px;}
+  &__hosting--active, &__hosting:hover            {background-position: -24px -120px;}
+  &__rack--active, &__rack:hover                  {background-position: -48px -120px;}
+  &__fastFiber--active, &__fastFiber:hover        {background-position: -72px -120px;}
+
+  /* triangle */
+  &__triangle-left {
+    @include triangle('left');
+    &--active {
+      border-top-color: $color-primary;
+    }
+  }
+
+  &.triangle-right {
+    @include triangle('right');
+    &.active {
+      border-top-color: $color-primary;
+    }
+  }
+
+  &.triangle-down {
+    @include triangle('');
+    &.active {
+      border-top-color: $color-primary;
+    }
+  }
+}

@@ -1,3 +1,4 @@
+var path = require('path')
 var utils = require('./utils.js')
 
 module.exports = {
@@ -12,7 +13,14 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            css: 'css-loader',
+            scss: 'vue-style-loader!css-loader!sass-loader',
+            sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+          }
+        }
       },
       {
         test: /\.js$/,
@@ -26,7 +34,16 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000
+          limit: 10000,
+          name: path.join('static', 'img/[name].[hash:7].[ext]')
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: path.join('static', 'fonts/[name].[hash:7].[ext]')
         }
       }
     ]
@@ -37,8 +54,9 @@ module.exports = {
     modules: [utils.webpackResolve('packages'), 'node_modules'],
     alias: {
       'vue$': 'vue/dist/vue.js',
-      'Packages': utils.webpackResolve('packages/'),
+      'scss': utils.webpackResolve('src/scss'),
       'Src': utils.webpackResolve('src/'),
+      'Packages': utils.webpackResolve('packages/'),
       'Examples': utils.webpackResolve('examples/')
     }
   }

@@ -1,17 +1,17 @@
 <template>
   <div>
-    <menu-sidebar></menu-sidebar>
+    <menu-vertical></menu-vertical>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import MenuSidebar from 'Packages/menu-sidebar/src/menu-sidebar'
+  import MenuVertical from 'Packages/menu-vertical/src/menu-vertical'
 
   export default {
     name: 'layout',
     components: {
-      MenuSidebar
+      MenuVertical
     }
   }
 </script>

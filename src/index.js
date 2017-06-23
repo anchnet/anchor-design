@@ -1,4 +1,4 @@
-import MenuSidebar from '../packages/menu-sidebar/index.js'
+import MenuSidebar from '../packages/menu-vertical/index.js'
 
 const components = {
   menuSidebar: '../packages/menu-sidebar/index.js'
