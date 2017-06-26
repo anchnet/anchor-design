@@ -3,9 +3,9 @@
     <i
       :class="[
         `anchor-icon-${type}`,
-        `anchor-icon-${type}__${name}`,
+        `anchor-icon-${type}${name ? '__' + name : ''}`,
         {
-          [`anchor-icon-${type}__${name}--active`]: active,
+          [`anchor-icon-${type}${name ? '__' + name : ''}--active`]: active,
           'anchor-animation__rotate3d': isRotate,
           [`anchor-animation__rotate3d--${direction}`]: isRotate && rotating,
         }
@@ -19,14 +19,8 @@
     name: 'anchor-icon',
 
     props: {
-      type: {
-        type: String,
-        default: 'device'
-      },
-      name: {
-        type: String,
-        default: 'instance'
-      },
+      type: String,
+      name: String,
       active: {
         type: Boolean,
         default: false

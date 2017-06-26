@@ -6,6 +6,7 @@
     @click="onClick()"
   >
     <anchor-icon v-if="hasIcon" type="device" name="instance" :active="elementStatus" />
+    <anchor-icon v-else-if="hasDot" type="dot" :active="elementStatus" />
     <span
       :class="['menu-title__text']"
       :style="{'width': width - 100 + 'px', 'height': height + 'px', 'line-height': height + 'px'}"
@@ -30,6 +31,11 @@
     },
 
     props: {
+      model: {
+        type: String,
+        default: 'main'
+      },
+
       width: {
         type: Number,
         default: 240
@@ -46,6 +52,11 @@
       },
 
       hasIcon: {
+        type: Boolean,
+        default: false
+      },
+
+      hasDot: {
         type: Boolean,
         default: true
       },
