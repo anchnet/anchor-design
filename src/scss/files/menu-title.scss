@@ -3,9 +3,18 @@
 
 @include b('menu-title'){
   display: inline-block;
-  background-color: $color-menu-bg;
+  background-color: $color-menu-title;
+  padding: 0 15px 0 20px;
+  font-size: 0;
   @include e('text'){
+    display: inline-block;
     color: #fff;
-    line-height: 42px;
+    padding: 0 15px;
+    font-size: $font-size-base;
+    vertical-align: middle;
+    @include single-line;
+  }
+  &:hover{
+    cursor: pointer;
   }
 }

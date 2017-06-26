@@ -1,11 +1,12 @@
 @import "~scss/mixins";
 @import "~scss/variables";
+@import "~scss/animation";
 
-.anchor-icon{
+/* device */
+.anchor-icon-device{
   display: inline-block;
+  vertical-align: middle;
   background-image: url('../../img/icons.svg');
-
-  /* device */
   &__instance     {width: 14px; height: 16px; background-position: 0 0;}
   &__volume       {width: 14px; height: 16px; background-position: -22px 0px;}
   &__rdbs         {width: 14px; height: 16px; background-position: -88px 0px;}
@@ -68,25 +69,34 @@
   &__hosting--active, &__hosting:hover            {background-position: -24px -120px;}
   &__rack--active, &__rack:hover                  {background-position: -48px -120px;}
   &__fastFiber--active, &__fastFiber:hover        {background-position: -72px -120px;}
+}
 
-  /* triangle */
-  &__triangle-left {
+/* triangle */
+@include b('anchor-icon-triangle'){
+  @include e('left'){
     @include triangle('left');
-    &--active {
-      border-top-color: $color-primary;
+    @include m('active'){
+      border-right-color: $color-primary;
     }
   }
 
-  &.triangle-right {
+  @include e('right'){
     @include triangle('right');
-    &.active {
-      border-top-color: $color-primary;
+    @include m('active'){
+      border-left-color: $color-primary;
     }
   }
 
-  &.triangle-down {
-    @include triangle('');
-    &.active {
+  @include e('top'){
+    @include triangle('top');
+    @include m('active'){
+      border-bottom-color: $color-primary;
+    }
+  }
+
+  @include e('down') {
+    @include triangle('down');
+    @include m('active'){
       border-top-color: $color-primary;
     }
   }

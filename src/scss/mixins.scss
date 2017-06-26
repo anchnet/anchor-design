@@ -1,5 +1,6 @@
-//https://medium.com/@marcmintel/pushing-bem-to-the-next-level-with-sass-3-4-5239d2371321
-
+/* BEM in SASS --start
+ * https://medium.com/@marcmintel/pushing-bem-to-the-next-level-with-sass-3-4-5239d2371321
+ **/
 $elementSeparator: '__';
 $modifierSeparator: '--';
 
@@ -57,30 +58,52 @@ $modifierSeparator: '--';
     }
   }
 }
+/* BEM in SASS --end */
 
-/* triangle */
-@mixin triangle($direction) {
+/* triangle icon */
+@mixin triangle($direction, $color: $color-line) {
   display: inline-block;
   overflow: hidden;
   width: 0;
   height: 0;
   line-height: 0;
   vertical-align: middle;
+  cursor: pointer;
   @if $direction == 'left' {
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-    border-right: 4px solid #FFF;
-  } @else if $direction == 'right' {
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-    border-left: 4px solid #FFF;
-  } @else if $direction == 'top' {
-    border-top: 4px solid transparent;
+    border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-left: 4px solid #FFF;
+    border-right: 5px solid $color;
+  } @else if $direction == 'right' {
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid $color;
+  } @else if $direction == 'top' {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid $color;
+  } @else if $direction == 'down' {
+    border-top: 5px solid $color;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
   } @else {
-    border-top: 4px solid $color-line;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
+    @content;
   }
+}
+
+/* clear float */
+@mixin clearfix {
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+/* single line text */
+@mixin single-line{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

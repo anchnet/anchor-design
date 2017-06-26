@@ -1,0 +1,13 @@
+@import "~scss/mixins";
+
+@include b('anchor-animation'){
+  @include e('rotate3d'){
+    transition: transform 240ms;
+    @include m('top-down'){
+      transform: rotate3d(0, 0, 1, 180deg);
+    }
+    @include m('left-right'){
+      transform: rotate3d(0, 0, 1, 180deg);
+    }
+  }
+}

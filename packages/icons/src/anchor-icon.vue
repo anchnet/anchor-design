@@ -1,5 +1,17 @@
 <template>
-  <i :class="['anchor-icon', `anchor-icon__${type}`]"></i>
+  <transition name="anchor-animation__rotate3d--top-down">
+    <i
+      :class="[
+        `anchor-icon-${type}`,
+        `anchor-icon-${type}__${name}`,
+        {
+          [`anchor-icon-${type}__${name}--active`]: active,
+          'anchor-animation__rotate3d': isRotate,
+          [`anchor-animation__rotate3d--${direction}`]: isRotate && rotating,
+        }
+      ]"
+    ></i>
+  </transition>
 </template>
 
 <script>
@@ -9,7 +21,32 @@
     props: {
       type: {
         type: String,
+        default: 'device'
+      },
+      name: {
+        type: String,
         default: 'instance'
+      },
+      active: {
+        type: Boolean,
+        default: false
+      },
+      rotating: {
+        type: Boolean,
+        default: false
+      }
+    },
+
+    computed: {
+      isRotate () {
+        return this.type === 'triangle'
+      },
+      direction () {
+        if (['top', 'down'].includes(name)) {
+          return 'top-down'
+        } else if (['left', 'right'].includes(name)) {
+          return 'left-right'
+        }
       }
     }
   }
