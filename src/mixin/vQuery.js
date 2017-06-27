@@ -68,6 +68,42 @@ class VQuery {
     return this
   }
 
+  getElementSize (el, name) {
+    function getStyle(el) {
+      if (window.getComputedStyle) {
+        return window.getComputedStyle(el, null)
+      } else {
+        return el.currentStyle
+      }
+    }
+
+    let val = name === "width" ? el.offsetWidth : el.offsetHeight
+    let which = name === "width" ? ['Left', 'Right'] : ['Top', 'Bottom']
+    if(val === 0) return 0
+    let style = getStyle(el)
+    for(let i = 0, a; a = which[i++];) {
+      val -= parseFloat( style["border" + a + "Width"]) || 0
+      val -= parseFloat( style["padding" + a ] ) || 0
+    }
+    return val
+  }
+
+  width (number) {
+    if (number !== undefined) {
+      return this.getElementSize(this.selector, 'width')
+    } else {
+      this.selector.style.width = number + 'px'
+    }
+  }
+
+  heigth (number) {
+    if (number !== undefined) {
+      return this.getElementSize(this.selector, 'height')
+    } else {
+      this.selector.style.height = number + 'px'
+    }
+  }
+
   mouseenter (handler, params) {
     this.on('mouseenter', handler, params)
     return this

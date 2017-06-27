@@ -2,19 +2,15 @@
 @import "~scss/variables";
 
 @include b('menu-title'){
+  position: relative;
   display: inline-block;
+  padding: 0 32px 0 50px;
+  box-sizing: border-box;
   background-color: $color-menu-title;
-  padding: 0 15px 0 20px;
-  font-size: 0;
-  @include e('text'){
-    display: inline-block;
-    color: #fff;
-    padding: 0 15px;
-    font-size: $font-size-base;
-    vertical-align: middle;
-    user-select: none;
-    @include single-line;
-  }
+  user-select: none;
+  color: #fff;
+  font-size: $font-size-base;
+  @include single-line;
   &:hover{
     cursor: pointer;
   }

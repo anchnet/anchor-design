@@ -4,18 +4,23 @@
     @mouseenter="alwaysActive ? '' : mouseHover(true)"
     @mouseleave="alwaysActive ? '' : mouseHover(false)"
     @click="onClick()"
+    :style="{'width': width + 'px', 'height': height + 'px', 'line-height': height + 'px'}"
+    :title="title"
   >
-    <anchor-icon v-if="hasIcon" type="device" name="instance" :active="elementStatus" />
-    <anchor-icon v-else-if="hasDot" type="dot" :active="elementStatus" />
-    <span
-      :class="['menu-title__text']"
-      :style="{'width': width - 100 + 'px', 'height': height + 'px', 'line-height': height + 'px'}"
-    >{{title}}</span>
     <anchor-icon
+      v-if="hasIcon || hasDot"
+      :type="hasDot ? 'dot' : icon.type"
+      :name="hasDot ? '' : icon.name"
+      :active="elementStatus"
+      :style="[iconStyle, {'margin-top': '-7px', 'left': '20px'}]"
+    /><!--
+    -->{{title}}<!--
+    --><anchor-icon
       type="triangle"
       :name="triangleName"
       :active="elementStatus"
       :class="['anchor-animation__rotate3d', {'anchor-animation__rotate3d--top-down': isShow}]"
+      :style="[iconStyle, {'margin-top': '-2px', 'right': model === 'sub' ? '22px' : '12px'}]"
     />
   </span>
 </template>
@@ -53,17 +58,27 @@
 
       hasIcon: {
         type: Boolean,
-        default: false
+        default: true
       },
 
       hasDot: {
         type: Boolean,
-        default: true
+        default: false
       },
 
       alwaysActive: {
         type: Boolean,
         default: false
+      },
+
+      icon: {
+        type: Object,
+        default () {
+          return {
+            type: 'device',
+            name: 'instance'
+          }
+        }
       },
 
       triangleName: {
@@ -82,6 +97,13 @@
     computed: {
       elementStatus () {
         return this.alwaysActive || this.isShow ? true : this.active
+      },
+
+      iconStyle () {
+        return {
+          'position': 'absolute',
+          'top': '50%'
+        }
       }
     },
 
@@ -91,8 +113,9 @@
       },
 
       onClick () {
-        this.isShow = !this.isShow
-        this.$emit('onClickBack')
+        let isShow = !this.isShow
+        isShow ? this.$emit('open') : this.$emit('close')
+        this.isShow = isShow
       }
     }
   }
