@@ -4,7 +4,7 @@
     @mouseenter="alwaysActive ? '' : mouseHover(true)"
     @mouseleave="alwaysActive ? '' : mouseHover(false)"
     @click="onClick()"
-    :style="{'width': width + 'px', 'height': height + 'px', 'line-height': height + 'px'}"
+    :style="titleStyle"
     :title="title"
   >
     <anchor-icon
@@ -12,15 +12,16 @@
       :type="hasDot ? 'dot' : icon.type"
       :name="hasDot ? '' : icon.name"
       :active="elementStatus"
-      :style="[iconStyle, {'margin-top': '-7px', 'left': '20px'}]"
+      :style="[iconStyle, leftIconStyle]"
     /><!--
-    -->{{title}}<!--
+    --><slot name="title">{{title}}</slot><!--
     --><anchor-icon
+      v-if="hasChildren"
       type="triangle"
       :name="triangleName"
       :active="elementStatus"
       :class="['anchor-animation__rotate3d', {'anchor-animation__rotate3d--top-down': isShow}]"
-      :style="[iconStyle, {'margin-top': '-2px', 'right': model === 'sub' ? '22px' : '12px'}]"
+      :style="[iconStyle, {'margin-top': '-2px', 'right': '12px'}]"
     />
   </span>
 </template>
@@ -36,24 +37,9 @@
     },
 
     props: {
-      model: {
-        type: String,
-        default: 'main'
-      },
-
-      width: {
-        type: Number,
-        default: 240
-      },
-
-      height: {
-        type: Number,
-        default: 40
-      },
-
       title: {
         type: String,
-        default: '主标题名称'
+        default: '标题名称'
       },
 
       hasIcon: {
@@ -64,6 +50,11 @@
       hasDot: {
         type: Boolean,
         default: false
+      },
+
+      hasChildren: {
+        type: Boolean,
+        default: true
       },
 
       alwaysActive: {
@@ -84,6 +75,21 @@
       triangleName: {
         type: String,
         default: 'down'
+      },
+
+      width: {
+        type: Number,
+        default: 240
+      },
+
+      height: {
+        type: Number,
+        default: 40
+      },
+
+      paddingLeft: {
+        type: Number,
+        default: 50
       }
     },
 
@@ -97,6 +103,22 @@
     computed: {
       elementStatus () {
         return this.alwaysActive || this.isShow ? true : this.active
+      },
+
+      titleStyle () {
+        return {
+          'width': this.width + 'px',
+          'height': this.height + 'px',
+          'line-height': this.height + 'px',
+          'padding-left': this.paddingLeft + 'px'
+        }
+      },
+
+      leftIconStyle () {
+        return {
+          'margin-top': this.hasDot ? '-3px' : '-7px',
+          'left': this.hasDot ? this.paddingLeft - 20 + 'px' : this.paddingLeft - 30 + 'px'
+        }
       },
 
       iconStyle () {

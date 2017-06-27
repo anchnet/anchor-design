@@ -3,8 +3,14 @@
 
 @include b('menu-vertical'){
   height: 100%;
-  @include e('wrapper'){
-    height: 100%;
-    //background-color: $color-menu-bg;
+  @include e('title'){
+    display: block !important;
+  }
+  @include e('content'){
+    display: block !important;
+  }
+  @include e('list'){
+    padding-bottom: 10px;
+    background-color: $color-menu-bg;
   }
 }

@@ -1,17 +1,21 @@
 <template>
   <div>
-    <menu-vertical></menu-vertical>
+    <anchor-menu-vertical></anchor-menu-vertical>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import MenuVertical from 'Packages/menu-vertical/src/menu-vertical'
+  import AnchorMenuVertical from 'Packages/menu-vertical/src/anchor-menu-vertical'
 
   export default {
     name: 'layout',
     components: {
-      MenuVertical
+      AnchorMenuVertical
     }
   }
 </script>
+
+<style lang="sass">
+  @import "Src/scss/base"
+</style>
