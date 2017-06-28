@@ -3,6 +3,7 @@
 
 @include b('menu-vertical'){
   height: 100%;
+  background-color: $color-menu-bg;
   @include e('title'){
     display: block !important;
   }

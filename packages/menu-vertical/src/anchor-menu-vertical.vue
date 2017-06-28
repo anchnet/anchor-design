@@ -1,5 +1,5 @@
 <template>
-  <div :class="['menu-vertical']" :style="{'width': width + 'px'}">
+  <div :class="['menu-vertical']" :style="{'width': width + 'px', 'height': height + 'px'}">
     <!--主菜单1-->
     <anchor-menu-group>
       <anchor-menu-title slot="group-title" :class="['menu-vertical__title']" />
@@ -19,8 +19,11 @@
     <!--主菜单2-->
     <anchor-menu-group slot="group-item">
       <anchor-menu-title slot="group-title" :class="['menu-vertical__title']" />
-      <anchor-menu-title slot="group-title" :hasDot="true" :class="['menu-vertical__title']" />
-      <anchor-menu-content slot="group-item" :class="['menu-vertical__content']" />
+
+      <anchor-menu-group slot="group-item">
+        <anchor-menu-title slot="group-title" :hasDot="true" :class="['menu-vertical__title']" />
+        <anchor-menu-content slot="group-item" :class="['menu-vertical__content']" />
+      </anchor-menu-group>
     </anchor-menu-group>
 
     <!--主菜单3-->
@@ -67,6 +70,11 @@
       width: {
         type: Number,
         default: 240
+      },
+
+      height: {
+        type: Number,
+        default: 500
       }
     },
 

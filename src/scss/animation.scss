@@ -10,4 +10,17 @@
       transform: rotate3d(0, 0, 1, 180deg);
     }
   }
+
+  @include e('slide-vertical-enter-active'){
+    opacity: 1;
+    transition: height .3s ease-in-out, opacity .3s ease-in-out;
+  }
+  @include e('slide-vertical-leave-active'){
+    opacity: 0;
+    transition: height .3s ease-in-out, opacity .3s ease-in-out;
+  }
+  @include e('slide-vertical-enter'){
+    height: 0;
+    opacity: 0;
+  }
 }

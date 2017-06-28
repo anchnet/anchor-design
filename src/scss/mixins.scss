@@ -1,11 +1,12 @@
 /* BEM in SASS --start
  * https://medium.com/@marcmintel/pushing-bem-to-the-next-level-with-sass-3-4-5239d2371321
  **/
+
 $elementSeparator: '__';
 $modifierSeparator: '--';
 
 @function selectorToString($selector) {
-  $selector: inspect($selector); //cast to string
+  $selector: inspect($selector);          //cast to string
   $selector: str-slice($selector, 2, -2); //remove brackets
   @return $selector;
 }

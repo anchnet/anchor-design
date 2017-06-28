@@ -1,5 +1,6 @@
 class VQuery {
   constructor () {
+    this.selector = null
     this.init = this.init.bind(this)
   }
 
@@ -9,18 +10,24 @@ class VQuery {
 
     if (!element) $selector = this
 
-    if (element.includes(' ')) {
-      let selectorArray = element.toString().split(' ')
-      $selector = document
-      for (let selector of selectorArray.values()) {
-        $selector = $selector.querySelectorAll(selector)
-      }
-    } else {
-      if (element.startsWith('#')) {
-        $selector = document.querySelector(element)
+    if (typeof element === 'string') {
+      if (element.includes(' ')) {
+        let selectorArray = element.toString().split(' ')
+        $selector = document
+        for (let selector of selectorArray.values()) {
+          $selector = $selector.querySelectorAll(selector)
+        }
       } else {
-        $selector = document.querySelectorAll(element)
+        if (element.startsWith('#')) {
+          $selector = document.querySelector(element)
+        } else {
+          $selector = document.querySelectorAll(element)
+        }
       }
+    } else if (element.nodeType && element.nodeType === 1) {
+      $selector = element
+    } else {
+      $selector = this
     }
 
     this.selector = $selector
@@ -69,7 +76,7 @@ class VQuery {
     this.off(type, handler, useCapture)
   }
 
-  getElementSize (el, name) {
+  _getElementSize (el, name) {
     function getStyle(el) {
       if (window.getComputedStyle) {
         return window.getComputedStyle(el, null)
@@ -91,17 +98,31 @@ class VQuery {
 
   width (number) {
     if (number !== undefined) {
-      return this.getElementSize(this.selector, 'width')
+      return this._getElementSize(this.selector, 'width')
     } else {
       this.selector.style.width = number + 'px'
     }
   }
 
-  heigth (number) {
-    if (number !== undefined) {
-      return this.getElementSize(this.selector, 'height')
+  height (value) {
+    if (value === undefined) {
+      return this._getElementSize(this.selector, 'height')
     } else {
-      this.selector.style.height = number + 'px'
+      if (typeof value === 'number') {
+        this.selector.style.height = value + 'px'
+      } else if (typeof value === 'string') {
+        this.selector.style.height = value
+      }
+    }
+  }
+
+  css (obj) {
+    if (obj === undefined) return this
+    else {
+      Object.keys(obj).forEach((k) => {
+        this.selector.style[k] = obj[k]
+      })
+      return this
     }
   }
 
@@ -126,6 +147,8 @@ class VQuery {
   }
 }
 
-const vQuery = new VQuery().init
+function vQuery(selector) {
+  return new VQuery().init(selector)
+}
 
 module.exports = vQuery
