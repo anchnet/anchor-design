@@ -24,7 +24,6 @@ class VQuery {
     }
 
     this.selector = $selector
-
     return this
   }
 
@@ -45,7 +44,8 @@ class VQuery {
         return this
       }
     }
-    return this
+
+    this.on(type, handler, params)
   }
 
   off (type, handler, useCapture) {
@@ -65,7 +65,8 @@ class VQuery {
         return this
       }
     }
-    return this
+
+    this.off(type, handler, useCapture)
   }
 
   getElementSize (el, name) {
