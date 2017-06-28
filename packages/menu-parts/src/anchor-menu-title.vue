@@ -21,7 +21,7 @@
       :name="triangleName"
       :active="elementStatus"
       :class="['anchor-animation__rotate3d', {'anchor-animation__rotate3d--top-down': isShow}]"
-      :style="[iconStyle, {'margin-top': '-2px', 'right': '12px'}]"
+      :style="[iconStyle, {'margin-top': '-2px', 'right': mode === 'sub' ? '22px' : '12px'}]"
     />
   </span>
 </template>
@@ -37,6 +37,11 @@
     },
 
     props: {
+      mode: {
+        type: String,
+        default: 'main'
+      },
+
       title: {
         type: String,
         default: '标题名称'

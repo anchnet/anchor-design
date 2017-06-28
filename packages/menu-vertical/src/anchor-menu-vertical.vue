@@ -5,13 +5,13 @@
       <anchor-menu-title slot="group-title" :class="['menu-vertical__title']" />
 
       <anchor-menu-group slot="group-item">
-        <anchor-menu-title slot="group-title" :hasDot="true" :class="['menu-vertical__title']" />
+        <anchor-menu-title slot="group-title" mode="sub" :hasDot="true" :class="['menu-vertical__title']" />
         <anchor-menu-content slot="group-item" :class="['menu-vertical__content']" />
         <anchor-menu-content slot="group-item" :class="['menu-vertical__content']" />
       </anchor-menu-group>
 
       <anchor-menu-group slot="group-item">
-        <anchor-menu-title slot="group-title" :hasDot="true" :class="['menu-vertical__title']" />
+        <anchor-menu-title slot="group-title" mode="sub" :hasDot="true" :class="['menu-vertical__title']" />
         <anchor-menu-content slot="group-item" :class="['menu-vertical__content']" />
       </anchor-menu-group>
     </anchor-menu-group>
@@ -21,7 +21,7 @@
       <anchor-menu-title slot="group-title" :class="['menu-vertical__title']" />
 
       <anchor-menu-group slot="group-item">
-        <anchor-menu-title slot="group-title" :hasDot="true" :class="['menu-vertical__title']" />
+        <anchor-menu-title slot="group-title" mode="sub" :hasDot="true" :class="['menu-vertical__title']" />
         <anchor-menu-content slot="group-item" :class="['menu-vertical__content']" />
       </anchor-menu-group>
     </anchor-menu-group>
