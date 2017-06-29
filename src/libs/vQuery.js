@@ -34,6 +34,11 @@ class VQuery {
     return this
   }
 
+  clone (obj) {
+    if (obj) return JSON.parse(JSON.stringify(obj))
+    return null
+  }
+
   on (type, handler, params) {
     if (this.selector.addEventListener) {
       this.on = () => {

@@ -23,7 +23,7 @@
       items: Array,
       showGroup: {
         type: Boolean,
-        default: false
+        default: true
       }
     },
 
@@ -51,7 +51,7 @@
             this.fixHeight().css({'height': 0})
             setTimeout(() => {
               vQuery(this.$refs.content).css({'height': '', 'overflow': ''})
-            }, 310)
+            }, 350)
           }
         })
       },
