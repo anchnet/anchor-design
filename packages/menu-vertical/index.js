@@ -1,5 +1,5 @@
-import MenuSidebar from './src/menu-sidebar.vue'
+import AnchorMenuVertical from './src/anchor-menu-vertical'
 
-MenuSidebar.install = function (Vue, options) {}
+AnchorMenuVertical.install = function (Vue, options) {}
 
-export default MenuSidebar
+export default AnchorMenuVertical

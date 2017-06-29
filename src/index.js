@@ -1,7 +1,20 @@
-import MenuSidebar from '../packages/menu-vertical/index.js'
+import AnchorMenuVertical from 'Packages/menu-vertical/index.js'
+import AnchorIcon from 'Packages/icons/index.js'
 
-const components = {
-  menuSidebar: '../packages/menu-sidebar/index.js'
+const components = [
+  AnchorMenuVertical, AnchorIcon
+]
+
+const installPlugins = function (Vue, options) {
+  components.forEach((component) => {
+    Vue.directive(component.name, component)
+  })
 }
 
-module.exports = components
+if (typeof window !== 'undefined' && window.Vue) {
+  installPlugins(window.Vue)
+}
+
+module.exports = {
+  installPlugins
+}

@@ -77,7 +77,6 @@
 
     methods: {
       handleClick (item) {
-        console.log(item.id)
         this.$emit('handleClick', item)
       }
     }

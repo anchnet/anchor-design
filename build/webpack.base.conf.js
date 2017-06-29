@@ -5,7 +5,7 @@ module.exports = {
   entry: './examples/main.js',
 
   output: {
-    path: utils.webpackResolve('dist/'),
+    path: utils.webpackResolve('dist/static/'),
     filename: '[name].js'
   },
 
@@ -28,7 +28,17 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: 'sass-loader'
+        use: [
+          'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('autoprefixer')()
+              ]
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
