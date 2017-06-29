@@ -71,9 +71,10 @@
       mouseHover (status) {
         this.active = status
       },
-
       onClick () {
-        this.$emit('handleClick')
+        if (this.$emit.bind(null, 'handleClick')) {
+          this.$emit('handleClick')
+        }
       }
     }
   }

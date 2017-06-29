@@ -1,9 +1,9 @@
 <template>
   <div :class="['anchor-menu-group']">
-    <div @click="handler()">
+    <div @click="oneItem ? '' : handler()">
       <slot name="group-title"></slot>
     </div>
-    <transition name="anchor-animation__slide-vertical">
+    <transition v-if="!oneItem" name="anchor-animation__slide-vertical">
       <div ref="content" v-show="isShow">
         <div ref="contentWrapper">
           <slot name="group-item"></slot>
@@ -20,10 +20,14 @@
     name: 'anchor-menu-group',
 
     props: {
-      items: Array,
+      oneItem: {
+        type: Boolean,
+        default: false
+      },
+
       showGroup: {
         type: Boolean,
-        default: true
+        default: false
       }
     },
 

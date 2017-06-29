@@ -1,6 +1,6 @@
 <template>
   <span
-    :class="['menu-title']"
+    :class="['menu-title', {'menu-title__sub': isSub}]"
     @mouseenter="alwaysActive ? '' : mouseHover(true)"
     @mouseleave="alwaysActive ? '' : mouseHover(false)"
     @click="onClick()"
@@ -21,7 +21,7 @@
       :name="triangleName"
       :active="elementStatus"
       :class="['anchor-animation__rotate3d', {'anchor-animation__rotate3d--top-down': isShow}]"
-      :style="[iconStyle, {'margin-top': '-2px', 'right': mode === 'sub' ? '22px' : '12px'}]"
+      :style="[iconStyle, {'margin-top': '-2px', 'right': isSub ? '22px' : '12px'}]"
     />
   </span>
 </template>
@@ -29,6 +29,19 @@
 <script>
   import AnchorIcon from 'Packages/icons/src/anchor-icon'
 
+  /**
+   * mode {string} the type of title, includes the title of main and the title of sub
+   * title {string} the text of title
+   * hasIcon {boolean} weather showing the icon or not
+   * hasDot {boolean} weather showing the dot or not
+   * hasChildren {boolean} if the component hasn't child content, hide the icon of traingle
+   * alwaysActive {boolean} weather make the icon under lighting or not
+   * icon {object} choose the icon, includes sets of type and name
+   * triangleName {string} choose the icon of triangle
+   * width {number}
+   * height {number}
+   * paddingLeft {number}
+   */
   export default {
     name: 'menu-title',
 
@@ -37,6 +50,8 @@
     },
 
     props: {
+      onChangeBack: Function,
+
       mode: {
         type: String,
         default: 'main'
@@ -106,6 +121,10 @@
     },
 
     computed: {
+      isSub () {
+        return this.mode === 'sub'
+      },
+
       elementStatus () {
         return this.alwaysActive || this.isShow ? true : this.active
       },
@@ -141,7 +160,11 @@
 
       onClick () {
         let isShow = !this.isShow
-        isShow ? this.$emit('open') : this.$emit('close')
+        if (this.$emit.bind(null, 'handleClick')) {
+          this.$emit('handleClick')
+        } else {
+          isShow ? this.$emit('open') : this.$emit('close')
+        }
         this.isShow = isShow
       }
     }

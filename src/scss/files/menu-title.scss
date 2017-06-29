@@ -14,4 +14,8 @@
   &:hover{
     cursor: pointer;
   }
+  @include e('sub'){
+    background-color: $color-menu-bg-light;
+    color: $color-menu-text-dark;
+  }
 }

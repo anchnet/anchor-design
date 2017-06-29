@@ -5,22 +5,27 @@
         slot="group-title"
         :class="['menu-vertical__title']"
         :title="item.text"
+        :oneItem="!item.children"
         mode="sub"
         :hasDot="true"
         :hasChildren="!!item.children"
-        v-if="item.level !== 2"
+        v-if="item.type !== 'content'"
+        @handleClick="handleClick(item)"
       />
       <anchor-menu-content
-        slot="group-item"
+        slot="group-title"
         :class="['menu-vertical__content']"
         :content="item.text"
-        v-else-if="!item.children && item.level === 2"
+        :oneItem="true"
+        v-else-if="!item.children && item.type === 'content'"
+        @handleClick="handleClick(item)"
       />
       <anchor-menu-vertical-item
         slot="group-item"
         :children="item.children"
         :data="data"
         v-if="!!item.children"
+        @handleClick="handleClick"
       />
     </anchor-menu-group>
   </div>
@@ -52,6 +57,12 @@
           })
         }
         return newData
+      }
+    },
+
+    methods: {
+      handleClick (item) {
+        this.$emit('handleClick', item)
       }
     }
   }

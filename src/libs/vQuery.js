@@ -5,10 +5,8 @@ class VQuery {
   }
 
   init (element) {
-    if (!element) return
+    if (!element) return this
     let $selector = this.selector
-
-    if (!element) $selector = this
 
     if (typeof element === 'string') {
       if (element.includes(' ')) {

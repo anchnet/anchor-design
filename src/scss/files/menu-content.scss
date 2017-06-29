@@ -8,12 +8,13 @@
   box-sizing: border-box;
   background-color: $color-menu-bg;
   user-select: none;
-  color: #fff;
+  color: $color-menu-text-dark;
   font-size: $font-size-base;
   @include single-line;
   transition: background-color 240ms;
   @include m('active'){
-    background-color: #000;
+    background-color: #000000;
+    color: #ffffff;
   }
   @include e('bar'){
     position: absolute;
