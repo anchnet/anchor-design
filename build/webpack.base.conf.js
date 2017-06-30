@@ -1,12 +1,26 @@
-var path = require('path')
-var utils = require('./utils.js')
+const path = require('path')
+const webpack = require('webpack')
+const utils = require('./utils.js')
+const env = require('../env/index')
 
 module.exports = {
-  entry: './examples/main.js',
+  entry: env.dev.entry,
 
   output: {
     path: utils.webpackResolve('dist/static/'),
     filename: '[name].js'
+  },
+
+  resolve: {
+    extensions: ['.vue', '.js', '.scss', '.json'],
+    modules: [utils.webpackResolve('packages'), 'node_modules'],
+    alias: {
+      'vue$': 'vue/dist/vue.js',
+      'scss': utils.webpackResolve('src/scss'),
+      'Src': utils.webpackResolve('src/'),
+      'Packages': utils.webpackResolve('packages/'),
+      'Examples': utils.webpackResolve('examples/')
+    }
   },
 
   module: {
@@ -57,17 +71,5 @@ module.exports = {
         }
       }
     ]
-  },
-
-  resolve: {
-    extensions: ['.vue', '.js', '.scss', '.json'],
-    modules: [utils.webpackResolve('packages'), 'node_modules'],
-    alias: {
-      'vue$': 'vue/dist/vue.js',
-      'scss': utils.webpackResolve('src/scss'),
-      'Src': utils.webpackResolve('src/'),
-      'Packages': utils.webpackResolve('packages/'),
-      'Examples': utils.webpackResolve('examples/')
-    }
   }
 }
