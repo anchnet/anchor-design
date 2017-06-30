@@ -3,6 +3,8 @@ node_modules
 .env
 npm-debug.log
 npm-debug.log.*
+lerna-debug.log
+lerna-debug.log.*
 .DS_Store
-anchor-ui
+anchor-design
 dist

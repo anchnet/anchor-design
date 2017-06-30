@@ -9,7 +9,7 @@ module.exports = merge(baseWebpackConfig, {
   entry: config.entries,
 
   output: {
-    path: utils.webpackResolve('anchor-ui'),
+    path: utils.webpackResolve('anchor-design'),
     filename: '[name].js'
   },
 
