@@ -10,7 +10,8 @@ module.exports = merge(baseWebpackConfig, {
 
   output: {
     path: utils.webpackResolve('anchor-design'),
-    filename: '[name].js'
+    filename: '[name].js',
+    libraryTarget: 'commonjs2'
   },
 
   devtool: env.build.productionSourceMap ? '#source-map' : false,

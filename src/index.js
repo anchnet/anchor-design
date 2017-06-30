@@ -1,20 +1,24 @@
-import AnchorMenuVertical from 'Packages/menu-vertical/index.js'
-import AnchorIcon from 'Packages/icons/index.js'
+import AnchorIcon from '../packages/icons/index.js'
+import AnchorMenuVertical from '../packages/menu-vertical/index.js'
 
 const components = [
-  AnchorMenuVertical, AnchorIcon
+  AnchorMenuVertical,
+  AnchorIcon
 ]
 
-const installPlugins = function (Vue, options) {
+const install = function (Vue, options) {
+  if (install.installed) return
   components.forEach((component) => {
     Vue.directive(component.name, component)
   })
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
-  installPlugins(window.Vue)
+  install(window.Vue)
 }
 
 module.exports = {
-  installPlugins
+  install,
+  AnchorIcon,
+  AnchorMenuVertical
 }

@@ -1,11 +1,12 @@
 {
   "name": "anchor-design",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "description": "A Component Library For Vue",
   "scripts": {
     "start": "npm run watch",
     "watch": "webpack-dev-server --hot --inline --config build/webpack.dev.conf.js --progress --colors",
-    "build": "webpack -p --config build/webpack.prod.conf.js --progress --colors"
+    "build": "npm run clean && webpack -p --config build/webpack.prod.conf.js --progress --colors",
+    "clean": "rm -rf anchor-design"
   },
   "main": "anchor-design/lib/index.js",
   "peerDependencies": {
