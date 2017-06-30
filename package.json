@@ -1,6 +1,6 @@
 {
   "name": "anchor-design",
-  "version": "0.1.0-alpha.5",
+  "version": "0.1.0-alpha.7",
   "description": "A Component Library For Vue",
   "scripts": {
     "start": "npm run watch",
@@ -10,8 +10,8 @@
   },
   "main": "anchor-design/lib/index.js",
   "files": [
-    "lib",
-    "static"
+    "static",
+    "lib"
   ],
   "repository": {
     "type": "git",
