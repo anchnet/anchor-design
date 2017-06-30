@@ -6,9 +6,32 @@
     "start": "npm run watch",
     "watch": "webpack-dev-server --hot --inline --config build/webpack.dev.conf.js --progress --colors",
     "build": "npm run clean && webpack -p --config build/webpack.prod.conf.js --progress --colors",
-    "clean": "rm -rf anchor-design"
+    "clean": "rm -rf lib && rm -rf static"
   },
   "main": "anchor-design/lib/index.js",
+  "files": [
+    "lib",
+    "static"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/51idc/anchor-ui.git"
+  },
+  "keywords": [
+    "anchor",
+    "ui",
+    "vue"
+  ],
+  "author": "liuzmeng liuzhimengweb@qq.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/51idc/anchor-ui/issues"
+  },
+  "homepage": "https://github.com/51idc/anchor-ui#readme",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
   "peerDependencies": {
     "vue": "^2.3.4"
   },
@@ -35,24 +58,5 @@
     "webpack-dev-server": "^2.5.0",
     "webpack-merge": "^4.1.0"
   },
-  "dependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/51idc/anchor-ui.git"
-  },
-  "keywords": [
-    "anchor",
-    "ui",
-    "vue"
-  ],
-  "author": "liuzmweb liuzhimenbweb@qq.com",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/51idc/anchor-ui/issues"
-  },
-  "homepage": "https://github.com/51idc/anchor-ui#readme",
-  "directories": {
-    "example": "examples",
-    "test": "test"
-  }
+  "dependencies": {}
 }

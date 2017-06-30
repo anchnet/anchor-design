@@ -9,7 +9,7 @@ module.exports = merge(baseWebpackConfig, {
   entry: config.entries,
 
   output: {
-    path: utils.webpackResolve('anchor-design'),
+    path: utils.webpackResolve(),
     filename: '[name].js',
     libraryTarget: 'commonjs2'
   },
