@@ -1,4 +1,4 @@
 module.exports = {
-  "anchorMenuVertical": "./packages/menu-vertical/index.js",
-  "anchorIcon": "./packages/icons/index.js"
+  "anchor-menu-vertical": "./packages/menu-vertical/index.js",
+  "anchor-icon": "./packages/icons/index.js"
 }

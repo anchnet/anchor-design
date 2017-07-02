@@ -7,13 +7,15 @@
     :style="titleStyle"
     :title="title"
   >
-    <anchor-icon
-      v-if="hasIcon || hasDot"
-      :type="hasDot ? 'dot' : icon.type"
-      :name="hasDot ? '' : icon.name"
-      :active="elementStatus"
-      :style="[iconStyle, leftIconStyle]"
-    /><!--
+    <slot name="icon">
+      <anchor-icon
+        v-if="hasIcon || hasDot"
+        :type="hasDot ? 'dot' : icon.type"
+        :name="hasDot ? '' : icon.name"
+        :active="elementStatus"
+        :style="[iconStyle, leftIconStyle]"
+      />
+    </slot><!--
     --><slot name="title">{{title}}</slot><!--
     --><anchor-icon
       v-if="hasChildren"

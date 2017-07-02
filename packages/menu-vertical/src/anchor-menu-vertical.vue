@@ -1,14 +1,17 @@
 <template>
   <div :class="['menu-vertical']" :style="{'width': width + 'px', 'min-height': minHeight + 'px'}">
     <anchor-menu-group :key="key" v-for="(item, key) in rootData">
-      <anchor-menu-title
-        slot="group-title"
-        :class="['menu-vertical__title']"
-        :title="item.text"
-        :hasChildren="!!item.children"
-        @handleClick="handleClick(item)"
-        v-if="item.level !== 2"
-      />
+      <slot name="menu-vertial-title">
+        <anchor-menu-title
+          slot="group-title"
+          :class="['menu-vertical__title']"
+          :title="item.text"
+          :hasDot="true"
+          :hasChildren="!!item.children"
+          @handleClick="handleClick(item)"
+          v-if="item.level !== 2"
+        />
+      </slot>
       <anchor-menu-vertical-item
         slot="group-item"
         v-if="item.children"
