@@ -9,7 +9,7 @@ const components = [
 const install = function (Vue, options) {
   if (install.installed) return
   components.forEach((component) => {
-    Vue.directive(component.name, component)
+    Vue.component(component.name, component)
   })
 }
 
