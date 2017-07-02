@@ -1,18 +1,16 @@
 {
   "name": "anchor-design",
-  "version": "0.1.0-alpha.10",
+  "version": "0.1.0-beta.1",
   "description": "A Component Library For Vue",
   "scripts": {
     "start": "npm run watch",
     "watch": "webpack-dev-server --hot --inline --config build/webpack.dev.conf.js --progress --colors",
     "build": "npm run clean && webpack -p --config build/webpack.prod.conf.js --progress --colors",
-    "clean": "rm -rf lib && rm -rf static"
+    "clean": "rm -rf lib"
   },
   "main": "lib/index.js",
   "files": [
-    "lib",
-    "static",
-    "packages"
+    "lib"
   ],
   "repository": {
     "type": "git",
