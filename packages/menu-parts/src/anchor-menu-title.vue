@@ -43,7 +43,7 @@
    * paddingLeft {number}
    */
   export default {
-    name: 'menu-title',
+    name: 'anchor-menu-title',
 
     components: {
       AnchorIcon

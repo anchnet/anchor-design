@@ -26,7 +26,7 @@
   import AnchorMenuTitle from 'Packages/menu-parts/src/anchor-menu-title'
 
   export default {
-    name: 'menu-vertical',
+    name: 'anchor-menu-vertical',
 
     components: {
       AnchorMenuVerticalItem, AnchorMenuGroup, AnchorMenuTitle

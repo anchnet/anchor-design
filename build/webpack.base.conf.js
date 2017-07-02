@@ -60,7 +60,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: path.join('lib', 'static/img/[name].[hash:7].[ext]')
+          name: path.join('static', 'img/[name].[hash:7].[ext]')
         }
       },
       {
@@ -68,7 +68,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: path.join('lib', 'static/fonts/[name].[hash:7].[ext]')
+          name: path.join('static', 'fonts/[name].[hash:7].[ext]')
         }
       }
     ]

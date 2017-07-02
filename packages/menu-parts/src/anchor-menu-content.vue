@@ -15,7 +15,7 @@
   import AnchorIcon from 'Packages/icons/src/anchor-icon'
 
   export default {
-    name: 'menu-content',
+    name: 'anchor-menu-content',
 
     components: {
       AnchorIcon

@@ -1,24 +1,21 @@
 {
   "name": "anchor-design",
-  "version": "0.1.0-beta.3",
+  "version": "0.1.0-beta.5",
   "description": "A Component Library For Vue",
   "scripts": {
     "start": "npm run watch",
     "watch": "webpack-dev-server --hot --inline --config build/webpack.dev.conf.js --progress --colors",
     "build": "npm run clean && webpack -p --config build/webpack.prod.conf.js --progress --colors",
-    "clean": "rm -rf lib"
+    "clean": "rm -rf lib && rm -rf static"
   },
   "main": "lib/index.js",
-  "files": [
-    "lib"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/51idc/anchor-ui.git"
   },
   "keywords": [
     "anchor",
-    "ui",
+    "component",
     "vue"
   ],
   "author": "liuzmeng liuzhimengweb@qq.com",
@@ -27,10 +24,6 @@
     "url": "https://github.com/51idc/anchor-ui/issues"
   },
   "homepage": "https://github.com/51idc/anchor-ui#readme",
-  "directories": {
-    "example": "examples",
-    "test": "test"
-  },
   "peerDependencies": {
     "vue": "^2.3.4"
   },
