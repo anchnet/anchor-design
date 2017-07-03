@@ -1,4 +1,4 @@
-import AnchorMenuVertical from './src/anchor-menu-vertical'
+import AnchorMenuVertical from './src/menu-vertical'
 
 AnchorMenuVertical.install = function (Vue, options) {}
 

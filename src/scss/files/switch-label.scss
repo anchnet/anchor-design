@@ -1,0 +1,58 @@
+@import "~scss/mixins";
+@import "~scss/variables";
+
+@include b('switch-label'){
+  display: inline-block;
+  min-height: 28px;
+  font-size: 0;
+  vertical-align: middle;
+
+  @include e('item'){
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    width: 120px;
+    height: 26px;
+    line-height: 26px;
+    border: 1px solid $color-line;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: color 0.5s;
+    &:hover{
+      z-index: 1;
+      border-color: $color-primary;
+      background-color: $color-primary-background;
+      color: $color-primary;
+    }
+
+    @include m('active'){
+      z-index: 1;
+      border-color: $color-primary;
+      background-color: $color-primary;
+      color: #fff;
+      &:hover{
+        z-index: 1;
+        border-color: $color-primary;
+        background-color: $color-primary;
+        color: #fff;
+      }
+    }
+
+    @include m('not-allowed'){
+      border-color: $color-forbidden-border;
+      color: $color-forbidden-font;
+      cursor: not-allowed;
+      &:hover{
+        z-index: 0;
+        border-color: $color-forbidden-border;
+        color: $color-forbidden-font;
+        background-color: $color-forbidden-background;
+      }
+    }
+  }
+
+  .switch-label__item + .switch-label__item{
+    margin-left: -1px;
+  }
+}

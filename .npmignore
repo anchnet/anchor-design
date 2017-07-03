@@ -14,3 +14,4 @@ examples/
 packages/
 src/
 test/
+packages_path.json

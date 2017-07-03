@@ -1,4 +1,4 @@
-const packagePath = require('./bin/package-path')
+const packagePath = require('../packages_path.json')
 
 const entries = {}
 

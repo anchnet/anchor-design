@@ -1,5 +1,6 @@
-import Layout from 'Examples/src/templete/layout'
+import Layout from './layout'
+import Demo from './pages/demo'
 
 module.exports = {
-  Layout
+  Layout, Demo
 }

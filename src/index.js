@@ -3,13 +3,15 @@ import AnchorMenuGroup from '../packages/menu-group/index.js'
 import AnchorMenuTitle from '../packages/menu-title/index.js'
 import AnchorMenuContent from '../packages/menu-content/index.js'
 import AnchorMenuVertical from '../packages/menu-vertical/index.js'
+import AnchorSwitchLabel from '../packages/switch-label/index.js'
 
 const components = [
   AnchorIcon,
   AnchorMenuGroup,
   AnchorMenuTitle,
   AnchorMenuContent,
-  AnchorMenuVertical
+  AnchorMenuVertical,
+  AnchorSwitchLabel
 ]
 
 const install = function (Vue, options) {
@@ -29,5 +31,6 @@ module.exports = {
   AnchorMenuGroup,
   AnchorMenuTitle,
   AnchorMenuContent,
-  AnchorMenuVertical
+  AnchorMenuVertical,
+  AnchorSwitchLabel
 }
