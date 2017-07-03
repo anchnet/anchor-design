@@ -1,0 +1,16 @@
+node_modules
+.idea
+.env
+.babelrc
+.DS_Store
+.gitignore
+npm-debug.log
+npm-debug.log.*
+lerna-debug.log
+lerna-debug.log.*
+build/
+env/
+examples/
+packages/
+src/
+test/
