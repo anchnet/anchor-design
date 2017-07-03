@@ -1,6 +1,6 @@
 {
   "name": "anchor-design",
-  "version": "0.1.0-beta.11",
+  "version": "0.1.0-beta.12",
   "description": "A Component Library For Vue",
   "scripts": {
     "start": "npm run watch",
@@ -16,10 +16,9 @@
   "keywords": [
     "anchor",
     "component",
-    "vue"
+    "vue",
+    "ui"
   ],
-  "author": "liuzmeng liuzhimengweb@qq.com",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/51idc/anchor-ui/issues"
   },
@@ -49,5 +48,7 @@
     "webpack-dev-server": "^2.5.0",
     "webpack-merge": "^4.1.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "author": "liuzmeng liuzhimengweb@qq.com",
+  "license": "MIT"
 }

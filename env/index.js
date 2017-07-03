@@ -13,7 +13,7 @@ module.exports = {
   build: {
     env: require('./prod.env'),
     productionSourceMap: true,
-    publicPath: 'node_modules/anchor-design/',
+    publicPath: path.join(__dirname, '../node_modules/anchor-design/'),
     subDirectory: 'static'
   }
 }
