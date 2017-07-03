@@ -1,7 +1,7 @@
 import AnchorIcon from '../packages/icons/index.js'
-import AnchorMenuGroup from '../packages/menu-vertical-group/index.js'
-import AnchorMenuTitle from '../packages/menu-vertical-title/index.js'
-import AnchorMenuContent from '../packages/menu-vertical-content/index.js'
+import AnchorMenuGroup from '../packages/menu-group/index.js'
+import AnchorMenuTitle from '../packages/menu-title/index.js'
+import AnchorMenuContent from '../packages/menu-content/index.js'
 import AnchorMenuVertical from '../packages/menu-vertical/index.js'
 
 const components = [
