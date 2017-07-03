@@ -10,6 +10,7 @@
   user-select: none;
   color: $color-menu-text-dark;
   font-size: $font-size-base;
+  text-align: left;
   @include single-line;
   transition: background-color 240ms;
   @include m('active'){

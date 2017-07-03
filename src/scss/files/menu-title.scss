@@ -10,6 +10,7 @@
   user-select: none;
   color: #fff;
   font-size: $font-size-base;
+  text-align: left;
   @include single-line;
   &:hover{
     cursor: pointer;

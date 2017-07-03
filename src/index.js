@@ -1,9 +1,15 @@
 import AnchorIcon from '../packages/icons/index.js'
+import AnchorMenuGroup from '../packages/menu-vertical-group/index.js'
+import AnchorMenuTitle from '../packages/menu-vertical-title/index.js'
+import AnchorMenuContent from '../packages/menu-vertical-content/index.js'
 import AnchorMenuVertical from '../packages/menu-vertical/index.js'
 
 const components = [
-  AnchorMenuVertical,
-  AnchorIcon
+  AnchorIcon,
+  AnchorMenuGroup,
+  AnchorMenuTitle,
+  AnchorMenuContent,
+  AnchorMenuVertical
 ]
 
 const install = function (Vue, options) {
@@ -20,5 +26,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 module.exports = {
   install,
   AnchorIcon,
+  AnchorMenuGroup,
+  AnchorMenuTitle,
+  AnchorMenuContent,
   AnchorMenuVertical
 }
