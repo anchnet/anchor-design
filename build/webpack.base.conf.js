@@ -8,6 +8,7 @@ module.exports = {
 
   output: {
     path: utils.webpackResolve('dist/static/'),
+    publicPath: env.dev.publicPath,
     filename: '[name].js'
   },
 
@@ -60,7 +61,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.webpackResolve('static/img/[name].[hash:7].[ext]')
+          name: utils.subPath('img/[name].[hash:7].[ext]')
         }
       }
     ]

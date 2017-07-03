@@ -6,7 +6,6 @@
           slot="group-title"
           :class="['menu-vertical__title']"
           :title="item.text"
-          :hasDot="true"
           :hasChildren="!!item.children"
           @handleClick="handleClick(item)"
           v-if="item.level !== 2"

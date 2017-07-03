@@ -10,6 +10,7 @@ module.exports = merge(baseWebpackConfig, {
 
   output: {
     path: utils.webpackResolve(),
+    publicPath: env.build.publicPath,
     filename: '[name].js',
     libraryTarget: 'commonjs2'
   },
