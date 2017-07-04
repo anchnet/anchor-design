@@ -32,12 +32,15 @@
 </template>
 
 <script>
-  import AnchorMenuGroup from 'Packages/menu-parts/src/anchor-menu-group'
-  import AnchorMenuTitle from 'Packages/menu-parts/src/anchor-menu-title'
-  import AnchorMenuContent from 'Packages/menu-parts/src/anchor-menu-content'
+  import AnchorMenuGroup from 'Packages/menu-parts/src/menu-group'
+  import AnchorMenuTitle from 'Packages/menu-parts/src/menu-title'
+  import AnchorMenuContent from 'Packages/menu-parts/src/menu-content'
+  import mixin from 'Src/libs/mixin'
 
   export default {
     name: 'anchor-menu-vertical-item',
+
+    mixins: [mixin],
 
     components: {
       AnchorMenuGroup, AnchorMenuTitle, AnchorMenuContent

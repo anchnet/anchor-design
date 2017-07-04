@@ -15,8 +15,12 @@
 </template>
 
 <script>
+  import mixin from 'Src/libs/mixin'
+
   export default {
     name: 'anchor-icon',
+
+    mixins: [mixin],
 
     props: {
       type: String,

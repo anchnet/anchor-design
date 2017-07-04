@@ -24,12 +24,15 @@
 </template>
 
 <script>
-  import AnchorMenuVerticalItem from './anchor-menu-vertical-item'
-  import AnchorMenuGroup from 'Packages/menu-parts/src/anchor-menu-group'
-  import AnchorMenuTitle from 'Packages/menu-parts/src/anchor-menu-title'
+  import AnchorMenuVerticalItem from './menu-vertical-item'
+  import AnchorMenuGroup from 'Packages/menu-parts/src/menu-group'
+  import AnchorMenuTitle from 'Packages/menu-parts/src/menu-title'
+  import mixin from 'Src/libs/mixin'
 
   export default {
     name: 'anchor-menu-vertical',
+
+    mixins: [mixin],
 
     components: {
       AnchorMenuVerticalItem, AnchorMenuGroup, AnchorMenuTitle

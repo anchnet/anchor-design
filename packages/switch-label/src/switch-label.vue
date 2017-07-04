@@ -15,6 +15,7 @@
 
 <script>
   import utils from 'Src/libs/utils'
+  import mixin from 'Src/libs/mixin'
 
   /**
    * param
@@ -34,6 +35,8 @@
    */
   export default {
     name: 'anchor-switch-label',
+
+    mixins: [mixin],
 
     props: {
       width: Number,

@@ -13,9 +13,12 @@
 
 <script>
   import AnchorIcon from 'Packages/icons/src/anchor-icon'
+  import mixin from 'Src/libs/mixin'
 
   export default {
     name: 'anchor-menu-content',
+
+    mixins: [mixin],
 
     components: {
       AnchorIcon

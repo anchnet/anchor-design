@@ -15,9 +15,12 @@
 
 <script>
   import vQuery from 'Src/libs/vQuery'
+  import mixin from 'Src/libs/mixin'
 
   export default {
     name: 'anchor-menu-group',
+
+    mixins: [mixin],
 
     props: {
       oneItem: {

@@ -30,6 +30,7 @@
 
 <script>
   import AnchorIcon from 'Packages/icons/src/anchor-icon'
+  import mixin from 'Src/libs/mixin'
 
   /**
    * mode {string} the type of title, includes the title of main and the title of sub
@@ -46,6 +47,8 @@
    */
   export default {
     name: 'anchor-menu-title',
+
+    mixins: [mixin],
 
     components: {
       AnchorIcon

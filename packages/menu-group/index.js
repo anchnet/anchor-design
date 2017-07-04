@@ -1,4 +1,4 @@
-import AnchorMenuGroup from '../menu-parts/src/anchor-menu-group'
+import AnchorMenuGroup from '../menu-parts/src/menu-group'
 
 AnchorMenuGroup.install = function (Vue, options) {}
 

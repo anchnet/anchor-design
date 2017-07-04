@@ -1,9 +1,11 @@
+// Express Edition Of jQuery, named vQuery
 class VQuery {
   constructor () {
     this.selector = null
     this.init = this.init.bind(this)
   }
 
+  // 初始化 DOM 节点
   init (element) {
     if (!element) return this
     let $selector = this.selector
@@ -32,11 +34,13 @@ class VQuery {
     return this
   }
 
+  // 深度克隆
   clone (obj) {
     if (obj) return JSON.parse(JSON.stringify(obj))
     return null
   }
 
+  // 事件注册，暂不支持事件代理
   on (type, handler, params) {
     if (this.selector.addEventListener) {
       this.on = () => {
@@ -58,6 +62,7 @@ class VQuery {
     this.on(type, handler, params)
   }
 
+  // 注销事件
   off (type, handler, useCapture) {
     if (this.selector.removeEventListener) {
       this.on = () => {
@@ -79,6 +84,7 @@ class VQuery {
     this.off(type, handler, useCapture)
   }
 
+  // 获取 DOM 宽高值，仅内部调用
   _getElementSize (el, name) {
     function getStyle(el) {
       if (window.getComputedStyle) {
@@ -99,6 +105,7 @@ class VQuery {
     return val
   }
 
+  // 获取可见元素宽度
   width (number) {
     if (number !== undefined) {
       return this._getElementSize(this.selector, 'width')
@@ -107,6 +114,7 @@ class VQuery {
     }
   }
 
+  // 获取可见元素高度
   height (value) {
     if (value === undefined) {
       return this._getElementSize(this.selector, 'height')
@@ -119,6 +127,7 @@ class VQuery {
     }
   }
 
+  // 设置元素样式
   css (obj) {
     if (obj === undefined) return this
     else {
@@ -129,16 +138,19 @@ class VQuery {
     }
   }
 
+  // 鼠标滑入事件
   mouseenter (handler, params) {
     this.on('mouseenter', handler, params)
     return this
   }
 
+  // 鼠标滑出事件
   mouseout (handler, params) {
     this.on('mouseout', handler, params)
     return this
   }
 
+  // 鼠标离开事件
   mouseleave (handler, params) {
     this.on('mouseleave', handler, params)
     return this
