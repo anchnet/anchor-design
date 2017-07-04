@@ -4,5 +4,6 @@
   "anchor-menu-title": "./packages/menu-title/index.js",
   "anchor-menu-content": "./packages/menu-content/index.js",
   "anchor-menu-vertical": "./packages/menu-vertical/index.js",
-  "anchor-switch-label": "./packages/switch-label/index.js"
+  "anchor-switch-label": "./packages/switch-label/index.js",
+  "anchor-drop-down": "./packages/drop-down/index.js"
 }
