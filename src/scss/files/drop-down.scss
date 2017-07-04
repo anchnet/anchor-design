@@ -1,0 +1,114 @@
+@import "~scss/mixins";
+@import "~scss/variables";
+@import "~scss/animation";
+
+@include b('drop-down'){
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+
+  @include e('on-display'){
+    position: relative;
+    display: block;
+    line-height: 24px;
+    font-size: $font-size-smaller;
+    color: $color-tips;
+    @include single-line();
+  }
+
+  @include e('triangle'){
+    position: absolute;
+    top: 45%;
+    top: calc(50% - 2px);
+    right: 5px;
+  }
+
+  @include e('container'){
+    position: relative;
+    width: 120px;
+    padding: 3px 18px 3px 12px;
+    border: 1px solid $color-line;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background-color: #ffffff;
+    cursor: pointer;
+
+    @include m('disabled'){
+      cursor: not-allowed;
+      background-color: #FFFFFF !important;
+      border-color: $color-line !important;
+      .anchor-icon-triangle{
+        border-top-color: $color-line !important;
+      }
+      .drop-down__on-display{
+        color: $color-line !important;
+      }
+    }
+
+    &:hover{
+      color: $color-primary;
+      background-color: $color-primary-background;
+      border-color: $color-primary;
+    }
+  }
+
+  @include e('list'){
+    position: absolute;
+    z-index: 15;
+    top: 100%;
+    left: 0;
+    padding: 8px 0px;
+    border-radius: 2px;
+    box-shadow: 0 0 6px rgb(177,178,180);
+    background-color: #FFF;
+    font-size: 12px;
+    opacity: 1;
+  }
+
+  @include e('item'){
+    display: block;
+    position: relative;
+    line-height: 28px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    color: $color-tips;
+    text-align: left;
+    white-space: nowrap;
+    cursor: pointer;
+    @include single-line();
+
+    @include m('dot'){
+      display: none;
+      position: absolute;
+      top: 13px;
+      left: 6px;
+      width: 3px;
+      height: 3px;
+      border-radius: 50% 50%;
+    }
+
+    @include m('active'){
+      color: $color-primary;
+      .drop-down__item--dot {
+        display: block;
+        background-color: $color-primary;
+      }
+    }
+
+    &:hover {
+      color: $color-primary;
+      .drop-down__item--dot {
+        display: block;
+        background-color: $color-primary;
+      }
+    }
+
+    &.disabled {
+      color: #DDD;
+      cursor: no-drop;
+      .drop-down__item--dot {
+        display: none;
+      }
+    }
+  }
+}

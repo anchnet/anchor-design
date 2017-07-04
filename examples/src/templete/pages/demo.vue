@@ -1,6 +1,28 @@
 <template>
   <ol>
     <li>
+      <h3>drop-down组件</h3>
+      <div class="demo-layout">
+        <anchor-drop-down
+          :data="dropdownData.imageType.data"
+          :type="dropdownData.imageType.type"
+          :hasDot="dropdownData.imageType.hasDot"
+          :defaultText="dropdownData.imageType.defaultText"
+          :onChangeBack="onDropDownChange.bind(null, 'imageType')"
+        />
+        <anchor-drop-down
+          class="ml10"
+          :data="dropdownData.imageVersion.data[currentImageType]"
+          :hasDot="dropdownData.imageVersion.hasDot"
+          :defaultKey="dropdownData.imageType.defaultKey"
+          :defaultText="dropdownData.imageVersion.defaultText"
+          :onChangeBack="onDropDownChange.bind(null, 'imageVersion')"
+        />
+      </div>
+      <p class="color-primary">parentCurrentkey: {{dropdownData.imageType.defaultKey}}</p>
+      <p class="color-primary">childDefaultValue: {{currentImageVersion}}</p>
+    </li>
+    <li>
       <h3>anchor-menu-vertical</h3>
       <div class="demo-layout">
         <anchor-menu-vertical></anchor-menu-vertical>
@@ -25,11 +47,30 @@
 <script>
   import AnchorMenuVertical from 'Packages/menu-vertical/src/menu-vertical'
   import AnchorSwitchLabel from 'Packages/switch-label/src/switch-label'
+  import AnchorDropDown from 'Packages/drop-down/src/drop-down'
 
   export default {
     name: 'demo',
     components: {
-      AnchorMenuVertical, AnchorSwitchLabel
+      AnchorMenuVertical, AnchorSwitchLabel, AnchorDropDown
+    },
+
+    methods: {
+      onLabelChange (type, item, key) {
+        if (type === 'regions') {
+          this.hostType[1]['forbidden'] = item.id !== 'ac3'
+        }
+        this.currentName = item.value
+      },
+
+      onDropDownChange (type, item, key) {
+        if (type === 'imageType') {
+          this.currentImageType = item.id
+          this.dropdownData.imageType.defaultKey = key
+        } else if (type === 'imageVersion') {
+          this.currentImageVersion = item.value
+        }
+      },
     },
 
     data () {
@@ -47,22 +88,58 @@
         hostType: [
           {id: "hd", value: "性能型", active: true, forbidden: false},
           {id: "hds", value: "超高性能型", active: false, forbidden: true}
-        ]
+        ],
+
+        dropdownData: {
+          imageType: {
+            type: "image",
+            hasDot: true,
+            defaultKey: 2,
+            defaultText: '请选择镜像类型',
+            data: [
+              {id: "windows", value: "windows"},
+              {id: "centos", value: "centos"},
+              {id: "ubuntu", value: "ubuntu"},
+              {id: "debian", value: "debian"},
+              {id: "redhat", value: "redhat"},
+              {id: "coreos", value: "coreos"},
+              {id: "desktop", value: "desktop"},
+              {id: "opensuse", value: "opensuse"},
+              {id: "arch", value: "arch"}
+            ]
+          },
+          imageVersion: {
+            hasDot: true,
+            defaultText: '请选择镜像版本',
+            data: {
+              default: [],
+              windows: [
+                {id: "windows1", value: "windows1"},
+                {id: "windows2", value: "windows2"},
+                {id: "windows3", value: "windows3"},
+                {id: "windows4", value: "windows4"}
+              ],
+              centos: [
+                {id: "centos1", value: "centos1"},
+                {id: "centos2", value: "centos2"},
+                {id: "centos3", value: "centos3"}
+              ],
+              ubuntu: [
+                {id: "ubuntu1", value: "ubuntu1"},
+                {id: "ubuntu2", value: "ubuntu2ubuntu2ubuntu2"},
+                {id: "ubuntu3", value: "ubuntu3"}
+              ],
+            }
+          }
+        },
+        currentImageType: 'default',
+        currentImageVersion: '',
       }
     },
-
-    methods: {
-      onLabelChange (type, item, key) {
-        if (type === 'regions') {
-          this.hostType[1]['forbidden'] = item.id !== 'ac3'
-        }
-        this.currentName = item.value
-      },
-    }
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   ol{
     padding: 20px 40px;
     list-style: decimal;

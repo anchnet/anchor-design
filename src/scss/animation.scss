@@ -23,4 +23,19 @@
     height: 0;
     opacity: 0;
   }
+
+  @include e('drop-down-enter'){
+    opacity: 0 !important;
+    top: 90% !important;
+  }
+  @include e('drop-down-leave-to'){
+    opacity: 0 !important;
+    top: 90% !important;
+  }
+  @include e('drop-down-enter-active'){
+    transition: top 250ms, opacity 250ms;
+  }
+  @include e('drop-down-leave-active'){
+    transition: top 250ms, opacity 250ms;
+  }
 }
