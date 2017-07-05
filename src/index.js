@@ -30,6 +30,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
+  version: '0.6.1',
   install,
   AnchorIcon,
   AnchorMenuGroup,
