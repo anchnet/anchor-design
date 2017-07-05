@@ -7,6 +7,8 @@
         <anchor-button btnStyle="2" />
         <anchor-button btnStyle="3" />
         <anchor-button btnStyle="4" />
+        <anchor-button btnStyle="5" />
+        <anchor-button btnStyle="6" />
         <anchor-button mode="tag" />
         <anchor-button mode="tag" tagColor="2B90E8" />
         <anchor-button mode="tag" tagColor="08B446" />
@@ -21,6 +23,8 @@
         <anchor-button btnStyle="2" :isDisabled="true" />
         <anchor-button btnStyle="3" :isDisabled="true" />
         <anchor-button btnStyle="4" :isDisabled="true" />
+        <anchor-button btnStyle="5" :isDisabled="true" />
+        <anchor-button btnStyle="6" :isDisabled="true" />
         <anchor-button mode="tag" :isClicked="false" />
         <anchor-button mode="tag" tagColor="2B90E8" :isClicked="false" />
         <anchor-button mode="tag" tagColor="08B446" :isClicked="false" />

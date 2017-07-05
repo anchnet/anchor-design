@@ -64,7 +64,7 @@
   @include e('style-3'){
     color: $color-primary;
     background-color: $color-primary-background-darker;
-    border: none;
+    border-color: transparent;
     &:hover{
       background-color: $color-primary-background-darker-hover;
       cursor: pointer;
@@ -81,6 +81,27 @@
   }
 
   @include e('style-4'){
+    color: $color-primary;
+    background-color: $color-primary-background-darker;
+    &:hover{
+      background-color: $color-primary-background-darker-hover;
+      border-color: $color-primary;
+      cursor: pointer;
+    }
+    @include m('active'){
+      background-color: $color-primary-background-darker-hover;
+      border-color: $color-primary;
+      cursor: pointer;
+    }
+    @include m('disabled'){
+      color: $color-forbidden-font !important;
+      background-color: $color-forbidden-background-darker !important;
+      border-color: transparent !important;
+      cursor: not-allowed !important;
+    }
+  }
+
+  @include e('style-5'){
     color: #ffffff;
     background-color: $color-primary;
     border: none;
@@ -95,6 +116,25 @@
     @include m('disabled'){
       color: $color-forbidden-font !important;
       background-color: $color-forbidden-background-darker !important;
+      cursor: not-allowed !important;
+    }
+  }
+
+  @include e('style-6'){
+    color: $color-base;
+    background-color: $color-base-background;
+    &:hover{
+      border-color: $color-line;
+      cursor: pointer;
+    }
+    @include m('active'){
+      border-color: $color-line;
+      cursor: pointer;
+    }
+    @include m('disabled'){
+      color: $color-forbidden-font !important;
+      background-color: $color-forbidden-background-darker !important;
+      border-color: transparent !important;
       cursor: not-allowed !important;
     }
   }
