@@ -52,7 +52,7 @@
    *   defaultText {string}                      //默认显示的文字，优先级低，有 defaultId/defaultKey 时则无效
    */
   export default {
-    name: 'drop-down',
+    name: 'anchor-drop-down',
 
     mixins: [mixin],
 

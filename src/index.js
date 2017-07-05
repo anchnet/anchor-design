@@ -29,11 +29,11 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 module.exports = {
   install,
+  AnchorSwitchLabel,
+  AnchorDropDown,
   AnchorIcon,
   AnchorMenuGroup,
   AnchorMenuTitle,
   AnchorMenuContent,
-  AnchorMenuVertical,
-  AnchorSwitchLabel,
-  AnchorDropDown
+  AnchorMenuVertical
 }
