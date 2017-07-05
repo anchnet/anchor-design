@@ -5,19 +5,22 @@ $font-size-larger: 16px;
 
 /* primary color */
 $color-primary: #E2003B;
-$color-primary-hover: #F57973;
+$color-primary-hover: #ff4941;
 $color-primary-click: #C30037;
 $color-primary-border: #F2CBD5;
 $color-primary-background: #FFF6F8;
+$color-primary-background-darker: #FCEAEF;
+$color-primary-background-darker-hover: rgba(252, 234, 239, 0.7);
+
+$color-base: #4b556a;
+$color-tips: #89909a;
+$color-line: #d4d4d4;
 
 /* forbidden */
 $color-forbidden-font: #bbbbbb;
 $color-forbidden-border: #d6d6d6;
 $color-forbidden-background: #ffffff;
-
-$color-base: #4b556a;
-$color-tips: #89909a;
-$color-line: #d4d4d4;
+$color-forbidden-background-darker: #eeeeee;
 
 /* menu */
 $color-menu-bg: #1b1d23;
@@ -25,3 +28,6 @@ $color-menu-bg-light: #1b1d23 + #111111;
 $color-menu-title: #4a4f5d - #1b1d23;
 $color-menu-text: #ffffff;
 $color-menu-text-dark: #ffffff - #313131;
+
+/* button */
+$color-button-background: #ffffff;

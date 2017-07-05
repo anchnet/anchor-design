@@ -1,6 +1,47 @@
 <template>
   <ol>
     <li>
+      <h3>anchor-button</h3>
+      <div class="demo-layout">
+        <anchor-button btnStyle="1" />
+        <anchor-button btnStyle="2" />
+        <anchor-button btnStyle="3" />
+        <anchor-button btnStyle="4" />
+        <anchor-button mode="tag" />
+        <anchor-button mode="tag" tagColor="2B90E8" />
+        <anchor-button mode="tag" tagColor="08B446" />
+        <anchor-button mode="tag" tagColor="AEA202" />
+        <anchor-button mode="tag" tagColor="6F57FF" />
+        <anchor-button mode="tag" tagColor="E15E85" />
+        <anchor-button mode="tag" tagColor="1AADE1" />
+        <anchor-button mode="tag" tagColor="F96E28" />
+      </div>
+      <div class="demo-layout">
+        <anchor-button btnStyle="1" :isDisabled="true" />
+        <anchor-button btnStyle="2" :isDisabled="true" />
+        <anchor-button btnStyle="3" :isDisabled="true" />
+        <anchor-button btnStyle="4" :isDisabled="true" />
+        <anchor-button mode="tag" :isClicked="false" />
+        <anchor-button mode="tag" tagColor="2B90E8" :isClicked="false" />
+        <anchor-button mode="tag" tagColor="08B446" :isClicked="false" />
+        <anchor-button mode="tag" tagColor="AEA202" :isClicked="false" />
+        <anchor-button mode="tag" tagColor="6F57FF" :isClicked="false" />
+        <anchor-button mode="tag" tagColor="E15E85" :isClicked="false" />
+        <anchor-button mode="tag" tagColor="1AADE1" :isClicked="false" />
+        <anchor-button mode="tag" tagColor="F96E28" :isDisabled="true" />
+      </div>
+      <div class="demo-layout">
+        <anchor-button mode="tag" :width="120" />
+        <anchor-button mode="tag" tagColor="2B90E8" :width="100" />
+        <anchor-button mode="tag" tagColor="08B446" :width="200" />
+        <anchor-button mode="tag" tagColor="AEA202" :width="300" />
+        <anchor-button mode="tag" tagColor="6F57FF" :width="90" />
+        <anchor-button mode="tag" tagColor="E15E85" :width="220" />
+        <anchor-button mode="tag" tagColor="1AADE1" :width="80" />
+        <anchor-button mode="tag" tagColor="F96E28" :width="170" />
+      </div>
+    </li>
+    <li>
       <h3>drop-down组件</h3>
       <div class="demo-layout">
         <anchor-drop-down
@@ -48,11 +89,12 @@
   import AnchorMenuVertical from 'Packages/menu-vertical/src/menu-vertical'
   import AnchorSwitchLabel from 'Packages/switch-label/src/switch-label'
   import AnchorDropDown from 'Packages/drop-down/src/drop-down'
+  import AnchorButton from 'Packages/button/src/button'
 
   export default {
     name: 'demo',
     components: {
-      AnchorMenuVertical, AnchorSwitchLabel, AnchorDropDown
+      AnchorMenuVertical, AnchorSwitchLabel, AnchorDropDown, AnchorButton
     },
 
     methods: {

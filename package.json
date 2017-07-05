@@ -6,6 +6,8 @@
     "start": "npm run watch",
     "watch": "webpack-dev-server --hot --inline --config build/webpack.dev.conf.js --progress --colors",
     "build": "npm run clean && webpack -p --config build/webpack.prod.conf.js --progress --colors",
+    "pub": "npm version patch && npm publish",
+    "prepub": "npm run clean && npm run build",
     "clean": "rm -rf lib && rm -rf static"
   },
   "main": "lib/index.js",

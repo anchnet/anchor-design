@@ -124,6 +124,7 @@
     methods: {
       hover (ishover) {
         this.onHover = ishover
+        this.$emit('onHover', ishover)
       },
 
       resetStatus () {

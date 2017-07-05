@@ -1,0 +1,141 @@
+@import "~scss/mixins";
+@import "~scss/variables";
+
+@include b('anchor-button'){
+  position: relative;
+  display: inline-block;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-size: 0;
+  vertical-align: middle;
+  transition: border-color .24s, background-color .24s;
+
+  // text of button
+  @include e('text'){
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    font-size: $font-size-smaller;
+    @include single-line();
+  }
+
+  //basic style of button
+  @include e('style-1'){
+    color: $color-base;
+    background-color: #ffffff;
+    &:hover{
+      color: $color-primary;
+      cursor: pointer;
+    }
+    @include m('active'){
+      color: $color-primary;
+      cursor: pointer;
+    }
+    @include m('disabled'){
+      color: $color-forbidden-font !important;
+      cursor: not-allowed !important;
+    }
+  }
+
+  @include e('style-2'){
+    border-color: $color-line;
+    color: $color-primary;
+    background-color: $color-button-background;
+    &:hover{
+      border-color: $color-primary;
+      background-color: $color-primary-background;
+      cursor: pointer;
+    }
+    @include m('active'){
+      border-color: $color-primary;
+      background-color: $color-primary-background;
+      cursor: pointer;
+    }
+    @include m('disabled'){
+      border-color: $color-forbidden-border !important;
+      color: $color-forbidden-font !important;
+      background-color: #ffffff !important;
+      cursor: not-allowed !important;
+    }
+  }
+
+  @include e('style-3'){
+    color: $color-primary;
+    background-color: $color-primary-background-darker;
+    border: none;
+    &:hover{
+      background-color: $color-primary-background-darker-hover;
+      cursor: pointer;
+    }
+    @include m('active'){
+      background-color: $color-primary-background-darker-hover;
+      cursor: pointer;
+    }
+    @include m('disabled'){
+      color: $color-forbidden-font !important;
+      background-color: $color-forbidden-background-darker !important;
+      cursor: not-allowed !important;
+    }
+  }
+
+  @include e('style-4'){
+    color: #ffffff;
+    background-color: $color-primary;
+    border: none;
+    &:hover{
+      background-color: $color-primary-hover;
+      cursor: pointer;
+    }
+    @include m('active'){
+      background-color: $color-primary-hover;
+      cursor: pointer;
+    }
+    @include m('disabled'){
+      color: $color-forbidden-font !important;
+      background-color: $color-forbidden-background-darker !important;
+      cursor: not-allowed !important;
+    }
+  }
+
+  @include e('tag'){
+    @include m('disabled'){
+      color: $color-forbidden-font !important;
+      background-color: $color-forbidden-background-darker !important;
+      cursor: not-allowed !important;
+    }
+    @include m('color-EA9509'){
+      background-color:#FEEFD7;
+      color: #EA9509;
+    }
+    @include m('color-2B90E8'){
+      background-color:#E1EFFB;
+      color: #2B90E8;
+    }
+    @include m('color-08B446'){
+      background-color:#CFFFE2;
+      color: #08B446;
+    }
+    @include m('color-AEA202'){
+      background-color:#F2FABA;
+      color: #AEA202;
+    }
+    @include m('color-6F57FF'){
+      background-color:#F4E8FF;
+      color: #6F57FF;
+    }
+    @include m('color-E15E85'){
+      background-color:#FCEBF0;
+      color: #E15E85;
+    }
+    @include m('color-1AADE1'){
+      background-color:#DAF9FE;
+      color: #1AADE1;
+    }
+    @include m('color-F96E28'){
+      background-color:#FCDCCC;
+      color: #F96E28;
+    }
+  }
+}
