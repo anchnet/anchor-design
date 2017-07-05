@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = merge(baseWebpackConfig, {
   devServer: {
     contentBase: utils.webpackResolve('examples'),
+    clientLogLevel: 'warning',
     compress: true,
     port: 9088,
     hot: true

@@ -8,6 +8,7 @@
       @mouseenter="hover(true)"
       @mouseleave="hover(false)"
     >
+      <slot name="drop-down-icon"></slot>
       <span class="drop-down__on-display" :style="{'line-height': height - 6 + 'px'}">{{onShowItem.value}}</span>
       <anchor-icon
         type="triangle"
@@ -20,15 +21,13 @@
     </div>
     <transition name="anchor-animation__drop-down">
       <ul ref="droplist" v-show="isShow" class="drop-down__list">
-        <slot name="drop-down-list">
-          <li
-            v-for="(item, key) in data"
-            :class="['drop-down__item', {'drop-down__item--active': item.active}]"
-            @click="onItemClick(item, key)"
-          >
-            <span v-if="hasDot" class="drop-down__item--dot"></span>{{item.value}}
-          </li>
-        </slot>
+        <li
+          v-for="(item, key) in data"
+          :class="['drop-down__item', {'drop-down__item--active': item.active}]"
+          @click="onItemClick(item, key)"
+        >
+          <span v-if="hasDot" class="drop-down__item--dot"></span>{{item.value}}
+        </li>
       </ul>
     </transition>
   </div>
@@ -115,7 +114,6 @@
 
     mounted () {
       this.getDefaultItem()
-      console.log('mounted')
       vQuery('body').on('click', this.bodyClickEvent)
     },
 
