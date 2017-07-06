@@ -6,5 +6,7 @@
   "anchor-menu-vertical": "./packages/menu-vertical/index.js",
   "anchor-switch-label": "./packages/switch-label/index.js",
   "anchor-drop-down": "./packages/drop-down/index.js",
-  "anchor-button": "./packages/button/index.js"
+  "anchor-button": "./packages/button/index.js",
+  "anchor-input": "./packages/input/index.js",
+  "anchor-search": "./packages/search/index.js"
 }

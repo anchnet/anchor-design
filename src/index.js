@@ -6,6 +6,8 @@ import AnchorMenuVertical from '../packages/menu-vertical/index.js'
 import AnchorSwitchLabel from '../packages/switch-label/index.js'
 import AnchorDropDown from '../packages/drop-down/index.js'
 import AnchorButton from '../packages/button/index.js'
+import AnchorInput from '../packages/input/index.js'
+import AnchorSearch from '../packages/search/index.js'
 
 const components = [
   AnchorIcon,
@@ -15,7 +17,9 @@ const components = [
   AnchorMenuVertical,
   AnchorSwitchLabel,
   AnchorDropDown,
-  AnchorButton
+  AnchorButton,
+  AnchorInput,
+  AnchorSearch
 ]
 
 const install = function (Vue, options) {
@@ -30,7 +34,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
-  version: '0.6.2',
+  version: '0.7.2',
   install,
   AnchorIcon,
   AnchorMenuGroup,
@@ -39,5 +43,7 @@ module.exports = {
   AnchorMenuVertical,
   AnchorSwitchLabel,
   AnchorDropDown,
-  AnchorButton
+  AnchorButton,
+  AnchorInput,
+  AnchorSearch
 }

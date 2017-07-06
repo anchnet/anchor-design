@@ -15,6 +15,7 @@
   >
     <slot name="button-left"></slot>
     <span
+      v-if="!removeText"
       :title="text"
       :class="['anchor-button__text']"
       :style="textStyle"
@@ -41,6 +42,11 @@
       tagColor: {
         type: String,
         default: 'EA9509'
+      },
+
+      removeText: {
+        type: Boolean,
+        default: false
       },
 
       isHover: {

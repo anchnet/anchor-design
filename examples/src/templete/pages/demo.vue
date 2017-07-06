@@ -1,6 +1,44 @@
 <template>
   <ol>
     <li>
+      <h3>anchor-search</h3>
+      <div class="demo-layout">
+        <anchor-search @search="onSearch" />
+        <p>{{searchWord}}</p>
+      </div>
+    </li>
+    <li>
+      <h3>anchor-input(radio)</h3>
+      <div class="demo-layout">
+        <anchor-input mode="radio" />
+      </div>
+    </li>
+    <li>
+      <h3>anchor-input(checkbox)</h3>
+      <div class="demo-layout">
+        <anchor-input mode="checkbox" />
+      </div>
+    </li>
+    <li>
+      <h3>anchor-input</h3>
+      <ol>
+        <li>
+          <h3>双向绑定输入框</h3>
+          <div class="demo-layout">
+            <anchor-input v-model="inputValue" defaultText="双向绑定, testing~" />
+            <p>{{inputValue}}</p>
+          </div>
+        </li>
+        <li>
+          <h3>数字框</h3>
+          <div class="demo-layout">
+            <anchor-input :alwaysFeedback="false" valueType="number" :digit="4" :initValue="88" @onChange="changeValue2" />
+            <p>{{inputValue2}}</p>
+          </div>
+        </li>
+      </ol>
+    </li>
+    <li>
       <h3>anchor-button</h3>
       <div class="demo-layout">
         <anchor-button btnStyle="1" />
@@ -94,14 +132,25 @@
   import AnchorSwitchLabel from 'Packages/switch-label/src/switch-label'
   import AnchorDropDown from 'Packages/drop-down/src/drop-down'
   import AnchorButton from 'Packages/button/src/button'
+  import AnchorInput from 'Packages/input/src/input'
+  import AnchorSearch from 'Packages/search/src/search'
 
   export default {
     name: 'demo',
     components: {
-      AnchorMenuVertical, AnchorSwitchLabel, AnchorDropDown, AnchorButton
+      AnchorMenuVertical, AnchorSwitchLabel, AnchorDropDown, AnchorButton, AnchorInput, AnchorSearch
     },
 
     methods: {
+      changeValue2 (val, oldVal) {
+        console.log(val)
+        this.inputValue2 = val
+      },
+
+      onSearch (keyword) {
+        this.searchWord = keyword
+      },
+
       onLabelChange (type, item, key) {
         if (type === 'regions') {
           this.hostType[1]['forbidden'] = item.id !== 'ac3'
@@ -121,6 +170,15 @@
 
     data () {
       return {
+
+        searchWord: '',
+
+        inputValue: '',
+        inputValue2: '',
+        inputValue3: '',
+        inputValue4: '',
+        inputValue5: '',
+
         currentName: "",
         regions: [
           {id: "ac1", value: "华东一区（无锡）", active: false},

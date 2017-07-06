@@ -1,0 +1,139 @@
+@import "~scss/mixins";
+@import "~scss/variables";
+
+@include b('anchor-input'){
+  display: inline-block;
+  border: 1px solid $color-line;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: $color-base;
+  font-size: 0;
+  vertical-align: middle;
+
+  @include m('active'){
+    border-color: $color-primary;
+    box-shadow: 0px 0px 4px 0px $color-primary-border;
+  }
+
+  @include e('search-icon-wrap'){
+    display: inline-block;
+    width: 22px;
+    height: 28px;
+    line-height: 28px;
+    background-color: $color-base-background;
+    text-align: right;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+
+  @include e('search-icon'){
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-image: url("../../img/search.svg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    @include m('active'){
+      background-position: 0 -16px;
+    }
+  }
+
+  @include e('base'){
+    display: inline-block;
+    width: 150px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-size: $font-size-smaller;
+    background-color: #ffffff;
+    border-radius: 2px;
+    vertical-align: bottom;
+    @include m('search'){
+      background-color: $color-base-background;
+    }
+    @include m('disabled'){
+      color: $color-forbidden-font;
+      background-color: $color-forbidden-background-darker;
+    }
+  }
+
+  @include e('checkbox'){
+    position: relative;
+    width: 12px;
+    height: 12px;
+    line-height: 12px;
+    padding: 0;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+    transition: background-color .2s;
+    &:before{
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 8px;
+      height: 6px;
+      margin: auto;
+      background: url(../../img/tick.svg) 0 0;
+      cursor: pointer;
+    }
+    @include m('active'){
+      background-color: $color-primary;
+    }
+
+    @include m('disabled'){
+      background-color: $color-input-checked-disabled;
+      cursor: not-allowed;
+    }
+  }
+
+  @include e('radio-wrap'){
+    border-radius: 50%;
+    @include m('active'){
+      border-color: $color-primary;
+      box-shadow: 0px 0px 4px 0px $color-primary-border;
+    }
+  }
+  @include e('radio'){
+    position: relative;
+    width: 10px;
+    height: 10px;
+    line-height: 10px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+    transition: background-color .2s;
+    &:before{
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 4px;
+      height: 4px;
+      margin: auto;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+    @include m('active'){
+      background-color: $color-primary;
+    }
+
+    @include m('disabled'){
+      background-color: $color-input-checked-disabled;
+      cursor: not-allowed;
+    }
+  }
+}

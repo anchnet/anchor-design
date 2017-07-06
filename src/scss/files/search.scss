@@ -1,0 +1,10 @@
+@import "~scss/mixins";
+@import "~scss/variables";
+
+@include b('anchor-search'){
+  display: inline-block;
+  font-size: 0;
+  @include e('button'){
+    margin-left: 10px;
+  }
+}

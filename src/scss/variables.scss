@@ -25,10 +25,13 @@ $color-forbidden-background-darker: #eeeeee;
 
 /* menu */
 $color-menu-bg: #1b1d23;
-$color-menu-bg-light: #1b1d23 + #111111;
-$color-menu-title: #4a4f5d - #1b1d23;
+$color-menu-bg-light: #2c2e34Z;
+$color-menu-title: #2f323a;
 $color-menu-text: #ffffff;
-$color-menu-text-dark: #ffffff - #313131;
+$color-menu-text-dark: #cecece;
 
 /* button */
 $color-button-background: #ffffff;
+
+/* input */
+$color-input-checked-disabled: #dedede;
