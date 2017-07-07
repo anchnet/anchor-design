@@ -1,40 +1,72 @@
 <template>
   <ol>
     <li>
-      <h3>anchor-search</h3>
+      <h3>anchor-search(combined by anchor-input and anchor-button)</h3>
       <div class="demo-layout">
         <anchor-search @search="onSearch" />
-        <p>{{searchWord}}</p>
-      </div>
-    </li>
-    <li>
-      <h3>anchor-input(radio)</h3>
-      <div class="demo-layout">
-        <anchor-input mode="radio" />
-      </div>
-    </li>
-    <li>
-      <h3>anchor-input(checkbox)</h3>
-      <div class="demo-layout">
-        <anchor-input mode="checkbox" />
+        <p class="text">{{searchWord}}</p>
       </div>
     </li>
     <li>
       <h3>anchor-input</h3>
-      <ol>
+      <ol class="sub-inline">
         <li>
           <h3>双向绑定输入框</h3>
           <div class="demo-layout">
             <anchor-input v-model="inputValue" defaultText="双向绑定, testing~" />
-            <p>{{inputValue}}</p>
           </div>
+          <p class="text">{{inputValue}}</p>
         </li>
         <li>
           <h3>数字框</h3>
           <div class="demo-layout">
-            <anchor-input :alwaysFeedback="false" valueType="number" :digit="4" :initValue="88" @onChange="changeValue2" />
-            <p>{{inputValue2}}</p>
+            <anchor-input :alwaysFeedback="false" valueType="number" :digit="4" :initValue="88" :width="100" @onChange="changeValue2.call(null, 'inputValue2')" />
           </div>
+          <p class="text">{{inputValue2}}</p>
+        </li>
+        <li>
+          <h3>禁止输入</h3>
+          <div class="demo-layout">
+            <anchor-input disabled defaultText="禁止输入" />
+          </div>
+        </li>
+        <li>
+          <h3>自定义宽高</h3>
+          <div class="demo-layout">
+            <anchor-input defaultText="请输入内容" :height="60" :width="200"/>
+          </div>
+        </li>
+        <li>
+          <h3>保持高亮</h3>
+          <div class="demo-layout">
+            <anchor-input :alwaysActive="true" defaultText="请输入内容"/>
+          </div>
+        </li>
+        <li>
+          <h3>初始高亮</h3>
+          <div class="demo-layout">
+            <anchor-input :isActive="true" defaultText="请输入内容"/>
+          </div>
+        </li>
+        <li>
+          <h3>单选按钮</h3>
+          <div class="demo-layout">
+            <anchor-input mode="radio" v-model="inputValue3" />
+            <anchor-input mode="radio" isActive />
+            <anchor-input mode="radio" disabled />
+            <anchor-input mode="radio" isActive disabled />
+          </div>
+          <p class="text">{{inputValue3}}</p>
+        </li>
+        <li>
+          <h3>多选按钮</h3>
+          <div class="demo-layout">
+            <anchor-input mode="checkbox" v-model="inputValue4" />
+            <anchor-input mode="checkbox" isActive />
+            <anchor-input mode="checkbox" disabled />
+            <anchor-input mode="checkbox" isActive disabled />
+          </div>
+          <p class="text">{{inputValue4}}</p>
         </li>
       </ol>
     </li>
@@ -143,7 +175,7 @@
 
     methods: {
       changeValue2 (val, oldVal) {
-        console.log(val)
+        console.log(arguments)
         this.inputValue2 = val
       },
 
@@ -173,8 +205,8 @@
 
         searchWord: '',
 
-        inputValue: '',
-        inputValue2: '',
+        inputValue: 'placeholder',
+        inputValue2: '88.0000',
         inputValue3: '',
         inputValue4: '',
         inputValue5: '',
@@ -245,12 +277,24 @@
 
 <style lang="scss">
   ol{
+    &.sub-inline{
+      padding: 10px;
+      > li{
+        display: inline-block;
+        margin: 0 10px;
+        vertical-align: top;
+      }
+    }
     padding: 20px 40px;
     list-style: decimal;
     line-height: 2;
     > li h3{
       font-size: 16px;
       color: red;
+    }
+    .text{
+      line-height: 1;
+      font-size: 14px;
     }
     .demo-layout{
       margin: 10px 0;

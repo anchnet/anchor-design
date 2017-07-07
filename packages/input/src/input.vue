@@ -36,7 +36,8 @@
       v-if="mode === 'checkbox'"
       :class="['anchor-input__base', 'anchor-input__checkbox', {
         'anchor-input__checkbox--active': computedActive,
-        'anchor-input__checkbox--disabled': disabled && active
+        'anchor-input__checkbox--disabled': disabled && !active,
+        'anchor-input__checkbox--disabled-active': disabled && active
       }]"
       @mouseenter="disabled ? '' : onHover(true)"
       @mouseleave="disabled ? '' : onHover(false)"
@@ -46,7 +47,8 @@
       v-if="mode === 'radio'"
       :class="['anchor-input__base', 'anchor-input__radio', {
         'anchor-input__radio--active': computedActive,
-        'anchor-input__radio--disabled': disabled && active
+        'anchor-input__radio--disabled': disabled && !active,
+        'anchor-input__radio--disabled-active': disabled && active
       }]"
       @mouseenter="disabled ? '' : onHover(true)"
       @mouseleave="disabled ? '' : onHover(false)"

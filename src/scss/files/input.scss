@@ -90,6 +90,9 @@
     }
 
     @include m('disabled'){
+      cursor: not-allowed;
+    }
+    @include m('disabled-active'){
       background-color: $color-input-checked-disabled;
       cursor: not-allowed;
     }
@@ -132,6 +135,9 @@
     }
 
     @include m('disabled'){
+      cursor: not-allowed;
+    }
+    @include m('disabled-active'){
       background-color: $color-input-checked-disabled;
       cursor: not-allowed;
     }
