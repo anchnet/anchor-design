@@ -1,6 +1,50 @@
 <template>
   <ol>
     <li>
+      <ol class="sub-inline">
+        <li>
+          <h3>drop-down(simple)</h3>
+          <div class="demo-layout">
+            <anchor-drop-down
+              mode="simple"
+              :width="80"
+              :data="dropdownData.nav.data"
+              :hasDot="dropdownData.nav.hasDot"
+              :defaultText="dropdownData.nav.defaultText"
+            />
+          </div>
+        </li>
+        <li>
+          <h3>drop-down</h3>
+          <div class="demo-layout">
+            <anchor-drop-down
+              :data="dropdownData.imageType.data"
+              :type="dropdownData.imageType.type"
+              :hasDot="dropdownData.imageType.hasDot"
+              :defaultText="dropdownData.imageType.defaultText"
+              :onChangeBack="onDropDownChange.bind(null, 'imageType')"
+            />
+            <anchor-drop-down
+              class="ml10"
+              :data="dropdownData.imageVersion.data[currentImageType]"
+              :hasDot="dropdownData.imageVersion.hasDot"
+              :defaultKey="dropdownData.imageType.defaultKey"
+              :defaultText="dropdownData.imageVersion.defaultText"
+              :onChangeBack="onDropDownChange.bind(null, 'imageVersion')"
+            />
+          </div>
+          <p class="color-primary">parentCurrentkey: {{dropdownData.imageType.defaultKey}}</p>
+          <p class="color-primary">childDefaultValue: {{currentImageVersion}}</p>
+        </li>
+      </ol>
+    </li>
+    <li>
+      <h3>anchor-nav</h3>
+      <div class="demo-layout">
+        <anchor-nav />
+      </div>
+    </li>
+    <li>
       <h3>anchor-search(combined by anchor-input and anchor-button)</h3>
       <div class="demo-layout">
         <anchor-search @search="onSearch" />
@@ -116,28 +160,6 @@
       </div>
     </li>
     <li>
-      <h3>drop-down组件</h3>
-      <div class="demo-layout">
-        <anchor-drop-down
-          :data="dropdownData.imageType.data"
-          :type="dropdownData.imageType.type"
-          :hasDot="dropdownData.imageType.hasDot"
-          :defaultText="dropdownData.imageType.defaultText"
-          :onChangeBack="onDropDownChange.bind(null, 'imageType')"
-        />
-        <anchor-drop-down
-          class="ml10"
-          :data="dropdownData.imageVersion.data[currentImageType]"
-          :hasDot="dropdownData.imageVersion.hasDot"
-          :defaultKey="dropdownData.imageType.defaultKey"
-          :defaultText="dropdownData.imageVersion.defaultText"
-          :onChangeBack="onDropDownChange.bind(null, 'imageVersion')"
-        />
-      </div>
-      <p class="color-primary">parentCurrentkey: {{dropdownData.imageType.defaultKey}}</p>
-      <p class="color-primary">childDefaultValue: {{currentImageVersion}}</p>
-    </li>
-    <li>
       <h3>anchor-menu-vertical</h3>
       <div class="demo-layout">
         <anchor-menu-vertical></anchor-menu-vertical>
@@ -166,11 +188,12 @@
   import AnchorButton from 'Packages/button/src/button'
   import AnchorInput from 'Packages/input/src/input'
   import AnchorSearch from 'Packages/search/src/search'
+  import AnchorNav from 'Packages/nav/src/nav'
 
   export default {
     name: 'demo',
     components: {
-      AnchorMenuVertical, AnchorSwitchLabel, AnchorDropDown, AnchorButton, AnchorInput, AnchorSearch
+      AnchorMenuVertical, AnchorSwitchLabel, AnchorDropDown, AnchorButton, AnchorInput, AnchorSearch, AnchorNav
     },
 
     methods: {
@@ -227,6 +250,16 @@
         ],
 
         dropdownData: {
+          nav: {
+            type: "nav",
+            hasDot: true,
+            defaultText: '帮助与服务',
+            data: [
+              {id: "new", value: "新手导向", link: 'https://www.anchnet.com', target: '_blank'},
+              {id: "service", value: "服务支持", link: 'https://www.anchnet.com', target: '_blank'},
+              {id: "document", value: "文档地址", link: 'https://www.anchnet.com'}
+            ]
+          },
           imageType: {
             type: "image",
             hasDot: true,

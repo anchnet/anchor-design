@@ -1,12 +1,17 @@
 <template>
-  <div ref="dropdown" :class="['drop-down']">
+  <div
+    ref="dropdown"
+    :class="['drop-down']"
+    @mouseenter="mode === 'simple' ? hover(true) : ''"
+    @mouseleave="mode === 'simple' ? hover(false) : ''"
+  >
     <div
       ref="container"
-      :class="['drop-down__container', {'drop-down__container--disabled': !(data && data.length)}]"
+      :class="containerClass"
       :style="{'width': width + 'px'}"
-      @click="data && data.length ? onDropClick() : ''"
-      @mouseenter="hover(true)"
-      @mouseleave="hover(false)"
+      @click="mode === 'normal' && data && data.length ? onDropClick() : ''"
+      @mouseenter="mode === 'normal' ? hover(true) : ''"
+      @mouseleave="mode === 'normal' ? hover(false) : ''"
     >
       <slot name="drop-down-icon"></slot>
       <span class="drop-down__on-display" :style="{'line-height': height - 6 + 'px'}">{{onShowItem.value}}</span>
@@ -24,9 +29,17 @@
         <li
           v-for="(item, key) in data"
           :class="['drop-down__item', {'drop-down__item--active': item.active}]"
-          @click="onItemClick(item, key)"
+          @click="item.hasOwnProperty('link') ? '' : onItemClick(item, key)"
         >
-          <span v-if="hasDot" class="drop-down__item--dot"></span>{{item.value}}
+          <span v-if="hasDot" class="drop-down__item--dot"></span>
+          <a
+            v-if="item.hasOwnProperty('link')"
+            :class="['drop-down__item-element']"
+            :target="item.target || '_self'"
+            :href="item.link"
+            @click="onItemClick('link', key)"
+          >{{item.value}}</a>
+          <div v-else :class="['drop-down__item-element']">{{item.value}}</div>
         </li>
       </ul>
     </transition>
@@ -60,12 +73,15 @@
     },
 
     props: {
+      mode: {
+        type: String,
+        default: 'normal'
+      },
       width: Number,
       height: Number,
       defaultKey: Number,
       defaultId: [String, Number],
       data: Array,
-      type: String,
       hasDot: {
         type: Boolean,
         default: true
@@ -84,6 +100,24 @@
           key: Number(this.defaultKey) >= -1 ? Number(this.defaultKey) : null,
           value: this.defaultText || '请点击选择'
         }
+      }
+    },
+
+    computed: {
+      containerClass () {
+        if (this.mode === 'simple') {
+          return [
+            'drop-down__container-simple',
+            {
+              'drop-down__container-simple--active': this.onHover,
+              'drop-down__container-simple--disabled': !(this.data && this.data.length)
+            }
+          ]
+        }
+        return [
+          'drop-down__container',
+          {'drop-down__container--disabled': !(this.data && this.data.length)}
+        ]
       }
     },
 
@@ -122,9 +156,12 @@
     },
 
     methods: {
-      hover (ishover) {
-        this.onHover = ishover
-        this.$emit('onHover', ishover)
+      hover (onHover) {
+        if (this.mode === 'simple') {
+          this.isShow = onHover
+        }
+        this.onHover = onHover
+        this.$emit('onHover', onHover)
       },
 
       resetStatus () {
@@ -214,10 +251,12 @@
         this.resetStatus()
         this.data[key]['active'] = true
         this.isShow = false
-        this.onShowItem = {
-          id: item.id,
-          key: key,
-          value: item.value
+        if (item !== 'link') {
+          this.onShowItem = {
+            id: item.id,
+            key: key,
+            value: item.value
+          }
         }
         utils.isFunction(this.onChangeBack) && this.onChangeBack(item, key)
       }
