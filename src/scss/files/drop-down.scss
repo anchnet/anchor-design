@@ -5,6 +5,7 @@
 @include b('drop-down'){
   position: relative;
   display: inline-block;
+  text-align: left;
   vertical-align: middle;
 
   @include e('on-display'){
@@ -15,7 +16,7 @@
     @include single-line();
 
     @include m('style-1'){
-      color: $color-tips;
+      color: $color-base;
     }
     @include m('style-2'){
       color: $color-primary;
@@ -99,7 +100,7 @@
     line-height: 28px;
     padding: 0 15px;
     box-sizing: border-box;
-    color: $color-tips;
+    color: $color-base;
     text-align: left;
     cursor: pointer;
 

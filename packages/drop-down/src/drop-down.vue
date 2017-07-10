@@ -96,7 +96,7 @@
         default: false
       },
       onShowIcon: {
-        type: String,
+        type: [String, Boolean],
         default: ''
       },
       onChangeBack: Function,

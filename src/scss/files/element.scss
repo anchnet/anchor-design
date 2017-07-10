@@ -1,0 +1,12 @@
+@import "~scss/mixins";
+@import "~scss/variables";
+
+@include b('anchor-element'){
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+
+  .anchor-button__text, .drop-down__on-display{
+    font-size: $font-size-base;
+  }
+}

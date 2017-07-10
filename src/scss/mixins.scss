@@ -61,6 +61,26 @@ $modifierSeparator: '--';
 }
 /* BEM in SASS --end */
 
+/* level */
+
+@mixin level($z: 'normal') {
+  @if $z == 'highest' {
+    z-index: 9999;
+  } @else if $z == 'higher' {
+    z-index: 99;
+  } @else if $z == 'high' {
+    z-index: 9;
+  } @else if $z == 'low' {
+    z-index: -9;
+  } @else if $z == 'lower' {
+    z-index: -99;
+  } @else if $z == 'lowest' {
+    z-index: -9999;
+  } @else {
+    z-index: 0;
+  }
+}
+
 /* triangle icon */
 @mixin triangle($direction, $color: $color-line) {
   display: inline-block;

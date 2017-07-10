@@ -1,2 +1,44 @@
 @import "~scss/mixins";
 @import "~scss/variables";
+
+@include b('anchor-nav'){
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 54px;
+  font-size: $font-size-base;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(220, 223, 228, 0.5);
+  @include level('higher');
+
+  @include e('left'){
+    position: relative;
+    float: left;
+    width: 240px;
+    height: 100%;
+    background-color: $color-primary;
+    @include level('high');
+  }
+
+  @include e('left-link'){
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @include e('main'){
+    display: block;
+  }
+
+  @include e('main-left'){
+    float: left;
+    text-align: left;
+  }
+
+  @include e('main-right'){
+    float: right;
+    text-align: left;
+  }
+}

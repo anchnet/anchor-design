@@ -15,18 +15,25 @@
   >
     <slot name="button-left">
       <anchor-icon
-        v-if="hasIcon"
+        v-if="iconName"
         :name="iconName"
         :active="active"
         :style="{'margin-right': '8px'}"
       />
     </slot>
     <span
-      v-if="!removeText"
+      v-if="!removeText && !link"
       :title="text"
       :class="['anchor-button__text']"
       :style="textStyle"
     ><slot name="button-text">{{text}}</slot></span>
+    <a
+      v-if="!removeText && link"
+      :title="text"
+      :target="targetText"
+      :href="link"
+      :class="['anchor-button__text']"
+      :style="textStyle"><slot name="button-text">{{text}}</slot></a>
     <slot name="button-right"></slot>
   </span>
 </template>
@@ -62,14 +69,9 @@
         default: false
       },
 
-      hasIcon: {
-        type: Boolean,
-        default: false
-      },
-
       iconName: {
-        type: String,
-        default: 'dot'
+        type: [String, Boolean],
+        default: ''
       },
 
       isHover: {
@@ -95,6 +97,16 @@
       text: {
         type: [String, Number],
         default: '按钮文字'
+      },
+
+      link: {
+        type: String,
+        default: ''
+      },
+
+      targetText: {
+        type: String,
+        default: '_self'
       },
 
       textWidth: Number,

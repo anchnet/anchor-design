@@ -17,8 +17,10 @@
     display: inline-block;
     height: 28px;
     line-height: 28px;
+    text-align: left;
     font-size: $font-size-smaller;
     vertical-align: middle;
+    outline: none;
     @include single-line();
   }
 
@@ -27,22 +29,30 @@
     color: $color-base;
     background-color: #ffffff;
     &:hover{
-      color: $color-primary;
+      .anchor-button__text{
+        color: $color-primary;
+      }
       cursor: pointer;
     }
     @include m('active'){
-      color: $color-primary;
+      .anchor-button__text{
+        color: $color-primary;
+      }
       cursor: pointer;
     }
     @include m('disabled'){
-      color: $color-forbidden-font !important;
+      .anchor-button__text{
+        color: $color-forbidden-font !important;
+      }
       cursor: not-allowed !important;
     }
   }
 
   @include e('style-2'){
     border-color: $color-line;
-    color: $color-primary;
+    .anchor-button__text{
+      color: $color-primary;
+    }
     background-color: $color-button-background;
     &:hover{
       border-color: $color-primary;
@@ -55,15 +65,19 @@
       cursor: pointer;
     }
     @include m('disabled'){
+      .anchor-button__text{
+        color: $color-forbidden-font !important;
+      }
       border-color: $color-forbidden-border !important;
-      color: $color-forbidden-font !important;
       background-color: #ffffff !important;
       cursor: not-allowed !important;
     }
   }
 
   @include e('style-3'){
-    color: $color-primary;
+    .anchor-button__text{
+      color: $color-primary;
+    }
     background-color: $color-primary-background-darker;
     border-color: transparent;
     &:hover{
@@ -75,14 +89,18 @@
       cursor: pointer;
     }
     @include m('disabled'){
-      color: $color-forbidden-font !important;
+      .anchor-button__text{
+        color: $color-forbidden-font !important;
+      }
       background-color: $color-forbidden-background-darker !important;
       cursor: not-allowed !important;
     }
   }
 
   @include e('style-4'){
-    color: $color-primary;
+    .anchor-button__text{
+      color: $color-primary;
+    }
     background-color: $color-primary-background-darker;
     &:hover{
       background-color: $color-primary-background-darker-hover;
@@ -95,7 +113,9 @@
       cursor: pointer;
     }
     @include m('disabled'){
-      color: $color-forbidden-font !important;
+      .anchor-button__text{
+        color: $color-forbidden-font !important;
+      }
       background-color: $color-forbidden-background-darker !important;
       border-color: transparent !important;
       cursor: not-allowed !important;
@@ -103,7 +123,9 @@
   }
 
   @include e('style-5'){
-    color: #ffffff;
+    .anchor-button__text{
+      color: #ffffff;
+    }
     background-color: $color-primary;
     border: none;
     &:hover{
@@ -115,13 +137,18 @@
       cursor: pointer;
     }
     @include m('disabled'){
-      color: $color-forbidden-font !important;
+      .anchor-button__text{
+        color: $color-forbidden-font !important;
+      }
       background-color: $color-forbidden-background-darker !important;
       cursor: not-allowed !important;
     }
   }
 
   @include e('style-6'){
+    .anchor-button__text{
+      color: $color-base;
+    }
     color: $color-base;
     background-color: $color-base-background;
     &:hover{
@@ -133,7 +160,9 @@
       cursor: pointer;
     }
     @include m('disabled'){
-      color: $color-forbidden-font !important;
+      .anchor-button__text{
+        color: $color-forbidden-font !important;
+      }
       background-color: $color-forbidden-background-darker !important;
       border-color: transparent !important;
       cursor: not-allowed !important;
@@ -142,41 +171,59 @@
 
   @include e('tag'){
     @include m('disabled'){
-      color: $color-forbidden-font !important;
+      .anchor-button__text{
+        color: $color-forbidden-font !important;
+      }
       background-color: $color-forbidden-background-darker !important;
       cursor: not-allowed !important;
     }
     @include m('color-EA9509'){
       background-color:#FEEFD7;
-      color: #EA9509;
+      .anchor-button__text{
+        color: #EA9509;
+      }
     }
     @include m('color-2B90E8'){
       background-color:#E1EFFB;
-      color: #2B90E8;
+      .anchor-button__text{
+        color: #2B90E8;
+      }
     }
     @include m('color-08B446'){
       background-color:#CFFFE2;
-      color: #08B446;
+      .anchor-button__text{
+        color: #08B446;
+      }
     }
     @include m('color-AEA202'){
       background-color:#F2FABA;
-      color: #AEA202;
+      .anchor-button__text{
+        color: #AEA202;
+      }
     }
     @include m('color-6F57FF'){
       background-color:#F4E8FF;
-      color: #6F57FF;
+      .anchor-button__text{
+        color: #6F57FF;
+      }
     }
     @include m('color-E15E85'){
       background-color:#FCEBF0;
-      color: #E15E85;
+      .anchor-button__text{
+        color: #E15E85;
+      }
     }
     @include m('color-1AADE1'){
       background-color:#DAF9FE;
-      color: #1AADE1;
+      .anchor-button__text{
+        color: #1AADE1;
+      }
     }
     @include m('color-F96E28'){
       background-color:#FCDCCC;
-      color: #F96E28;
+      .anchor-button__text{
+        color: #F96E28;
+      }
     }
   }
 }
