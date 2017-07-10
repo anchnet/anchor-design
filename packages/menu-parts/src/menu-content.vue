@@ -4,7 +4,7 @@
     :class="['menu-content', {'menu-content--active': active}]"
     @mouseenter="mouseHover(true)"
     @mouseleave="mouseHover(false)"
-    @click="onClick()"
+    @click="clickable ? onClick() : ''"
     :style="contentStyle"
   >
     <span v-show="active" :class="['menu-content__bar']"></span>
@@ -12,7 +12,6 @@
 </template>
 
 <script>
-  import AnchorIcon from 'Packages/icons/src/anchor-icon'
   import mixin from 'Src/libs/mixin'
 
   export default {
@@ -20,11 +19,12 @@
 
     mixins: [mixin],
 
-    components: {
-      AnchorIcon
-    },
-
     props: {
+      clickable: {
+        type: Boolean,
+        default: true
+      },
+
       width: {
         type: Number,
         default: 240

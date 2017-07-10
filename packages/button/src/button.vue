@@ -13,7 +13,14 @@
     @mouseleave="hoverStatus ? onHover(false) : ''"
     @click="isClicked && !isDisabled ? handleClick() : ''"
   >
-    <slot name="button-left"></slot>
+    <slot name="button-left">
+      <anchor-icon
+        v-if="hasIcon"
+        :name="iconName"
+        :active="active"
+        :style="{'margin-right': '8px'}"
+      />
+    </slot>
     <span
       v-if="!removeText"
       :title="text"
@@ -25,8 +32,14 @@
 </template>
 
 <script>
+  import AnchorIcon from 'Packages/icons/src/icons'
+
   export default {
     name: 'anchor-button',
+
+    components: {
+      AnchorIcon
+    },
 
     props: {
       mode: {
@@ -47,6 +60,16 @@
       removeText: {
         type: Boolean,
         default: false
+      },
+
+      hasIcon: {
+        type: Boolean,
+        default: false
+      },
+
+      iconName: {
+        type: String,
+        default: 'dot'
       },
 
       isHover: {

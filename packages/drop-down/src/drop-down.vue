@@ -13,15 +13,20 @@
       @mouseenter="mode === 'normal' ? hover(true) : ''"
       @mouseleave="mode === 'normal' ? hover(false) : ''"
     >
-      <slot name="drop-down-icon"></slot>
-      <span class="drop-down__on-display" :style="{'line-height': height - 6 + 'px'}">{{onShowItem.value}}</span>
+      <span
+        :class="['drop-down__on-display', `drop-down__on-display--style-${onDisplayStyle}`]"
+        :style="{'line-height': height - 6 + 'px'}"
+      >
+        <slot name="drop-down-icon">
+          <anchor-icon v-if="onShowIcon" :name="onShowIcon" :active="onHover || isShow" :style="{'margin-right': '8px'}" />
+        </slot><!--
+     -->{{onShowItem.value}}<!--
+   --></span>
       <anchor-icon
-        type="triangle"
-        name="down"
+        name="triangle__down"
         :active="onHover || isShow"
-        :class="['drop-down__triangle', 'anchor-animation__rotate3d', {
-          'anchor-animation__rotate3d--top-down': isShow
-        }]"
+        :isRotating="isShow"
+        :class="['drop-down__triangle']"
       />
     </div>
     <transition name="anchor-animation__drop-down">
@@ -50,7 +55,7 @@
   import vQuery from 'Src/libs/vQuery'
   import utils from 'Src/libs/utils'
   import mixin from 'Src/libs/mixin'
-  import AnchorIcon from 'Packages/icons/src/anchor-icon'
+  import AnchorIcon from 'Packages/icons/src/icons'
 
   /**
    * param
@@ -82,9 +87,17 @@
       defaultKey: Number,
       defaultId: [String, Number],
       data: Array,
+      onDisplayStyle: {
+        type: [String, Number],
+        default: 1
+      },
       hasDot: {
         type: Boolean,
-        default: true
+        default: false
+      },
+      onShowIcon: {
+        type: String,
+        default: ''
       },
       onChangeBack: Function,
       defaultText: String

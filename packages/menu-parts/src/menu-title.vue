@@ -3,40 +3,37 @@
     :class="['menu-title', {'menu-title__sub': isSub}]"
     @mouseenter="alwaysActive ? '' : mouseHover(true)"
     @mouseleave="alwaysActive ? '' : mouseHover(false)"
-    @click="onClick()"
+    @click="clickable ? onClick() : ''"
     :style="titleStyle"
     :title="title"
   >
     <slot name="icon">
       <anchor-icon
-        v-if="hasIcon || hasDot"
-        :type="hasDot ? 'dot' : icon.type"
-        :name="hasDot ? '' : icon.name"
+        v-if="hasIcon"
+        :name="iconName"
         :active="elementStatus"
         :style="[iconStyle, leftIconStyle]"
       />
-    </slot><!--
-    --><slot name="title">{{title}}</slot><!--
-    --><anchor-icon
+    </slot>
+    <slot name="title">{{title}}</slot>
+    <anchor-icon
       v-if="hasChildren"
-      type="triangle"
       :name="triangleName"
       :active="elementStatus"
-      :class="['anchor-animation__rotate3d', {'anchor-animation__rotate3d--top-down': isShow}]"
+      :isRotating="isShow"
       :style="[iconStyle, {'margin-top': '-2px', 'right': isSub ? '22px' : '12px'}]"
     />
   </span>
 </template>
 
 <script>
-  import AnchorIcon from 'Packages/icons/src/anchor-icon'
+  import AnchorIcon from 'Packages/icons/src/icons'
   import mixin from 'Src/libs/mixin'
 
   /**
    * mode {string} the type of title, includes the title of main and the title of sub
    * title {string} the text of title
    * hasIcon {boolean} weather showing the icon or not
-   * hasDot {boolean} weather showing the dot or not
    * hasChildren {boolean} if the component hasn't child content, hide the icon of traingle
    * alwaysActive {boolean} weather make the icon under lighting or not
    * icon {object} choose the icon, includes sets of type and name
@@ -72,9 +69,9 @@
         default: true
       },
 
-      hasDot: {
-        type: Boolean,
-        default: false
+      iconName: {
+        type: String,
+        default: 'dot'
       },
 
       hasChildren: {
@@ -87,19 +84,16 @@
         default: false
       },
 
-      icon: {
-        type: Object,
-        default () {
-          return {
-            type: 'device',
-            name: 'instance'
-          }
-        }
+      clickable: {
+        type: Boolean,
+        default: true
       },
+
+      iconName: String,
 
       triangleName: {
         type: String,
-        default: 'down'
+        default: 'triangle__down'
       },
 
       width: {
@@ -145,8 +139,8 @@
 
       leftIconStyle () {
         return {
-          'margin-top': this.hasDot ? '-3px' : '-7px',
-          'left': this.hasDot ? this.paddingLeft - 20 + 'px' : this.paddingLeft - 30 + 'px'
+          'margin-top': this.iconName === 'dot' ? '-3px' : '-7px',
+          'left': this.iconName === 'dot' ? this.paddingLeft - 20 + 'px' : this.paddingLeft - 30 + 'px'
         }
       },
 

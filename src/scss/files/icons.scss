@@ -3,13 +3,13 @@
 @import "~scss/animation";
 
 /* device */
-.anchor-icon-device{
+.anchor-icon-device-white-black{
   display: inline-block;
   vertical-align: middle;
-  background-image: url('../../img/icons.svg');
+  background-image: url('../../img/device--white-black.svg');
   &__instance     {width: 14px; height: 16px; background-position: 0 0;}
   &__volume       {width: 14px; height: 16px; background-position: -22px 0px;}
-  &__rdbs         {width: 14px; height: 16px; background-position: -88px 0px;}
+  &__rdb          {width: 14px; height: 16px; background-position: -88px 0px;}
   &__snapshot     {width: 14px; height: 16px; background-position: -111px 0px;}
   &__ip           {width: 15px; height: 15px; background-position: -96px -98px;}
   &__vps          {width: 15px; height: 15px; background-position: -46px -192px;}
@@ -41,7 +41,7 @@
 
   &__instance--active, &__instance:hover          {background-position: 0px -24px;}
   &__volume--active, &__volume:hover              {background-position: -22px -24px;}
-  &__rdbs--active, &__rdbs:hover                  {background-position: -88px -24px;}
+  &__rdb--active, &__rdb  :hover                  {background-position: -88px -24px;}
   &__snapshot--active, &__snapshot:hover          {background-position: -111px -24px;}
   &__ip--active, &__ip:hover                      {background-position: -96px -122px;}
   &__vps--active, &__vps:hover                    {background-position: -70px -192px;}
@@ -69,6 +69,151 @@
   &__hosting--active, &__hosting:hover            {background-position: -24px -120px;}
   &__rack--active, &__rack:hover                  {background-position: -48px -120px;}
   &__fastFiber--active, &__fastFiber:hover        {background-position: -72px -120px;}
+}
+
+@include b('anchor-icon-device-colored'){
+  display: inline-block;
+  background-image: url('../../img/device--colored.svg');
+  vertical-align: middle;
+  @include e('instance'){
+    width: 14px;
+    height: 16px;
+    background-position: 0px 0px;
+    @include m('active') {
+      background-position: 0 -24px;
+    }
+    &:hover{
+      cursor: pointer;
+      background-position: 0 -24px;
+    }
+  }
+  @include e('dServer'){
+    width: 15px;
+    height: 16px;
+    background-position: -93px 0px;
+    @include m('active'){
+      background-position: -93px -24px;
+    }
+    &:hover{
+      cursor: pointer;
+      background-position: -93px -24px;
+    }
+  }
+  @include e('hosting'){
+    width: 15px;
+    height: 16px;
+    background-position: -1px -48px;
+    @include m('active'){
+      background-position: -1px -72px;
+    }
+    &:hover{
+      cursor: pointer;
+      background-position: -1px -72px;
+    }
+  }
+  @include e('volume'){
+    width: 12px;
+    height: 16px;
+    background-position: -23px 0px;
+    @include m('active'){
+      background-position: -23px -24px;
+    }
+    &:hover{
+      cursor: pointer;
+      background-position: -23px -24px;
+    }
+  }
+
+  // -- (start) icon位置未校对，不可用 --
+  @include e('sbk'){
+    width: 15px;
+    height: 15px;
+    background-position: -308px -2px;
+    @include m('active'){
+      background-position: -308px -26px;
+    }
+  }
+  @include e('rdbs'){
+    width: 15px;
+    height: 15px;
+    background-position: -213px -51px;
+    @include m('active'){
+      background-position: -213px -75px;
+    }
+  }
+  @include e('cdn'){
+    width: 15px;
+    height: 16px;
+    background-position: -306px -50px;
+    @include m('active'){
+      background-position: -306px -74px;
+    }
+  }
+  @include e('sdn'){
+    width: 15px;
+    height: 16px;
+    background-position: -234px -2px;
+    @include m('active'){
+      background-position: -234px -26px;
+    }
+  }
+  @include e('router'){
+    width: 15px;
+    height: 16px;
+    background-position: -334px -2px;
+    @include m('active'){
+      background-position: -334px -26px;
+    }
+  }
+  @include e('clb'){
+    width: 15px;
+    height: 16px;
+    background-position: -236px -50px;
+    @include m('active'){
+      background-position: -236px -74px;
+    }
+  }
+  @include e('cfw'){
+    width: 16px;
+    height: 16px;
+    background-position: -258px -50px;
+    @include m('active'){
+      background-position: -258px -74px;
+    }
+  }
+  @include e('fastFiber'){
+    width: 15px;
+    height: 14px;
+    background-position: -282px -51px;
+    @include m('active'){
+      background-position: -282px -75px;
+    }
+  }
+  @include e('monitor'){
+    width: 16px;
+    height: 16px;
+    background-position: -258px -2px;
+    @include m('active'){
+      background-position: -258px -26px;
+    }
+  }
+  @include e('cmp'){
+    width: 16px;
+    height: 15px;
+    background-position: -357px -2px;
+    @include m('active'){
+      background-position: -357px -26px;
+    }
+  }
+  @include e('cloudMonitor'){
+    width: 15px;
+    height: 16px;
+    background-position: -330px -50px;
+    @include m('active'){
+      background-position: -330px -74px;
+    }
+  }
+  // -- (end) icon位置未校对，不可用 --
 }
 
 /* triangle */

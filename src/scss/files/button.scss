@@ -18,6 +18,7 @@
     height: 28px;
     line-height: 28px;
     font-size: $font-size-smaller;
+    vertical-align: middle;
     @include single-line();
   }
 

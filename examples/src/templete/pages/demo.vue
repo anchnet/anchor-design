@@ -1,9 +1,20 @@
 <template>
   <ol>
     <li>
+      <h3>anchor-icon</h3>
+      <div class="demo-layout">
+        <anchor-icon name="device-white-black__instance" />
+        <anchor-icon name="device-colored__instance" />
+        <anchor-icon name="device-colored__dServer" />
+        <anchor-icon name="device-colored__hosting" />
+        <anchor-icon name="device-colored__volume" />
+      </div>
+    </li>
+    <li>
+      <h3>drop-down</h3>
       <ol class="sub-inline">
         <li>
-          <h3>drop-down(simple)</h3>
+          <h3>简易下拉菜单</h3>
           <div class="demo-layout">
             <anchor-drop-down
               mode="simple"
@@ -15,11 +26,10 @@
           </div>
         </li>
         <li>
-          <h3>drop-down</h3>
+          <h3>普通下拉菜单</h3>
           <div class="demo-layout">
             <anchor-drop-down
               :data="dropdownData.imageType.data"
-              :type="dropdownData.imageType.type"
               :hasDot="dropdownData.imageType.hasDot"
               :defaultText="dropdownData.imageType.defaultText"
               :onChangeBack="onDropDownChange.bind(null, 'imageType')"
@@ -35,6 +45,27 @@
           </div>
           <p class="color-primary">parentCurrentkey: {{dropdownData.imageType.defaultKey}}</p>
           <p class="color-primary">childDefaultValue: {{currentImageVersion}}</p>
+        </li>
+        <li>
+          <h3>带图标的下拉菜单</h3>
+          <div class="demo-layout">
+            <anchor-drop-down
+              onShowIcon="device-colored__hosting"
+              :data="dropdownData.imageType.data"
+              defaultText="点击选择"
+            />
+          </div>
+        </li>
+        <li>
+          <h3>红色字体的下拉菜单</h3>
+          <div class="demo-layout">
+            <anchor-drop-down
+              onDisplayStyle="2"
+              onShowIcon="device-colored__hosting"
+              :data="dropdownData.imageType.data"
+              defaultText="点击选择"
+            />
+          </div>
         </li>
       </ol>
     </li>
@@ -158,6 +189,11 @@
         <anchor-button mode="tag" tagColor="1AADE1" :width="80" />
         <anchor-button mode="tag" tagColor="F96E28" :width="170" />
       </div>
+      <div class="demo-layout">
+        <anchor-button hasIcon btnStyle="2" />
+        <anchor-button hasIcon btnStyle="4" />
+        <anchor-button hasIcon iconName="device-colored__volume" btnStyle="6" />
+      </div>
     </li>
     <li>
       <h3>anchor-menu-vertical</h3>
@@ -182,6 +218,7 @@
 </template>
 
 <script>
+  import AnchorIcon from 'Packages/icons/src/icons'
   import AnchorMenuVertical from 'Packages/menu-vertical/src/menu-vertical'
   import AnchorSwitchLabel from 'Packages/switch-label/src/switch-label'
   import AnchorDropDown from 'Packages/drop-down/src/drop-down'
@@ -193,6 +230,7 @@
   export default {
     name: 'demo',
     components: {
+      AnchorIcon,
       AnchorMenuVertical, AnchorSwitchLabel, AnchorDropDown, AnchorButton, AnchorInput, AnchorSearch, AnchorNav
     },
 

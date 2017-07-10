@@ -12,8 +12,14 @@
     display: block;
     line-height: 24px;
     font-size: $font-size-smaller;
-    color: $color-tips;
     @include single-line();
+
+    @include m('style-1'){
+      color: $color-tips;
+    }
+    @include m('style-2'){
+      color: $color-primary;
+    }
   }
 
   @include e('triangle'){
@@ -33,6 +39,12 @@
     background-color: #ffffff;
     cursor: pointer;
 
+    &:hover{
+      color: $color-primary;
+      background-color: $color-primary-background;
+      border-color: $color-primary;
+    }
+
     @include m('disabled'){
       cursor: not-allowed;
       background-color: #FFFFFF !important;
@@ -43,12 +55,6 @@
       .drop-down__on-display{
         color: $color-line !important;
       }
-    }
-
-    &:hover{
-      color: $color-primary;
-      background-color: $color-primary-background;
-      border-color: $color-primary;
     }
   }
 

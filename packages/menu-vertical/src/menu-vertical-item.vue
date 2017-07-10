@@ -2,29 +2,30 @@
   <div>
     <anchor-menu-group :key="key" v-for="(item, key) in childrenData">
       <anchor-menu-title
+        v-if="item.type !== 'content'"
         slot="group-title"
+        mode="sub"
         :class="['menu-vertical__title']"
         :title="item.text"
-        :oneItem="!item.children"
-        mode="sub"
-        :hasDot="true"
+        :hasIcon="item.hasIcon"
+        :iconName="item.iconName ? item.iconName : 'dot'"
         :hasChildren="!!item.children"
-        v-if="item.type !== 'content'"
+        :clickable="item.children ? true : item.clickable"
         @handleClick="handleClick(item)"
       />
       <anchor-menu-content
+        v-else-if="!item.children && item.type === 'content'"
         slot="group-title"
         :class="['menu-vertical__content']"
         :content="item.text"
-        :oneItem="true"
-        v-else-if="!item.children && item.type === 'content'"
+        :clickable="item.clickable"
         @handleClick="handleClick(item)"
       />
       <anchor-menu-vertical-item
+        v-if="!!item.children"
         slot="group-item"
         :children="item.children"
         :data="data"
-        v-if="!!item.children"
         @handleClick="handleClick"
       />
     </anchor-menu-group>
