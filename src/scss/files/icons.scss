@@ -7,6 +7,8 @@
   display: inline-block;
   vertical-align: middle;
   background-image: url('../../img/device--white-black.svg');
+  background-repeat: no-repeat;
+
   &__instance     {width: 14px; height: 16px; background-position: 0 0;}
   &__volume       {width: 14px; height: 16px; background-position: -22px 0px;}
   &__rdb          {width: 14px; height: 16px; background-position: -88px 0px;}
@@ -74,6 +76,7 @@
 @include b('anchor-icon-device-colored'){
   display: inline-block;
   background-image: url('../../img/device--colored.svg');
+  background-repeat: no-repeat;
   vertical-align: middle;
   @include e('instance'){
     width: 14px;
@@ -256,5 +259,35 @@
   vertical-align: middle;
   @include m('active'){
     background-color: $color-primary;
+  }
+}
+
+@include b('anchor-icon-direction'){
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  background-color: #ffffff;
+  vertical-align: middle;
+  background-image: url('../../../src/img/select-number.svg');
+  background-repeat: no-repeat;
+
+  @include e('left'){
+    background-position: 0px 0px;
+    &:hover{
+      background-position: 0px -20px;
+    }
+    @include m('active'){
+      background-position: 0px -20px;
+    }
+  }
+
+  @include e('right'){
+    background-position: -20px 0px;
+    &:hover{
+      background-position: -20px -20px;
+    }
+    @include m('active'){
+      background-position: -20px -20px;
+    }
   }
 }

@@ -10,6 +10,7 @@ import AnchorInput from '../packages/input/index.js'
 import AnchorSearch from '../packages/search/index.js'
 import AnchorNav from '../packages/nav/index.js'
 import AnchorElement from '../packages/element/index.js'
+import AnchorSelectNumber from '../packages/select-number/index.js'
 
 const components = [
   AnchorIcon,
@@ -23,7 +24,8 @@ const components = [
   AnchorInput,
   AnchorSearch,
   AnchorNav,
-  AnchorElement
+  AnchorElement,
+  AnchorSelectNumber
 ]
 
 const install = function (Vue, options) {
@@ -38,7 +40,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
-  version: '0.11.0',
+  version: '0.12.0',
   install,
   AnchorIcon,
   AnchorMenuGroup,
@@ -51,5 +53,6 @@ module.exports = {
   AnchorInput,
   AnchorSearch,
   AnchorNav,
-  AnchorElement
+  AnchorElement,
+  AnchorSelectNumber
 }

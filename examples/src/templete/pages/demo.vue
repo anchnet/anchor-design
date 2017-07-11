@@ -3,6 +3,44 @@
     <anchor-nav />
     <ol>
       <li>
+        <h3>select-number</h3>
+        <ol class="sub-inline">
+          <li>
+            <h3>设定默认值</h3>
+            <div class="demo-layout">
+              <anchor-select-number
+                :scopeEnd="100"
+                :defaultValue="20.1"
+                :onChangeBack="onSelectNumberChange.bind(null, 'value1')"
+              />
+            </div>
+          </li>
+          <li>
+            <h3>自定义最小步长</h3>
+            <div class="demo-layout">
+              <anchor-select-number
+                :scopeEnd="100"
+                :defaultValue="20"
+                :step="0.01"
+                :onChangeBack="onSelectNumberChange.bind(null, 'value1')"
+              />
+            </div>
+          </li>
+          <li>
+            <h3>自定义输入框宽度</h3>
+            <div class="demo-layout">
+              <anchor-select-number
+                :scope="[-200, 100]"
+                :defaultValue="20"
+                :step="10"
+                :width="80"
+                :onChangeBack="onSelectNumberChange.bind(null, 'value1')"
+              />
+            </div>
+          </li>
+        </ol>
+      </li>
+      <li>
         <h3>anchor-icon</h3>
         <div class="demo-layout">
           <anchor-icon name="device-white-black__instance" />
@@ -223,11 +261,20 @@
   import AnchorInput from 'Packages/input/src/input'
   import AnchorSearch from 'Packages/search/src/search'
   import AnchorNav from 'Packages/nav/src/nav'
+  import AnchorSelectNumber from 'Packages/select-number/src/select-number'
 
   export default {
     name: 'demo',
     components: {
-      AnchorIcon, AnchorMenuVertical, AnchorSwitchLabel, AnchorDropDown, AnchorButton, AnchorInput, AnchorSearch, AnchorNav
+      AnchorIcon,
+      AnchorMenuVertical,
+      AnchorSwitchLabel,
+      AnchorDropDown,
+      AnchorButton,
+      AnchorInput,
+      AnchorSearch,
+      AnchorNav,
+      AnchorSelectNumber
     },
 
     methods: {
@@ -255,10 +302,17 @@
           this.currentImageVersion = item.value
         }
       },
+
+      onSelectNumberChange (type, value) {
+        this.selectNumber[type] = value
+      }
     },
 
     data () {
       return {
+        selectNumber: {
+          value2: 200
+        },
 
         searchWord: '',
 

@@ -6,6 +6,7 @@
         'anchor-animation__rotate3d': blockName === 'triangle' || isRotating,
         [`anchor-animation__rotate3d--${computedDir}`]: isRotating && computedDir,
       }]"
+      @click="handleClick()"
     ></i>
   </transition>
 </template>
@@ -69,6 +70,12 @@
           if (['top', 'down'].includes(arr[1])) this._direction = 'top-down'
           if (['left', 'right'].includes(arr[1])) this._direction = 'left-right'
         }
+      }
+    },
+
+    methods: {
+      handleClick () {
+        this.$emit('handleClick')
       }
     }
   }

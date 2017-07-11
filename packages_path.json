@@ -10,5 +10,6 @@
   "anchor-input": "./packages/input/index.js",
   "anchor-search": "./packages/search/index.js",
   "anchor-nav": "./packages/nav/index.js",
-  "anchor-element": "./packages/element/index.js"
+  "anchor-element": "./packages/element/index.js",
+  "anchor-select-number": "./packages/select-number/index.js"
 }
