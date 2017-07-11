@@ -8,6 +8,8 @@ import AnchorDropDown from '../packages/drop-down/index.js'
 import AnchorButton from '../packages/button/index.js'
 import AnchorInput from '../packages/input/index.js'
 import AnchorSearch from '../packages/search/index.js'
+import AnchorNav from '../packages/nav/index.js'
+import AnchorElement from '../packages/element/index.js'
 
 const components = [
   AnchorIcon,
@@ -19,7 +21,9 @@ const components = [
   AnchorDropDown,
   AnchorButton,
   AnchorInput,
-  AnchorSearch
+  AnchorSearch,
+  AnchorNav,
+  AnchorElement
 ]
 
 const install = function (Vue, options) {
@@ -34,7 +38,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
-  version: '0.10.0',
+  version: '0.11.0',
   install,
   AnchorIcon,
   AnchorMenuGroup,
@@ -45,5 +49,7 @@ module.exports = {
   AnchorDropDown,
   AnchorButton,
   AnchorInput,
-  AnchorSearch
+  AnchorSearch,
+  AnchorNav,
+  AnchorElement
 }

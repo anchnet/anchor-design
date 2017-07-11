@@ -42,7 +42,6 @@
             :class="['drop-down__item-element']"
             :target="item.target || '_self'"
             :href="item.link"
-            @click="onItemClick('link', key)"
           >{{item.value}}</a>
           <div v-else :class="['drop-down__item-element']">{{item.value}}</div>
         </li>
@@ -86,6 +85,7 @@
       height: Number,
       defaultKey: Number,
       defaultId: [String, Number],
+      defaultText: String,
       data: Array,
       onDisplayStyle: {
         type: [String, Number],
@@ -99,8 +99,7 @@
         type: [String, Boolean],
         default: ''
       },
-      onChangeBack: Function,
-      defaultText: String
+      onChangeBack: Function
     },
 
     data () {
@@ -210,15 +209,6 @@
             }
           }
           this.onShowItem = {id, key, value}
-        }
-
-        if (utils.isFunction(this.onChangeBack)) {
-          if (!id || Number(key) < 0) {
-            id = null
-            key = null
-            value = null
-          }
-          this.onChangeBack({id, value}, key)
         }
       },
 

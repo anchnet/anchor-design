@@ -8,5 +8,7 @@
   "anchor-drop-down": "./packages/drop-down/index.js",
   "anchor-button": "./packages/button/index.js",
   "anchor-input": "./packages/input/index.js",
-  "anchor-search": "./packages/search/index.js"
+  "anchor-search": "./packages/search/index.js",
+  "anchor-nav": "./packages/nav/index.js",
+  "anchor-element": "./packages/element/index.js"
 }

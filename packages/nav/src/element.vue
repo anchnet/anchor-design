@@ -1,5 +1,5 @@
 <template>
-  <div :class="['anchor-element']" :style="{'margin': margin}">
+  <div :class="['anchor-element']">
     <anchor-icon
       v-if="component === 'icon'"
       :name="iconName"
@@ -7,34 +7,43 @@
     <anchor-button
       v-if="component === 'button'"
       :iconName="hasIcon && iconName"
-      :text="text"
-      :targetText="targetText"
-      :link="link"
+      :text="textConfig.text"
+      :targetText="textConfig.target"
+      :link="textConfig.link"
+      @handleClick="textConfig.link ? '' : handleClick()"
     />
     <anchor-drop-down
       v-if="component === 'dropDown'"
       mode="simple"
       :onShowIcon="hasIcon && iconName"
-      :defaultText="text"
-      :data="listData"
+      :defaultText="dropDownConfig.text"
+      :data="dropDownConfig.data"
       :height="height"
-      :width="dropDownWidth"
+      :width="dropDownConfig.width"
+      :onChangeBack="handleClick"
     />
   </div>
 </template>
 
 <script>
+  import mixin from 'Src/libs/mixin'
   import AnchorIcon from 'Packages/icons/src/icons'
   import AnchorDropDown from 'Packages/drop-down/src/drop-down'
   import AnchorButton from 'Packages/button/src/button'
   export default {
     name: 'anchor-element',
 
+    mixins: [mixin],
+
     components: {
       AnchorIcon, AnchorDropDown, AnchorButton
     },
 
     props: {
+      height: Number,
+      width: Number,
+      onChangeBack: Function,
+
       mode: {
         type: String,
         default: 'icon-text'
@@ -45,27 +54,26 @@
         default: 'dot'
       },
 
-      text: {
-        type: String,
-        default: '元素内容'
+      textConfig: {
+        type: Object,
+        default () {
+          return {
+            text: '元素内容',
+            link: '',
+            target: '_self'
+          }
+        }
       },
 
-      link: {
-        type: String,
-        default: ''
-      },
-
-      targetText: {
-        type: String,
-        default: '_self'
-      },
-
-      listData: Array,
-
-      height: Number,
-      width: Number,
-      margin: String,
-      dropDownWidth: Number
+      dropDownConfig: {
+        type: Object,
+        default () {
+          return {
+            width: 100,
+            data: []
+          }
+        }
+      }
     },
 
     data () {
@@ -92,6 +100,15 @@
           this.hasDropDown = hasDropDown
           this.component = hasDropDown ? 'dropDown' : hasText ? 'button' : 'icon'
         }
+      }
+    },
+
+    methods: {
+      handleClick (item, key) {
+        let callback = () => {
+          this.$emit('handleClick', item, key)
+        }
+        this.triggerBack(callback, item, key)
       }
     }
   }

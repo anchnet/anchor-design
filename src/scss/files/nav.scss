@@ -30,10 +30,17 @@
 
   @include e('main'){
     display: block;
+    text-align: center;
+    @include clearfix();
   }
 
   @include e('main-left'){
     float: left;
+    text-align: left;
+  }
+
+  @include e('main-middle'){
+    display: inline-block;
     text-align: left;
   }
 
