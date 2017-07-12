@@ -10,11 +10,6 @@
   font-size: 0;
   text-align: center;
   vertical-align: middle;
-  @include e('icon'){
-    &:hover{
-      cursor: pointer;
-    }
-  }
   @include e('input'){
     display: inline-block;
     width: 36px;

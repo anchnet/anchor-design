@@ -1,8 +1,8 @@
 <template>
   <div class="select-number">
-    <anchor-icon :class="['select-number__icon']" name="direction__left" @handleClick="onButtonClick('reduce')" />
+    <anchor-icon :name="`direction__left-style-${mode}`" @handleClick="onButtonClick('reduce')" />
     <input class="select-number__input" :style="{width: width + 'px'}" :value="computedValue" @change="onInputChange($event)" />
-    <anchor-icon :class="['select-number__icon']" name="direction__right" @handleClick="onButtonClick('increase')" />
+    <anchor-icon :name="`direction__right-style-${mode}`" @handleClick="onButtonClick('increase')" />
   </div>
 </template>
 
@@ -11,7 +11,7 @@
   import AnchorIcon from 'Packages/icons/src/icons'
 
   export default {
-    name: 'select-number',
+    name: 'anchor-select-number',
 
     mixins: [mixin],
 
@@ -20,6 +20,10 @@
     },
 
     props: {
+      mode: {
+        type: [String, Number],
+        default: 1
+      },
       width: Number,
       scope: Array,
       scopeEnd: Number,
@@ -34,12 +38,19 @@
       step: {
         type: Number,
         default: 1
+      },
+
+      disabled: {
+        type: [Object, Boolean],
+        default: false
       }
     },
 
     data () {
       return {
-        value: null
+        value: null,
+        disableLeft: false,
+        disableRight: false
       }
     },
 
@@ -61,6 +72,30 @@
     watch: {
       defaultValue (val, oldVal) {
         this.computeValue(val)
+      },
+
+      disabled: {
+        immediate: true,
+        handler (val) {
+          let disabledLeft = false, disableRight = false
+          let isBoolean = typeof val === 'boolean'
+          if (isBoolean) {
+            disabledLeft = val
+            disableRight = val
+          } else {
+            disabledLeft = val.left
+            disableRight = val.right
+          }
+        }
+      },
+
+      value: {
+        immediate: true,
+        handler (val) {
+          if (val === this.computedScope.end) {
+
+          }
+        }
       }
     },
 

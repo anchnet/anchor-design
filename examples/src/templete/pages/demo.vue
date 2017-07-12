@@ -3,7 +3,18 @@
     <anchor-nav />
     <ol>
       <li>
-        <h3>select-number</h3>
+        <h3>anchor-pagination</h3>
+        <ol class="sub-inline">
+          <li>
+            <h3>1</h3>
+            <div class="demo-layout">
+              <anchor-pagination/>
+            </div>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <h3>anchor-select-number</h3>
         <ol class="sub-inline">
           <li>
             <h3>设定默认值</h3>
@@ -34,6 +45,17 @@
                 :defaultValue="20"
                 :step="10"
                 :width="80"
+                :onChangeBack="onSelectNumberChange.bind(null, 'value1')"
+              />
+            </div>
+          </li>
+          <li>
+            <h3>更换样式</h3>
+            <div class="demo-layout">
+              <anchor-select-number
+                mode="2"
+                :scope="[0, 100]"
+                :step="10"
                 :onChangeBack="onSelectNumberChange.bind(null, 'value1')"
               />
             </div>
@@ -262,6 +284,7 @@
   import AnchorSearch from 'Packages/search/src/search'
   import AnchorNav from 'Packages/nav/src/nav'
   import AnchorSelectNumber from 'Packages/select-number/src/select-number'
+  import AnchorPagination from 'Packages/pagination/src/pagination'
 
   export default {
     name: 'demo',
@@ -274,7 +297,8 @@
       AnchorInput,
       AnchorSearch,
       AnchorNav,
-      AnchorSelectNumber
+      AnchorSelectNumber,
+      AnchorPagination
     },
 
     methods: {

@@ -3,10 +3,11 @@
     <i
       :class="[block, blockElement, {
         [`${blockElement}--active`]: active,
+        [`${blockElement}--disabled`]: disabled,
         'anchor-animation__rotate3d': blockName === 'triangle' || isRotating,
         [`anchor-animation__rotate3d--${computedDir}`]: isRotating && computedDir,
       }]"
-      @click="handleClick()"
+      @click="disabled ? '' : handleClick()"
     ></i>
   </transition>
 </template>
@@ -25,6 +26,10 @@
         default: 'dot'
       },
       active: {
+        type: Boolean,
+        default: false
+      },
+      disabled: {
         type: Boolean,
         default: false
       },

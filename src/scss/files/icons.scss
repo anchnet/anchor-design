@@ -271,23 +271,67 @@
   background-image: url('../../../src/img/select-number.svg');
   background-repeat: no-repeat;
 
-  @include e('left'){
+  @include e('left-style-1'){
     background-position: 0px 0px;
     &:hover{
+      cursor: pointer;
       background-position: 0px -20px;
     }
     @include m('active'){
+      cursor: pointer;
       background-position: 0px -20px;
+    }
+    @include m('disabled'){
+      cursor: not-allowed;
+      background-position: 0px -40px;
     }
   }
 
-  @include e('right'){
+  @include e('right-style-1'){
     background-position: -20px 0px;
     &:hover{
+      cursor: pointer;
       background-position: -20px -20px;
     }
     @include m('active'){
+      cursor: pointer;
       background-position: -20px -20px;
+    }
+    @include m('disabled'){
+      cursor: not-allowed;
+      background-position: -20px -40px;
+    }
+  }
+
+  @include e('left-style-2'){
+    background-position: 0px -40px;
+    &:hover{
+      cursor: pointer;
+      background-position: 0px 0px;
+    }
+    @include m('active'){
+      cursor: pointer;
+      background-position: 0px 0px;
+    }
+    @include m('disabled'){
+      cursor: not-allowed;
+      background-position: 0px -40px;
+    }
+  }
+
+  @include e('right-style-2'){
+    background-position: -20px -40px;
+    &:hover{
+      cursor: pointer;
+      background-position: -20px 0px;
+    }
+    @include m('active'){
+      cursor: pointer;
+      background-position: -20px 0px;
+    }
+    @include m('disabled'){
+      cursor: not-allowed;
+      background-position: -20px -40px;
     }
   }
 }
