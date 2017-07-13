@@ -334,4 +334,40 @@
       background-position: -20px -40px;
     }
   }
+
+  @include e('left-style-3'){
+    width: 5px;
+    height: 10px;
+    background-position: -14px -79px;
+    &:hover{
+      cursor: pointer;
+      background-position: -27px -79px;
+    }
+    @include m('active'){
+      cursor: pointer;
+      background-position: -27px -79px;
+    }
+    @include m('disabled'){
+      cursor: not-allowed;
+      background-position: -14px -79px;
+    }
+  }
+
+  @include e('right-style-3'){
+    width: 5px;
+    height: 10px;
+    background-position: -20px -79px;
+    &:hover{
+      cursor: pointer;
+      background-position: -33px -79px;
+    }
+    @include m('active'){
+      cursor: pointer;
+      background-position: -33px -79px;
+    }
+    @include m('disabled'){
+      cursor: not-allowed;
+      background-position: -20px -79px;
+    }
+  }
 }

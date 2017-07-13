@@ -14,13 +14,24 @@
       /><!--
    -->条
     </span>
-    <anchor-icon name="direction__left-style-2" />
-    <div :class="['anchor-pagination__list']">
-      <anchor-button btnStyle="2" />
-    </div>
-    <anchor-icon name="direction__right-style-2" />
+    <span :class="['anchor-pagination__operate']" @mouseenter="leftActive = true" @mouseleave="leftActive = false">
+      <anchor-icon name="direction__left-style-3" :active="leftActive" />
+    </span><!--
+ --><ul :class="['anchor-pagination__list']">
+      <li
+        v-for="(item, key) in listData"
+        :class="['anchor-pagination__list-item', {
+          'anchor-pagination__list-item--active': item.active
+        }]"
+      >
+        <span :class="['anchor-pagination__list-item-text']">{{item.text}}</span>
+      </li>
+    </ul><!--
+ --><span :class="['anchor-pagination__operate']" @mouseenter="rightActive = true" @mouseleave="rightActive = false">
+      <anchor-icon name="direction__right-style-3" :active="rightActive" />
+    </span>
     <span :class="['anchor-pagination__text']"><!--
-   -->共 {{pageCount}} 页, 前往<!--
+   -->前往<!--
    --><anchor-input valueType="number" size="ip" :alwaysFeedback="false" @onChange="onPageChange" /><!--
    -->页<!--
    --></span>
@@ -28,7 +39,6 @@
 </template>
 
 <script>
-  import AnchorButton from 'Packages/button/src/button'
   import AnchorInput from 'Packages/input/src/input'
   import AnchorDropDown from 'Packages/drop-down/src/drop-down'
   import AnchorIcon from "../../icons/src/icons";
@@ -37,8 +47,7 @@
     name: 'anchor-pagination',
 
     components: {
-      AnchorIcon,
-      AnchorButton, AnchorInput, AnchorDropDown
+      AnchorIcon, AnchorInput, AnchorDropDown
     },
 
     props: {
@@ -65,6 +74,8 @@
 
     data () {
       return {
+        leftActive: false,
+        rightActive: false,
       }
     },
 
@@ -74,7 +85,17 @@
       },
 
       listData () {
-
+        return [
+          {text: 1},
+          {text: 2},
+          {text: 3, active: true},
+          {text: 4},
+          {text: 5},
+          {text: 6},
+          {text: 7},
+          {text: 8},
+          {text: 9},
+        ]
       }
     },
 

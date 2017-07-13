@@ -7,8 +7,60 @@
     text-align: center;
   }
 
+  $list-height: 24px;
+  @include e('operate'){
+    display: inline-block;
+    width: $list-height;
+    height: $list-height;
+    line-height: $list-height;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid $color-line;
+    cursor: pointer;
+    transition: all .2s;
+    &:hover{
+      background-color: $color-primary-background;
+      border-color: $color-primary;
+    }
+  }
   @include e('list'){
     display: inline-block;
+    vertical-align: middle;
+    line-height: $list-height;
+  }
+  @include e('list-item'){
+    display: inline-block;
+    width: $list-height;
+    height: $list-height;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid $color-line;
+    transition: all .2s;
+    &:hover{
+      .anchor-pagination__list-item-text{
+        color: $color-primary;
+      }
+    }
+    @include m('active'){
+      border-color: $color-primary;
+      background-color: $color-primary;
+      color: #ffffff;
+      &:hover{
+        .anchor-pagination__list-item-text{
+          color: #ffffff;
+          cursor: default;
+        }
+      }
+    }
+  }
+  .anchor-pagination__list-item:first-child{
+    border-left: 0;
+  }
+  .anchor-pagination__list-item{
+    border-right: 0;
+  }
+  @include e('list-item-text'){
+    font-size: $font-size-smaller;
   }
 
   @include e('text'){
