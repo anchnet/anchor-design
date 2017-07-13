@@ -49,3 +49,7 @@ table {
 a, button, input, textarea {outline: none;}
 a {color: $color-base; text-decoration: none;}
 textarea {overflow-y: auto;}
+
+.test-transition{
+  transition: opacity .2s;
+}

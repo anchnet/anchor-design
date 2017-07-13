@@ -3,6 +3,10 @@ const webpack = require('webpack')
 const utils = require('./utils.js')
 const env = require('../env/index')
 
+const autoprefixer = require('autoprefixer')
+
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
 module.exports = {
   entry: env.dev.entry,
 
@@ -30,6 +34,7 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
+          postcss: () => process.env === 'production' ? [autoprefixer()] : [],
           loaders: {
             css: 'css-loader',
             scss: 'vue-style-loader!css-loader!sass-loader',
@@ -44,17 +49,19 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          'sass-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [
-                require('autoprefixer')()
-              ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'sass-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: [autoprefixer()]
+              }
             }
-          }
-        ]
+          ]
+        })
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -65,5 +72,9 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+
+  plugins: [
+    new ExtractTextPlugin('[name].css')
+  ]
 }

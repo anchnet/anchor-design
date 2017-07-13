@@ -1,6 +1,6 @@
 <template>
-  <div :class="['anchor-pagination']">
-
+  <div :class="['anchor-pagination', 'test-transition']">
+    <span>共条</span>
   </div>
 </template>
 
