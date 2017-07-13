@@ -11,7 +11,7 @@
   @include e('on-display'){
     position: relative;
     display: block;
-    line-height: 24px;
+    line-height: 28px;
     font-size: $font-size-smaller;
     @include single-line();
 
@@ -27,13 +27,13 @@
     position: absolute;
     top: 45%;
     top: calc(50% - 2px);
-    right: 5px;
+    right: 4px;
   }
 
   @include e('container'){
     position: relative;
-    width: 120px;
-    padding: 3px 18px 3px 12px;
+    max-width: 120px;
+    padding: 0 18px 0 10px;
     border: 1px solid $color-line;
     box-sizing: border-box;
     border-radius: 2px;
@@ -61,7 +61,7 @@
 
   @include e('container-simple'){
     position: relative;
-    width: 120px;
+    max-width: 120px;
     padding: 3px 18px 3px 0;
     box-sizing: border-box;
     background-color: #ffffff;

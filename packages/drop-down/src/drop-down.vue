@@ -8,19 +8,19 @@
     <div
       ref="container"
       :class="containerClass"
-      :style="{'width': width + 'px'}"
+      :style="{'width': __width ? __width + 'px' : ''}"
       @click="mode === 'normal' && data && data.length ? onDropClick() : ''"
       @mouseenter="mode === 'normal' ? hover(true) : ''"
       @mouseleave="mode === 'normal' ? hover(false) : ''"
     >
       <span
         :class="['drop-down__on-display', `drop-down__on-display--style-${onDisplayStyle}`]"
-        :style="{'line-height': height - 6 + 'px'}"
+        :style="{'line-height': __height ? __height - 6 + 'px' : ''}"
       >
         <slot name="drop-down-icon">
           <anchor-icon v-if="onShowIcon" :name="onShowIcon" :active="onHover || isShow" :style="{'margin-right': '8px'}" />
         </slot><!--
-     -->{{onShowItem.value}}<!--
+       -->{{onShowItem.value}}<!--
    --></span>
       <anchor-icon
         name="triangle__down"
@@ -59,8 +59,9 @@
   /**
    * param
    *   width {number} 120                        //drop-down 宽度，默认为120px
+   *   height {number} 28                        //drop-down 高度，默认为28px
    *   data {array} [{id: id1, value: value1}]   //列表数据
-   *   defaultId {string}                        //默认显示的数据的id，优先级最高
+   *   defaultId {string|number}                        //默认显示的数据的id，优先级最高
    *   defaultKey {string|number}                //默认显示的数据的key，优先级中，有 defaultId 时则无效
    *   type {string}                             //列表数据类型，会影响显示样式，目前只有'image'字段可选，默认无
    *   hasDot {boolean}                          //列表数据前是否有小圆点，默认无
@@ -81,6 +82,7 @@
         type: String,
         default: 'normal'
       },
+      size: String,
       width: Number,
       height: Number,
       defaultKey: Number,
@@ -108,9 +110,19 @@
         isShow: false,
         //当前显示的 item 的数据
         onShowItem: {
-          id: this.defaultId ? this.defaultId : null,
+          id: this.defaultId || typeof this.defaultId === 'number' ? this.defaultId : null,
           key: Number(this.defaultKey) >= -1 ? Number(this.defaultKey) : null,
           value: this.defaultText || '请点击选择'
+        },
+        sizeMap: {
+          'small': {
+            width: 40,
+            height: 20
+          },
+          'smaller': {
+            width: 80,
+            height: 20
+          }
         }
       }
     },

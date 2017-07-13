@@ -28,7 +28,7 @@
       :placeholder="defaultText"
       @focus="onFocus(true)"
       @blur="onFocus(false)"
-      @input="!disabled && alwaysFeedback ? onChange($event) : ''"
+      @input="!disabled && alwaysFeedback ? onInput($event) : ''"
       @change="!disabled && !alwaysFeedback ? onChange($event) : ''"
       @keyup.enter="!disabled ? onKeyupEnter($event) : ''"
     />
@@ -75,6 +75,8 @@
         type: String,
         default: 'string'
       },
+
+      size: String,
 
       defaultText: {
         type: [String, Number],
@@ -124,30 +126,45 @@
 
     data () {
       return {
+        oldValue: this.initValue,
         value: this.initValue,
         active: this.isActive,
-        hover: false
+        hover: false,
+        sizeMap: {
+          'ip': {
+            width: 56,
+            height: 24
+          },
+          'smaller': {
+            width: 80,
+            height: 20
+          },
+        }
       }
     },
 
     computed: {
       wrapStyle () {
         return {
-          width: this.width
+          width: this.__width
         }
       },
 
       inputStyle () {
         return {
-          width: this.width - 22 + 'px',
-          height: this.height + 'px',
-          'line-height': this.lineHeight + 'px',
+          width: this.__width + 'px',
+          height: this.__height + 'px',
+          'line-height': this.__height + 'px',
           'min-height': this.mode === 'search' ? '12px' : ''
         }
       },
 
       computedValue () {
         return this.formatValue(this.value)
+      },
+
+      computedOldValue () {
+        return this.formatValue(this.oldValue)
       },
 
       radioStatus () {
@@ -170,12 +187,12 @@
     watch: {
       value (val, oldVal) {
         if (this.alwaysFeedback) {
+          this.oldValue = oldVal
           this.$nextTick(() => {
-            console.log('alwaysfeedback',this.computedValue, this.formatValue(oldVal), typeof this.computedValue)
             let callback = () => {
-              this.$emit('input', this.computedValue, this.formatValue(oldVal))
+              this.$emit('input', this.computedValue, this.computedOldValue)
             }
-            this.triggerBack(callback, this.computedValue, this.formatValue(oldVal))
+            this['__triggerBack'](callback, this.computedValue, this.computedOldValue)
           })
         }
       }
@@ -209,28 +226,28 @@
         this.active = focus
       },
 
-      onChange (e) {
-        let oldVal = this.value
+      onInput (e) {
         this.value = e.target.value
-        console.log('onchange',this.computedValue, oldVal, typeof this.computedValue)
         if (this.computedValue === this.defaultValue) this.$forceUpdate()
-        if (oldVal === this.value) return
-        if (!this.alwaysFeedback) {
-          let callback = () => {
-            this.$emit('onChange', this.computedValue, this.formatValue(oldVal))
-          }
-          this.triggerBack(callback, this.computedValue, this.formatValue(oldVal))
+      },
+
+      onChange (e) {
+        this.oldValue = this.value
+        this.value = e.target.value
+        if (this.computedValue === this.defaultValue) this.$forceUpdate()
+        let callback = () => {
+          this.$emit('onChange', this.computedValue, this.computedOldValue)
         }
+        this['__triggerBack'](callback, this.computedValue, this.computedOldValue)
       },
 
       onKeyupEnter (e) {
-        let oldVal = this.value
+        this.oldValue = this.value
         this.value = e.target.value
-        console.log('onKeyupEnter',this.computedValue, oldVal, typeof this.computedValue)
         let callback = () => {
-          this.$emit('onKeyupEnter', this.computedValue, this.formatValue(oldVal))
+          this.$emit('onKeyupEnter', this.computedValue, this.computedOldValue)
         }
-        this.triggerBack(callback, this.computedValue, this.formatValue(oldVal))
+        this['__triggerBack'](callback, this.computedValue, this.computedOldValue)
       },
 
       onHover (hover) {
@@ -242,7 +259,7 @@
         let callback = () => {
           this.$emit('input', this.active)
         }
-        this.triggerBack(callback, this.active)
+        this['__triggerBack'](callback, this.active)
       }
     }
   }

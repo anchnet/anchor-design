@@ -108,7 +108,7 @@
         let callback = () => {
           this.$emit('handleClick', item, key)
         }
-        this.triggerBack(callback, item, key)
+        this['__triggerBack'](callback, item, key)
       }
     }
   }

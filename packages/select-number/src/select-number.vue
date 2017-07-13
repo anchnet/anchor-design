@@ -159,7 +159,7 @@
         let callback = () => {
           this.$emit('input', value)
         }
-        this.triggerBack(callback, value)
+        this['__triggerBack'](callback, value)
       }
     }
   }

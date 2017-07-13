@@ -43,7 +43,7 @@
         let callback = () => {
           this.$emit('search', this.value)
         }
-        this.triggerBack(callback, this.value)
+        this['__triggerBack'](callback, this.value)
       }
     }
   }

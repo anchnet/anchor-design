@@ -1,6 +1,19 @@
 @import "~scss/mixins";
 @import "~scss/variables";
 
-.test-transition{
-  transform: translate(50%, 50%);
+@include b('anchor-pagination'){
+  vertical-align: middle;
+  .drop-down__on-display, .anchor-input__base{
+    text-align: center;
+  }
+
+  @include e('list'){
+    display: inline-block;
+  }
+
+  @include e('text'){
+    display: inline-block;
+    vertical-align: middle;
+    font-size: $font-size-smaller;
+  }
 }

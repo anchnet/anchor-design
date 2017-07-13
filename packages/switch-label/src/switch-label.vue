@@ -119,7 +119,12 @@
         }
 
         let activeItem = newData.find(i => i.active)
-        if (activeItem) utils.isFunction(this.onChangeBack) ? this.triggerBack() : this.$emit('input', activeItem.id)
+        let activeKey = newData.findIndex(i => i.active)
+//        if (activeItem) utils.isFunction(this.onChangeBack) ? this.triggerBack() : this.$emit('input', activeItem.id)
+        if (activeItem) {
+          let callback = () => this.$emit('input', activeItem.id)
+          this['__triggerBack'](callback, activeItem, activeKey)
+        }
 
         this.data = newData
       },
@@ -136,17 +141,19 @@
           this.data.splice(i, 1, obj)
         }
 
-        utils.isFunction(this.onChangeBack) ? this.onChangeBack(item, key) : this.$emit('input', item.id)
+//        utils.isFunction(this.onChangeBack) ? this.onChangeBack(item, key) : this.$emit('input', item.id)
+        let callback = () => this.$emit('input', item.id)
+        this['__triggerBack'](callback, item, key)
       },
 
       // 手动 callback
-      triggerBack () {
-        this.$nextTick(() => {
-          let activeKey = this.data.findIndex((i) => i.active === true)
-          let activeItem = this.data[activeKey]
-          utils.isFunction(this.onChangeBack) && this.onChangeBack(activeItem, activeKey)
-        })
-      }
+//      triggerBack () {
+//        this.$nextTick(() => {
+//          let activeKey = this.data.findIndex((i) => i.active === true)
+//          let activeItem = this.data[activeKey]
+//          utils.isFunction(this.onChangeBack) && this.onChangeBack(activeItem, activeKey)
+//        })
+//      }
     },
   }
 </script>
