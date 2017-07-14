@@ -1,111 +1,257 @@
 <template>
   <div :class="['anchor-pagination']">
-    <span :class="['anchor-pagination__text']">共{{total}}条, </span>
-    <span :class="['anchor-pagination__text']"><!--
+    <span v-if="computedMode.showTotal" :class="['anchor-pagination__text']">共{{total}}条, </span>
+    <span v-if="computedMode.showPerUnit" :class="['anchor-pagination__text']"><!--
    -->每页显示<!--
    --><span v-if="typeof perUnit === 'number'">{{perUnit}}</span>
       <anchor-drop-down
         v-else
         mode="simple"
+        :height="24"
+        :style="{'margin-left': '8px'}"
         :data="perUnit.data"
         :defaultText="perUnit.defaultText"
         :defaultId="perUnit.defaultId"
-        :onChangeBack="onChangeBack"
+        @onSelect="onSelect"
       /><!--
    -->条
     </span>
-    <span :class="['anchor-pagination__operate']" @mouseenter="leftActive = true" @mouseleave="leftActive = false">
+    <span
+      :class="['anchor-pagination__operate']"
+      @mouseenter="leftActive = true"
+      @mouseleave="leftActive = false"
+      @click="onPageChange('reduce')"
+    >
       <anchor-icon name="direction__left-style-3" :active="leftActive" />
     </span><!--
  --><ul :class="['anchor-pagination__list']">
       <li
-        v-for="(item, key) in listData"
+        v-for="value in pageList"
         :class="['anchor-pagination__list-item', {
-          'anchor-pagination__list-item--active': item.active
+          'anchor-pagination__list-item--active': value === currentPage,
+          'anchor-pagination__list-item--disabled': value === '...'
         }]"
+        @click="value === '...' ? '' : onPageChange(value)"
       >
-        <span :class="['anchor-pagination__list-item-text']">{{item.text}}</span>
+        <span :class="['anchor-pagination__list-item-text']">{{value}}</span>
       </li>
     </ul><!--
- --><span :class="['anchor-pagination__operate']" @mouseenter="rightActive = true" @mouseleave="rightActive = false">
+ --><span
+      :class="['anchor-pagination__operate']"
+      @mouseenter="rightActive = true"
+      @mouseleave="rightActive = false"
+      @click="onPageChange('add')"
+    >
       <anchor-icon name="direction__right-style-3" :active="rightActive" />
     </span>
-    <span :class="['anchor-pagination__text']"><!--
-   -->前往<!--
-   --><anchor-input valueType="number" size="ip" :alwaysFeedback="false" @onChange="onPageChange" /><!--
-   -->页<!--
-   --></span>
+    <span v-if="computedMode.showGoTo" :class="['anchor-pagination__text']">
+      前往
+      <anchor-input valueType="number" size="ip" :alwaysFeedback="false" @onChange="onPageChange" />
+      页
+    </span>
   </div>
 </template>
 
 <script>
+  import mixin from 'Src/libs/mixin'
   import AnchorInput from 'Packages/input/src/input'
   import AnchorDropDown from 'Packages/drop-down/src/drop-down'
-  import AnchorIcon from "../../icons/src/icons";
+  import AnchorIcon from "Packages/icons/src/icons";
 
   export default {
     name: 'anchor-pagination',
+
+    mixins: [mixin],
 
     components: {
       AnchorIcon, AnchorInput, AnchorDropDown
     },
 
     props: {
-      total: {
-        type: Number,
-        default: 400
+      mode: {
+        type: [String, Object],
+        default: 'normal'
       },
 
-      perUnit: {
-        type: [Number, Object],
-        default () {
-          return {
-            defaultId: 5,
-            data: [
-              {id: 5, value: 5},
-              {id: 10, value: 10},
-              {id: 20, value: 20},
-              {id: 100, value: 100}
-            ]
-          }
-        }
-      }
+      total: Number,
+
+      perUnit: [Number, Object],
+
+      keepPage: {
+        type: Boolean,
+        default: false
+      },
+
+      setCurrentPage: {
+        type: Number,
+        default: 1
+      },
+
+      setCurrentEntry: Number,
     },
 
     data () {
       return {
         leftActive: false,
         rightActive: false,
+        currentUnit: -1,
+        currentPage: 1
+      }
+    },
+
+    watch: {
+      setCurrentPage: {
+        immediate: true,
+        handler (val) {
+          if (!this.setCurrentEntry) {
+            console.log(val)
+            this.currentPage = val
+          }
+        }
+      },
+
+      setCurrentEntry: {
+        immediate: true,
+        handler (val) {
+          if (val === undefined) return
+          let currentUnit
+          if (this.currentUnit > 0) {
+            currentUnit = this.currentUnit
+          } else {
+            currentUnit = this.getCurrentUnit()
+          }
+          this.currentPage = Math.ceil(val / currentUnit)
+        }
       }
     },
 
     computed: {
-      pageCount () {
-        return this.total
+      computedMode () {
+        if (this.mode === 'simple') {
+          return {
+            showTotal: false,
+            showPerUnit: false,
+            showGoTo: false
+          }
+        } else if (typeof this.mode === 'object') {
+          return this.mode
+        } else {
+          return {
+            showTotal: true,
+            showPerUnit: true,
+            showGoTo: true
+          }
+        }
       },
 
-      listData () {
-        return [
-          {text: 1},
-          {text: 2},
-          {text: 3, active: true},
-          {text: 4},
-          {text: 5},
-          {text: 6},
-          {text: 7},
-          {text: 8},
-          {text: 9},
-        ]
-      }
+      currentData () {
+        return {
+          currentPage: this.currentPage,
+          currentEntry: this.transformEntryAndPage({page: this.currentPage}),
+          perUnit: this.currentUnit,
+          totalPage: this.pageCount,
+          totalCount: this.total
+        }
+      },
+
+      pageCount () {
+        let currentUnit = this.currentUnit
+        if (currentUnit === -1) {
+          currentUnit = this.getCurrentUnit()
+          this.currentUnit = currentUnit
+        }
+        let count = Math.ceil(this.total / currentUnit)
+
+        let currentPage = this.currentPage
+        if (currentPage > count) currentPage = count
+        if (currentPage < 1) currentPage = 1
+
+        this.currentPage = currentPage
+        return count
+      },
+
+      pageList () {
+        let pageList = []
+        let pageCount = this.pageCount
+        let currentPage = this.currentPage
+        if (this.total < 0 || pageCount < 0) return pageList
+        if (pageCount < 10)
+          pageList = pageCount
+        else {
+          let leftArr = [], middleArr = [], rightArr = []
+          if (currentPage < 6) {
+            middleArr = [1,2,3,4,5,6,7]
+            rightArr = ['...', pageCount]
+          } else if (currentPage > pageCount - 7) {
+            leftArr = [1, '...']
+            middleArr = [pageCount - 6, pageCount - 5, pageCount - 4, pageCount - 3, pageCount - 2, pageCount - 1, pageCount]
+          } else {
+            leftArr = [1, '...']
+            middleArr = [currentPage - 2, currentPage - 1, currentPage, currentPage + 1, currentPage + 2]
+            rightArr = ['...', pageCount]
+          }
+          pageList = pageList.concat(leftArr, middleArr, rightArr)
+        }
+        return pageList
+      },
     },
 
     methods: {
-      onPageChange (val, oldVal) {
-        console.log(val, oldVal)
+      onSelect (item, key) {
+        if (!this.keepPage) {
+          let oldUnit = this.currentUnit
+          let entryKey = this.transformEntryAndPage({unit: oldUnit, page: this.currentPage})
+          let newPage = this.transformEntryAndPage({unit: item.id, entryKey})
+          this.currentPage = newPage
+        }
+        this.currentUnit = item.id
+        this.triggerBack()
       },
 
-      onChangeBack (item, key) {
-        console.log(item.id, key)
+      onPageChange (val) {
+        console.log(val)
+        let page = this.getComputedPage(val)
+        this.currentPage = page
+        this.triggerBack()
+      },
+
+      getComputedPage (val) {
+        let oldPage, page
+        oldPage = page = this.currentPage
+        if (val === 'reduce')
+          page = page > 1 ? --page : 1
+        else if (val === 'add')
+          page = page < this.pageCount ? ++page : this.pageCount
+        else page = val
+
+        return page > 0 && page <= this.pageCount ? page : oldPage
+      },
+
+      transformEntryAndPage ({unit = this.currentUnit, entryKey = null, page = null} = obj) {
+        if (entryKey)
+          return Math.ceil(entryKey / unit)
+        else if (page)
+          return (page - 1) * unit + 1
+        else return null
+      },
+
+      getCurrentUnit () {
+        let currentUnit = -1
+        if (!this.perUnit) {
+        } else if (typeof this.perUnit === 'number')
+          currentUnit = this.perUnit
+        else {
+          if (this.perUnit.defaultId) currentUnit = this.perUnit.defaultId
+          else currentUnit = this.perUnit.data[0]['id']
+        }
+        return currentUnit
+      },
+
+      triggerBack () {
+        this.$nextTick(() => {
+          let callback = () => this.$emit('onPageChange', this.currentData)
+          this.__triggerBack(callback, this.currentData)
+        })
       }
     }
   }

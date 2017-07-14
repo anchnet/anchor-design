@@ -3,6 +3,7 @@
 
 @include b('anchor-pagination'){
   vertical-align: middle;
+  user-select:none;
   .drop-down__on-display, .anchor-input__base{
     text-align: center;
   }
@@ -17,7 +18,6 @@
     vertical-align: middle;
     border: 1px solid $color-line;
     cursor: pointer;
-    transition: all .2s;
     &:hover{
       background-color: $color-primary-background;
       border-color: $color-primary;
@@ -33,10 +33,11 @@
     width: $list-height;
     height: $list-height;
     text-align: center;
-    cursor: pointer;
+    color: $color-base;
     border: 1px solid $color-line;
     transition: all .2s;
     &:hover{
+      cursor: pointer;
       .anchor-pagination__list-item-text{
         color: $color-primary;
       }
@@ -46,9 +47,19 @@
       background-color: $color-primary;
       color: #ffffff;
       &:hover{
+        cursor: default;
         .anchor-pagination__list-item-text{
           color: #ffffff;
-          cursor: default;
+        }
+      }
+    }
+
+    @include m('disabled'){
+      background-color: #ffffff;
+      &:hover{
+        cursor: default;
+        .anchor-pagination__list-item-text{
+          color: $color-forbidden-font;
         }
       }
     }
@@ -65,6 +76,7 @@
 
   @include e('text'){
     display: inline-block;
+    line-height: 24px;
     vertical-align: middle;
     font-size: $font-size-smaller;
   }

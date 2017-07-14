@@ -6,9 +6,29 @@
         <h3>anchor-pagination</h3>
         <ol class="sub-inline">
           <li>
-            <h3>1</h3>
+            <h3>正常模式</h3>
             <div class="demo-layout">
-              <anchor-pagination/>
+              <anchor-pagination :total="400" :perUnit="perUnit" :setCurrentPage="5" @onPageChange="onPageChange" />
+              <p>
+                当前页数：{{pageData.currentPage}}；
+                当前页第一条数据Key：{{pageData.currentEntry}}；
+                每页显示条数：{{pageData.perUnit}}；
+                总条数：{{pageData.totalCount}}；
+                总页数：{{pageData.totalPage}}
+              </p>
+            </div>
+          </li>
+          <li>
+            <h3>简单模式</h3>
+            <div class="demo-layout">
+              <anchor-pagination mode="simple" :total="208" :perUnit="10" :setCurrentEntry="18" @onPageChange="onPageChange2" />
+              <p>
+                当前页数：{{pageData2.currentPage}}；
+                当前页第一条数据Key：{{pageData2.currentEntry}}；
+                每页显示条数：{{pageData2.perUnit}}；
+                总条数：{{pageData2.totalCount}}；
+                总页数：{{pageData2.totalPage}}
+              </p>
             </div>
           </li>
         </ol>
@@ -302,6 +322,14 @@
     },
 
     methods: {
+      onPageChange (obj) {
+        this.pageData = obj
+      },
+
+      onPageChange2 (obj) {
+        this.pageData2 = obj
+      },
+
       changeValue2 (val, oldVal) {
         console.log(arguments)
         this.inputValue2 = val
@@ -334,6 +362,19 @@
 
     data () {
       return {
+        perUnit: {
+          defaultId: 5,
+          data: [
+            {id: 5, value: 5},
+            {id: 10, value: 10},
+            {id: 20, value: 20},
+            {id: 100, value: 100}
+          ]
+        },
+
+        pageData: {},
+        pageData2: {},
+
         selectNumber: {
           value2: 200
         },

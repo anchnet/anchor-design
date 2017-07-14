@@ -273,7 +273,8 @@
             value: item.value
           }
         }
-        utils.isFunction(this.onChangeBack) && this.onChangeBack(item, key)
+        let callback = () => this.$emit('onSelect', item, key)
+        this['__triggerBack'](callback, item, key)
       }
     }
   }
