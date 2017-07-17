@@ -18,8 +18,8 @@
   @include e('search-icon-wrap'){
     display: inline-block;
     width: 22px;
-    height: 28px;
-    line-height: 28px;
+    height: 30px;
+    line-height: 30px;
     background-color: $color-base-background;
     text-align: right;
     border-top-left-radius: 2px;
@@ -42,8 +42,8 @@
   @include e('base'){
     display: inline-block;
     width: 150px;
-    height: 28px;
-    line-height: 28px;
+    height: 30px;
+    line-height: 30px;
     padding: 0 10px;
     box-sizing: border-box;
     border: none;

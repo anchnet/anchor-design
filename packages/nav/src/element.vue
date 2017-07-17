@@ -1,5 +1,5 @@
 <template>
-  <div :class="['anchor-element']">
+  <div :class="['anchor-element']" :style="{'line-height': height ? height - 2 + 'px' : ''}">
     <anchor-icon
       v-if="component === 'icon'"
       :name="iconName"

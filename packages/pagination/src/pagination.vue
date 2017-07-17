@@ -104,7 +104,6 @@
         immediate: true,
         handler (val) {
           if (!this.setCurrentEntry) {
-            console.log(val)
             this.currentPage = val
           }
         }
@@ -209,7 +208,6 @@
       },
 
       onPageChange (val) {
-        console.log(val)
         let page = this.getComputedPage(val)
         this.currentPage = page
         this.triggerBack()

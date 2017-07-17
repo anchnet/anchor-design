@@ -8,7 +8,7 @@
     <div
       ref="container"
       :class="containerClass"
-      :style="{'width': __width ? __width + 'px' : ''}"
+      :style="containerStyle"
       @click="mode === 'normal' && data && data.length ? onDropClick() : ''"
       @mouseenter="mode === 'normal' ? hover(true) : ''"
       @mouseleave="mode === 'normal' ? hover(false) : ''"
@@ -128,6 +128,14 @@
     },
 
     computed: {
+    	containerStyle () {
+    		let width = this.__width ? this.__width + 'px' : ''
+    		return {
+    			'width': width,
+    			'max-width': width
+    		}
+    	},
+
       containerClass () {
         if (this.mode === 'simple') {
           return [
@@ -231,7 +239,7 @@
         let container = vQuery(this.$refs.container)
         let droplist = vQuery(this.$refs.droplist)
         let droplistChild = vQuery(this.$refs.droplist).children('li')
-        let containerPadding = 32, droplistChildPadding = 30
+        let containerPadding = 28, droplistChildPadding = 30
 
         droplist.css({'width': ''})
 

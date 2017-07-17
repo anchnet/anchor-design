@@ -111,6 +111,7 @@
             <h3>普通下拉菜单</h3>
             <div class="demo-layout">
               <anchor-drop-down
+              	:width="180"
                 :data="dropdownData.imageType.data"
                 :hasDot="dropdownData.imageType.hasDot"
                 :defaultText="dropdownData.imageType.defaultText"
@@ -436,7 +437,7 @@
             data: {
               default: [],
               windows: [
-                {id: "windows1", value: "windows1"},
+                {id: "windows1", value: "windows1111"},
                 {id: "windows2", value: "windows2"},
                 {id: "windows3", value: "windows3"},
                 {id: "windows4", value: "windows4"}
