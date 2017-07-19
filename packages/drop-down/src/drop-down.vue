@@ -9,7 +9,7 @@
       ref="container"
       :class="containerClass"
       :style="containerStyle"
-      @click="mode === 'normal' && data && data.length ? onDropClick() : ''"
+      @click="mode === 'normal' && Data && Data.length ? onDropClick() : ''"
       @mouseenter="mode === 'normal' ? hover(true) : ''"
       @mouseleave="mode === 'normal' ? hover(false) : ''"
     >
@@ -32,7 +32,7 @@
     <transition name="anchor-animation__drop-down">
       <ul ref="droplist" v-show="isShow" class="drop-down__list">
         <li
-          v-for="(item, key) in data"
+          v-for="(item, key) in Data"
           :class="['drop-down__item', {'drop-down__item--active': item.active}]"
           @click="item.hasOwnProperty('link') ? '' : onItemClick(item, key)"
         >
@@ -43,7 +43,13 @@
             :target="item.target || '_self'"
             :href="item.link"
           >{{item.value}}</a>
-          <div v-else :class="['drop-down__item-element']">{{item.value}}</div>
+          <div v-else :class="['drop-down__item-element']">
+            <anchor-input
+              v-if="isFilter"
+              mode="checkbox"
+              :isActive="item.active"
+              :style="{'margin-right': '5px'}"
+            />{{item.value}}</div>
         </li>
       </ul>
     </transition>
@@ -55,6 +61,7 @@
   import utils from 'Src/libs/utils'
   import mixin from 'Src/libs/mixin'
   import AnchorIcon from 'Packages/icons/src/icons'
+  import AnchorInput from 'Packages/input/src/input'
 
   /**
    * param
@@ -74,7 +81,7 @@
     mixins: [mixin],
 
     components: {
-      AnchorIcon
+      AnchorIcon, AnchorInput
     },
 
     props: {
@@ -97,6 +104,10 @@
         type: Boolean,
         default: false
       },
+      isFilter: {
+        type: Boolean,
+        default: false
+      },
       onShowIcon: {
         type: [String, Boolean],
         default: ''
@@ -106,6 +117,7 @@
 
     data () {
       return {
+        Data: utils.clone(this.data),
         onHover: false,
         isShow: false,
         //当前显示的 item 的数据
@@ -142,19 +154,20 @@
             'drop-down__container-simple',
             {
               'drop-down__container-simple--active': this.onHover,
-              'drop-down__container-simple--disabled': !(this.data && this.data.length)
+              'drop-down__container-simple--disabled': !(this.Data && this.Data.length)
             }
           ]
         }
         return [
           'drop-down__container',
-          {'drop-down__container--disabled': !(this.data && this.data.length)}
+          {'drop-down__container--disabled': !(this.Data && this.Data.length)}
         ]
       }
     },
 
     watch: {
-      data () {
+      data (val) {
+        this.Data = utils.clone(val)
         this.onShowItem = {
           id: null,
           key: null,
@@ -197,8 +210,8 @@
       },
 
       resetStatus () {
-        this.data.forEach((i, k) => {
-          this.data[k]['active'] = false
+        this.Data.forEach((i, k) => {
+          this.Data[k]['active'] = false
         })
       },
 
@@ -208,24 +221,24 @@
       getDefaultItem () {
         let {id, key, value} = this.onShowItem
 
-        if (utils.isArray(this.data)) {
+        if (utils.isArray(this.Data)) {
           if (this.defaultId) {
-            let findKey = this.data.findIndex((i) => i.id === this.defaultId)
+            let findKey = this.Data.findIndex((i) => i.id === this.defaultId)
             if (utils.isNumber(findKey)) {
               id = this.defaultId
               key = findKey
-              value = this.data[findKey]['value']
+              value = this.Data[findKey]['value']
               this.resetStatus()
-              this.data[findKey]['active'] = true
+              this.Data[findKey]['active'] = true
             }
           } else if (utils.isNumber(this.defaultKey)) {
-            let findItemByKey = this.data[this.defaultKey]
+            let findItemByKey = this.Data[this.defaultKey]
             if (findItemByKey) {
               id = findItemByKey.id
               key = this.defaultKey
               value = findItemByKey.value
               this.resetStatus()
-              this.data[this.defaultKey]['active'] = true
+              this.Data[this.defaultKey]['active'] = true
             }
           }
           this.onShowItem = {id, key, value}
@@ -271,8 +284,19 @@
        * @param  {string} key  当前点击的列表key
        */
       onItemClick (item, key) {
+        if (this.isFilter) {
+          let Data = this.Data
+          Data[key]['active'] = !Data[key]['active']
+          let filterData = Data.filter((i) => i.active) || []
+          this.onHover = !!filterData.length
+          this.Data = Data
+          this.$forceUpdate()
+          let callback = () => this.$emit('onSelect', filterData)
+          this['__triggerBack'](callback, filterData)
+          return
+        }
         this.resetStatus()
-        this.data[key]['active'] = true
+        this.Data[key]['active'] = true
         this.isShow = false
         if (item !== 'link') {
           this.onShowItem = {

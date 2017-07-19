@@ -41,7 +41,7 @@
       }]"
       @mouseenter="disabled ? '' : onHover(true)"
       @mouseleave="disabled ? '' : onHover(false)"
-      @click="disabled ? '' : onClick()"
+      @click.stop="disabled ? '' : onClick()"
     ></span>
     <span
       v-if="mode === 'radio'"
@@ -195,6 +195,10 @@
             this['__triggerBack'](callback, this.computedValue, this.computedOldValue)
           })
         }
+      },
+
+      isActive (val) {
+        this.active = val
       }
     },
 

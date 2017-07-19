@@ -19,6 +19,7 @@
       :defaultText="dropDownConfig.text"
       :data="dropDownConfig.data"
       :height="height"
+      :isFilter="isFilter"
       :width="dropDownConfig.width"
       :onChangeBack="handleClick"
     />
@@ -81,7 +82,8 @@
         component: '',
         hasIcon: false,
         hasText: false,
-        hasDropDown: false
+        hasDropDown: false,
+        isFilter: false,
       }
     },
 
@@ -89,15 +91,19 @@
       mode: {
         immediate: true,
         handler (val) {
-          let hasIcon = false, hasText = false, hasDropDown = false
+          let hasIcon = false, hasText = false, hasDropDown = false, isFilter = false
           val.split('-').forEach((item) => {
             if (item === 'icon') hasIcon = true
             if (item === 'text') hasText = true
-            if (item === 'dropDown') hasDropDown = true
+            if (item === 'dropDown') {
+              hasDropDown = true
+              isFilter = item.split('__')[1] === 'filter'
+            }
           })
           this.hasIcon = hasIcon
           this.hasText = hasText
           this.hasDropDown = hasDropDown
+          this.isFilter = isFilter
           this.component = hasDropDown ? 'dropDown' : hasText ? 'button' : 'icon'
         }
       }

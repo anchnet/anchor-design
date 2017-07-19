@@ -3,6 +3,7 @@
 
 @include b('anchor-input'){
   display: inline-block;
+  line-height: 1;
   border: 1px solid $color-line;
   border-radius: 2px;
   box-sizing: border-box;

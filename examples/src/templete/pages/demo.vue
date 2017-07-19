@@ -1,10 +1,22 @@
 <template>
   <div>
-    <anchor-nav />
+    <anchor-nav :leftData="leftData" :middleData="middleData" :rightData="rightData" />
     <ol>
+      <li>
+        <h3>anchor-table</h3>
+        <div class="demo-layout">
+          <anchor-table :theadData="theadData" :data="tableData" />
+        </div>
+      </li>
       <li>
         <h3>anchor-pagination</h3>
         <ol class="sub-inline">
+          <li>
+            <h3>简单模式</h3>
+            <div class="demo-layout">
+              <anchor-pagination mode="simple" :total="208" :perUnit="10" :setCurrentEntry="18" />
+            </div>
+          </li>
           <li>
             <h3>正常模式</h3>
             <div class="demo-layout">
@@ -15,19 +27,6 @@
                 每页显示条数：{{pageData.perUnit}}；
                 总条数：{{pageData.totalCount}}；
                 总页数：{{pageData.totalPage}}
-              </p>
-            </div>
-          </li>
-          <li>
-            <h3>简单模式</h3>
-            <div class="demo-layout">
-              <anchor-pagination mode="simple" :total="208" :perUnit="10" :setCurrentEntry="18" @onPageChange="onPageChange2" />
-              <p>
-                当前页数：{{pageData2.currentPage}}；
-                当前页第一条数据Key：{{pageData2.currentEntry}}；
-                每页显示条数：{{pageData2.perUnit}}；
-                总条数：{{pageData2.totalCount}}；
-                总页数：{{pageData2.totalPage}}
               </p>
             </div>
           </li>
@@ -126,8 +125,6 @@
                 :onChangeBack="onDropDownChange.bind(null, 'imageVersion')"
               />
             </div>
-            <p class="color-primary">parentCurrentkey: {{dropdownData.imageType.defaultKey}}</p>
-            <p class="color-primary">childDefaultValue: {{currentImageVersion}}</p>
           </li>
           <li>
             <h3>带图标的下拉菜单</h3>
@@ -147,6 +144,18 @@
                 onShowIcon="device-colored__hosting"
                 :data="dropdownData.imageType.data"
                 defaultText="点击选择"
+              />
+            </div>
+          </li>
+          <li>
+            <h3>带多选按钮的下拉菜单</h3>
+            <div class="demo-layout">
+              <anchor-drop-down
+                onShowIcon="device-colored__hosting"
+                :data="dropdownData.imageType.data"
+                isFilter
+                defaultText="点击选择"
+                @onSelect="onSelect"
               />
             </div>
           </li>
@@ -172,9 +181,9 @@
           <li>
             <h3>数字框</h3>
             <div class="demo-layout">
-              <anchor-input :alwaysFeedback="false" valueType="number" :digit="4" :initValue="88" :width="100" @onChange="changeValue2.call(null, 'inputValue2')" />
+              <anchor-input :alwaysFeedback="false" valueType="number" :digit="4" :initValue="88" :width="100" @onChange="changeValue" />
             </div>
-            <p class="text">{{inputValue2}}</p>
+            <p class="text">{{inputNumber}}</p>
           </li>
           <li>
             <h3>禁止输入</h3>
@@ -306,6 +315,9 @@
   import AnchorNav from 'Packages/nav/src/nav'
   import AnchorSelectNumber from 'Packages/select-number/src/select-number'
   import AnchorPagination from 'Packages/pagination/src/pagination'
+  import AnchorTable from 'Packages/table/src/table'
+
+  import staticData from 'Examples/src/assets/js/model/demo'
 
   export default {
     name: 'demo',
@@ -319,7 +331,8 @@
       AnchorSearch,
       AnchorNav,
       AnchorSelectNumber,
-      AnchorPagination
+      AnchorPagination,
+      AnchorTable,
     },
 
     methods: {
@@ -327,13 +340,8 @@
         this.pageData = obj
       },
 
-      onPageChange2 (obj) {
-        this.pageData2 = obj
-      },
-
-      changeValue2 (val, oldVal) {
-        console.log(arguments)
-        this.inputValue2 = val
+      changeValue (val, oldVal) {
+        this.inputNumber = val
       },
 
       onSearch (keyword) {
@@ -348,12 +356,11 @@
       },
 
       onDropDownChange (type, item, key) {
-        if (type === 'imageType') {
-          this.currentImageType = item.id
-          this.dropdownData.imageType.defaultKey = key
-        } else if (type === 'imageVersion') {
-          this.currentImageVersion = item.value
-        }
+        console.log(type, item, key)
+      },
+
+      onSelect (data) {
+        console.log(data)
       },
 
       onSelectNumberChange (type, value) {
@@ -363,100 +370,7 @@
 
     data () {
       return {
-        perUnit: {
-          defaultId: 5,
-          data: [
-            {id: 5, value: 5},
-            {id: 10, value: 10},
-            {id: 20, value: 20},
-            {id: 100, value: 100}
-          ]
-        },
-
-        pageData: {},
-        pageData2: {},
-
-        selectNumber: {
-          value2: 200
-        },
-
-        searchWord: '',
-
-        inputValue: 'placeholder',
-        inputValue2: '88.0000',
-        inputValue3: '',
-        inputValue4: '',
-        inputValue5: '',
-
-        currentName: "",
-        regions: [
-          {id: "ac1", value: "华东一区（无锡）", active: false},
-          {id: "ac3", value: "华东二区（上海）", active: false},
-          {id: "ac2", value: "亚太一区（香港）", active: true}
-        ],
-        resType: [
-          {id: "instance", value: " 云服务器", active: true},
-          {id: "rdb", value: "云数据库", active: false}
-        ],
-        hostType: [
-          {id: "hd", value: "性能型", active: true, forbidden: false},
-          {id: "hds", value: "超高性能型", active: false, forbidden: true}
-        ],
-
-        dropdownData: {
-          nav: {
-            type: "nav",
-            hasDot: true,
-            defaultText: '帮助与服务',
-            data: [
-              {id: "new", value: "新手导向", link: 'https://www.anchnet.com', target: '_blank'},
-              {id: "service", value: "服务支持", link: 'https://www.anchnet.com', target: '_blank'},
-              {id: "document", value: "文档地址", link: 'https://www.anchnet.com'}
-            ]
-          },
-          imageType: {
-            type: "image",
-            hasDot: true,
-            defaultKey: 2,
-            defaultText: '请选择镜像类型',
-            data: [
-              {id: "windows", value: "windows"},
-              {id: "centos", value: "centos"},
-              {id: "ubuntu", value: "ubuntu"},
-              {id: "debian", value: "debian"},
-              {id: "redhat", value: "redhat"},
-              {id: "coreos", value: "coreos"},
-              {id: "desktop", value: "desktop"},
-              {id: "opensuse", value: "opensuse"},
-              {id: "arch", value: "arch"}
-            ]
-          },
-          imageVersion: {
-            hasDot: true,
-            defaultText: '请选择镜像版本',
-            data: {
-              default: [],
-              windows: [
-                {id: "windows1", value: "windows1111"},
-                {id: "windows2", value: "windows2"},
-                {id: "windows3", value: "windows3"},
-                {id: "windows4", value: "windows4"}
-              ],
-              centos: [
-                {id: "centos1", value: "centos1"},
-                {id: "centos2", value: "centos2"},
-                {id: "centos3", value: "centos3"}
-              ],
-              ubuntu: [
-                {id: "ubuntu1", value: "ubuntu1"},
-                {id: "ubuntu2", value: "ubuntu2ubuntu2ubuntu2"},
-                {id: "ubuntu3", value: "ubuntu3"}
-              ],
-            }
-          }
-        },
-        currentImageType: 'default',
-        currentImageVersion: '',
+        ...staticData
       }
     },
   }
