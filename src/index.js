@@ -12,6 +12,7 @@ import AnchorNav from '../packages/nav/index.js'
 import AnchorElement from '../packages/element/index.js'
 import AnchorSelectNumber from '../packages/select-number/index.js'
 import AnchorPagination from '../packages/pagination/index.js'
+import AnchorTable from '../packages/table/index.js'
 
 const components = [
   AnchorIcon,
@@ -27,7 +28,8 @@ const components = [
   AnchorNav,
   AnchorElement,
   AnchorSelectNumber,
-  AnchorPagination
+  AnchorPagination,
+  AnchorTable,
 ]
 
 const install = function (Vue, options) {
@@ -57,5 +59,6 @@ module.exports = {
   AnchorNav,
   AnchorElement,
   AnchorSelectNumber,
-  AnchorPagination
+  AnchorPagination,
+  AnchorTable,
 }

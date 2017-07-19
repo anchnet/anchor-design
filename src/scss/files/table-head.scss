@@ -1,2 +1,8 @@
 @import "~scss/mixins";
 @import "~scss/variables";
+
+@include b('anchor-thead'){
+  @include e('th'){
+    padding: 12px 6px;
+  }
+}

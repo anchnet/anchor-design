@@ -1,14 +1,18 @@
 <template>
   <thead :class="['anchor-thead']">
     <tr>
-      <th v-for="(item, key) in data">
+      <th
+        v-for="(item, key) in data"
+        :class="['anchor-thead__th']"
+      >
         <anchor-element
           :mode="item.mode"
           :style="item.style"
           :iconName="item.iconName"
+          :text="item.text"
           :textConfig="item.textConfig"
           :dropDownConfig="item.dropDownConfig"
-          :handleClick="handleClick.bind(null, item.id)"
+          :onChangeBack="onChangeBack.bind(null, item.id)"
         />
       </th>
     </tr>
@@ -37,7 +41,8 @@
     },
 
     methods: {
-      handleClick (id) {
+      onChangeBack (id) {
+        console.log(arguments)
 
       }
     }

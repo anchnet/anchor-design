@@ -261,7 +261,7 @@
       onClick () {
         this.active = !this.active
         let callback = () => {
-          this.$emit('input', this.active)
+          this.$emit('handleClick', this.active)
         }
         this['__triggerBack'](callback, this.active)
       }

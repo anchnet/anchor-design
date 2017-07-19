@@ -3,7 +3,47 @@
  */
 module.exports = {
   theadData: [
-
+    {
+      id: 'account_id',
+      mode: 'text',
+      text: '实例ID/名称'
+    },
+    {
+      id: 'region',
+      mode: 'text',
+      text: '所在可用区'
+    },
+    {
+      id: 'ip',
+      mode: 'text',
+      text: 'IP地址'
+    },
+    {
+      id: 'status',
+      mode: 'dropDown',
+      dropDownConfig: {
+        text: '状态',
+        width: 50,
+        data: [
+          {id: 'all', value: '全部', cancelActive: true},
+          {id: 'running', value: '运行中'},
+          {id: 'stopped', value: '已关机'},
+        ]
+      }
+    },
+    {
+      id: 'network',
+      mode: 'dropDown',
+      dropDownConfig: {
+        text: '网络类型',
+        width: 80,
+        isFilter: true,
+        data: [
+          {id: 'vpc', value: 'VPC'},
+          {id: 'basic', value: '经典网络'},
+        ]
+      }
+    },
   ],
 
   tableData: [
@@ -114,11 +154,8 @@ module.exports = {
     {
       id: 'left2',
       mode: 'text',
-      iconName: 'device-colored__volume',
       style: {'margin': '0 20px 0 0'},
-      textConfig: {
-        text: '可以只显示文字或图标'
-      }
+      text: '可以只显示文字'
     },
     {
       id: 'left3',

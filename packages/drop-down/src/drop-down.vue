@@ -9,7 +9,7 @@
       ref="container"
       :class="containerClass"
       :style="containerStyle"
-      @click="mode === 'normal' && Data && Data.length ? onDropClick() : ''"
+      @click="((mode === 'normal' || !hoverToShow) && Data.length) ? onDropClick() : ''"
       @mouseenter="mode === 'normal' ? hover(true) : ''"
       @mouseleave="mode === 'normal' ? hover(false) : ''"
     >
@@ -18,13 +18,13 @@
         :style="{'line-height': __height ? __height - 6 + 'px' : ''}"
       >
         <slot name="drop-down-icon">
-          <anchor-icon v-if="onShowIcon" :name="onShowIcon" :active="onHover || isShow" :style="{'margin-right': '8px'}" />
+          <anchor-icon v-if="onShowIcon" :name="onShowIcon" :active="Active" :style="{'margin-right': '8px'}" />
         </slot><!--
        -->{{onShowItem.value}}<!--
    --></span>
       <anchor-icon
         name="triangle__down"
-        :active="onHover || isShow"
+        :active="Active"
         :isRotating="isShow"
         :class="['drop-down__triangle']"
       />
@@ -49,6 +49,7 @@
               mode="checkbox"
               :isActive="item.active"
               :style="{'margin-right': '5px'}"
+              :onChangeBack="onChangeBack.bind(null, item, key)"
             />{{item.value}}</div>
         </li>
       </ul>
@@ -108,6 +109,10 @@
         type: Boolean,
         default: false
       },
+      hoverToShow: {
+        type: Boolean,
+        default: false
+      },
       onShowIcon: {
         type: [String, Boolean],
         default: ''
@@ -117,9 +122,10 @@
 
     data () {
       return {
-        Data: utils.clone(this.data),
+        Data: utils.clone(this.data) || [],
         onHover: false,
         isShow: false,
+        generalStatus: false,
         //当前显示的 item 的数据
         onShowItem: {
           id: this.defaultId || typeof this.defaultId === 'number' ? this.defaultId : null,
@@ -140,6 +146,10 @@
     },
 
     computed: {
+      Active () {
+        return this.generalStatus || this.onHover || this.isShow
+      },
+
     	containerStyle () {
     		let width = this.__width ? this.__width + 'px' : ''
     		return {
@@ -202,7 +212,7 @@
 
     methods: {
       hover (onHover) {
-        if (this.mode === 'simple') {
+        if (this.mode === 'simple' && this.hoverToShow) {
           this.isShow = onHover
         }
         this.onHover = onHover
@@ -220,7 +230,6 @@
        */
       getDefaultItem () {
         let {id, key, value} = this.onShowItem
-
         if (utils.isArray(this.Data)) {
           if (this.defaultId) {
             let findKey = this.Data.findIndex((i) => i.id === this.defaultId)
@@ -288,25 +297,31 @@
           let Data = this.Data
           Data[key]['active'] = !Data[key]['active']
           let filterData = Data.filter((i) => i.active) || []
-          this.onHover = !!filterData.length
+          this.generalStatus = !!filterData.length
           this.Data = Data
           this.$forceUpdate()
           let callback = () => this.$emit('onSelect', filterData)
           this['__triggerBack'](callback, filterData)
-          return
-        }
-        this.resetStatus()
-        this.Data[key]['active'] = true
-        this.isShow = false
-        if (item !== 'link') {
-          this.onShowItem = {
-            id: item.id,
-            key: key,
-            value: item.value
+        } else {
+          this.resetStatus()
+          this.Data[key]['active'] = true
+          this.isShow = false
+          if (this.mode === 'normal' && item !== 'link') {
+            this.onShowItem = {
+              id: item.id,
+              key: key,
+              value: item.value
+            }
+          } else {
+            this.generalStatus = !(item.hasOwnProperty('cancelActive') && item.cancelActive)
           }
+          let callback = () => this.$emit('onSelect', item, key)
+          this['__triggerBack'](callback, item, key)
         }
-        let callback = () => this.$emit('onSelect', item, key)
-        this['__triggerBack'](callback, item, key)
+      },
+
+      onChangeBack (item, key, status) {
+        this.onItemClick(item, key)
       }
     }
   }

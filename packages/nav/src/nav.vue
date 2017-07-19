@@ -22,6 +22,7 @@
           :width="item.width"
           :style="item.style"
           :iconName="item.iconName"
+          :text="item.text"
           :textConfig="item.textConfig"
           :dropDownConfig="item.dropDownConfig"
           :onChangeBack="handleClick.bind(null, item.id)"

@@ -1,5 +1,6 @@
 <template>
   <div :class="['anchor-element']" :style="{'line-height': height ? height - 2 + 'px' : ''}">
+    <span v-if="component === 'text'" :class="['anchor-element__text']">{{text}}</span>
     <anchor-icon
       v-if="component === 'icon'"
       :name="iconName"
@@ -19,7 +20,7 @@
       :defaultText="dropDownConfig.text"
       :data="dropDownConfig.data"
       :height="height"
-      :isFilter="isFilter"
+      :isFilter="dropDownConfig.isFilter"
       :width="dropDownConfig.width"
       :onChangeBack="handleClick"
     />
@@ -27,6 +28,7 @@
 </template>
 
 <script>
+  import utils from 'Src/libs/utils'
   import mixin from 'Src/libs/mixin'
   import AnchorIcon from 'Packages/icons/src/icons'
   import AnchorDropDown from 'Packages/drop-down/src/drop-down'
@@ -55,11 +57,13 @@
         default: 'dot'
       },
 
+      text: [String, Number],
+
       textConfig: {
         type: Object,
         default () {
           return {
-            text: '元素内容',
+            text: '',
             link: '',
             target: '_self'
           }
@@ -71,6 +75,7 @@
         default () {
           return {
             width: 100,
+            isFilter: false,
             data: []
           }
         }
@@ -95,16 +100,15 @@
           val.split('-').forEach((item) => {
             if (item === 'icon') hasIcon = true
             if (item === 'text') hasText = true
-            if (item === 'dropDown') {
-              hasDropDown = true
-              isFilter = item.split('__')[1] === 'filter'
-            }
+            if (item === 'dropDown') hasDropDown = true
           })
           this.hasIcon = hasIcon
           this.hasText = hasText
           this.hasDropDown = hasDropDown
-          this.isFilter = isFilter
-          this.component = hasDropDown ? 'dropDown' : hasText ? 'button' : 'icon'
+          if (hasDropDown && utils.isObject(this.dropDownConfig)) this.component = 'dropDown'
+          else if (hasText && this.text) this.component = 'text'
+          else if (hasText && utils.isObject(this.textConfig)) this.component = 'button'
+          else if (hasIcon) this.component = 'icon'
         }
       }
     },

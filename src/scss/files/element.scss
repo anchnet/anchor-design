@@ -6,6 +6,12 @@
   text-align: center;
   vertical-align: top;
 
+  @include e('text'){
+    display: inline-block;
+    vertical-align: middle;
+    font-size: $font-size-base;
+  }
+
   .anchor-button__text, .drop-down__on-display{
     font-size: $font-size-base;
   }
