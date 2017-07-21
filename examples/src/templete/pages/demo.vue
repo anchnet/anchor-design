@@ -3,6 +3,12 @@
     <anchor-nav :leftData="leftData" :middleData="middleData" :rightData="rightData" />
     <ol>
       <li>
+        <h3>anchor-bread-crumb</h3>
+        <div class="demo-layout">
+          <anchor-bread-crumb :data="breadcrumbData" />
+        </div>
+      </li>
+      <li>
         <h3>anchor-table</h3>
         <div class="demo-layout">
           <anchor-table :maps="tableMaps" :theadData="theadData" :listData="tableData" @handleClick="onTableClick">
@@ -331,6 +337,7 @@
   import AnchorPagination from 'Packages/pagination/src/pagination'
   import AnchorTable from 'Packages/table/src/table'
   import AnchorTbody from 'Packages/table-parts/src/table-body'
+  import AnchorBreadCrumb from 'Packages/bread-crumb/src/bread-crumb'
 
   import staticData from 'Examples/src/assets/js/model/demo'
 
@@ -349,6 +356,7 @@
       AnchorPagination,
       AnchorTable,
       AnchorTbody,
+      AnchorBreadCrumb,
     },
 
     methods: {

@@ -2,6 +2,12 @@
  * Created by liuzhimeng on 2017/7/19.
  */
 module.exports = {
+  breadcrumbData: [
+    {text: '云路由器', to: 'https://www.anchnet.com/'},
+    {text: '云路由器详情',},
+    {text: 'rtr-E10FA64',},
+  ],
+
   theadData: [
     {
       id: 'account_id',

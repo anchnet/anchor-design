@@ -27,7 +27,7 @@ export default {
       if (this.onChangeBack) {
         let args = Array.from(arguments).slice(1)
         this.onChangeBack.apply(null, args)
-      } else if (callback) {
+      } else if (typeof callback === 'function') {
         callback()
       }
     }

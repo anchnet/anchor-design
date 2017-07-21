@@ -2,6 +2,7 @@
 @import "~scss/variables";
 
 @include b('anchor-table'){
+  width: 100%;
   @include e('cell'){
     padding: 8px 6px;
     line-height: 1;

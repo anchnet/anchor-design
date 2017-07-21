@@ -1,5 +1,5 @@
 <template>
-  <div :class="['anchor-table-wrapper']">
+  <div :class="['anchor-table-wrapper']" :style="{'width': width ? width + 'px' : ''}">
     <table :class="['anchor-table']">
       <colgroup>
         <col v-if="hasCheckbox" width="12" />
@@ -48,6 +48,7 @@
     },
 
     props: {
+      width: [Number, String],
       theadData: Array,
       listData: Array,
       maps: Object,
