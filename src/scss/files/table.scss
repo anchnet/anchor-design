@@ -1,2 +1,31 @@
 @import "~scss/mixins";
 @import "~scss/variables";
+
+@include b('anchor-table'){
+  @include e('cell'){
+    padding: 8px 6px;
+    line-height: 1;
+    border-bottom: 1px solid $color-table-line;
+    vertical-align: middle;
+  }
+  @include e('element'){
+    height: 20px;
+    line-height: 20px;
+    font-size: $font-size-smaller;
+  }
+}
+
+@include b('anchor-thead'){
+  color: $color-tips;
+  .drop-down__on-display{
+    color: $color-tips !important;
+  }
+}
+
+@include b('anchor-tbody'){
+  border-left: 1px solid transparent;
+  &:hover{
+    border-left-color: $color-primary;
+    background-color: $color-table-background-hover;
+  }
+}

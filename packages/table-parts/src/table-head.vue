@@ -1,37 +1,49 @@
 <template>
   <thead :class="['anchor-thead']">
-    <tr>
-      <th
-        v-for="(item, key) in data"
-        :class="['anchor-thead__th']"
-      >
-        <anchor-element
-          :mode="item.mode"
-          :style="item.style"
-          :iconName="item.iconName"
-          :text="item.text"
-          :textConfig="item.textConfig"
-          :dropDownConfig="item.dropDownConfig"
-          :onChangeBack="onChangeBack.bind(null, item.id)"
-        />
-      </th>
-    </tr>
+  <tr>
+    <th v-if="hasCheckbox" :class="['anchor-table__cell']">
+      <anchor-input mode="checkbox" :isActive="selected" :disabled="disabled" @handleClick="onSelect" />
+    </th>
+    <th
+      v-for="(item, key) in data"
+      :class="['anchor-table__cell']"
+    >
+      <anchor-drop-down
+        v-if="item.type === 'dropDown'"
+        mode="simple"
+        :height="20"
+        :defaultText="item.text"
+        :isFilter="item.isFilter"
+        :data="maps[item.id] || []"
+        :onChangeBack="onDropDownClick.bind(null, item.id)"
+      />
+      <div v-else :class="['anchor-table__element']">{{item.text}}</div>
+    </th>
+  </tr>
   </thead>
 </template>
 
 <script>
-  import AnchorElement from 'Packages/nav/src/element'
+  import AnchorDropDown from 'Packages/drop-down/src/drop-down'
+  import AnchorInput from 'Packages/input/src/input'
 
   export default {
     name: 'anchor-thead',
 
     components: {
-      AnchorElement
+      AnchorDropDown, AnchorInput
     },
 
     props: {
+      selected: Boolean,
+      disabled: Boolean,
       data: Array,
-      maps: Object
+      maps: Object,
+      onClickBack: Function,
+      hasCheckbox: {
+        type: Boolean,
+        default: true
+      }
     },
 
     data () {
@@ -41,12 +53,17 @@
     },
 
     methods: {
-      onChangeBack (id) {
-        console.log(arguments)
+      onDropDownClick (theadId, item, key) {
+        if (this.onClickBack)
+          this.onClickBack({type: 'filters', theadId, item, key})
+      },
 
-      }
+      onSelect (checked) {
+        if (this.onClickBack)
+          this.onClickBack({type: 'select', checked})
+      },
     }
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/table-head" />
+<style lang="scss" src="Src/scss/files/table" />

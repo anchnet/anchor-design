@@ -84,7 +84,6 @@
       height: 6px;
       margin: auto;
       background: url(../../img/tick.svg) 0 0;
-      cursor: pointer;
     }
     @include m('active'){
       background-color: $color-primary;

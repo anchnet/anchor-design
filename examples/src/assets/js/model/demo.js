@@ -5,49 +5,65 @@ module.exports = {
   theadData: [
     {
       id: 'account_id',
-      mode: 'text',
-      text: '实例ID/名称'
+      text: '实例ID/名称',
     },
     {
       id: 'region',
-      mode: 'text',
-      text: '所在可用区'
+      text: '所在可用区',
     },
     {
       id: 'ip',
-      mode: 'text',
-      text: 'IP地址'
+      text: 'IP地址',
     },
     {
       id: 'status',
-      mode: 'dropDown',
-      dropDownConfig: {
-        text: '状态',
-        width: 50,
-        data: [
-          {id: 'all', value: '全部', cancelActive: true},
-          {id: 'running', value: '运行中'},
-          {id: 'stopped', value: '已关机'},
-        ]
-      }
+      text: '状态',
+      type: 'dropDown',
     },
     {
       id: 'network',
-      mode: 'dropDown',
-      dropDownConfig: {
-        text: '网络类型',
-        width: 80,
-        isFilter: true,
-        data: [
-          {id: 'vpc', value: 'VPC'},
-          {id: 'basic', value: '经典网络'},
-        ]
-      }
+      text: '网络类型',
+      type: 'dropDown',
     },
   ],
 
-  tableData: [
+  tableMaps: {
+    status: [
+      {id: 'all', value: '全部', cancelActive: true},
+      {id: 'running', value: '运行中'},
+      {id: 'stopped', value: '已关机'},
+    ],
+    network: [
+      {id: 'all', value: '全部', cancelActive: true},
+      {id: 'vpc', value: 'VPC'},
+      {id: 'basic', value: '经典网络'},
+    ],
+  },
 
+  tableData: [
+    {
+      account_id: 'ins-5ueq5zg8 / qy_test_3',
+      region: '美国西部 可用区 1',
+      ip: '192.168.1.1',
+      status: '运行中',
+      network: 'VPC',
+      active: true,
+      disabled: true,
+    },
+    {
+      account_id: 'ins-5ueq5zg8 / qy_test_3',
+      region: '美国西部 可用区 1',
+      ip: '192.168.1.1',
+      status: '运行中',
+      network: '经典网络',
+    },
+    {
+      account_id: 'ins-5ueq5zg8 / qy_test_3',
+      region: '美国西部 可用区 1',
+      ip: '192.168.1.1',
+      status: '已关机',
+      network: 'VPC',
+    },
   ],
 
   perUnit: {

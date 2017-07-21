@@ -49,7 +49,7 @@
               mode="checkbox"
               :isActive="item.active"
               :style="{'margin-right': '5px'}"
-              :onChangeBack="onChangeBack.bind(null, item, key)"
+              :onChangeBack="onCheckboxClick.bind(null, item, key)"
             />{{item.value}}</div>
         </li>
       </ul>
@@ -320,7 +320,7 @@
         }
       },
 
-      onChangeBack (item, key, status) {
+      onCheckboxClick (item, key, status) {
         this.onItemClick(item, key)
       }
     }

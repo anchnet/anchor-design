@@ -5,7 +5,21 @@
       <li>
         <h3>anchor-table</h3>
         <div class="demo-layout">
-          <anchor-table :theadData="theadData" :data="tableData" />
+          <anchor-table :maps="tableMaps" :theadData="theadData" :listData="tableData" @handleClick="onTableClick">
+            <template scope="props">
+              <anchor-tbody
+                v-for="(item, key) in props.data"
+                :key="key"
+                :selected="item.active"
+                :disabled="item.disabled"
+                :onSelectBack="onTbodySelect.bind(null, item, key)"
+              >
+                <td v-for="{ id } in theadData" :class="['anchor-table__cell']">
+                  <div :class="['anchor-table__element']">{{item[id]}}</div>
+                </td>
+              </anchor-tbody>
+            </template>
+          </anchor-table>
         </div>
       </li>
       <li>
@@ -316,6 +330,7 @@
   import AnchorSelectNumber from 'Packages/select-number/src/select-number'
   import AnchorPagination from 'Packages/pagination/src/pagination'
   import AnchorTable from 'Packages/table/src/table'
+  import AnchorTbody from 'Packages/table-parts/src/table-body'
 
   import staticData from 'Examples/src/assets/js/model/demo'
 
@@ -333,9 +348,19 @@
       AnchorSelectNumber,
       AnchorPagination,
       AnchorTable,
+      AnchorTbody,
     },
 
     methods: {
+      onTableClick (params) {
+        console.log(params)
+      },
+
+      onTbodySelect (item, key) {
+        let status = !this.tableData[key]['active']
+        this.$set(this.tableData[key], 'active', status)
+      },
+
       onPageChange (obj) {
         this.pageData = obj
       },
