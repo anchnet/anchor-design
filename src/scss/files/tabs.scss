@@ -1,0 +1,27 @@
+@import "~scss/mixins";
+@import "~scss/variables";
+
+@include b('anchor-tabs'){
+  @include e('card'){
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid $color-line;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    font-size: 0;
+    background-color: #ffffff;
+  }
+
+  @include e('element-wrapper'){
+    display: inline-block;
+  }
+
+  @include e('element'){
+    display: block;
+    padding: 14px 20px;
+  }
+
+  @include e('element-text'){
+    font-size: $font-size-smaller;
+  }
+}

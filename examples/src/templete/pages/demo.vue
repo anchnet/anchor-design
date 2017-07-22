@@ -3,6 +3,12 @@
     <anchor-nav :leftData="leftData" :middleData="middleData" :rightData="rightData" />
     <ol>
       <li>
+        <h3>anchor-tabs</h3>
+        <div class="demo-layout">
+          <anchor-tabs :data="tabsData" />
+        </div>
+      </li>
+      <li>
         <h3>anchor-bread-crumb</h3>
         <div class="demo-layout">
           <anchor-bread-crumb :data="breadcrumbData" />
@@ -338,6 +344,7 @@
   import AnchorTable from 'Packages/table/src/table'
   import AnchorTbody from 'Packages/table-parts/src/table-body'
   import AnchorBreadCrumb from 'Packages/bread-crumb/src/bread-crumb'
+  import AnchorTabs from 'Packages/tabs/src/tabs'
 
   import staticData from 'Examples/src/assets/js/model/demo'
 
@@ -357,6 +364,7 @@
       AnchorTable,
       AnchorTbody,
       AnchorBreadCrumb,
+      AnchorTabs,
     },
 
     methods: {

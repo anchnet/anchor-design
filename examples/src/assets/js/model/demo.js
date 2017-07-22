@@ -2,6 +2,14 @@
  * Created by liuzhimeng on 2017/7/19.
  */
 module.exports = {
+  tabsData: [
+    {text: 'DHCP服务'},
+    {text: '路由子网'},
+    {text: '端口转发'},
+    {text: '隧道服务'},
+    {text: 'VPN服务'},
+  ],
+
   breadcrumbData: [
     {text: '云路由器', to: 'https://www.anchnet.com/'},
     {text: '云路由器详情',},
