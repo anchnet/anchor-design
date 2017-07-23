@@ -58,6 +58,22 @@
 </template>
 
 <script>
+  /**
+   * params:
+   * mode {string} 'input' 输入框模式，分为：input（输入框）, search（搜索框）, radio（单选按钮）, checkbox（多选按钮）
+   * valueType {string} 'string' 输入框取值类型，分为'string'，'number'
+   * size {string} 'normal' 输入框尺寸
+   * digit {string, number} null valueType 为number 时，设置要保留的小数点位数
+   * initValue {string, number} null 输入框初始值
+   * defaultValue {string, number} null 输入框默认值, 当 valueType 为 number 时，若用户输入不合法，如果设置了 defaultValue，输入框会被重置 defaultValue
+   * alwaysFeedback {boolean} true 是否持续返回输入值，即采用 input 事件回调
+   * isActive {boolean} false 是否处于 active，仅在初始状态时有效
+   * alwaysActive {boolean} false 是否总是处于 active 状态
+   * disabled {boolean} false 是否处于禁用状态，禁止输入，并且优先级高于 isActive和 alwaysActive
+   * onChangeBack {function} 回调，无回调时采用this.$emit('handleClick', params) 触发父组件事件
+   * width {number} 输入框宽度
+   * height {number} 输入框高度
+   */
   import mixin from 'Src/libs/mixin'
 
   export default {

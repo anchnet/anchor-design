@@ -6,13 +6,13 @@
 
 > A Component Library For Vue.
 
-##install
+## install
 
 ```bash
 npm install anchor-design
 ```
 
-##start
+## start
 
 ```javascript
 import Vue from 'vue'
@@ -21,8 +21,10 @@ import anchorDesign from 'anchor-design'
 Vue.use(anchorDesign)
 ```
 
-##Instruction
+## Instruction
+
 Yet to be perfected...
 
-##LICENSE
+## LICENSE
+
 MIT

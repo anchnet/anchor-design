@@ -66,15 +66,21 @@
 
   /**
    * param
+   *   mode {string} 'normal'                    //菜单模式，分为'simple'，'normal'两种，默认为'normal'
+   *   hoverToShow {boolean} false               // 是否在 hover 时显示下拉菜单
+   *   isFilter { boolean} false                 // 是否采用可筛选模式，即下拉菜单中出现多选框
+   *   onShowIcon {string, boolean} ''           // 是否显示图标， 图标名称来源于 anchor-icon 组件
    *   width {number} 120                        //drop-down 宽度，默认为120px
    *   height {number} 28                        //drop-down 高度，默认为28px
+   *   size {string}                             //菜单尺寸, 内置多种菜单尺寸，['small', 'smaller', 'normal', 'larger', 'large']
+   *   onDisplayStyle {string}                   //要显示的菜单样式, 内置两种，['1', '2'】
    *   data {array} [{id: id1, value: value1}]   //列表数据
-   *   defaultId {string|number}                        //默认显示的数据的id，优先级最高
+   *   defaultId {string|number}                 //默认显示的数据的id，优先级最高
    *   defaultKey {string|number}                //默认显示的数据的key，优先级中，有 defaultId 时则无效
+   *   defaultText {string}                      //默认显示的文字，优先级低，有 defaultId/defaultKey 时则无效
    *   type {string}                             //列表数据类型，会影响显示样式，目前只有'image'字段可选，默认无
    *   hasDot {boolean}                          //列表数据前是否有小圆点，默认无
    *   onChangeBack {function}                   //点击列表数据时触发回调
-   *   defaultText {string}                      //默认显示的文字，优先级低，有 defaultId/defaultKey 时则无效
    */
   export default {
     name: 'anchor-drop-down',
@@ -140,6 +146,10 @@
           'smaller': {
             width: 80,
             height: 20
+          },
+          'normal': {
+            width: 120,
+            height: 28
           }
         }
       }

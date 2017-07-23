@@ -13,6 +13,14 @@
 </template>
 
 <script>
+  /**
+   * params:
+   * name {string} 'dot' 图标名称，格式采用'xxx__xx'，中间用双下划线分隔
+   * active {boolean} false 是否处于 active 状态
+   * disabled {boolean} false 是否处于禁用状态
+   * isRotating {boolean} false 是否进行旋转
+   * direction {string} '' 旋转方向, 'top-down': 上下旋转，'left-right': 左右旋转
+   */
   import mixin from 'Src/libs/mixin'
 
   export default {
@@ -30,10 +38,6 @@
         default: false
       },
       disabled: {
-        type: Boolean,
-        default: false
-      },
-      loadAnimation: {
         type: Boolean,
         default: false
       },

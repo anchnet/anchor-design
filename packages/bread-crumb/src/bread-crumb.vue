@@ -14,6 +14,11 @@
 </template>
 
 <script>
+  /**
+   * data [array] 面包屑数据，可点击元素用 link 设定跳转路由
+   *    例如: [{text: 'text1', link: 'https:www.anchner.com/'}, {text: 'text2']]
+   * separator [string] 自定义分隔符，默认为'>'
+   */
   export default {
     name: 'anchor-bread-crumb',
 
