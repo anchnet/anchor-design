@@ -3,11 +3,11 @@
  */
 module.exports = {
   tabsData: [
-    {text: 'DHCP服务'},
-    {text: '路由子网'},
-    {text: '端口转发'},
-    {text: '隧道服务'},
-    {text: 'VPN服务'},
+    {id: 'dhcp', value: 'DHCP服务'},
+    {id: 'vxnet', value: '路由子网'},
+    {id: 'port', value: '端口转发', active: true},
+    {id: 'tunnel', value: '隧道服务', link: 'https://www.anchnet.com/'},
+    {id: 'vpn', value: 'VPN服务'},
   ],
 
   breadcrumbData: [

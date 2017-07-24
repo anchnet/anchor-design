@@ -19,6 +19,8 @@ class VQuery {
       }
     } else if (element.nodeType && element.nodeType === 1) {
       $selector = element
+    } else if (element[0].nodeType && element[0].nodeType === 1) {
+      $selector = element
     } else {
       $selector = this
     }
@@ -125,9 +127,9 @@ class VQuery {
 
   // 注销事件
   off (type, handler, useCapture) {
-    if (this.selector.removeEventListener) {
+    if (document.removeEventListener) {
       this._handleSelector('removeEventListener', type, handler.bind(this), useCapture)
-    } else if (this.selector.detachEvent) {
+    } else if (document.detachEvent) {
       this._handleSelector('detachEvent', 'on' + type, handler.bind(this))
     } else {
       this._handleSelector('dom0', 'on' + type, null)
@@ -169,16 +171,28 @@ class VQuery {
         this.selector.style[attr] = value
       }
     } else {
-      let $selector = this.selector
-      if (typeof this.selector.length === 'number') {
-        $selector = this.selector[0]
-      }
+      let $selector = this._getNode()
       if (['width', 'height'].includes(attr)) {
         return this._getElementSize($selector, attr)
       } else {
         return $selector.style[attr]
       }
     }
+  }
+
+  offset () {
+    let $selector = this._getNode()
+    let offset = {
+      left: $selector.offsetLeft,
+      top: $selector.offsetTop,
+    }
+    let parent = $selector.offsetParent
+    while (parent !== null) {
+      offset.left += parent.offsetLeft
+      offset.top += parent.offsetTop
+      parent = parent.offsetParent
+    }
+    return offset
   }
 
   // 获取可见元素宽度

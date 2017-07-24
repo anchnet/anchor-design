@@ -5,7 +5,10 @@
       <li>
         <h3>anchor-tabs</h3>
         <div class="demo-layout">
-          <anchor-tabs :data="tabsData" />
+          <anchor-tabs :data="tabsData" targetText="_blank" />
+        </div>
+        <div class="demo-layout">
+          <anchor-tabs mode="list" :data="tabsData" targetText="_blank" />
         </div>
       </li>
       <li>

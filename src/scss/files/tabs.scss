@@ -2,9 +2,11 @@
 @import "~scss/variables";
 
 @include b('anchor-tabs'){
+  position: relative;
   @include e('card'){
-    display: block;
     width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
     border-bottom: 1px solid $color-line;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -12,16 +14,82 @@
     background-color: #ffffff;
   }
 
+  @include e('triangle'){
+    position: absolute;
+    top: 0;
+    left: calc(45%);
+    left: calc(50% - 6px);
+  }
+
   @include e('element-wrapper'){
+    position: relative;
     display: inline-block;
+    margin-bottom: -1px;
+    border: 1px solid $color-line;
+    border-left: none;
+    box-sizing: border-box;
+    background-color: $color-base-background;
+
+    @include m('active'){
+      top: 1px;
+      border-top: 2px solid $color-primary;
+      border-bottom: 1px solid #ffffff;
+      background-color: #ffffff;
+
+      .anchor-tabs__element-text{
+        color: $color-primary;
+      }
+    }
+  }
+  .anchor-tabs__element-wrapper:first-child{
+    border-left: 1px solid $color-line;
   }
 
   @include e('element'){
     display: block;
-    padding: 14px 20px;
+    padding: 10px 15px;
+    &:hover{
+      cursor: pointer;
+      .anchor-tabs__element-text{
+        color: $color-primary;
+      }
+    }
   }
 
   @include e('element-text'){
     font-size: $font-size-smaller;
   }
+
+  @include e('list'){
+    display: block;
+    width: 100%;
+    padding: 0 20px;
+    border-bottom: 1px solid $color-line;
+    box-sizing: border-box;
+    background-color: #ffffff;
+
+    .anchor-tabs__element-wrapper{
+      border: none;
+      margin-bottom: 0;
+      background-color: #ffffff;
+    }
+    .anchor-tabs__element-wrapper:first-child{
+      border-left: none;
+    }
+    .anchor-tabs__element-wrapper--active{
+      top: 0;
+    }
+  }
+
+  @include e('element-line'){
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100px;
+    background-color: $color-primary;
+    transition: left .3s, width .3s;
+  }
+
 }
