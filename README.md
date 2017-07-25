@@ -1,8 +1,8 @@
 # Anchor Design
 
 [![Build Status](https://travis-ci.org/51idc/anchor-ui.svg?branch=master)](https://travis-ci.org/51idc/anchor-ui)
+[![NPM downloads](https://img.shields.io/npm/dt/anchor-design.svg)](https://www.npmjs.com/package/anchor-design)
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/anchor-design)
-[![NPM downloads](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/anchor-design)
 
 > A Component Library For Vue.
 
