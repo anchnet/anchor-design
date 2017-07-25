@@ -15,7 +15,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/51idc/anchor-ui.git"
+    "url": "git+https://github.com/51idc/anchor-design.git"
   },
   "keywords": [
     "anchor",
@@ -24,9 +24,9 @@
     "ui"
   ],
   "bugs": {
-    "url": "https://github.com/51idc/anchor-ui/issues"
+    "url": "https://github.com/51idc/anchor-design/issues"
   },
-  "homepage": "https://github.com/51idc/anchor-ui#readme",
+  "homepage": "https://github.com/51idc/anchor-design#readme",
   "peerDependencies": {
     "vue": "^2.3.4"
   },
