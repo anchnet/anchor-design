@@ -30,7 +30,7 @@
                 :disabled="item.disabled"
                 :onSelectBack="onTbodySelect.bind(null, item, key)"
               >
-                <div :slot="`td_${key}`" v-for="(value, key) in props.theadData" :class="['anchor-table__element']">{{item[value.id]}}</div>
+                <div :slot="`td_${key}`" v-for="(value, key) in theadData" :class="['anchor-table__element']">{{item[value.id]}}</div>
               </anchor-tbody>
             </template>
           </anchor-table>
