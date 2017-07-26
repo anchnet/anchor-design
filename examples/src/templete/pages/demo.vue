@@ -23,15 +23,14 @@
           <anchor-table :maps="tableMaps" :theadData="theadData" :listData="tableData" @handleClick="onTableClick">
             <template scope="props">
               <anchor-tbody
+                :theadData="theadData"
                 v-for="(item, key) in props.data"
                 :key="key"
                 :selected="item.active"
                 :disabled="item.disabled"
                 :onSelectBack="onTbodySelect.bind(null, item, key)"
               >
-                <td v-for="{ id } in theadData" :class="['anchor-table__cell']">
-                  <div :class="['anchor-table__element']">{{item[id]}}</div>
-                </td>
+                <div :slot="`td_${key}`" v-for="(value, key) in props.theadData" :class="['anchor-table__element']">{{item[value.id]}}</div>
               </anchor-tbody>
             </template>
           </anchor-table>

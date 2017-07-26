@@ -21,9 +21,19 @@ import anchorDesign from 'anchor-design'
 Vue.use(anchorDesign)
 ```
 
-## Instruction
+## Instruction && Documents
 
-Yet to be perfected...
+[https://anchnet.gitbooks.io/anchor-design/content/](https://anchnet.gitbooks.io/anchor-design/content/)
+
+## 贡献者列表
+
+> 动态更新，排名不分先后
+
+* [戴立勤](https://github.com/xiaoda)
+
+## 作者
+
+* [Zhimeng Liu](https://github.com/liuzmeng)
 
 ## LICENSE
 

@@ -9,7 +9,9 @@
         @handleClick="onSelect"
       />
     </td>
-    <slot></slot>
+    <td v-for="(item, key) in theadData" :class="['anchor-table__cell']">
+      <slot :name="`td_${key}`"></slot>
+    </td>
   </tr>
   <slot name="tr"></slot>
   </tbody>
@@ -26,6 +28,7 @@
     },
 
     props: {
+      theadData: Array,
       disabled: Boolean,
       selected: Boolean,
       hasCheckbox: {

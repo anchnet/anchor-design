@@ -18,7 +18,7 @@
         :maps="maps"
         :onClickBack="onHeadClick"
       />
-      <slot :data="ListData">
+      <slot :data="ListData" :theadData="theadData">
         <!--<anchor-tbody-->
           <!--:key="key"-->
           <!--v-for="(item, key) in ListData"-->
