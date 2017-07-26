@@ -1,17 +1,16 @@
 <template>
   <tbody :class="['anchor-tbody']">
   <tr>
-    <td v-if="hasCheckbox" :class="['anchor-table__cell']">
+    <td v-if="hasPlaceholder" :class="['anchor-table__cell']">
       <anchor-input
+        v-if="hasCheckbox"
         mode="checkbox"
-        :disabled="disabled"
-        :isActive="!!selected"
+        :disabled="Data[dataKey] && Data[dataKey]['disabled']"
+        :isActive="Data[dataKey] && Data[dataKey]['active']"
         @handleClick="onSelect"
       />
     </td>
-    <td v-for="(item, key) in theadData" :class="['anchor-table__cell']">
-      <slot :name="`td_${key}`"></slot>
-    </td>
+    <slot></slot>
   </tr>
   <slot name="tr"></slot>
   </tbody>
@@ -24,13 +23,17 @@
     name: 'anchor-tbody',
 
     components: {
-      AnchorInput
+      AnchorInput,
     },
 
     props: {
-      theadData: Array,
-      disabled: Boolean,
-      selected: Boolean,
+      dataKey: Number,
+      data: Array,
+      component: String,
+      hasPlaceholder: {
+        type: Boolean,
+        default: true
+      },
       hasCheckbox: {
         type: Boolean,
         default: true
@@ -38,8 +41,26 @@
       onSelectBack: Function,
     },
 
+    data () {
+      return {
+        Data: this.data || [],
+      }
+    },
+
+    watch: {
+      deep: true,
+      handler (val) {
+        this.Data = val
+      }
+    },
+
     methods: {
       onSelect (checked) {
+        if (this.hasPlaceholder && this.hasCheckbox) {
+          if (this.Data.length && this.dataKey > -1) {
+            this.$set(this.Data[this.dataKey], 'active', checked)
+          }
+        }
         if (this.onSelectBack) this.onSelectBack(checked)
       }
     }

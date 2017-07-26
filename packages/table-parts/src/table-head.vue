@@ -38,7 +38,12 @@
       selected: Boolean,
       disabled: Boolean,
       data: Array,
-      maps: Object,
+      maps: {
+        type: Object,
+        default () {
+          return {}
+        }
+      },
       onClickBack: Function,
       hasCheckbox: {
         type: Boolean,

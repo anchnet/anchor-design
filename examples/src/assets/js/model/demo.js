@@ -54,7 +54,7 @@ module.exports = {
     ],
   },
 
-  tableData: [
+  listData: [
     {
       account_id: 'ins-5ueq5zg8 / qy_test_3',
       region: '美国西部 可用区 1',

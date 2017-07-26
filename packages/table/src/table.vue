@@ -18,16 +18,7 @@
         :maps="maps"
         :onClickBack="onHeadClick"
       />
-      <slot :data="ListData" :theadData="theadData">
-        <!--<anchor-tbody-->
-          <!--:key="key"-->
-          <!--v-for="(item, key) in ListData"-->
-          <!--:hasCheckbox="hasCheckbox"-->
-          <!--:selected="item.active"-->
-          <!--:onSelectBack="hasCheckbox ? onBodySelect.bind(null, key) : ''"-->
-        <!--&gt;-->
-        <!--</anchor-tbody>-->
-      </slot>
+      <slot></slot>
     </table>
   </div>
 </template>
@@ -51,7 +42,12 @@
       width: [Number, String],
       theadData: Array,
       listData: Array,
-      maps: Object,
+      maps: {
+        type: Object,
+        default () {
+          return {}
+        }
+      },
       onChangeBack: Function,
 
       defineCol: {
@@ -79,6 +75,7 @@
     watch: {
       listData: {
         immediate: true,
+        deep: true,
         handler (val) {
           let count = 0
           let allDisabled = true
@@ -99,9 +96,9 @@
             notChekced: count === 0
           }
           this.selectedData = selectedData
+          this.ListData = val
           this.triggerBack()
         },
-        deep: true,
       }
     },
 

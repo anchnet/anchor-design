@@ -20,19 +20,17 @@
       <li>
         <h3>anchor-table</h3>
         <div class="demo-layout">
-          <anchor-table :maps="tableMaps" :theadData="theadData" :listData="tableData" @handleClick="onTableClick">
-            <template scope="props">
-              <anchor-tbody
-                :theadData="theadData"
-                v-for="(item, key) in props.data"
-                :key="key"
-                :selected="item.active"
-                :disabled="item.disabled"
-                :onSelectBack="onTbodySelect.bind(null, item, key)"
-              >
-                <div :slot="`td_${key}`" v-for="(value, key) in theadData" :class="['anchor-table__element']">{{item[value.id]}}</div>
-              </anchor-tbody>
-            </template>
+          <anchor-table :maps="tableMaps" :theadData="theadData" :listData="listData" @handleClick="onTableClick">
+            <anchor-tbody
+              v-for="(item, key) in listData"
+              :key="key"
+              :dataKey="key"
+              :data="listData"
+            >
+              <td v-for="{id} in theadData" :class="['anchor-table__cell']">
+                <div slot="name" :class="['anchor-table__element']">{{item[id]}}</div>
+              </td>
+            </anchor-tbody>
           </anchor-table>
         </div>
       </li>
@@ -371,12 +369,7 @@
 
     methods: {
       onTableClick (params) {
-        console.log(params)
-      },
-
-      onTbodySelect (item, key) {
-        let status = !this.tableData[key]['active']
-        this.$set(this.tableData[key], 'active', status)
+        console.log('demo', params)
       },
 
       onPageChange (obj) {
