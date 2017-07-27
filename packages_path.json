@@ -15,5 +15,6 @@
   "anchor-pagination": "./packages/pagination/index.js",
   "anchor-table": "./packages/table/index.js",
   "anchor-tbody": "./packages/table-body/index.js",
+  "anchor-tcell": "./packages/table-cell/index.js",
   "anchor-tabs": "./packages/tabs/index.js"
 }
