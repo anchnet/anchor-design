@@ -4,6 +4,7 @@ module.exports = {
   dev: {
     env: require('./dev.env'),
     entry: './examples/main.js',
+    demoEntry: './examples/demo/main.js',
     port: 9088,
     cssSourceMap: false,
     publicPath: '',

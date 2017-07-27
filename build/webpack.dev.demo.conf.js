@@ -6,7 +6,7 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = merge(baseWebpackConfig, {
-  entry: env.dev.entry,
+  entry: env.dev.demoEntry,
 
   output: {
     path: utils.webpackResolve('dist/static/'),
@@ -31,7 +31,7 @@ module.exports = merge(baseWebpackConfig, {
 
     new HtmlWebpackPlugin({
       inject: true,
-      template: utils.webpackResolve('examples/index.html')
+      template: utils.webpackResolve('examples/demo/index.html')
     })
   ]
 })

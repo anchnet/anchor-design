@@ -3,21 +3,23 @@
 
 @include b('anchor-table'){
   width: 100%;
-  @include e('cell'){
+  th, td{
     padding: 8px 6px;
-    line-height: 1;
-    border-bottom: 1px solid $color-table-line;
-    vertical-align: middle;
-  }
-  @include e('element'){
     height: 20px;
     line-height: 20px;
+    border-bottom: 1px solid $color-table-line;
+    vertical-align: middle;
     font-size: $font-size-smaller;
+    font-weight: normal;
+    color: $color-tips;
+  }
+  @include e('element'){
+    font-size: $font-size-smaller;
+    color: $color-base;
   }
 }
 
 @include b('anchor-thead'){
-  color: $color-tips;
   .drop-down__on-display{
     color: $color-tips !important;
   }

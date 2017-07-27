@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>demo</title>
+  <style>
+    ol{
+      padding: 20px 40px;
+      list-style: decimal;
+      line-height: 2;
+    }
+    ol li h3{
+      font-size: 16px;
+      color: #E2003B;
+    }
+    ol .demo-layout{
+      margin: 10px 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+<div id="demo">
+  <ol>
+    <li>
+      <h3>anchor-table</h3>
+      <div class="demo-layout">
+        <anchor-table :maps="tableMaps" :thead-data="theadData" :list-data="listData" @handle-click="onTableClick">
+          <anchor-tbody
+            v-for="(item, key) in listData"
+            :key="key"
+            :data-key="key"
+            :data="listData"
+          >
+            <table-cell :key="index" v-for="(value, index) in theadData">
+              <div class="anchor-table__element">{{item[value.id]}}</div>
+            </table-cell>
+          </anchor-tbody>
+        </anchor-table>
+      </div>
+    </li>
+  </ol>
+</div>
+</body>
+</html>

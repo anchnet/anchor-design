@@ -207,7 +207,7 @@
           <li>
             <h3>数字框</h3>
             <div class="demo-layout">
-              <anchor-input :alwaysFeedback="false" valueType="number" :digit="4" :initValue="88" :width="100" @onChange="changeValue" />
+              <anchor-input :alwaysFeedback="false" valueType="number" :digit="4" :initValue="88" :width="100" @onChange="changeValue('input', ...arguments)" />
             </div>
             <p class="text">{{inputNumber}}</p>
           </li>
@@ -376,7 +376,7 @@
         this.pageData = obj
       },
 
-      changeValue (val, oldVal) {
+      changeValue (type, val, oldVal) {
         this.inputNumber = val
       },
 

@@ -1,7 +1,7 @@
 <template>
   <tbody :class="['anchor-tbody']">
   <tr>
-    <td v-if="hasPlaceholder" :class="['anchor-table__cell']">
+    <td v-if="hasPlaceholder">
       <anchor-input
         v-if="hasCheckbox"
         mode="checkbox"
@@ -66,5 +66,3 @@
     }
   }
 </script>
-
-<style lang="scss" src="Src/scss/files/table" />

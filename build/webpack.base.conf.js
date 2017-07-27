@@ -8,14 +8,6 @@ const autoprefixer = require('autoprefixer')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
-  entry: env.dev.entry,
-
-  output: {
-    path: utils.webpackResolve('dist/static/'),
-    publicPath: env.dev.publicPath,
-    filename: '[name].js'
-  },
-
   resolve: {
     extensions: ['.vue', '.js', '.scss', '.json'],
     modules: [utils.webpackResolve('packages'), 'node_modules'],

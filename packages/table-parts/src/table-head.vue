@@ -1,13 +1,10 @@
 <template>
   <thead :class="['anchor-thead']">
   <tr>
-    <th v-if="hasCheckbox" :class="['anchor-table__cell']">
+    <th v-if="hasCheckbox">
       <anchor-input mode="checkbox" :isActive="selected" :disabled="disabled" @handleClick="onSelect" />
     </th>
-    <th
-      v-for="(item, key) in data"
-      :class="['anchor-table__cell']"
-    >
+    <th v-for="(item, key) in data">
       <anchor-drop-down
         v-if="item.type === 'dropDown'"
         mode="simple"
@@ -17,7 +14,7 @@
         :data="maps[item.id] || []"
         :onChangeBack="onDropDownClick.bind(null, item.id)"
       />
-      <div v-else :class="['anchor-table__element']">{{item.text}}</div>
+      <div v-else>{{item.text}}</div>
     </th>
   </tr>
   </thead>
@@ -70,5 +67,3 @@
     }
   }
 </script>
-
-<style lang="scss" src="Src/scss/files/table" />
