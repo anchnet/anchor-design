@@ -14,6 +14,7 @@ import AnchorSelectNumber from '../packages/select-number/index.js'
 import AnchorPagination from '../packages/pagination/index.js'
 import AnchorTable from '../packages/table/index.js'
 import AnchorTbody from '../packages/table-body/index.js'
+import AnchorTcell from '../packages/table-cell/index.js'
 import AnchorBreadCrumb from '../packages/bread-crumb/index.js'
 import AnchorTabs from '../packages/tabs/index.js'
 
@@ -34,6 +35,7 @@ const components = [
   AnchorPagination,
   AnchorTable,
   AnchorTbody,
+  AnchorTcell,
   AnchorBreadCrumb,
   AnchorTabs,
 ]
@@ -50,7 +52,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
-  version: '0.16.2',
+  version: '0.17.0',
   install,
   AnchorIcon,
   AnchorMenuGroup,
@@ -68,6 +70,7 @@ module.exports = {
   AnchorPagination,
   AnchorTable,
   AnchorTbody,
+  AnchorTcell,
   AnchorBreadCrumb,
   AnchorTabs,
 }

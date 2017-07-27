@@ -32,9 +32,21 @@
             :data-key="key"
             :data="listData"
           >
-            <table-cell :key="index" v-for="(value, index) in theadData">
-              <div class="anchor-table__element">{{item[value.id]}}</div>
-            </table-cell>
+            <anchor-tcell>
+              <div class="anchor-table__element">{{item.account_id}}</div>
+            </anchor-tcell>
+            <anchor-tcell>
+              <div class="anchor-table__element">{{item.region}}</div>
+            </anchor-tcell>
+            <anchor-tcell>
+              <div class="anchor-table__element">{{item.ip}}</div>
+            </anchor-tcell>
+            <anchor-tcell>
+              <div class="anchor-table__element">{{item.status}}</div>
+            </anchor-tcell>
+            <anchor-tcell>
+              <div class="anchor-table__element">{{item.network}}</div>
+            </anchor-tcell>
           </anchor-tbody>
         </anchor-table>
       </div>

@@ -4,18 +4,15 @@
 import Vue from 'vue'
 import AnchorTable from 'Packages/table/src/table'
 import AnchorTbody from 'Packages/table-parts/src/table-body'
+import AnchorTcell from 'Packages/table-parts/src/table-cell'
 
 import staticData from 'Examples/demo/model/demo'
-
-const TableCell = {
-  template: '<td><slot></slot></td>'
-}
 
 const Demo = {
   components: {
     AnchorTable,
     AnchorTbody,
-    TableCell,
+    AnchorTcell,
   },
 
   data () {
