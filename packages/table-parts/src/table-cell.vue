@@ -4,6 +4,6 @@
 
 <script>
   export default {
-    name: 'anchor-table-cell'
+    name: 'anchor-tcell'
   }
 </script>
