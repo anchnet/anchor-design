@@ -3,11 +3,13 @@ const path = require('path')
 module.exports = {
   dev: {
     env: require('./dev.env'),
-    entry: './examples/main.js',
-    demoEntry: './examples/demo/main.js',
+    entry: {
+      main: './examples/main.js',
+      demo: './examples/demo/main.js'
+    },
     port: 9088,
     cssSourceMap: false,
-    publicPath: '',
+    publicPath: '/',
     subDirectory: 'static'
   },
   build: {

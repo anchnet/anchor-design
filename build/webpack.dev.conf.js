@@ -30,8 +30,17 @@ module.exports = merge(baseWebpackConfig, {
     }),
 
     new HtmlWebpackPlugin({
+      template: utils.webpackResolve('examples/index.html'),
       inject: true,
-      template: utils.webpackResolve('examples/index.html')
+      chunks: ['main'],
+      filename: 'index.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: utils.webpackResolve('examples/demo/index.html'),
+      inject: true,
+      chunks: ['demo'],
+      filename: 'demo/index.html'
     })
   ]
 })
