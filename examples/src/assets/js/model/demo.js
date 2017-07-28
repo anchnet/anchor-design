@@ -173,93 +173,18 @@ module.exports = {
   currentImageType: 'default',
   currentImageVersion: '',
 
-  leftData: [
-    {
-      id: 'left1',
-      mode: 'icon',
-      iconName: 'device-colored__volume',
-      style: {'margin': '0 20px 0 20px'}
-    },
-    {
-      id: 'left2',
-      mode: 'text',
-      style: {'margin': '0 20px 0 0'},
-      text: '可以只显示文字'
-    },
-    {
-      id: 'left3',
-      mode: 'text',
-      style: {'margin': '0 20px 0 0'},
-      textConfig: {
-        text: '给文字加链接',
-        link: 'https://www.anchnet.com/',
-        target: '_blank'
-      },
-    },
-    {
-      id: 'left4',
-      mode: 'dropDown',
-      dropDownConfig: {
-        text: '显示下拉菜单',
-        width: 106,
-        data: [
-          {id: 'instance', value: '云服务器'},
-          {id: 'rdb', value: '云数据库'},
-        ]
-      }
-    }
-  ],
-
-  middleData: [
-    {
-      id: 'middle1',
-      mode: 'icon-text',
-      iconName: 'device-colored__volume',
-      style: {'margin': '0 20px 0 0'},
-      textConfig: {
-        text: '居中显示组',
-        link: 'https://www.anchnet.com/',
-        target: '_blank'
-      }
-    },
-    {
-      id: 'middle2',
-      mode: 'icon-text',
-      iconName: 'device-colored__hosting',
-      style: {'margin': '0 20px 0 0'},
-      textConfig: {
-        text: '显示图标和文字'
-      },
-    }
-  ],
-
-  rightData: [
-    {
-      id: 'right1',
-      mode: 'dropDown',
-      style: {'margin': '0 40px 0 0'},
-      dropDownConfig: {
-        text: '给下拉列表加链接',
-        width: 140,
-        data: [
-          {id: 'instance', value: '云服务器', link: 'https://www.anchnet.com/'},
-          {id: 'rdb', value: '云数据库', link: 'https://www.baidu.com/'}
-        ]
-      }
-    },
-    {
-      id: 'right2',
-      mode: 'icon-dropDown',
-      style: {'margin': '0 20px 0 0'},
-      iconName: 'device-colored__dServer',
-      dropDownConfig: {
-        text: '可以显示图标和菜单',
-        width: 180,
-        data: [
-          {id: 'router', value: '云路由器'},
-          {id: 'loadbalancer', value: '云负载均衡器'}
-        ]
-      }
-    }
-  ]
+  menuData: {
+    'mainTitle1': {id: 'mainTitle1', type: 'title', children: ['subTitle1-1', 'subTitle1-2'], text: '主标题名称1', iconName: 'device-white-black__instance', isRoot: true},
+    'subTitle1-1': {id: 'subTitle1-1', type: 'title', children: ['content1-1-1', 'content1-1-2'], text: '副标题名称1-1', hasDot: true, clickable: true},
+    'content1-1-1': {id: 'content1-1-1', type: 'content', text: '菜单内容1-1-1', clickable: true},
+    'content1-1-2': {id: 'content1-1-2', type: 'content', text: '菜单内容1-1-2', clickable: true},
+    'subTitle1-2': {id: 'subTitle1-2', type: 'title', children: ['content1-2-1'], text: '副标题名称1-2', hasDot: true, clickable: true},
+    'content1-2-1': {id: 'content1-2-1', type: 'content', text: '菜单内容1-2-1', clickable: true},
+    'mainTitle2': {id: 'mainTitle2', type: 'title', children: ['subTitle2-1', 'subTitle2-2'], text: '主标题名称2', iconName: 'device-white-black__rdb', isRoot: true},
+    'subTitle2-1': {id: 'subTitle2-1', type: 'title', text: '副标题名称2-1', hasDot: true, clickable: true},
+    'subTitle2-2': {id: 'subTitle2-2', type: 'title', children: ['content2-2-1'], text: '副标题名称2-2', hasDot: true, clickable: false},
+    'content2-2-1': {id: 'content2-2-1', type: 'content', text: '菜单内容2-2-1', clickable: true},
+    'mainTitle3': {id: 'mainTitle3', type: 'title', children: ['content3-0-1'], text: '主标题名称3', iconName: 'device-white-black__volume', isRoot: true},
+    'content3-0-1': {id: 'content3-0-1', type: 'content', text: '菜单内容3-0-1', clickable: true}
+  }
 }

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <anchor-nav :leftData="leftData" :middleData="middleData" :rightData="rightData" />
     <ol>
       <li>
         <h3>anchor-checkbox</h3>
@@ -322,7 +321,7 @@
       <li>
         <h3>anchor-menu-vertical</h3>
         <div class="demo-layout">
-          <anchor-menu-vertical></anchor-menu-vertical>
+          <anchor-menu-vertical :data="menuData"/>
         </div>
       </li>
       <li>
@@ -350,7 +349,6 @@
   import AnchorButton from 'Packages/button/src/button'
   import AnchorInput from 'Packages/input/src/input'
   import AnchorSearch from 'Packages/search/src/search'
-  import AnchorNav from 'Packages/nav/src/nav'
   import AnchorSelectNumber from 'Packages/select-number/src/select-number'
   import AnchorPagination from 'Packages/pagination/src/pagination'
   import AnchorTable from 'Packages/table/src/table'
@@ -372,7 +370,6 @@
       AnchorButton,
       AnchorInput,
       AnchorSearch,
-      AnchorNav,
       AnchorSelectNumber,
       AnchorPagination,
       AnchorTable,
