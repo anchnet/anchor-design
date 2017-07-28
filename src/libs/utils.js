@@ -106,9 +106,9 @@ const utils = (function () {
     },
 
     /* 生成组件id */
-    generateComponentId (component) {
+    generateComponentId (componentId) {
       let prefix = ""
-      if (component) prefix = `${component}-id-`
+      if (componentId) prefix = `${componentId}_id-`
       let date = new Date().getTime()
       let uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
         let r = (date + Math.random() * 16) % 16 | 0

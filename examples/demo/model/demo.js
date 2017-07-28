@@ -3,28 +3,11 @@
  */
 module.exports = {
   theadData: [
-    {
-      id: 'account_id',
-      text: '实例ID/名称',
-    },
-    {
-      id: 'region',
-      text: '所在可用区',
-    },
-    {
-      id: 'ip',
-      text: 'IP地址',
-    },
-    {
-      id: 'status',
-      text: '状态',
-      type: 'dropDown',
-    },
-    {
-      id: 'network',
-      text: '网络类型',
-      type: 'dropDown',
-    },
+    {id: 'account_id', text: '实例ID/名称',},
+    {id: 'region', text: '所在可用区',},
+    {id: 'ip', text: 'IP地址',},
+    {id: 'status', text: '状态', type: 'dropDown',},
+    {id: 'network', text: '网络类型', type: 'dropDown',},
   ],
 
   listData: [

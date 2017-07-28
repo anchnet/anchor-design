@@ -1,0 +1,30 @@
+@import "~scss/mixins";
+@import "~scss/variables";
+
+@include b('anchor-checkbox'){
+  display: inline-block;
+  vertical-align: middle;
+
+  @include e('element'){
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+    font-size: $font-size-smaller;
+    color: $color-base;
+    cursor: pointer;
+
+    @include m('disabled'){
+      cursor: not-allowed;
+      color: $color-forbidden-font;
+    }
+  }
+  .anchor-checkbox__element + .anchor-checkbox__element{
+    margin-left: 20px;
+  }
+
+  @include e('button'){
+    position: relative;
+    top: -1px;
+    margin-right: 3px;
+  }
+}

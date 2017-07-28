@@ -2,6 +2,22 @@
  * Created by liuzhimeng on 2017/7/19.
  */
 module.exports = {
+  checkboxData: [
+    {id: 'xiaomi', value: '小米',},
+    {id: 'huawei', value: '华为', active: true,},
+    {id: 'lenovo', value: '联想',},
+    {id: 'chuizi', value: '锤子', disabled: true, active: true,},
+    {id: 'sanxing', value: '三星', disabled: true,},
+  ],
+
+  radioData: [
+    {id: 'xiaomi', value: '小米',},
+    {id: 'huawei', value: '华为', active: true,},
+    {id: 'lenovo', value: '联想',},
+    {id: 'chuizi', value: '锤子',},
+    {id: 'sanxing', value: '三星', disabled: true,},
+  ],
+
   tabsData: [
     {id: 'dhcp', value: 'DHCP服务'},
     {id: 'vxnet', value: '路由子网'},
@@ -17,28 +33,11 @@ module.exports = {
   ],
 
   theadData: [
-    {
-      id: 'account_id',
-      text: '实例ID/名称',
-    },
-    {
-      id: 'region',
-      text: '所在可用区',
-    },
-    {
-      id: 'ip',
-      text: 'IP地址',
-    },
-    {
-      id: 'status',
-      text: '状态',
-      type: 'dropDown',
-    },
-    {
-      id: 'network',
-      text: '网络类型',
-      type: 'dropDown',
-    },
+    {id: 'account_id', text: '实例ID/名称',},
+    {id: 'region', text: '所在可用区',},
+    {id: 'ip', text: 'IP地址',},
+    {id: 'status', text: '状态', type: 'dropDown',},
+    {id: 'network', text: '网络类型', type: 'dropDown',},
   ],
 
   tableMaps: {

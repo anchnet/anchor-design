@@ -3,6 +3,18 @@
     <anchor-nav :leftData="leftData" :middleData="middleData" :rightData="rightData" />
     <ol>
       <li>
+        <h3>anchor-checkbox</h3>
+        <div class="demo-layout">
+          <anchor-checkbox :data="checkboxData" />
+        </div>
+      </li>
+      <li>
+        <h3>anchor-radio</h3>
+        <div class="demo-layout">
+          <anchor-radio :data="radioData" />
+        </div>
+      </li>
+      <li>
         <h3>anchor-tabs</h3>
         <div class="demo-layout">
           <anchor-tabs :data="tabsData" targetText="_blank" />
@@ -345,6 +357,8 @@
   import AnchorTbody from 'Packages/table-parts/src/table-body'
   import AnchorBreadCrumb from 'Packages/bread-crumb/src/bread-crumb'
   import AnchorTabs from 'Packages/tabs/src/tabs'
+  import AnchorRadio from 'Packages/radio/src/radio'
+  import AnchorCheckbox from 'Packages/checkbox/src/checkbox'
 
   import staticData from 'Examples/src/assets/js/model/demo'
 
@@ -365,6 +379,8 @@
       AnchorTbody,
       AnchorBreadCrumb,
       AnchorTabs,
+      AnchorRadio,
+      AnchorCheckbox,
     },
 
     methods: {

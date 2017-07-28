@@ -25,13 +25,13 @@ Vue.use(anchorDesign)
 
 [https://anchnet.gitbooks.io/anchor-design/content/](https://anchnet.gitbooks.io/anchor-design/content/)
 
-## 贡献者列表
+## Contributors
 
-> 动态更新，排名不分先后
+> Dynamic update In no particular order
 
 * [戴立勤](https://github.com/xiaoda)
 
-## 作者
+## Author
 
 * [Zhimeng Liu](https://github.com/liuzmeng)
 

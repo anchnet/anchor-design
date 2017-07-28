@@ -5,7 +5,7 @@
   display: inline-block;
   line-height: 1;
   border: 1px solid $color-line;
-  border-radius: 2px;
+  border-radius: 3px;
   box-sizing: border-box;
   color: $color-base;
   font-size: 0;
@@ -107,9 +107,9 @@
   }
   @include e('radio'){
     position: relative;
-    width: 10px;
-    height: 10px;
-    line-height: 10px;
+    width: 8px;
+    height: 8px;
+    line-height: 8px;
     padding: 0;
     border-radius: 50%;
     font-size: 12px;

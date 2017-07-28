@@ -41,7 +41,7 @@
       }]"
       @mouseenter="disabled ? '' : onHover(true)"
       @mouseleave="disabled ? '' : onHover(false)"
-      @click.stop="disabled ? '' : onClick()"
+      @click="disabled ? '' : onClick()"
     ></span>
     <span
       v-if="mode === 'radio'"

@@ -17,6 +17,8 @@ import AnchorTbody from '../packages/table-body/index.js'
 import AnchorTcell from '../packages/table-cell/index.js'
 import AnchorBreadCrumb from '../packages/bread-crumb/index.js'
 import AnchorTabs from '../packages/tabs/index.js'
+import AnchorRadio from '../packages/radio/index.js'
+import AnchorCheckbox from '../packages/checkbox/index.js'
 
 const components = [
   AnchorIcon,
@@ -38,6 +40,8 @@ const components = [
   AnchorTcell,
   AnchorBreadCrumb,
   AnchorTabs,
+  AnchorRadio,
+  AnchorCheckbox,
 ]
 
 const install = function (Vue, options) {
@@ -73,4 +77,6 @@ module.exports = {
   AnchorTcell,
   AnchorBreadCrumb,
   AnchorTabs,
+  AnchorRadio,
+  AnchorCheckbox,
 }
