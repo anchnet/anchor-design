@@ -319,12 +319,6 @@
         </div>
       </li>
       <li>
-        <h3>anchor-menu-vertical</h3>
-        <div class="demo-layout">
-          <anchor-menu-vertical :data="menuData"/>
-        </div>
-      </li>
-      <li>
         <h3>anchor-switch-label</h3>
         <div class="demo-layout">
           区域：<anchor-switch-label :initData="regions" :onChangeBack="onLabelChange.bind(null, 'regions')"/>
@@ -343,7 +337,6 @@
 
 <script>
   import AnchorIcon from 'Packages/icons/src/icons'
-  import AnchorMenuVertical from 'Packages/menu-vertical/src/menu-vertical'
   import AnchorSwitchLabel from 'Packages/switch-label/src/switch-label'
   import AnchorDropDown from 'Packages/drop-down/src/drop-down'
   import AnchorButton from 'Packages/button/src/button'
@@ -364,7 +357,6 @@
     name: 'demo',
     components: {
       AnchorIcon,
-      AnchorMenuVertical,
       AnchorSwitchLabel,
       AnchorDropDown,
       AnchorButton,

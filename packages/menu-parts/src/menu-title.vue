@@ -89,8 +89,6 @@
         default: true
       },
 
-      iconName: String,
-
       triangleName: {
         type: String,
         default: 'triangle__down'
@@ -160,7 +158,8 @@
       onClick () {
         let isShow = !this.isShow
         if (this.$emit.bind(null, 'handleClick')) {
-          this.$emit('handleClick')
+          let status = isShow ? 'open' : 'close'
+          this.$emit('handleClick', status)
         } else {
           isShow ? this.$emit('open') : this.$emit('close')
         }

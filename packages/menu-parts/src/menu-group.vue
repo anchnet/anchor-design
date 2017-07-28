@@ -40,6 +40,13 @@
       }
     },
 
+    watch: {
+      showGroup (val) {
+        console.log('watch', val)
+        this.isShow = val
+      }
+    },
+
     methods: {
       handler () {
         if (this.isShow) {
@@ -47,6 +54,9 @@
         }
 
         this.isShow = !this.isShow
+
+        let status = this.isShow ? 'open' : 'close'
+        this.$emit('handleClick', status)
 
         this.$nextTick(() => {
           if (this.isShow) {

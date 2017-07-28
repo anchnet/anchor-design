@@ -91,5 +91,64 @@ module.exports = {
         ]
       }
     }
+  ],
+
+  menuData: [
+    {
+      id: 'menu1',
+      text: '主菜单1',
+      children: [
+        {
+          id: 'submenu1-1',
+          text: '副标题1-1',
+          children: [
+            {
+              id: 'submenu1-1-1',
+              text: '副标题1-1-1',
+              children: [
+                {id: 'content1-1-1-1', text: '菜单内容1-1-1-1',},
+                {id: 'content1-1-1-2', text: '菜单内容1-1-1-2',},
+                {id: 'content1-1-1-3', text: '菜单内容1-1-1-3',},
+              ]
+            },
+            {id: 'submenu1-1-2', text: '副标题1-1-2',},
+          ]
+        },
+        {
+          id: 'submenu1-2',
+          text: '副标题1-2',
+          children: [
+            {id: 'content1-2-1', text: '菜单内容1-2-1',},
+          ]
+        },
+      ],
+    },
+    {
+      id: 'menu2',
+      text: '主菜单2',
+      children: [
+        {
+          id: 'submenu2-1',
+          text: '副标题2-1',
+        },
+        {
+          id: 'submenu2-2',
+          text: '副标题2-2',
+          children: [
+            {id: 'content2-2-1', text: '菜单内容2-2-1',},
+          ]
+        },
+      ],
+    },
+    {
+      id: 'menu3',
+      text: '主菜单3',
+      children: [
+        {
+          id: 'content3-2-1',
+          text: '菜单内容3-2-1',
+        },
+      ],
+    },
   ]
 }

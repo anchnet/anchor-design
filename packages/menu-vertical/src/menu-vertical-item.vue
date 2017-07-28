@@ -1,72 +1,101 @@
 <template>
-  <div>
-    <anchor-menu-group :key="key" v-for="(item, key) in childrenData">
-      <anchor-menu-title
-        v-if="item.type !== 'content'"
-        slot="group-title"
-        mode="sub"
-        :class="['menu-vertical__title']"
-        :title="item.text"
-        :hasIcon="item.hasIcon"
-        :iconName="item.iconName ? item.iconName : 'dot'"
-        :hasChildren="!!item.children"
-        :clickable="item.children ? true : item.clickable"
-        @handleClick="handleClick(item)"
-      />
-      <anchor-menu-content
-        v-else-if="!item.children && item.type === 'content'"
-        slot="group-title"
-        :class="['menu-vertical__content']"
-        :content="item.text"
-        :clickable="item.clickable"
-        @handleClick="handleClick(item)"
-      />
-      <anchor-menu-vertical-item
-        v-if="!!item.children"
-        slot="group-item"
-        :children="item.children"
-        :data="data"
-        @handleClick="handleClick"
-      />
-    </anchor-menu-group>
-  </div>
+  <anchor-menu-group :oneItem="!hasChildren">
+    <span
+      slot="group-title"
+      :class="['anchor-menu-vertical__item', {
+        'anchor-menu-vertical__item--active': active,
+      }]"
+      :style="itemStyle"
+      @mouseenter="mouseHover(true)"
+      @mouseleave="mouseHover(false)"
+      @click="data.disabled ? '' : handleClick(data, $event)"
+    >
+       <anchor-icon
+         v-if="hasChildren"
+         name="triangle__down"
+         :class="['anchor-menu-vertical__icon']"
+         :active="active"
+         :isRotating="isShow"
+       /><slot>{{data.text}}</slot>
+    </span>
+    <anchor-menu-vertical-item
+      slot="group-item"
+      v-if="hasChildren"
+      v-for="(item, key) in data.children"
+      :key="key"
+      :data="item"
+      :indent="indent + 1"
+      @handleClick="handleClick"
+    />
+  </anchor-menu-group>
 </template>
 
 <script>
   import AnchorMenuGroup from 'Packages/menu-parts/src/menu-group'
-  import AnchorMenuTitle from 'Packages/menu-parts/src/menu-title'
-  import AnchorMenuContent from 'Packages/menu-parts/src/menu-content'
-  import mixin from 'Src/libs/mixin'
+  import AnchorIcon from 'Packages/icons/src/icons'
 
+  /**
+   * hasChildren {boolean} if the component hasn't child content, hide the icon of traingle
+   * width {number}
+   * height {number}
+   * paddingLeft {number}
+   */
   export default {
     name: 'anchor-menu-vertical-item',
 
-    mixins: [mixin],
-
     components: {
-      AnchorMenuGroup, AnchorMenuTitle, AnchorMenuContent
+      AnchorMenuGroup, AnchorIcon
     },
 
     props: {
-      children: Array,
-      data: Object
+      data: Object,
+      indent: {
+        type: [String, Number],
+        default: 0
+      },
+    },
+
+    data () {
+      return {
+        active: false,
+        isShow: false
+      }
     },
 
     computed: {
-      childrenData () {
-        let newData = []
-        if (this.children && this.children.length) {
-          this.children.forEach((k) => {
-            newData.push(this.data[k])
-          })
+      hasChildren () {
+        return !!this.data.children && !!this.data.children.length
+      },
+
+      itemStyle () {
+        let indent = Number(this.indent)
+        let basic = this.hasChildren ? 20 : 36
+        return {
+          'padding-left': indent !== 0 ? basic + 12 * indent + 'px' : '',
         }
-        return newData
       }
     },
 
     methods: {
-      handleClick (item) {
-        this.$emit('handleClick', item)
+      mouseHover (status) {
+        this.active = status
+      },
+
+      handleClick (data, event) {
+        let status = null
+        //判断当前参数来源：当前 click 事件 or 冒泡事件
+        if (event && event.target) {
+          if (this.hasChildren) {
+            let isShow = !this.isShow
+            status = isShow ? 'open' : 'close'
+            this.isShow = isShow
+          } else {
+            status = 'click'
+          }
+        } else {
+          status = event
+        }
+        this.$emit('handleClick', data, status)
       }
     }
   }

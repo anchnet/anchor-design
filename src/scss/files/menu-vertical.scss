@@ -1,18 +1,31 @@
 @import "~scss/mixins";
 @import "~scss/variables";
 
-@include b('menu-vertical'){
+@include b('anchor-menu-vertical'){
   height: 100%;
   background-color: $color-menu-bg;
   overflow-y: auto;
-  @include e('title'){
-    display: block !important;
+  font-size: 0;
+
+  @include e('item'){
+    display: inline-block;
+    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 28px;
+    box-sizing: border-box;
+    font-size: $font-size-base;
+    color: $color-menu-text-dark;
+    cursor: pointer;
+
+    @include m('active'){
+      color: #ffffff;
+    }
   }
-  @include e('content'){
-    display: block !important;
-  }
-  @include e('list'){
-    padding-bottom: 10px;
-    background-color: $color-menu-bg;
+
+  @include e('icon'){
+    position: relative;
+    top: -1px;
+    margin-right: 6px;
   }
 }
