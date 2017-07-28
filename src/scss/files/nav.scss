@@ -30,6 +30,7 @@
 
   @include e('main'){
     display: block;
+    height: 100%;
     text-align: center;
     @include clearfix();
   }
