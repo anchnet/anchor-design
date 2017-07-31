@@ -54,7 +54,7 @@
     background-color: $color-menu-bg;
 
     @include e('left'){
-      float: left;
+      position: absolute;
       width: 240px;
     }
 

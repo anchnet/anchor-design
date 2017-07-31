@@ -4,8 +4,8 @@
       <slot name="group-title"></slot>
     </div>
     <transition v-if="!oneItem" name="anchor-animation__slide-vertical">
-      <div ref="content" v-show="isShow">
-        <div ref="contentWrapper">
+      <div ref="contentWrapper" v-show="isShow">
+        <div ref="content">
           <slot name="group-item"></slot>
         </div>
       </div>
@@ -15,43 +15,26 @@
 
 <script>
   import vQuery from 'Src/libs/vQuery'
-  import mixin from 'Src/libs/mixin'
 
   export default {
     name: 'anchor-menu-group',
-
-    mixins: [mixin],
 
     props: {
       oneItem: {
         type: Boolean,
         default: false
       },
-
-      showGroup: {
-        type: Boolean,
-        default: false
-      }
     },
 
     data () {
       return {
-        isShow: this.showGroup
-      }
-    },
-
-    watch: {
-      showGroup (val) {
-        console.log('watch', val)
-        this.isShow = val
+        isShow: false
       }
     },
 
     methods: {
       handler () {
-        if (this.isShow) {
-          this.fixHeight()
-        }
+        if (this.isShow) this.fixHeight()
 
         this.isShow = !this.isShow
 
@@ -62,28 +45,28 @@
           if (this.isShow) {
             this.fixHeight()
             setTimeout(() => {
-              vQuery(this.$refs.content).css({'height': '', 'overflow': ''})
+              vQuery(this.$refs.contentWrapper).css({'height': '', 'overflow': ''})
             }, 300)
           } else {
             this.fixHeight().css({'height': 0})
             setTimeout(() => {
-              vQuery(this.$refs.content).css({'height': '', 'overflow': ''})
+              vQuery(this.$refs.contentWrapper).css({'height': '', 'overflow': ''})
             }, 350)
           }
         })
       },
 
       fixHeight () {
-        let content = this.getContentDOM()
-        content.$element.css({'height': content.height + 'px', 'overflow': 'hidden'})
-        return content.$element
+        let contentWrapper = this.getContentDOM()
+        contentWrapper.$contentWrapper.css({'height': contentWrapper.height + 'px', 'overflow': 'hidden'})
+        return contentWrapper.$contentWrapper
       },
 
       getContentDOM () {
-        let $element = vQuery(this.$refs.content)
         let $contentWrapper = vQuery(this.$refs.contentWrapper)
-        let height = $contentWrapper.height()
-        return {$element, height}
+        let $content = vQuery(this.$refs.content)
+        let height = $content.height()
+        return {$contentWrapper, height}
       }
     }
   }
