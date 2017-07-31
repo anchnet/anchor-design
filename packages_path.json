@@ -18,5 +18,7 @@
   "anchor-tcell": "./packages/table-cell/index.js",
   "anchor-tabs": "./packages/tabs/index.js",
   "anchor-radio": "./packages/tabs/index.js",
-  "anchor-checkbox": "./packages/tabs/index.js"
+  "anchor-checkbox": "./packages/tabs/index.js",
+  "anchor-row": "./packages/layout/index.js",
+  "anchor-col": "./packages/layout-col/index.js"
 }

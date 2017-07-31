@@ -1,0 +1,132 @@
+@import "~scss/mixins";
+@import "~scss/variables";
+
+@include b('anchor-row'){
+  display: block;
+  @include clearfix();
+
+  @include e('flex'){
+    display: flex;
+    &:after{
+      display: none;
+    }
+
+    @include m('flex-start'){
+      @include flex(flex-start);
+    }
+    @include m('flex-end'){
+      @include flex(flex-end);
+    }
+    @include m('center'){
+      @include flex(center);
+    }
+    @include m('space-between'){
+      @include flex(space-between);
+    }
+    @include m('space-around'){
+      @include flex(space-around);
+    }
+
+    @include m('flex-start'){
+      @include flex(null, flex-start);
+    }
+    @include m('flex-end'){
+      @include flex(null, flex-end);
+    }
+    @include m('center'){
+      @include flex(null, center);
+    }
+    @include m('baseline'){
+      @include flex(null, baseline);
+    }
+    @include m('stretch'){
+      @include flex(null, stretch);
+    }
+
+    @include b('anchor-col'){
+      flex: 0 1 auto;
+      float: none;
+    }
+  }
+}
+
+@include b('anchor-col'){
+  float: left;
+  padding: 10px;
+  box-sizing: border-box;
+  @include e('span-0'){
+    @include colspan();
+  }
+  @include e('span-1'){
+    @include colspan(1);
+  }
+  @include e('span-2'){
+    @include colspan(2);
+  }
+  @include e('span-3'){
+    @include colspan(3);
+  }
+  @include e('span-4'){
+    @include colspan(4);
+  }
+  @include e('span-5'){
+    @include colspan(5);
+  }
+  @include e('span-6'){
+    @include colspan(6);
+  }
+  @include e('span-7'){
+    @include colspan(7);
+  }
+  @include e('span-8'){
+    @include colspan(8);
+  }
+  @include e('span-9'){
+    @include colspan(9);
+  }
+  @include e('span-10'){
+    @include colspan(10);
+  }
+  @include e('span-11'){
+    @include colspan(11);
+  }
+  @include e('span-12'){
+    @include colspan(12);
+  }
+  @include e('span-13'){
+    @include colspan(13);
+  }
+  @include e('span-14'){
+    @include colspan(14);
+  }
+  @include e('span-15'){
+    @include colspan(15);
+  }
+  @include e('span-16'){
+    @include colspan(16);
+  }
+  @include e('span-17'){
+    @include colspan(17);
+  }
+  @include e('span-18'){
+    @include colspan(18);
+  }
+  @include e('span-19'){
+    @include colspan(19);
+  }
+  @include e('span-20'){
+    @include colspan(20);
+  }
+  @include e('span-21'){
+    @include colspan(21);
+  }
+  @include e('span-22'){
+    @include colspan(22);
+  }
+  @include e('span-23'){
+    @include colspan(23);
+  }
+  @include e('span-24'){
+    @include colspan(24);
+  }
+}

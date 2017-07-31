@@ -2,6 +2,53 @@
   <div>
     <ol>
       <li>
+        <h3>anchor-layout</h3>
+        <div class="demo-layout">
+          <h6>总栅格数为24</h6>
+          <anchor-row>
+            <anchor-col span="24" class="home-col">span = 24 (100%)</anchor-col>
+          </anchor-row>
+        </div>
+        <div class="demo-layout">
+          <anchor-row>
+            <anchor-col span="8" class="home-col">span = 8</anchor-col>
+            <anchor-col span="16" class="home-col col-2">span = 16</anchor-col>
+          </anchor-row>
+        </div>
+        <div class="demo-layout">
+          <anchor-row>
+            <anchor-col span="6" class="home-col">span = 6</anchor-col>
+            <anchor-col span="12" class="home-col col-2">span = 12</anchor-col>
+            <anchor-col span="6" class="home-col">span = 6</anchor-col>
+          </anchor-row>
+        </div>
+        <div class="demo-layout">
+          <h6>设置偏移量</h6>
+          <anchor-row>
+            <anchor-col span="6" offset="3" class="home-col">span = 6, offset = 3</anchor-col>
+            <anchor-col span="6" offset="6" class="home-col col-2">span = 6, offset = 6</anchor-col>
+          </anchor-row>
+        </div>
+        <div class="demo-layout">
+          <h6>开启 flex 模式</h6>
+          <h6>justify-content: space-between</h6>
+          <anchor-row mode="flex" justifyContent="space-between">
+            <anchor-col span="6" class="home-col">span = 6</anchor-col>
+            <anchor-col span="4" class="home-col col-2">span = 4</anchor-col>
+            <anchor-col span="6" class="home-col">span = 6</anchor-col>
+            <anchor-col span="3" class="home-col col-2">span = 3</anchor-col>
+          </anchor-row>
+        </div>
+        <div class="demo-layout">
+          <h6>justify-content: space-around, align-items: center</h6>
+          <anchor-row mode="flex" justifyContent="space-around" alignItems="center">
+            <anchor-col span="6" class="home-col"><div style="height: 80px;">span = 6</div></anchor-col>
+            <anchor-col span="6" class="home-col col-2"><div style="height: 120px;">span = 6</div></anchor-col>
+            <anchor-col span="6" class="home-col">span = 6</anchor-col>
+          </anchor-row>
+        </div>
+      </li>
+      <li>
         <h3>anchor-checkbox</h3>
         <div class="demo-layout">
           <anchor-checkbox :data="checkboxData" />
@@ -350,11 +397,14 @@
   import AnchorTabs from 'Packages/tabs/src/tabs'
   import AnchorRadio from 'Packages/radio/src/radio'
   import AnchorCheckbox from 'Packages/checkbox/src/checkbox'
+  import AnchorRow from 'Packages/layout/src/row'
+  import AnchorCol from 'Packages/layout/src/col'
 
   import staticData from 'Examples/src/assets/js/model/demo'
 
   export default {
-    name: 'demo',
+    name: 'home',
+
     components: {
       AnchorIcon,
       AnchorSwitchLabel,
@@ -370,6 +420,8 @@
       AnchorTabs,
       AnchorRadio,
       AnchorCheckbox,
+      AnchorRow,
+      AnchorCol,
     },
 
     methods: {
@@ -418,6 +470,16 @@
 </script>
 
 <style lang="scss">
+  @import "~scss/variables";
+
+  .home-col{
+    text-align: center;
+    color: #ffffff;
+    background-color: $color-tips;
+    &.col-2{
+      background-color: $color-base;
+    }
+  }
   ol{
     &.sub-inline{
       padding: 10px;
@@ -430,9 +492,8 @@
     padding: 20px 40px;
     list-style: decimal;
     line-height: 2;
-    > li h3{
-      font-size: 16px;
-      color: red;
+    > li h3, >li h6{
+      color: $color-primary;
     }
     .text{
       line-height: 1;

@@ -62,7 +62,6 @@ $modifierSeparator: '--';
 /* BEM in SASS --end */
 
 /* level */
-
 @mixin level($z: 'normal') {
   @if $z == 'highest' {
     z-index: 9999;
@@ -108,6 +107,26 @@ $modifierSeparator: '--';
     border-right: 5px solid transparent;
   } @else {
     @content;
+  }
+}
+
+/* row && col */
+@mixin colspan($span: 0) {
+  @if ($span == 0) {
+    display: none;
+  } @else if ($span > 24) {
+    width: 100%;
+  } @else {
+    width: percentage($span / 24);
+  }
+}
+
+@mixin flex($justifyContent: null, $alignItems: null) {
+  @if ($justifyContent != null) {
+    justify-content: $justifyContent;
+  }
+  @if ($alignItems != null) {
+    align-items: $alignItems;
   }
 }
 
