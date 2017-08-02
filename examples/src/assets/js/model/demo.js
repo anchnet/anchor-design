@@ -2,6 +2,36 @@
  * Created by liuzhimeng on 2017/7/19.
  */
 module.exports = {
+  transferData: [
+    {id: 'google', value: '谷歌',},
+    {id: 'apple', value: '苹果',},
+    {id: 'amazon', value: '亚马逊',},
+    {id: 'alibaba', value: '阿里巴巴',},
+    {id: 'tencent', value: '腾讯',},
+  ],
+  transferConfig: {
+    title: '科技巨头',
+    height: 460,
+    width: 300,
+    searchable: true,
+    openSearch: false,
+  },
+  subData: [
+    {
+      title: '上游关系',
+      textToLeft: '添加至上游关系 >',
+      textToRight: '< 从上游关系移除',
+      data: [
+        {id: 'alibaba', value: '阿里巴巴',},
+      ]
+    },
+    {
+      title: '下游关系',
+      textToLeft: '添加至下游关系 >',
+      textToRight: '< 从下游关系移除',
+    },
+  ],
+
   checkboxData: [
     {id: 'xiaomi', value: '小米',},
     {id: 'huawei', value: '华为', active: true,},

@@ -44,6 +44,7 @@
         type: Array,
         required: true
       },
+      immediate: Boolean,
       allowData: Array,
       defaultId: String,
       defaultKey: Number,
@@ -56,17 +57,18 @@
 
     data () {
       return {
-        data: []
+        data: [],
+        Immediate: this.immediate || false
       }
     },
 
     watch: {
       initData: {
         immediate: true,
+        deep: true,
         handler (val) {
           this.computeData()
         },
-        deep: true
       },
 
       allowData: 'computeData',
@@ -120,10 +122,12 @@
 
         let activeItem = newData.find(i => i.active)
         let activeKey = newData.findIndex(i => i.active)
-//        if (activeItem) utils.isFunction(this.onChangeBack) ? this.triggerBack() : this.$emit('input', activeItem.id)
-        if (activeItem) {
+
+        if (this.Immediate && activeItem) {
           let callback = () => this.$emit('input', activeItem.id)
           this['__triggerBack'](callback, activeItem, activeKey)
+        } else {
+          this.Immediate = true
         }
 
         this.data = newData

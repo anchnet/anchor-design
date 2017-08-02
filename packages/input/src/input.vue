@@ -1,19 +1,13 @@
 <template>
   <div
-    :style="wrapStyle"
     :class="['anchor-input', {
       'anchor-input--active': computedAlwaysActive || computedActive || checkboxHoverStatus,
       'anchor-input__radio-wrap': mode === 'radio',
       'anchor-input__radio-wrap--active': radioStatus
     }]"
   >
-    <span v-if="mode === 'search'" :class="['anchor-input__search-icon-wrap']" @click="getFocus()">
-      <i
-        :style="inputStyle"
-        :class="['anchor-input__search-icon', {
-          'anchor-input__search-icon--active': computedAlwaysActive || computedActive
-        }]"
-      ></i>
+    <span v-if="mode === 'search' && iconPosition === 'left'" :class="['anchor-input__search-icon-wrapper']" @click="getFocus()">
+      <anchor-icon name="search" :active="computedAlwaysActive || computedActive" :style="iconStyle"/>
     </span>
     <input
       ref="searchInput"
@@ -22,7 +16,7 @@
       :disabled="disabled"
       :style="inputStyle"
       :class="['anchor-input__base', {
-        'anchor-input__base--search': mode === 'search',
+        'anchor-input__base--search': mode === 'search' && iconPosition === 'left',
         'anchor-input__base--disabled': disabled,
       }]"
       :placeholder="defaultText"
@@ -32,6 +26,9 @@
       @change="!disabled && !alwaysFeedback ? onChange($event) : ''"
       @keyup.enter="!disabled ? onKeyupEnter($event) : ''"
     />
+    <span v-if="mode === 'search' && iconPosition === 'right'" :class="['anchor-input__search-icon-wrapper-right']" @click="search()">
+      <anchor-icon name="search" :active="computedAlwaysActive || computedActive" :style="iconStyle"/>
+    </span>
     <span
       v-if="mode === 'checkbox'"
       :class="['anchor-input__base', 'anchor-input__checkbox', {
@@ -75,9 +72,14 @@
    * height {number} 输入框高度
    */
   import mixin from 'Src/libs/mixin'
+  import AnchorIcon from 'Packages/icons/src/icons'
 
   export default {
     name: 'anchor-input',
+
+    components: {
+      AnchorIcon
+    },
 
     mixins: [mixin],
 
@@ -93,6 +95,11 @@
       },
 
       size: String,
+
+      iconPosition: {
+        type: String,
+        default: 'right'
+      },
 
       defaultText: {
         type: [String, Number],
@@ -160,18 +167,19 @@
     },
 
     computed: {
-      wrapStyle () {
+      inputStyle () {
+        let width = this.mode === 'search' ? this.__width - 22 : this.__width
         return {
-          width: this.__width
+          width: width + 'px',
+          height: this.__height + 'px',
+          'line-height': this.__height + 'px',
         }
       },
 
-      inputStyle () {
+      iconStyle () {
         return {
-          width: this.__width + 'px',
           height: this.__height + 'px',
           'line-height': this.__height + 'px',
-          'min-height': this.mode === 'search' ? '12px' : ''
         }
       },
 
@@ -240,6 +248,10 @@
 
       getFocus () {
         this.$refs.searchInput.focus()
+      },
+
+      search () {
+        this.$emit('onSearch', this.value, this.oldValue)
       },
 
       onFocus (focus) {

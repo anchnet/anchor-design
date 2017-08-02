@@ -1,8 +1,9 @@
 <template>
-  <div :class="['anchor-checkbox']">
-    <div
+  <ul :class="['anchor-checkbox']">
+    <li
       v-for="(item, key) in Data"
       :class="['anchor-checkbox__element', {
+        'anchor-checkbox__element-vertical': type === 'vertical',
         'anchor-checkbox__element--disabled': item.disabled
       }]"
       @click="item.disabled ? '' : onClick(item, key)"
@@ -13,8 +14,8 @@
         :isActive="item.active"
         :disabled="item.disabled"
       />{{item.value}}
-    </div>
-  </div>
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -28,6 +29,11 @@
     },
 
     props: {
+      type: {
+        type: String,
+        default: 'horizontal'
+      },
+
       data: Array,
     },
 
@@ -40,31 +46,35 @@
 
     watch: {
       data: {
-        handler (val) {
-          this.Data = val
-        }
-      },
-      Data: {
         deep: true,
         handler (val) {
-          let filters = {keys: [], data: [], ids: [],}
-          val.forEach((i, k) => {
-            if (i.active) {
-              filters.keys.push(k)
-              filters.data.push(i)
-              if (i.hasOwnProperty('id')) {
-                filters.ids.push(i.id)
-              }
-            }
-          })
-          this.filters = filters
+          this.Data = val
+          this.getFilters(val)
+          this.triggerBack()
         }
       }
     },
 
     methods: {
+      getFilters (val) {
+        let filters = {keys: [], data: [], ids: [],}
+        val.forEach((i, k) => {
+          if (i.active) {
+            filters.keys.push(k)
+            filters.data.push(i)
+            if (i.hasOwnProperty('id')) {
+              filters.ids.push(i.id)
+            }
+          }
+        })
+        this.filters = filters
+      },
+
       onClick (item, key) {
         this.$set(this.Data[key], 'active', !item.active)
+      },
+
+      triggerBack () {
         this.$nextTick(() => {
           this.$emit('handleClick', this.filters)
         })

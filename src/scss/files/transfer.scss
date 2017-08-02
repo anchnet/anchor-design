@@ -1,0 +1,97 @@
+@import "~scss/mixins";
+@import "~scss/variables";
+
+@include b('anchor-transfer'){
+  height: 100%;
+  @include clearfix();
+  @include e('box'){
+    width: 260px;
+    border: 1px solid $color-line;
+    border-radius: 4px;
+    box-shadow: 0 0 2px #c7c7c7;
+  }
+
+  @include e('box-header'){
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    border-bottom: 1px solid $color-line;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    color: $color-base;
+    font-size: $font-size-base;
+  }
+
+  @include e('box-body'){
+    padding: 10px 15px;
+  }
+
+  @include e('box-footer'){
+    line-height: 20px;
+    padding: 0 15px 8px;
+    font-size: $font-size-smaller;
+    color: $color-tips;
+  }
+
+  @include e('box-list'){
+    &.anchor-checkbox{
+      display: block;
+    }
+    .anchor-checkbox__element-vertical{
+      border-bottom: 1px solid $color-table-line;
+    }
+  }
+
+  @include e('main'){
+    float: left;
+    height: 100%;
+  }
+
+  @include e('main-search'){
+    padding-bottom: 10px;
+    border-bottom: 1px solid $color-table-line;
+    .anchor-input{
+      display: block;
+      width: 100%;
+      .anchor-input__base{
+        width: calc(100% - 20px);
+      }
+    }
+  }
+
+  @include e('list-wrapper'){
+    height: 180px;
+    overflow: auto;
+  }
+
+  @include e('checkbox'){
+    margin-right: 8px;
+  }
+
+  @include e('sub-wrapper'){
+    margin-left: 262px;
+  }
+
+  @include e('sub'){
+
+  }
+  .anchor-transfer__sub + .anchor-transfer__sub{
+    margin-top: 20px;
+  }
+
+  @include e('sub-left'){
+    display: inline-block;
+    margin: 0 40px;
+    vertical-align: middle;
+  }
+
+  @include e('sub-button'){
+    margin-bottom: 5px;
+  }
+
+  @include e('sub-right'){
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

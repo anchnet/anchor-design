@@ -371,3 +371,16 @@
     }
   }
 }
+
+@include b('anchor-icon-search'){
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-image: url("../../img/search.svg");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  @include m('active'){
+    background-position: 0 -16px;
+  }
+}

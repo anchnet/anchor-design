@@ -2,6 +2,16 @@
   <div>
     <ol>
       <li>
+        <h3>anchor-transfer</h3>
+        <div class="demo-layout">
+          <anchor-transfer
+            :data="transferData"
+            :config="transferConfig"
+            :subData="subData"
+          />
+        </div>
+      </li>
+      <li>
         <h3>anchor-layout</h3>
         <div class="demo-layout">
           <h6>总栅格数为24</h6>
@@ -51,7 +61,12 @@
       <li>
         <h3>anchor-checkbox</h3>
         <div class="demo-layout">
+          <h3>横向排列模式</h3>
           <anchor-checkbox :data="checkboxData" />
+        </div>
+        <div class="demo-layout">
+          <h3>纵向排列模式</h3>
+          <anchor-checkbox type="vertical" :data="checkboxData" />
         </div>
       </li>
       <li>
@@ -246,11 +261,22 @@
         </ol>
       </li>
       <li>
-        <h3>anchor-search(combined by anchor-input and anchor-button)</h3>
-        <div class="demo-layout">
-          <anchor-search @search="onSearch" />
-          <p class="text">{{searchWord}}</p>
-        </div>
+        <h3>anchor-search</h3>
+        <ol class="sub-inline">
+          <li>
+            <h3>正常模式</h3>
+            <div class="demo-layout">
+              <anchor-search @search="onSearch" />
+              <p class="text">{{searchWord}}</p>
+            </div>
+          </li>
+          <li>
+            <h3>简单模式</h3>
+            <div class="demo-layout">
+              <anchor-search mode="simple"/>
+            </div>
+          </li>
+        </ol>
       </li>
       <li>
         <h3>anchor-input</h3>
@@ -368,7 +394,7 @@
       <li>
         <h3>anchor-switch-label</h3>
         <div class="demo-layout">
-          区域：<anchor-switch-label :initData="regions" :onChangeBack="onLabelChange.bind(null, 'regions')"/>
+          区域：<anchor-switch-label immediate :initData="regions" :onChangeBack="onLabelChange.bind(null, 'regions')"/>
         </div>
         <div class="demo-layout">
           类型：<anchor-switch-label :initData="resType" :onChangeBack="onLabelChange.bind(null, 'resType')"/>
@@ -383,6 +409,8 @@
 </template>
 
 <script>
+  import staticData from 'Examples/src/assets/js/model/demo'
+
   import AnchorIcon from 'Packages/icons/src/icons'
   import AnchorSwitchLabel from 'Packages/switch-label/src/switch-label'
   import AnchorDropDown from 'Packages/drop-down/src/drop-down'
@@ -399,8 +427,7 @@
   import AnchorCheckbox from 'Packages/checkbox/src/checkbox'
   import AnchorRow from 'Packages/layout/src/row'
   import AnchorCol from 'Packages/layout/src/col'
-
-  import staticData from 'Examples/src/assets/js/model/demo'
+  import AnchorTransfer from 'Packages/transfer/src/transfer'
 
   export default {
     name: 'home',
@@ -422,6 +449,7 @@
       AnchorCheckbox,
       AnchorRow,
       AnchorCol,
+      AnchorTransfer,
     },
 
     methods: {
@@ -443,6 +471,7 @@
 
       onLabelChange (type, item, key) {
         if (type === 'regions') {
+          console.log('regions')
           this.hostType[1]['forbidden'] = item.id !== 'ac3'
         }
         this.currentName = item.value

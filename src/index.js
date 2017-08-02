@@ -21,6 +21,7 @@ import AnchorRadio from '../packages/radio/index.js'
 import AnchorCheckbox from '../packages/checkbox/index.js'
 import AnchorRow from '../packages/layout/index.js'
 import AnchorCol from '../packages/layout-col/index.js'
+import AnchorTransfer from '../packages/transfer/index.js'
 
 const components = [
   AnchorIcon,
@@ -46,6 +47,7 @@ const components = [
   AnchorCheckbox,
   AnchorRow,
   AnchorCol,
+  AnchorTransfer,
 ]
 
 const install = function (Vue, options) {
@@ -60,7 +62,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
-  version: '0.20.0',
+  version: '0.21.0',
   install,
   AnchorIcon,
   AnchorMenuGroup,
@@ -85,4 +87,5 @@ module.exports = {
   AnchorCheckbox,
   AnchorRow,
   AnchorCol,
+  AnchorTransfer,
 }

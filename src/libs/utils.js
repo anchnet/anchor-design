@@ -56,12 +56,12 @@ const utils = (function () {
 
     /* 判断是否是数组 */
     isArray (value) {
-      return Array.isArray(value)
+      return Array.isArray ? Array.isArray(value) : Object.prototype.toString.call(value) === '[object Array]'
     },
 
     /* 判断是否是对象 */
     isObject (value) {
-      return typeof value === "object" && value !== null
+      return typeof value === "object" && value !== null && Object.prototype.toString.call(value) === '[object Object]'
     },
 
     /* 判断是否是函数 */

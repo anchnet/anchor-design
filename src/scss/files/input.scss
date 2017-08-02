@@ -16,15 +16,25 @@
     box-shadow: 0px 0px 4px 0px $color-primary-border;
   }
 
-  @include e('search-icon-wrap'){
+  @include e('search-icon-wrapper'){
     display: inline-block;
     width: 22px;
-    height: 30px;
-    line-height: 30px;
+    height: 28px;
+    line-height: 28px;
     background-color: $color-base-background;
     text-align: right;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
+  }
+
+  @include e('search-icon-wrapper-right'){
+    display: inline-block;
+    width: 20px;
+    height: 28px;
+    line-height: 28px;
+    text-align: left;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
   }
 
   @include e('search-icon'){
@@ -43,8 +53,8 @@
   @include e('base'){
     display: inline-block;
     width: 150px;
-    height: 30px;
-    line-height: 30px;
+    height: 28px;
+    line-height: 28px;
     padding: 0 10px;
     box-sizing: border-box;
     border: none;
