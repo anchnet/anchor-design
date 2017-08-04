@@ -31,17 +31,11 @@
     <anchor-row>
       <anchor-col span="15">
         <anchor-table :hasCheckbox="false" :theadData="theadData" :listData="listData">
-          <anchor-tbody
-            v-for="(item, key) in listData"
-            :key="key"
-            :dataKey="key"
-            :data="listData"
-            :hasPlaceholder="false"
-          >
-            <td v-for="{id} in theadData">
-              <div>{{item[id]}}</div>
-            </td>
-          </anchor-tbody>
+          <tbody>
+            <tr v-for="(item, key) in listData">
+              <td v-for="{id} in theadData">{{item[id]}}</td>
+            </tr>
+          </tbody>
         </anchor-table>
       </anchor-col>
     </anchor-row>
@@ -49,23 +43,18 @@
 </template>
 
 <script>
+  import globalData from 'Examples/src/assets/js/model/global'
+
   export default {
     data () {
       return {
+        ...globalData,
+
         basicValue: 0,
         alwaysValue: 0,
         stepValue: 0,
-        theadData: [
-          {id: 'param', text: '接口',},
-          {id: 'type', text: '类型',},
-          {id: 'desc', text: '描述',},
-          {id: 'default', text: '默认值',},
-          {id: 'range', text: '可选值',},
-          {id: 'necessary', text: '是否必需',},
-          {id: 'remark', text: '备注',},
-        ],
         listData:[
-          {param: 'scope', type: 'array', desc: 'slider取值范围', default: '--', range: '--', necessary: '是/否', remark: '优先级高于scopeStart、scopeEnd'},
+          {param: 'scope', type: 'array', desc: 'slider取值范围，优先级高于scopeStart、scopeEnd', default: '--', range: '--', necessary: '是/否', remark: '示例：[10, 90]'},
           {param: 'scopeStart', type: 'number', desc: 'slider取值下限', default: 0, range: '>= 0', necessary: '否'},
           {param: 'scopeEnd', type: 'number', desc: 'slider取值上限', default: '--', range: '--', necessary: '是/否', remark: '必须由 scope 或者 scopeEnd 指定上限'},
           {param: 'step', type: 'number', desc: '步长', default: 1, range: '--', necessary: '否'},
