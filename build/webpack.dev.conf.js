@@ -16,6 +16,7 @@ module.exports = merge(baseWebpackConfig, {
 
   devServer: {
     contentBase: utils.webpackResolve('examples'),
+    historyApiFallback: true,
     clientLogLevel: 'warning',
     compress: true,
     port: 9088,
@@ -27,6 +28,10 @@ module.exports = merge(baseWebpackConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': env.dev.env
+    }),
+
+    new webpack.ProvidePlugin({
+      vQuery: utils.webpackResolve('src/libs/vQuery')
     }),
 
     new HtmlWebpackPlugin({

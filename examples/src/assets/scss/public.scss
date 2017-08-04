@@ -1,0 +1,36 @@
+@import "~scss/variables";
+
+h1, h2, h3, h4, h5, h6{
+  margin: 0 0 1em;
+  color: $color-base;
+  font-weight: 600;
+  line-height: 1em;
+}
+
+h1{font-size: 2em;}
+h2{font-size: 1.75em;}
+h3{font-size: 1.5em;}
+h4{font-size: 1.25em;}
+h5{font-size: 1em;}
+h6{font-size: .75em;}
+
+p{font-size: $font-size-base; font-weight: normal; margin-bottom: .75em; line-height: 2;}
+
+.web-intro{
+  display: inline-block;
+  margin: 0 0 2em;
+  padding: 0 10px;
+  border-left: 3px solid $color-primary;
+  background-color: $color-primary-background;
+  color: $color-tips;
+  font-size: $font-size-smaller;
+  line-height: 2.25em;
+}
+
+.web-wrapper{
+  margin: 0px 10px 20px;
+  padding: 10px;
+  border: 1px solid $color-line;
+  box-shadow: 0 0 3px $color-table-line;
+  border-radius: 6px;
+}

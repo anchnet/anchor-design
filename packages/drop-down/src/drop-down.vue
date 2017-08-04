@@ -58,7 +58,6 @@
 </template>
 
 <script>
-  import vQuery from 'Src/libs/vQuery'
   import utils from 'Src/libs/utils'
   import mixin from 'Src/libs/mixin'
   import AnchorIcon from 'Packages/icons/src/icons'

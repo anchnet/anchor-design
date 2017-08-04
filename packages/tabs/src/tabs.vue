@@ -48,7 +48,6 @@
    *
    * onChangeback {function} 回调函数，不存在时则由 this.$emit('handleClick', params) 触发回调
    */
-  import vQuery from 'Src/libs/vQuery'
   import mixin from 'Src/libs/mixin'
   import AnchorIcon from 'Packages/icons/src/icons'
 

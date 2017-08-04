@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="['page-home']">
     <ol>
       <li>
         <h3>anchor-transfer</h3>
@@ -411,46 +411,8 @@
 <script>
   import staticData from 'Examples/src/assets/js/model/demo'
 
-  import AnchorIcon from 'Packages/icons/src/icons'
-  import AnchorSwitchLabel from 'Packages/switch-label/src/switch-label'
-  import AnchorDropDown from 'Packages/drop-down/src/drop-down'
-  import AnchorButton from 'Packages/button/src/button'
-  import AnchorInput from 'Packages/input/src/input'
-  import AnchorSearch from 'Packages/search/src/search'
-  import AnchorSelectNumber from 'Packages/select-number/src/select-number'
-  import AnchorPagination from 'Packages/pagination/src/pagination'
-  import AnchorTable from 'Packages/table/src/table'
-  import AnchorTbody from 'Packages/table-parts/src/table-body'
-  import AnchorBreadCrumb from 'Packages/bread-crumb/src/bread-crumb'
-  import AnchorTabs from 'Packages/tabs/src/tabs'
-  import AnchorRadio from 'Packages/radio/src/radio'
-  import AnchorCheckbox from 'Packages/checkbox/src/checkbox'
-  import AnchorRow from 'Packages/layout/src/row'
-  import AnchorCol from 'Packages/layout/src/col'
-  import AnchorTransfer from 'Packages/transfer/src/transfer'
-
   export default {
     name: 'home',
-
-    components: {
-      AnchorIcon,
-      AnchorSwitchLabel,
-      AnchorDropDown,
-      AnchorButton,
-      AnchorInput,
-      AnchorSearch,
-      AnchorSelectNumber,
-      AnchorPagination,
-      AnchorTable,
-      AnchorTbody,
-      AnchorBreadCrumb,
-      AnchorTabs,
-      AnchorRadio,
-      AnchorCheckbox,
-      AnchorRow,
-      AnchorCol,
-      AnchorTransfer,
-    },
 
     methods: {
       onTableClick (params) {

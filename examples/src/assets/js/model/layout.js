@@ -141,12 +141,13 @@ module.exports = {
       ],
     },
     {
-      id: 'menu3',
-      text: '主菜单3',
+      id: 'drag',
+      text: '拖拽类',
       children: [
         {
-          id: 'content3-2-1',
-          text: '菜单内容3-2-1',
+          id: 'anchor-sldier',
+          text: 'anchor-slider (滑块)',
+          link: '/drag/slider'
         },
       ],
     },

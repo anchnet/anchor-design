@@ -14,7 +14,7 @@
     props: {
       span: {
         type: [Number, String],
-        default: 0,
+        default: 12,
       },
 
       offset: {

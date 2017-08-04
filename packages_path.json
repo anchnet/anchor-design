@@ -21,5 +21,6 @@
   "anchor-checkbox": "./packages/tabs/index.js",
   "anchor-row": "./packages/layout/index.js",
   "anchor-col": "./packages/layout-col/index.js",
-  "anchor-transfer": "./packages/transfer/index.js"
+  "anchor-transfer": "./packages/transfer/index.js",
+  "anchor-slider": "./packages/slider/index.js"
 }

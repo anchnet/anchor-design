@@ -1,7 +1,10 @@
 // Express Edition Of jQuery, named vQuery
-class VQuery {
+const VQuery = class _VQuery {
+  static _eventHandlers = {}
+
   constructor () {
     this.selector = null
+    this.elementToString = null
     this.init = this.init.bind(this)
   }
 
@@ -11,8 +14,9 @@ class VQuery {
     let $selector = this.selector
 
     if (typeof element === 'string') {
-      let _nodeList = ['document', 'html', 'head', 'body']
-      if (element.startsWith('#') && !element.includes(' ') || _nodeList.includes(element)) {
+      if (element === 'document') {
+        $selector = document
+      } else if (element.startsWith('#')) {
         $selector = document.querySelector(element)
       } else {
         $selector = document.querySelectorAll(element)
@@ -25,6 +29,7 @@ class VQuery {
       $selector = this
     }
 
+    this.elementToString = String(element)
     this.selector = $selector
     return this
   }
@@ -84,11 +89,8 @@ class VQuery {
     return this.selector
   }
 
-  _handleSelector (handler) {
-    let args = Array.from(arguments).slice(1)
-
+  _handleSelector (handler, ...args) {
     if (!this.selector) return
-
     if (typeof this.selector.length === 'number') {
       for (let $selector of this.selector) {
         if (handler === 'dom0') {
@@ -115,22 +117,32 @@ class VQuery {
 
   // 事件注册，暂不支持事件代理
   on (type, handler, params) {
+    if (!_VQuery._eventHandlers[this.elementToString]) {
+      _VQuery._eventHandlers[this.elementToString] = {}
+    }
+    _VQuery._eventHandlers[this.elementToString][type] = [handler, params]
+
     if (document.addEventListener) {
-      this._handleSelector('addEventListener', type, handler.bind(this), params)
+      this._handleSelector('addEventListener', type, handler, params)
     } else if (document.attachEvent) {
-      this._handleSelector('attachEvent', 'on' + type, handler.bind(this))
+      this._handleSelector('attachEvent', 'on' + type, handler)
     } else {
-      this._handleSelector('dom0', 'on' + type, handler.bind(this))
+      this._handleSelector('dom0', 'on' + type, handler)
     }
     return this
   }
 
   // 注销事件
   off (type, handler, useCapture) {
+    if (this.elementToString) {
+      let args = _VQuery._eventHandlers[this.elementToString][type]
+      handler = handler ? handler.bind(this) : args[0]
+      useCapture = useCapture ? useCapture : args[1]
+    }
     if (document.removeEventListener) {
-      this._handleSelector('removeEventListener', type, handler.bind(this), useCapture)
+      this._handleSelector('removeEventListener', type, handler, useCapture)
     } else if (document.detachEvent) {
-      this._handleSelector('detachEvent', 'on' + type, handler.bind(this))
+      this._handleSelector('detachEvent', 'on' + type, handler)
     } else {
       this._handleSelector('dom0', 'on' + type, null)
     }
@@ -193,6 +205,26 @@ class VQuery {
       parent = parent.offsetParent
     }
     return offset
+  }
+
+  scrollLeft (value) {
+    let $selector = this._getNode()
+    if (typeof value === 'number') {
+      $selector.scrollLeft = value
+      return this
+    } else {
+      return $selector.scrollLeft
+    }
+  }
+
+  scrollTop (value) {
+    let $selector = this._getNode()
+    if (typeof value === 'number') {
+      $selector.scrollTop = value
+      return this
+    } else {
+      return $selector.scrollTop
+    }
   }
 
   // 获取可见元素宽度

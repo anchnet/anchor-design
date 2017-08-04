@@ -1,7 +1,28 @@
 <template>
   <anchor-menu-group :oneItem="!hasChildren">
+    <a
+      slot="group-title"
+      v-if="data.link"
+      :class="['anchor-menu-vertical__item', {
+        'anchor-menu-vertical__item--active': active,
+      }]"
+      :style="itemStyle"
+      :href="data.link"
+      @mouseenter="mouseHover(true)"
+      @mouseleave="mouseHover(false)"
+      @click="data.disabled ? '' : handleClick(data, $event)"
+    >
+      <anchor-icon
+        v-if="hasChildren"
+        name="triangle__down"
+        :class="['anchor-menu-vertical__icon']"
+        :active="active"
+        :isRotating="isShow"
+      /><slot>{{data.text}}</slot>
+    </a>
     <span
       slot="group-title"
+      v-else
       :class="['anchor-menu-vertical__item', {
         'anchor-menu-vertical__item--active': active,
       }]"

@@ -14,8 +14,6 @@
 </template>
 
 <script>
-  import vQuery from 'Src/libs/vQuery'
-
   export default {
     name: 'anchor-menu-group',
 

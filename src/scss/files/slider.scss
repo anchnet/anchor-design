@@ -1,0 +1,115 @@
+@import "~scss/mixins";
+@import "~scss/variables";
+
+@include b('anchor-slider'){
+  display: inline-block;
+  @include e('body'){
+    display: inline-block;
+    position: relative;
+    min-width: 8px;
+    height: 10px;
+    margin: 0 8px;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+    vertical-align: middle;
+    cursor: default;
+  }
+
+  @include m('alone'){
+    padding: 8px 0;
+    .drag-slider{
+      display: block;
+    }
+  }
+
+  @include e('active-body'){
+    display: inline-block;
+    width: 0;
+    height: 10px;
+    vertical-align: top;
+    border-radius: 4px;
+    background-color: #FFD8E1;
+  }
+
+  @include e('drag-block'){
+    position: absolute;
+    top: -8px;
+    left: 0;
+    z-index: 1;
+    width: 17px;
+    height: 26px;
+    background-color: $color-primary;
+    cursor: default;
+    &:hover{
+      .anchor-slider__float-tip{
+        display: block;
+      }
+    }
+  }
+
+  @include e('stripes-wrapper'){
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 7px;
+    height: 6px;
+    margin: auto;
+  }
+
+  @include e('stripes'){
+    float: left;
+    width: 1px;
+    height: 100%;
+    margin-left: 2px;
+    background-color: #FFF;
+  }
+  .anchor-slider__stripes:first-child{
+    margin-left: 0;
+  }
+
+  .input-wrapper{
+    display: inline-block;
+    width: 45px;
+    height: 26px;
+    line-height: 26px;
+    margin-right: 5px;
+    font-size: 12px;
+    color: #4B556A;
+    border: 1px solid #F0F0F0;
+    text-align: center;
+  }
+  @include e('unit'){
+    line-height: 26px;
+    font-size: 14px;
+    color: #4B556A;
+  }
+
+  @include e('float-tip'){
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 5px;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 12px;
+    border: 1px solid #e4e4e4;
+    border-radius: 2px 2px;
+    background-color: #fff;
+    transform: translateX(-50%);
+    z-index: 99;
+  }
+
+  @include e('tip-icon'){
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top: 4px solid #e4e4e4;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+  }
+}

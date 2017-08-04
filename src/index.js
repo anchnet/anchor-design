@@ -22,6 +22,7 @@ import AnchorCheckbox from '../packages/checkbox/index.js'
 import AnchorRow from '../packages/layout/index.js'
 import AnchorCol from '../packages/layout-col/index.js'
 import AnchorTransfer from '../packages/transfer/index.js'
+import AnchorSlider from '../packages/slider/index.js'
 
 const components = [
   AnchorIcon,
@@ -48,6 +49,7 @@ const components = [
   AnchorRow,
   AnchorCol,
   AnchorTransfer,
+  AnchorSlider,
 ]
 
 const install = function (Vue, options) {
@@ -62,7 +64,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
-  version: '0.21.0',
+  version: '0.22.0',
   install,
   AnchorIcon,
   AnchorMenuGroup,
@@ -88,4 +90,5 @@ module.exports = {
   AnchorRow,
   AnchorCol,
   AnchorTransfer,
+  AnchorSlider,
 }
