@@ -30,10 +30,10 @@
     <h4>Document</h4>
     <anchor-row>
       <anchor-col span="15">
-        <anchor-table :hasCheckbox="false" :theadData="theadData" :listData="listData">
+        <anchor-table :hasCheckbox="false" :theadData="TheadData" :listData="listData">
           <tbody>
             <tr v-for="(item, key) in listData">
-              <td v-for="{id} in theadData">{{item[id]}}</td>
+              <td v-for="{id} in TheadData">{{item[id]}}</td>
             </tr>
           </tbody>
         </anchor-table>
@@ -43,13 +43,11 @@
 </template>
 
 <script>
-  import globalData from 'Examples/src/assets/js/model/global'
+  import { mapGetters } from 'vuex'
 
   export default {
     data () {
       return {
-        ...globalData,
-
         basicValue: 0,
         alwaysValue: 0,
         stepValue: 0,
@@ -67,10 +65,10 @@
           {param: 'onChangeBack', type: 'function', desc: '回调函数，默认触发$emit("input")事件', default: '--', range: '--', necessary: '否'},
         ]
       }
-    }
+    },
+
+    computed: {
+      ...mapGetters('table',['TheadData']),
+    },
   }
 </script>
-
-<style lang="scss">
-
-</style>

@@ -124,30 +124,24 @@ module.exports = {
       ],
     },
     {
-      id: 'menu2',
-      text: '主菜单2',
+      id: 'menu',
+      text: 'menu 菜单类',
       children: [
         {
-          id: 'submenu2-1',
-          text: '副标题2-1',
-        },
-        {
-          id: 'submenu2-2',
-          text: '副标题2-2',
-          children: [
-            {id: 'content2-2-1', text: '菜单内容2-2-1',},
-          ]
+          id: 'dropDown',
+          text: 'drop-down (下拉菜单)',
+          link: '/menu/drop_down',
         },
       ],
     },
     {
       id: 'drag',
-      text: '拖拽类',
+      text: 'drag 拖拽类',
       children: [
         {
-          id: 'anchor-sldier',
-          text: 'anchor-slider (滑块)',
-          link: '/drag/slider'
+          id: 'sldier',
+          text: 'slider (滑块)',
+          link: '/drag/slider',
         },
       ],
     },

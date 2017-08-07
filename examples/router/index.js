@@ -12,6 +12,7 @@ const router = new Router({
       children: [
         { path: 'home', name: 'home', component: templete.Home, },
         { path: 'drag/slider', name: 'drag', component: templete.Slider, },
+        { path: 'menu/drop_down', name: 'dropDown', component: templete.DropDown, },
       ]
     }
   ]
