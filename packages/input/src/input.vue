@@ -227,6 +227,10 @@
     },
 
     methods: {
+      updateValue (val) {
+        this.value = val
+      },
+
       formatValue (value) {
         let hasDefault = this.defaultValue !== null
         let type = this.valueType.toLowerCase()

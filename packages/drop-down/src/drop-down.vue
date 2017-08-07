@@ -9,7 +9,7 @@
       ref="container"
       :class="containerClass"
       :style="containerStyle"
-      @click="((mode === 'normal' || !hoverToShow) && Data.length) ? onDropClick() : ''"
+      @click="((mode === 'normal' || !hoverToShow) && !disabledStatus) ? onDropClick() : ''"
       @mouseenter="mode === 'normal' ? hover(true) : ''"
       @mouseleave="mode === 'normal' ? hover(false) : ''"
     >
@@ -31,6 +31,10 @@
     </div>
     <transition name="anchor-animation__drop-down">
       <ul ref="droplist" v-show="isShow" class="drop-down__list">
+        <li v-if="withSearch" :class="['drop-down__item', 'drop-down__item-search']">
+          <anchor-input ref="search" mode="search" v-model="searchWord" />
+        </li>
+        <li v-if="withSearch" v-show="!(Data && Data.length)" :class="['drop-down__item', 'drop-down__search-none']">无搜索结果</li>
         <li
           v-for="(item, key) in Data"
           :class="['drop-down__item', {'drop-down__item--active': item.active}]"
@@ -95,6 +99,14 @@
         type: String,
         default: 'normal'
       },
+      withSearch: {
+        type: Boolean,
+        default: false,
+      },
+      isAsynSearch: {
+        type: Boolean,
+        default: false,
+      },
       size: String,
       width: Number,
       height: Number,
@@ -131,6 +143,7 @@
         onHover: false,
         isShow: false,
         generalStatus: false,
+        searchWord: null,
         //当前显示的 item 的数据
         onShowItem: {
           id: this.defaultId || typeof this.defaultId === 'number' ? this.defaultId : null,
@@ -167,19 +180,23 @@
     		}
     	},
 
+      disabledStatus () {
+        return !this.withSearch && (!this.Data || !this.Data.length)
+      },
+
       containerClass () {
         if (this.mode === 'simple') {
           return [
             'drop-down__container-simple',
             {
               'drop-down__container-simple--active': this.onHover,
-              'drop-down__container-simple--disabled': !(this.Data && this.Data.length)
+              'drop-down__container-simple--disabled': this.disabledStatus
             }
           ]
         }
         return [
           'drop-down__container',
-          {'drop-down__container--disabled': !(this.Data && this.Data.length)}
+          {'drop-down__container--disabled': this.disabledStatus},
         ]
       }
     },
@@ -207,7 +224,22 @@
 
       isShow (val) {
         if (val) this.$nextTick(() => this.fixListWidth())
-      }
+      },
+
+      searchWord (val, oldVal) {
+        if (this.isAsynSearch) {
+          this.$emit('onSearch', val, oldVal)
+        } else {
+          console.log('searchword')
+          if (val) {
+            let result = utils.getDataBySearch({data: this.Data, regExp: val})
+            console.log('result',result)
+            this.Data = result
+          } else {
+            this.Data = utils.clone(this.data)
+          }
+        }
+      },
     },
 
     mounted () {
@@ -326,6 +358,13 @@
           }
           let callback = () => this.$emit('onSelect', item, key)
           this['__triggerBack'](callback, item, key)
+        }
+        //清空搜索关键词
+        if (this.withSearch) {
+          setTimeout(() => {
+            this.searchWord = ''
+            this.$refs.search.updateValue('')
+          }, 200)
         }
       },
 

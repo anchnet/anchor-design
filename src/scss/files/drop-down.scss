@@ -144,9 +144,23 @@
       }
     }
   }
+
+  @include e('item-search'){
+    margin-bottom: 5px;
+  }
   
+  @include e('search-none'){
+    text-align: center;
+    color: $color-tips;
+    cursor: default;
+  }
+
   @include e('item-element'){
     display: block;
     @include single-line();
+  }
+
+  .anchor-input{
+    min-width: 173px;
   }
 }

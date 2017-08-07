@@ -116,6 +116,20 @@ const utils = (function () {
         return (c == "x" ? r : (r&0x7 | 0x8)).toString(16)
       })
       return `${prefix}${uuid}`
+    },
+
+    getDataBySearch ({data, regExp, keyword = 'value'} = {}) {
+      if (!regExp && regExp !== 0) return data
+      regExp = utils.getDataType(regExp) === 'regexp' ? regExp : new RegExp(regExp)
+      if (utils.isArray(data)) {
+        return data.filter((i) => regExp.test(i[keyword]))
+      } else if (utils.isObject(data)) {
+        let obj = {}
+        Object.keys(data).forEach((k) => {
+          if (regExp.test(data[k])) obj[k] = data[k]
+        })
+        return obj
+      } else return []
     }
   }
 })()
