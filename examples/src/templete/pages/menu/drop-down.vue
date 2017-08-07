@@ -1,28 +1,28 @@
 <template>
   <div :class="['page-dropdown']">
-    <h2>anchor-drop-down</h2>
+    <h3>anchor-drop-down</h3>
     <div :class="['web-intro']">下拉菜单，常用于页面内，显示从多个值中选取单个数据，区别于单选组件，下拉菜单数据之间无对比性</div>
     <anchor-row>
       <anchor-col span="6">
-        <h4>基本用法</h4>
+        <h5>基本用法</h5>
         <div class="web-wrapper">
           <anchor-drop-down :data="data1" />
         </div>
       </anchor-col>
       <anchor-col span="6">
-        <h4>简易模式</h4>
+        <h5>简易模式</h5>
         <div class="web-wrapper">
           <anchor-drop-down mode="simple" :data="data2" />
         </div>
       </anchor-col>
       <anchor-col span="6">
-        <h4>带搜索框</h4>
+        <h5>带搜索框</h5>
         <div class="web-wrapper">
-          <anchor-drop-down :data="data3" withSearch />
+          <anchor-drop-down :width="204" :data="data3" withSearch />
         </div>
       </anchor-col>
       <anchor-col span="6">
-        <h4>内置尺寸</h4>
+        <h5>内置尺寸</h5>
         <div class="web-wrapper">
           <div :style="{'display': 'inline-block'}">
             <h6>small</h6>
@@ -41,25 +41,25 @@
     </anchor-row>
     <anchor-row>
       <anchor-col span="6">
-        <h4>带多选过滤按钮</h4>
+        <h5>带多选过滤按钮</h5>
         <div class="web-wrapper">
           <anchor-drop-down :data="data5" isFilter />
         </div>
       </anchor-col>
       <anchor-col span="6">
-        <h4>根据 defaultKey 设置默认项</h4>
+        <h5>根据 defaultKey 设置默认项</h5>
         <div class="web-wrapper">
           <anchor-drop-down :data="data5" :defaultKey="2" />
         </div>
       </anchor-col>
       <anchor-col span="6">
-        <h4>显示图标</h4>
+        <h5>显示图标</h5>
         <div class="web-wrapper">
           <anchor-drop-down :data="data5" onShowIcon="device-colored__volume" />
         </div>
       </anchor-col>
     </anchor-row>
-    <h4>Document</h4>
+    <h5>Document</h5>
     <anchor-row>
       <anchor-col span="20">
         <anchor-table :hasCheckbox="false" :theadData="TheadData" :listData="listData">
