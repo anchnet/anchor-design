@@ -3,23 +3,65 @@
     <h2>anchor-drop-down</h2>
     <div :class="['web-intro']">下拉菜单，常用于页面内，显示从多个值中选取单个数据，区别于单选组件，下拉菜单数据之间无对比性</div>
     <anchor-row>
-      <anchor-col>
+      <anchor-col span="6">
         <h4>基本用法</h4>
         <div class="web-wrapper">
           <anchor-drop-down :data="data1" />
-          <p></p>
         </div>
       </anchor-col>
-      <anchor-col>
+      <anchor-col span="6">
+        <h4>简易模式</h4>
+        <div class="web-wrapper">
+          <anchor-drop-down mode="simple" :data="data2" />
+        </div>
+      </anchor-col>
+      <anchor-col span="6">
         <h4>带搜索框</h4>
         <div class="web-wrapper">
-          <anchor-drop-down :data="data2" withSearch />
+          <anchor-drop-down :data="data3" withSearch />
+        </div>
+      </anchor-col>
+      <anchor-col span="6">
+        <h4>内置尺寸</h4>
+        <div class="web-wrapper">
+          <div :style="{'display': 'inline-block'}">
+            <h6>small</h6>
+            <anchor-drop-down :data="data4" size="small" defaultText="small" />
+          </div>
+          <div :style="{'display': 'inline-block'}">
+            <h6>smaller</h6>
+            <anchor-drop-down :data="data4" size="smaller" />
+          </div>
+          <div :style="{'display': 'inline-block'}">
+            <h6>normal</h6>
+            <anchor-drop-down :data="data4" />
+          </div>
+        </div>
+      </anchor-col>
+    </anchor-row>
+    <anchor-row>
+      <anchor-col span="6">
+        <h4>带多选过滤按钮</h4>
+        <div class="web-wrapper">
+          <anchor-drop-down :data="data5" isFilter />
+        </div>
+      </anchor-col>
+      <anchor-col span="6">
+        <h4>根据 defaultKey 设置默认项</h4>
+        <div class="web-wrapper">
+          <anchor-drop-down :data="data5" :defaultKey="2" />
+        </div>
+      </anchor-col>
+      <anchor-col span="6">
+        <h4>显示图标</h4>
+        <div class="web-wrapper">
+          <anchor-drop-down :data="data5" onShowIcon="device-colored__volume" />
         </div>
       </anchor-col>
     </anchor-row>
     <h4>Document</h4>
     <anchor-row>
-      <anchor-col span="15">
+      <anchor-col span="20">
         <anchor-table :hasCheckbox="false" :theadData="TheadData" :listData="listData">
           <tbody>
           <tr v-for="(item, key) in listData">
@@ -35,8 +77,10 @@
 <script>
   import { mapGetters } from 'vuex'
   import utils from 'Src/libs/utils'
+  import AnchorRow from "../../../../../packages/layout/src/row.vue";
 
   export default {
+    components: {AnchorRow},
     data () {
       return {
         data: [
@@ -53,8 +97,22 @@
         ],
 
         listData:[
-          {param: 'data', type: 'array', desc: '下拉菜单数据', default: '--', range: '--', necessary: '是', remark: '示例：[{id: "id1", value: "value1"}]'},
-          {param: 'withSearch', type: 'boolean', desc: '是否带有搜索框', default: false, range: '--', necessary: '否 ', remark: ''},
+          {param: 'data', type: 'array', desc: '下拉菜单数据', default: '--', range: '--', necessary: '是', remark: '示例：[{id: "id1", value: "value1"}]，数据项必须含有 id、value 属性'},
+          {param: 'mode', type: 'string', desc: '菜单模式', default: 'normal', range: 'normal / simple', necessary: '否', remark: '目前两种模式区别仅限于样式'},
+          {param: 'withSearch', type: 'boolean', desc: '是否带有搜索框', default: 'false', range: '--', necessary: '否 ', remark: ''},
+          {param: 'isAsynSearch', type: 'boolean', desc: '是否开启显示异步搜索结果', default: 'false', range: '--', necessary: '否 ', remark: '开启后，可通过注册 onSearch 事件捕获搜索关键字，进而更新组件 data 数据'},
+          {param: 'size', type: 'string', desc: '组件尺寸', default: '--', range: 'small / smaller / normal / bigger / big', necessary: '否 ', remark: '组件内置多种尺寸，可快速设置组件大小'},
+          {param: 'width', type: 'number', desc: '组件宽度', default: '--', range: '>0', necessary: '否 ', remark: '自定义组件宽度，优先级高于 size'},
+          {param: 'height', type: 'number', desc: '组件高度', default: '--', range: '>0', necessary: '否 ', remark: '自定义组件高度，优先级高于 size'},
+          {param: 'defaultId', type: 'number / string', desc: '默认数据ID', default: '--', range: '--', necessary: '否 ', remark: '设置默认显示的数据，数据项必须含有 id 属性，优先级高于 defaultKey'},
+          {param: 'defaultKey', type: 'number', desc: '默认数据key', default: '--', range: '>=0', necessary: '否 ', remark: '设置默认显示的数据，优先级高于 defaultText'},
+          {param: 'defaultText', type: 'string', desc: '默认显示的文本', default: '--', range: '--', necessary: '否 ', remark: '设置默认显示的文本'},
+          {param: 'onDisplayStyle', type: 'string / number', desc: '组件样式', default: 1, range: '1 / 2', necessary: '否 ', remark: '选择组件内置样式'},
+          {param: 'onShowIcon', type: 'string / boolean', desc: '当前显示图标', default: 'false', range: 'false / 与 anchor-icon 内置图标选择范围一致', necessary: '否 ', remark: '设置组件图标，默认不显示，值为空字符串或者 false 均不显示图标'},
+          {param: 'hasDot', type: 'boolean', desc: '是否显示数据项前置圆点', default: 'false', range: 'false / true', necessary: '否 ', remark: '此项属于样式优化项'},
+          {param: 'isFilter', type: 'boolean', desc: '是否显示数据项多选操作', default: 'false', range: 'false / true', necessary: '否 ', remark: '用于通过多项选择过滤数据'},
+          {param: 'hoverToShow', type: 'boolean', desc: '是否开启在 hover 时显示下拉列表', default: 'false', range: 'false / true', necessary: '否 ', remark: ''},
+          {param: 'onChangeBack', type: 'function', desc: '回调函数', default: '--', range: '--', necessary: '否 ', remark: '默认通过 onSelect 事件触发回调，可选择手动绑定回调函数'},
         ]
       }
     },
@@ -67,7 +125,22 @@
       },
       data2 () {
         return utils.clone(this.data)
-      }
+      },
+      data3 () {
+        return utils.clone(this.data)
+      },
+      data4 () {
+        return utils.clone(this.data)
+      },
+      data5 () {
+        return utils.clone(this.data)
+      },
+      data6 () {
+        return utils.clone(this.data)
+      },
+      data7 () {
+        return utils.clone(this.data)
+      },
     },
   }
 </script>

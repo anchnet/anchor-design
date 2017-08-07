@@ -132,7 +132,7 @@
       },
       onShowIcon: {
         type: [String, Boolean],
-        default: ''
+        default: false
       },
       onChangeBack: Function
     },
@@ -223,7 +223,19 @@
       },
 
       isShow (val) {
-        if (val) this.$nextTick(() => this.fixListWidth())
+        if (val) {
+          this.$nextTick(() => {
+            this.fixListWidth()
+          })
+        } else {
+          //清空搜索关键词
+          if (this.withSearch) {
+            setTimeout(() => {
+              this.searchWord = ''
+              this.$refs.search.updateValue('')
+            }, 200)
+          }
+        }
       },
 
       searchWord (val, oldVal) {
@@ -316,7 +328,7 @@
        * 点击 body 关闭下拉菜单窗口
        */
       bodyClickEvent (e) {
-        if (!vQuery(this.$refs.dropdown).find(e.target).getDOM().length) {
+        if (this.isShow && !vQuery(this.$refs.dropdown).find(e.target).getDOM().length) {
           this.isShow = false
         }
       },
@@ -358,13 +370,6 @@
           }
           let callback = () => this.$emit('onSelect', item, key)
           this['__triggerBack'](callback, item, key)
-        }
-        //清空搜索关键词
-        if (this.withSearch) {
-          setTimeout(() => {
-            this.searchWord = ''
-            this.$refs.search.updateValue('')
-          }, 200)
         }
       },
 

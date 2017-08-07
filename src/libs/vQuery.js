@@ -67,6 +67,7 @@ const VQuery = class _VQuery {
 
   find (element) {
     let $selector = this._getNode()
+    if ($selector === null) return null
     let childNodes = []
 
     if (typeof element === 'string') {

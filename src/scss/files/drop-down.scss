@@ -147,6 +147,9 @@
 
   @include e('item-search'){
     margin-bottom: 5px;
+    .anchor-input{
+      min-width: 173px;
+    }
   }
   
   @include e('search-none'){
@@ -158,9 +161,5 @@
   @include e('item-element'){
     display: block;
     @include single-line();
-  }
-
-  .anchor-input{
-    min-width: 173px;
   }
 }
