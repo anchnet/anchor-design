@@ -44,7 +44,7 @@
 </script>
 
 <style lang="scss">
-  @import "Src/scss/base";
+  @import "src/scss/base";
   @import "../assets/scss/public";
   @import "~scss/mixins";
   @import "~scss/variables";
