@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import AnchorInput from 'Packages/input/src/input'
+  import AnchorInput from 'packages/input/src/input'
 
   export default {
     name: 'anchor-checkbox',
@@ -83,4 +83,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/checkbox" />
+<style lang="scss" src="src/scss/files/checkbox" />

@@ -24,10 +24,10 @@
 </template>
 
 <script>
-  import mixin from 'Src/libs/mixin'
-  import utils from 'Src/libs/utils'
-  import AnchorThead from 'Packages/table-parts/src/table-head'
-  import AnchorTbody from 'Packages/table-parts/src/table-body'
+  import mixin from 'src/libs/mixin'
+  import utils from 'src/libs/utils'
+  import AnchorThead from 'packages/table-parts/src/table-head'
+  import AnchorTbody from 'packages/table-parts/src/table-body'
 
   export default {
     name: 'anchor-table',
@@ -145,4 +145,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/table" />
+<style lang="scss" src="src/scss/files/table" />

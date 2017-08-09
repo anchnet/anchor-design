@@ -14,8 +14,8 @@
 </template>
 
 <script>
-  import utils from 'Src/libs/utils'
-  import mixin from 'Src/libs/mixin'
+  import utils from 'src/libs/utils'
+  import mixin from 'src/libs/mixin'
 
   /**
    * param
@@ -162,4 +162,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/switch-label" />
+<style lang="scss" src="src/scss/files/switch-label" />

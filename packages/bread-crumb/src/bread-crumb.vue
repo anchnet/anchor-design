@@ -32,5 +32,5 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/bread-crumb"/>
+<style lang="scss" src="src/scss/files/bread-crumb"/>
 

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import templete from 'Examples/src/templete'
+import templete from 'examples/src/templete'
 
 Vue.use(Router)
 

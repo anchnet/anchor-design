@@ -27,10 +27,10 @@
 </template>
 
 <script>
-  import utils from 'Src/libs/utils'
-  import AnchorInput from 'Packages/input/src/input'
-  import AnchorButton from 'Packages/button/src/button'
-  import AnchorCheckbox from 'Packages/checkbox/src/checkbox'
+  import utils from 'src/libs/utils'
+  import AnchorInput from 'packages/input/src/input'
+  import AnchorButton from 'packages/button/src/button'
+  import AnchorCheckbox from 'packages/checkbox/src/checkbox'
 
   export default {
     name: 'anchor-transfer-item',

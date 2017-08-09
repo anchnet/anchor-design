@@ -13,9 +13,9 @@
 </template>
 
 <script>
-  import mixin from 'Src/libs/mixin'
-  import AnchorInput from 'Packages/input/src/input'
-  import AnchorButton from 'Packages/button/src/button'
+  import mixin from 'src/libs/mixin'
+  import AnchorInput from 'packages/input/src/input'
+  import AnchorButton from 'packages/button/src/button'
 
   export default {
     name: 'anchor-search',
@@ -67,4 +67,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/search" />
+<style lang="scss" src="src/scss/files/search" />

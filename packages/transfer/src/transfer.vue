@@ -52,8 +52,8 @@
 </template>
 
 <script>
-  import utils from 'Src/libs/utils'
-  import AnchorButton from 'Packages/button/src/button'
+  import utils from 'src/libs/utils'
+  import AnchorButton from 'packages/button/src/button'
   import AnchorTransferItem from './transfer-item'
 
   export default {
@@ -175,4 +175,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/transfer" />
+<style lang="scss" src="src/scss/files/transfer" />

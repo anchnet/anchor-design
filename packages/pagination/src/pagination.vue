@@ -53,10 +53,10 @@
 </template>
 
 <script>
-  import mixin from 'Src/libs/mixin'
-  import AnchorInput from 'Packages/input/src/input'
-  import AnchorDropDown from 'Packages/drop-down/src/drop-down'
-  import AnchorIcon from "Packages/icons/src/icons";
+  import mixin from 'src/libs/mixin'
+  import AnchorInput from 'packages/input/src/input'
+  import AnchorDropDown from 'packages/drop-down/src/drop-down'
+  import AnchorIcon from "packages/icons/src/icons";
 
   export default {
     name: 'anchor-pagination',
@@ -255,4 +255,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/pagination" />
+<style lang="scss" src="src/scss/files/pagination" />

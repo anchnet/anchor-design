@@ -52,8 +52,8 @@
 </template>
 
 <script>
-  import AnchorMenuGroup from 'Packages/menu-parts/src/menu-group'
-  import AnchorIcon from 'Packages/icons/src/icons'
+  import AnchorMenuGroup from 'packages/menu-parts/src/menu-group'
+  import AnchorIcon from 'packages/icons/src/icons'
 
   /**
    * hasChildren {boolean} if the component hasn't child content, hide the icon of traingle

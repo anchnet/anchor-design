@@ -16,10 +16,10 @@
 </template>
 
 <script>
-  import mixin from 'Src/libs/mixin'
-  import utils from 'Src/libs/utils'
-  import AnchorMenuGroup from 'Packages/menu-parts/src/menu-group'
-  import AnchorMenuTitle from 'Packages/menu-parts/src/menu-title'
+  import mixin from 'src/libs/mixin'
+  import utils from 'src/libs/utils'
+  import AnchorMenuGroup from 'packages/menu-parts/src/menu-group'
+  import AnchorMenuTitle from 'packages/menu-parts/src/menu-title'
   import AnchorMenuVerticalItem from './menu-vertical-item'
 
   export default {
@@ -43,4 +43,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/menu-vertical" />
+<style lang="scss" src="src/scss/files/menu-vertical" />

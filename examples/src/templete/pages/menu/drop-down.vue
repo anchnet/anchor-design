@@ -76,7 +76,7 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import utils from 'Src/libs/utils'
+  import utils from 'src/libs/utils'
   import AnchorRow from "../../../../../packages/layout/src/row.vue";
 
   export default {

@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import AnchorInput from 'Packages/input/src/input'
+  import AnchorInput from 'packages/input/src/input'
 
   export default {
     name: 'anchor-radio',
@@ -57,4 +57,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/radio" />
+<style lang="scss" src="src/scss/files/radio" />

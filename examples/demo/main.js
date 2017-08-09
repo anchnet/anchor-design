@@ -2,11 +2,11 @@
  * Created by liuzhimeng on 2017/7/26.
  */
 import Vue from 'vue'
-import AnchorTable from 'Packages/table/src/table'
-import AnchorTbody from 'Packages/table-parts/src/table-body'
-import AnchorTcell from 'Packages/table-parts/src/table-cell'
+import AnchorTable from 'packages/table/src/table'
+import AnchorTbody from 'packages/table-parts/src/table-body'
+import AnchorTcell from 'packages/table-parts/src/table-cell'
 
-import staticData from 'Examples/demo/model/demo'
+import staticData from 'examples/demo/model/demo'
 
 const Demo = {
   components: {

@@ -409,7 +409,7 @@
 </template>
 
 <script>
-  import staticData from 'Examples/src/assets/js/model/demo'
+  import staticData from 'examples/src/assets/js/model/demo'
 
   export default {
     name: 'home',
