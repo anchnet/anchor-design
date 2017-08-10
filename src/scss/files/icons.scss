@@ -384,3 +384,13 @@
     background-position: 0 -16px;
   }
 }
+
+@include b('anchor-icon-close'){
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  color: #000;
+  &:after{
+    content: "\2715";
+  }
+}
