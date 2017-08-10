@@ -191,76 +191,6 @@
         </div>
       </li>
       <li>
-        <h4>drop-down</h4>
-        <ol class="sub-inline">
-          <li>
-            <h5>简易下拉菜单</h5>
-            <div class="demo-layout">
-              <anchor-drop-down
-                mode="simple"
-                :width="80"
-                :data="dropdownData.nav.data"
-                :hasDot="dropdownData.nav.hasDot"
-                :defaultText="dropdownData.nav.defaultText"
-              />
-            </div>
-          </li>
-          <li>
-            <h5>普通下拉菜单</h5>
-            <div class="demo-layout">
-              <anchor-drop-down
-              	:width="180"
-                :data="dropdownData.imageType.data"
-                :hasDot="dropdownData.imageType.hasDot"
-                :defaultText="dropdownData.imageType.defaultText"
-                :onChangeBack="onDropDownChange.bind(null, 'imageType')"
-              />
-              <anchor-drop-down
-                class="ml10"
-                :data="dropdownData.imageVersion.data[currentImageType]"
-                :hasDot="dropdownData.imageVersion.hasDot"
-                :defaultKey="dropdownData.imageType.defaultKey"
-                :defaultText="dropdownData.imageVersion.defaultText"
-                :onChangeBack="onDropDownChange.bind(null, 'imageVersion')"
-              />
-            </div>
-          </li>
-          <li>
-            <h5>带图标的下拉菜单</h5>
-            <div class="demo-layout">
-              <anchor-drop-down
-                onShowIcon="device-colored__hosting"
-                :data="dropdownData.imageType.data"
-                defaultText="点击选择"
-              />
-            </div>
-          </li>
-          <li>
-            <h5>红色字体的下拉菜单</h5>
-            <div class="demo-layout">
-              <anchor-drop-down
-                onDisplayStyle="2"
-                onShowIcon="device-colored__hosting"
-                :data="dropdownData.imageType.data"
-                defaultText="点击选择"
-              />
-            </div>
-          </li>
-          <li>
-            <h5>带多选按钮的下拉菜单</h5>
-            <div class="demo-layout">
-              <anchor-drop-down
-                onShowIcon="device-colored__hosting"
-                :data="dropdownData.imageType.data"
-                isFilter
-                defaultText="点击选择"
-                @onSelect="onSelect"
-              />
-            </div>
-          </li>
-        </ol>
-      </li>
-      <li>
         <h4>anchor-search</h4>
         <ol class="sub-inline">
           <li>
@@ -342,56 +272,6 @@
         </ol>
       </li>
       <li>
-        <h4>anchor-button</h4>
-        <div class="demo-layout">
-          <anchor-button btnStyle="1" />
-          <anchor-button btnStyle="2" />
-          <anchor-button btnStyle="3" />
-          <anchor-button btnStyle="4" />
-          <anchor-button btnStyle="5" />
-          <anchor-button btnStyle="6" />
-          <anchor-button mode="tag" />
-          <anchor-button mode="tag" tagColor="2B90E8" />
-          <anchor-button mode="tag" tagColor="08B446" />
-          <anchor-button mode="tag" tagColor="AEA202" />
-          <anchor-button mode="tag" tagColor="6F57FF" />
-          <anchor-button mode="tag" tagColor="E15E85" />
-          <anchor-button mode="tag" tagColor="1AADE1" />
-          <anchor-button mode="tag" tagColor="F96E28" />
-        </div>
-        <div class="demo-layout">
-          <anchor-button btnStyle="1" :isDisabled="true" />
-          <anchor-button btnStyle="2" :isDisabled="true" />
-          <anchor-button btnStyle="3" :isDisabled="true" />
-          <anchor-button btnStyle="4" :isDisabled="true" />
-          <anchor-button btnStyle="5" :isDisabled="true" />
-          <anchor-button btnStyle="6" :isDisabled="true" />
-          <anchor-button mode="tag" :isClicked="false" />
-          <anchor-button mode="tag" tagColor="2B90E8" :isClicked="false" />
-          <anchor-button mode="tag" tagColor="08B446" :isClicked="false" />
-          <anchor-button mode="tag" tagColor="AEA202" :isClicked="false" />
-          <anchor-button mode="tag" tagColor="6F57FF" :isClicked="false" />
-          <anchor-button mode="tag" tagColor="E15E85" :isClicked="false" />
-          <anchor-button mode="tag" tagColor="1AADE1" :isClicked="false" />
-          <anchor-button mode="tag" tagColor="F96E28" :isDisabled="true" />
-        </div>
-        <div class="demo-layout">
-          <anchor-button mode="tag" :width="120" />
-          <anchor-button mode="tag" tagColor="2B90E8" :width="100" />
-          <anchor-button mode="tag" tagColor="08B446" :width="200" />
-          <anchor-button mode="tag" tagColor="AEA202" :width="300" />
-          <anchor-button mode="tag" tagColor="6F57FF" :width="90" />
-          <anchor-button mode="tag" tagColor="E15E85" :width="220" />
-          <anchor-button mode="tag" tagColor="1AADE1" :width="80" />
-          <anchor-button mode="tag" tagColor="F96E28" :width="170" />
-        </div>
-        <div class="demo-layout">
-          <anchor-button iconName="dot" btnStyle="2" />
-          <anchor-button iconName="dot" btnStyle="4" />
-          <anchor-button iconName="device-colored__volume" btnStyle="6" />
-        </div>
-      </li>
-      <li>
         <h4>anchor-switch-label</h4>
         <div class="demo-layout">
           区域：<anchor-switch-label immediate :initData="regions" :onChangeBack="onLabelChange.bind(null, 'regions')"/>
@@ -437,10 +317,6 @@
           this.hostType[1]['forbidden'] = item.id !== 'ac3'
         }
         this.currentName = item.value
-      },
-
-      onDropDownChange (type, item, key) {
-        console.log(type, item, key)
       },
 
       onSelect (data) {

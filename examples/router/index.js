@@ -11,8 +11,9 @@ const router = new Router({
       path: '/', name: 'layout', component: templete.Layout, redirect: '/home',
       children: [
         { path: 'home', name: 'home', component: templete.Home, },
-        { path: 'drag/slider', name: 'drag', component: templete.Slider, },
+        { path: 'form/button', name: 'button', component: templete.Button, },
         { path: 'menu/drop_down', name: 'dropDown', component: templete.DropDown, },
+        { path: 'drag/slider', name: 'drag', component: templete.Slider, },
       ]
     }
   ]
