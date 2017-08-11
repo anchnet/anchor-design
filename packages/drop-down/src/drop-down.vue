@@ -62,10 +62,10 @@
 </template>
 
 <script>
-  import utils from 'Src/libs/utils'
-  import mixin from 'Src/libs/mixin'
-  import AnchorIcon from 'Packages/icons/src/icons'
-  import AnchorInput from 'Packages/input/src/input'
+  import utils from 'src/libs/utils'
+  import mixin from 'src/libs/mixin'
+  import AnchorIcon from 'packages/icons/src/icons'
+  import AnchorInput from 'packages/input/src/input'
 
   /**
    * param
@@ -380,4 +380,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/drop-down" />
+<style lang="scss" src="src/scss/files/drop-down" />

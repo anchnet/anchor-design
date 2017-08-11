@@ -14,9 +14,9 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.js',
       'scss': utils.webpackResolve('src/scss'),
-      'Src': utils.webpackResolve('src/'),
-      'Packages': utils.webpackResolve('packages/'),
-      'Examples': utils.webpackResolve('examples/')
+      'src': utils.webpackResolve('src/'),
+      'packages': utils.webpackResolve('packages/'),
+      'examples': utils.webpackResolve('examples/')
     }
   },
 

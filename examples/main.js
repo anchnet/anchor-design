@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './app.vue'
 import router from './router'
 import store from './store'
-import anchor from 'Src/index'
+import anchor from 'src/index'
 
 Vue.use(anchor)
 

@@ -27,8 +27,8 @@
 </template>
 
 <script>
-  import AnchorIcon from 'Packages/icons/src/icons'
-  import mixin from 'Src/libs/mixin'
+  import AnchorIcon from 'packages/icons/src/icons'
+  import mixin from 'src/libs/mixin'
 
   /**
    * mode {string} the type of title, includes the title of main and the title of sub
@@ -169,4 +169,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/menu-title" />
+<style lang="scss" src="src/scss/files/menu-title" />

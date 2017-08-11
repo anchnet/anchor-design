@@ -20,9 +20,9 @@
 </template>
 
 <script>
-  import utils from 'Src/libs/utils'
-  import mixin from 'Src/libs/mixin'
-  import AnchorIcon from 'Packages/icons/src/icons'
+  import utils from 'src/libs/utils'
+  import mixin from 'src/libs/mixin'
+  import AnchorIcon from 'packages/icons/src/icons'
 
   /**
    * param
@@ -326,4 +326,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/slider" />
+<style lang="scss" src="src/scss/files/slider" />
