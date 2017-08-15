@@ -3,7 +3,7 @@
     <h3>anchor-button</h3>
     <div :class="['web-intro']">用于触发各种操作、展示性标签、显示可变状态文字、链接及图标</div>
     <anchor-row>
-      <anchor-col span="20">
+      <anchor-col span="18">
         <h5>基本用法</h5>
         <div class="web-wrapper">
           <anchor-button btnStyle="1" />
@@ -22,12 +22,13 @@
           <anchor-button mode="tag" tagColor="F96E28" text="标签文字" />
         </div>
       </anchor-col>
-      <anchor-col span="4">
+      <anchor-col span="6">
         <h5>纯展示标签，不绑定点击事件</h5>
         <div class="web-wrapper">
           <anchor-button mode="tag" tagColor="6F57FF" text="标签文字" :isClicked="false" />
           <anchor-button mode="tag" tagColor="1AADE1" text="标签文字" :isClicked="false" />
           <anchor-button mode="tag" tagColor="F96E28" text="标签文字" :isClicked="false" />
+          <anchor-button mode="tag" tagColor="F96E28" text="标签文字" showCloseIcon :isClicked="false" />
         </div>
       </anchor-col>
       <anchor-col span="8">
@@ -77,7 +78,7 @@
     data () {
       return {
         listData:[
-          {param: 'mode', type: 'string', desc: '菜单模式', default: 'normal', range: 'normal / simple', necessary: '否', remark: '目前两种模式区别仅限于样式'},
+          {param: 'mode', type: 'string', desc: '按钮模式', default: 'button', range: 'button / tag', necessary: '否', remark: '目前两种模式区别仅限于样式'},
           {param: 'onChangeBack', type: 'function', desc: '回调函数', default: '--', range: '--', necessary: '否 ', remark: '默认通过 onSelect 事件触发回调，可选择手动绑定回调函数'},
         ]
       }

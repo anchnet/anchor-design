@@ -34,13 +34,20 @@
       :href="link"
       :class="['anchor-button__text']"
       :style="textStyle"><slot name="button-text">{{text}}</slot></a>
-    <slot name="button-right"></slot>
+    <slot name="button-right">
+      <anchor-icon
+        v-if="showCloseIcon"
+        name="close"
+        :active="active"
+        :style="{'margin-right': '8px'}"
+      />
+    </slot>
   </span>
 </template>
 
 <script>
   /**
-   * mode [string] 设置 button 类型，包含'Button'，'tag'，默认为'button'
+   * mode [string] 设置 button 类型，包含'button'，'tag'，默认为'button'
    * text [string] 按钮文字
    * link [string] 按钮跳转路由, 优先于点击事件
    * targetText [string] 跳转模式，即 a 标签的 target 属性，默认为'_self'
@@ -108,6 +115,11 @@
       },
 
       isDisabled: {
+        type: Boolean,
+        default: false
+      },
+
+      showCloseIcon: {
         type: Boolean,
         default: false
       },
