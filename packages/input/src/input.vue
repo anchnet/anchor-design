@@ -71,8 +71,8 @@
    * width {number} 输入框宽度
    * height {number} 输入框高度
    */
-  import mixin from 'Src/libs/mixin'
-  import AnchorIcon from 'Packages/icons/src/icons'
+  import mixin from 'src/libs/mixin'
+  import AnchorIcon from 'packages/icons/src/icons'
 
   export default {
     name: 'anchor-input',
@@ -301,4 +301,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/input" />
+<style lang="scss" src="src/scss/files/input" />

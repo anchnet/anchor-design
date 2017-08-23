@@ -85,4 +85,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/nav" />
+<style lang="scss" src="src/scss/files/nav" />

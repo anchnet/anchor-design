@@ -36,4 +36,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/layout" />
+<style lang="scss" src="src/scss/files/layout" />

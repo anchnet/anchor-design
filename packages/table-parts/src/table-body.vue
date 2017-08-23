@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import AnchorInput from 'Packages/input/src/input'
+  import AnchorInput from 'packages/input/src/input'
 
   export default {
     name: 'anchor-tbody',

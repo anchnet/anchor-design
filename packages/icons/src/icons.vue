@@ -22,7 +22,7 @@
    * isRotating {boolean} false 是否进行旋转
    * direction {string} '' 旋转方向, 'top-down': 上下旋转，'left-right': 左右旋转
    */
-  import mixin from 'Src/libs/mixin'
+  import mixin from 'src/libs/mixin'
 
   export default {
     name: 'anchor-icon',
@@ -95,4 +95,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/icons" />
+<style lang="scss" src="src/scss/files/icons" />

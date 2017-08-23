@@ -48,9 +48,10 @@
    *
    * onChangeback {function} 回调函数，不存在时则由 this.$emit('handleClick', params) 触发回调
    */
-  import mixin from 'Src/libs/mixin'
-  import vQuery from 'Src/libs/vQuery'
-  import AnchorIcon from 'Packages/icons/src/icons'
+
+  import vQuery from 'src/libs/vQuery'
+  import mixin from 'src/libs/mixin'
+  import AnchorIcon from 'packages/icons/src/icons'
 
   export default {
     name: 'anchor-tabs',
@@ -159,4 +160,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/tabs" />
+<style lang="scss" src="src/scss/files/tabs" />

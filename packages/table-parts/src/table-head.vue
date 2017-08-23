@@ -21,8 +21,8 @@
 </template>
 
 <script>
-  import AnchorDropDown from 'Packages/drop-down/src/drop-down'
-  import AnchorInput from 'Packages/input/src/input'
+  import AnchorDropDown from 'packages/drop-down/src/drop-down'
+  import AnchorInput from 'packages/input/src/input'
 
   export default {
     name: 'anchor-thead',

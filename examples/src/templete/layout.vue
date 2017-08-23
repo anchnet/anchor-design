@@ -16,10 +16,10 @@
 </template>
 
 <script>
-  import AnchorNav from 'Packages/nav/src/nav'
-  import AnchorMenuVertical from 'Packages/menu-vertical/src/menu-vertical'
+  import AnchorNav from 'packages/nav/src/nav'
+  import AnchorMenuVertical from 'packages/menu-vertical/src/menu-vertical'
 
-  import staticData from 'Examples/src/assets/js/model/layout'
+  import staticData from 'examples/src/assets/js/model/layout'
 
   export default {
     name: 'layout',
@@ -44,7 +44,7 @@
 </script>
 
 <style lang="scss">
-  @import "Src/scss/base";
+  @import "src/scss/base";
   @import "../assets/scss/public";
   @import "~scss/mixins";
   @import "~scss/variables";

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import mixin from 'Src/libs/mixin'
+  import mixin from 'src/libs/mixin'
 
   export default {
     name: 'anchor-menu-content',
@@ -83,4 +83,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/menu-content" />
+<style lang="scss" src="src/scss/files/menu-content" />

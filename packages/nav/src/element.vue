@@ -28,11 +28,11 @@
 </template>
 
 <script>
-  import utils from 'Src/libs/utils'
-  import mixin from 'Src/libs/mixin'
-  import AnchorIcon from 'Packages/icons/src/icons'
-  import AnchorDropDown from 'Packages/drop-down/src/drop-down'
-  import AnchorButton from 'Packages/button/src/button'
+  import utils from 'src/libs/utils'
+  import mixin from 'src/libs/mixin'
+  import AnchorIcon from 'packages/icons/src/icons'
+  import AnchorDropDown from 'packages/drop-down/src/drop-down'
+  import AnchorButton from 'packages/button/src/button'
   export default {
     name: 'anchor-element',
 
@@ -124,4 +124,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/element" />
+<style lang="scss" src="src/scss/files/element" />

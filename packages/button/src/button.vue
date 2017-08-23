@@ -64,7 +64,7 @@
    * isDisabled [boolean] 是否处于禁用状态
    */
 
-  import AnchorIcon from 'Packages/icons/src/icons'
+  import AnchorIcon from 'packages/icons/src/icons'
 
   export default {
     name: 'anchor-button',
@@ -187,4 +187,4 @@
   }
 </script>
 
-<style lang="scss" src="Src/scss/files/button" />
+<style lang="scss" src="src/scss/files/button" />
