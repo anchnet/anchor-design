@@ -13,6 +13,7 @@ const router = new Router({
         { path: 'home', name: 'home', component: templete.Home, },
         { path: 'form/button', name: 'button', component: templete.Button, },
         { path: 'menu/drop_down', name: 'dropDown', component: templete.DropDown, },
+        { path: 'menu/tabs', name: 'anchorTabs', component: templete.AnchorTabs, },
         { path: 'drag/slider', name: 'drag', component: templete.Slider, },
       ]
     }

@@ -21,7 +21,10 @@
           disableAnimation
           active
         />
-        <a v-if="item.link" :class="['anchor-tabs__element']" :href="item.link" :target="targetText" @click="item.disabled ? '' : onClick(item, key, 'link')">
+        <a v-if="item.link" :class="['anchor-tabs__element']"
+           :href="item.link" :target="item.targetText ? item.targetText : targetText"
+           @click="item.disabled && preventEvent ? '' : onClick(item, key)"
+        >
           <div :class="['anchor-tabs__element-text']">{{item.value}}</div>
         </a>
         <div v-else :class="['anchor-tabs__element']" @click="item.disabled ? '' : onClick(item, key)">
@@ -63,6 +66,7 @@
     },
 
     props: {
+      data: Array,
       mode: {
         type: String,
         default: 'card'
@@ -71,10 +75,13 @@
         type: String,
         default: '_self'
       },
+      preventEvent: {
+        type: Boolean,
+        default: false
+      },
       defaultId: [String, Number],
       defaultValue: [String, Number],
       defaultKey: [String, Number],
-      data: Array,
       onChangeback: Function
     },
 
@@ -118,12 +125,10 @@
 
         this.moveLine(key)
 
-        if (type !== 'link') {
-          let callback = () => {
-            this.$emit('handleClick', item, key)
-          }
-          this.__triggerBack(callback, item, key)
+        let callback = () => {
+          this.$emit('handleClick', item, key)
         }
+        this.__triggerBack(callback, item, key)
       },
 
       moveLine (key) {

@@ -114,6 +114,11 @@ module.exports = {
           text: 'drop-down (下拉菜单)',
           link: '/menu/drop_down',
         },
+        {
+          id: 'anchorTabs',
+          text: 'anchor-tabs (水平切换菜单)',
+          link: '/menu/tabs',
+        },
       ],
     },
     {
