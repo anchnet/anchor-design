@@ -170,7 +170,7 @@
       inputStyle () {
         let width = this.mode === 'search' ? this.__width - 22 : this.__width
         return {
-          width: width + 'px',
+          width: width - 2 + 'px',
           height: this.__height + 'px',
           'line-height': this.__height + 'px',
         }
