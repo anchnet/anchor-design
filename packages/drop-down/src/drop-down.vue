@@ -63,6 +63,7 @@
 
 <script>
   import utils from 'src/libs/utils'
+  import vQuery from 'src/libs/vQuery'
   import mixin from 'src/libs/mixin'
   import AnchorIcon from 'packages/icons/src/icons'
   import AnchorInput from 'packages/input/src/input'
