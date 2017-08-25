@@ -15,7 +15,7 @@
   >
     <slot name="button-left">
       <anchor-icon
-        v-if="iconName"
+        v-if="!!iconName"
         :name="iconName"
         :active="active"
         :style="{'margin-right': '8px'}"
@@ -51,7 +51,7 @@
    * text [string] 按钮文字
    * link [string] 按钮跳转路由, 优先于点击事件
    * targetText [string] 跳转模式，即 a 标签的 target 属性，默认为'_self'
-   * textWidth: [number] 设置按钮内文字宽度，由于要保持文字超出设定值显示为省略的样式，因此需要手灯设置文字宽度，不设置怎根据按钮内边距和总宽度计算生成
+   * textWidth: [number] 设置按钮内文字宽度，由于要保持文字超出设定值显示为省略的样式，因此需要手灯设置文字宽度，不设置会根据按钮内边距和总宽度计算生成
    * width [number] 按钮总宽度
    * height [number] 按钮总高度
    * btnStyle [string, number] button 模式下，组件内设的按钮样式['1','2','3','4','5','6',]
@@ -65,15 +65,20 @@
    */
 
   import AnchorIcon from 'packages/icons/src/icons'
+  import mixin from 'src/libs/mixin'
 
   export default {
     name: 'anchor-button',
+
+    mixins: [mixin],
 
     components: {
       AnchorIcon
     },
 
     props: {
+      data: '',
+
       mode: {
         type: String,
         default: 'button'
@@ -96,8 +101,28 @@
 
       iconName: {
         type: [String, Boolean],
+        default: false
+      },
+
+      text: {
+        type: [String, Number],
+        default: '按钮文字'
+      },
+
+      link: {
+        type: String,
         default: ''
       },
+
+      targetText: {
+        type: String,
+        default: '_self'
+      },
+
+      size: String,
+      textWidth: Number,
+      width: Number,
+      height: Number,
 
       isHover: {
         type: Boolean,
@@ -123,30 +148,18 @@
         type: Boolean,
         default: false
       },
-
-      text: {
-        type: [String, Number],
-        default: '按钮文字'
-      },
-
-      link: {
-        type: String,
-        default: ''
-      },
-
-      targetText: {
-        type: String,
-        default: '_self'
-      },
-
-      textWidth: Number,
-      width: Number,
-      height: Number
     },
 
     data () {
       return {
-        active: false
+        active: false,
+
+        sizeMap: {
+          big: {
+            width: 160,
+            height: 40,
+          }
+        }
       }
     },
 
@@ -157,7 +170,7 @@
 
       buttonStyle () {
         let style = {
-          width: this.width ? this.width + 'px' : ''
+          width: this.__width ? this.__width + 'px' : ''
         }
         if (this.mode === 'tag') {
           style.cursor = this.isClicked ? 'pointer' : 'default'
@@ -168,8 +181,8 @@
       textStyle () {
         return {
           width: this.textWidth ? this.textWidth + 'px' : '',
-          height: this.height ? this.height + 'px' : '',
-          'line-height': this.height ? this.height + 'px' : ''
+          height: this.__height ? this.__height - 2 + 'px' : '',
+          'line-height': this.__height ? this.__height - 2 + 'px' : ''
         }
       },
     },
@@ -181,7 +194,7 @@
       },
 
       handleClick () {
-        this.$emit('handleClick')
+        this.$emit('handleClick', this.data)
       }
     }
   }
