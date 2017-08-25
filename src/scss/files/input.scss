@@ -21,7 +21,6 @@
     width: 22px;
     height: 28px;
     line-height: 28px;
-    background-color: $color-base-background;
     text-align: right;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
@@ -63,9 +62,6 @@
     background-color: #ffffff;
     border-radius: 2px;
     vertical-align: bottom;
-    @include m('search'){
-      background-color: $color-base-background;
-    }
     @include m('disabled'){
       color: $color-forbidden-font;
       background-color: $color-forbidden-background-darker;

@@ -28,8 +28,12 @@ p{font-size: $font-size-base; font-weight: normal; margin-bottom: .75em; line-he
 }
 
 .web-wrapper{
+  margin-bottom: 20px;
   padding: 10px;
   border: 1px solid $color-line;
   box-shadow: 0 0 3px $color-table-line;
   border-radius: 6px;
+  > div {
+    margin: 10px 0;
+  }
 }

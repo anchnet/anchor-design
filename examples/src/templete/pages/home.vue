@@ -76,15 +76,6 @@
         </div>
       </li>
       <li>
-        <h4>anchor-tabs</h4>
-        <div class="demo-layout">
-          <anchor-tabs :data="tabsData" targetText="_blank" />
-        </div>
-        <div class="demo-layout">
-          <anchor-tabs mode="list" :data="tabsData" targetText="_blank" />
-        </div>
-      </li>
-      <li>
         <h4>anchor-bread-crumb</h4>
         <div class="demo-layout">
           <anchor-bread-crumb :data="breadcrumbData" />
@@ -212,20 +203,6 @@
         <h4>anchor-input</h4>
         <ol class="sub-inline">
           <li>
-            <h5>双向绑定输入框</h5>
-            <div class="demo-layout">
-              <anchor-input v-model="inputValue" defaultText="双向绑定, testing~" />
-            </div>
-            <p class="text">{{inputValue}}</p>
-          </li>
-          <li>
-            <h5>数字框</h5>
-            <div class="demo-layout">
-              <anchor-input :alwaysFeedback="false" valueType="number" :digit="4" :initValue="88" :width="100" @onChange="changeValue('input', ...arguments)" />
-            </div>
-            <p class="text">{{inputNumber}}</p>
-          </li>
-          <li>
             <h5>禁止输入</h5>
             <div class="demo-layout">
               <anchor-input disabled defaultText="禁止输入" />
@@ -301,10 +278,6 @@
 
       onPageChange (obj) {
         this.pageData = obj
-      },
-
-      changeValue (type, val, oldVal) {
-        this.inputNumber = val
       },
 
       onSearch (keyword) {

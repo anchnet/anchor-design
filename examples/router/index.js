@@ -9,12 +9,30 @@ const router = new Router({
   routes: [
     {
       path: '/', name: 'layout', component: templete.Layout, redirect: '/home',
+
       children: [
         { path: 'home', name: 'home', component: templete.Home, },
-        { path: 'form/button', name: 'button', component: templete.Button, },
-        { path: 'menu/drop_down', name: 'dropDown', component: templete.DropDown, },
-        { path: 'menu/tabs', name: 'anchorTabs', component: templete.AnchorTabs, },
-        { path: 'drag/slider', name: 'drag', component: templete.Slider, },
+
+        { path: 'form/', name: 'form', component: templete.Form,
+          children: [
+            { path: 'button', name: 'button', component: templete.AnchorButton, },
+            { path: 'input', name: 'input', component: templete.AnchorInput, }
+          ]
+        },
+
+        { path: 'menu/', name: 'menu', component: templete.Menu,
+          children: [
+            { path: 'drop_down', name: 'dropDown', component: templete.DropDown, },
+            { path: 'tabs', name: 'anchorTabs', component: templete.AnchorTabs, }
+          ]
+        },
+
+        { path: 'drag/', name: 'drag', component: templete.Drag,
+          children: [
+            { path: 'slider', name: 'slider', component: templete.Slider, },
+          ]
+        },
+
       ]
     }
   ]

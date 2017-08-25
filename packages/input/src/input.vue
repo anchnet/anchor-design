@@ -154,13 +154,13 @@
         active: this.isActive,
         hover: false,
         sizeMap: {
-          'ip': {
+          small: {
             width: 56,
-            height: 24
-          },
-          'smaller': {
-            width: 80,
             height: 20
+          },
+          smaller: {
+            width: 80,
+            height: 24
           },
         }
       }

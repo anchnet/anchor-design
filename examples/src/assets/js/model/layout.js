@@ -103,6 +103,11 @@ module.exports = {
           text: 'Button 按钮',
           link: '/form/button',
         },
+        {
+          id: 'input',
+          text: 'Input 输入框',
+          link: '/form/input',
+        },
       ],
     },
     {

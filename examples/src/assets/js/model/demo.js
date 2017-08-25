@@ -48,14 +48,6 @@ module.exports = {
     {id: 'sanxing', value: '三星', disabled: true,},
   ],
 
-  tabsData: [
-    {id: 'dhcp', value: 'DHCP服务'},
-    {id: 'vxnet', value: '路由子网'},
-    {id: 'port', value: '端口转发', active: true},
-    {id: 'tunnel', value: '隧道服务', link: 'https://www.anchnet.com/'},
-    {id: 'vpn', value: 'VPN服务'},
-  ],
-
   breadcrumbData: [
     {text: '云路由器', to: 'https://www.anchnet.com/'},
     {text: '云路由器详情',},
@@ -127,8 +119,6 @@ module.exports = {
 
   searchWord: '',
 
-  inputValue: 'placeholder',
-  inputNumber: '88.0000',
   inputValue3: '',
   inputValue4: '',
   inputValue5: '',
