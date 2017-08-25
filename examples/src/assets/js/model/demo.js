@@ -117,12 +117,6 @@ module.exports = {
     value2: 200
   },
 
-  searchWord: '',
-
-  inputValue3: '',
-  inputValue4: '',
-  inputValue5: '',
-
   currentName: "",
   regions: [
     {id: "ac1", value: "华东一区（无锡）", active: false},

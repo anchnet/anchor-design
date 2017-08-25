@@ -200,55 +200,6 @@
         </ol>
       </li>
       <li>
-        <h4>anchor-input</h4>
-        <ol class="sub-inline">
-          <li>
-            <h5>禁止输入</h5>
-            <div class="demo-layout">
-              <anchor-input disabled defaultText="禁止输入" />
-            </div>
-          </li>
-          <li>
-            <h5>自定义宽高</h5>
-            <div class="demo-layout">
-              <anchor-input defaultText="请输入内容" :height="60" :width="200"/>
-            </div>
-          </li>
-          <li>
-            <h5>保持高亮</h5>
-            <div class="demo-layout">
-              <anchor-input :alwaysActive="true" defaultText="请输入内容"/>
-            </div>
-          </li>
-          <li>
-            <h5>初始高亮</h5>
-            <div class="demo-layout">
-              <anchor-input :isActive="true" defaultText="请输入内容"/>
-            </div>
-          </li>
-          <li>
-            <h5>单选按钮</h5>
-            <div class="demo-layout">
-              <anchor-input mode="radio" v-model="inputValue3" />
-              <anchor-input mode="radio" isActive />
-              <anchor-input mode="radio" disabled />
-              <anchor-input mode="radio" isActive disabled />
-            </div>
-            <p class="text">{{inputValue3}}</p>
-          </li>
-          <li>
-            <h4>多选按钮</h4>
-            <div class="demo-layout">
-              <anchor-input mode="checkbox" v-model="inputValue4" />
-              <anchor-input mode="checkbox" isActive />
-              <anchor-input mode="checkbox" disabled />
-              <anchor-input mode="checkbox" isActive disabled />
-            </div>
-            <p class="text">{{inputValue4}}</p>
-          </li>
-        </ol>
-      </li>
-      <li>
         <h4>anchor-switch-label</h4>
         <div class="demo-layout">
           区域：<anchor-switch-label immediate :initData="regions" :onChangeBack="onLabelChange.bind(null, 'regions')"/>
@@ -290,10 +241,6 @@
           this.hostType[1]['forbidden'] = item.id !== 'ac3'
         }
         this.currentName = item.value
-      },
-
-      onSelect (data) {
-        console.log(data)
       },
 
       onSelectNumberChange (type, value) {
