@@ -110,7 +110,7 @@
           {param: 'hasDot', type: 'boolean', desc: '是否显示数据项前置圆点', default: 'false', range: 'false / true', necessary: '否 ', remark: '此项属于样式优化项'},
           {param: 'isFilter', type: 'boolean', desc: '是否显示数据项多选操作', default: 'false', range: 'false / true', necessary: '否 ', remark: '用于通过多项选择过滤数据'},
           {param: 'hoverToShow', type: 'boolean', desc: '是否开启在 hover 时显示下拉列表', default: 'false', range: 'false / true', necessary: '否 ', remark: ''},
-          {param: 'onChangeBack', type: 'function', desc: '回调函数', default: '--', range: '--', necessary: '否 ', remark: '默认通过 onSelect 事件触发回调，可选择手动绑定回调函数'},
+          {param: 'onChangeBack', type: 'function', desc: '回调函数，参数为当前 [item, key]', default: '--', range: '--', necessary: '否 ', remark: '默认通过 v-model 双向绑定，传递参数默认为 item.id，无 id 属性时怎传递当前 item，可选择手动绑定回调函数'},
         ]
       }
     },

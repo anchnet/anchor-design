@@ -369,7 +369,7 @@
           } else {
             this.generalStatus = !(item.hasOwnProperty('cancelActive') && item.cancelActive)
           }
-          let callback = () => this.$emit('onSelect', item, key)
+          let callback = () => this.$emit('input', item.hasOwnProperty('id') ? item.id : item)
           this['__triggerBack'](callback, item, key)
         }
       },
