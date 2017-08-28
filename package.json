@@ -1,6 +1,6 @@
 {
   "name": "anchor-design",
-  "version": "0.22.10",
+  "version": "0.22.11",
   "description": "A Component Library For Vue",
   "scripts": {
     "start": "npm run watch",
