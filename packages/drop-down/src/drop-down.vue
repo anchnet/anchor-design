@@ -394,9 +394,10 @@
       },
 
       immediateCallback () {
-        if (this.onShowItem.id) {
-          let { id, key, value } = this.onShowItem
-          this.onItemClick({ id, value, }, key)
+        let { key } = this.onShowItem
+        if (key !== null) {
+          let item = this.Data[key]
+          this.onItemClick(item, key)
         }
       }
     }
