@@ -52,18 +52,29 @@
           <anchor-drop-down :data="data" :defaultKey="2" />
         </div>
       </anchor-col>
-      <anchor-col span="6">
+      <anchor-col span="4">
         <h5>显示图标</h5>
         <div class="web-wrapper">
           <anchor-drop-down :data="data" onShowIcon="device-colored__volume" />
         </div>
       </anchor-col>
-      <anchor-col span="6">
-        <h5>立即触发回调</h5>
-        <div class="web-wrapper">
-          <anchor-drop-down :data="data" :defaultKey="3" :immediate="true" v-model="currentId" />
-          <span>{{currentId}}</span>
-        </div>
+      <anchor-col span="8">
+        <anchor-row>
+          <anchor-col>
+            <h5>立即触发回调</h5>
+            <div class="web-wrapper">
+              <anchor-drop-down :data="data" :defaultKey="3" immediate v-model="currentId" />
+              <span>{{currentId}}</span>
+            </div>
+          </anchor-col>
+          <anchor-col>
+            <h5>第一次 watch 时触发回调</h5>
+            <div class="web-wrapper">
+              <anchor-drop-down :data="data2" :defaultKey="3" immediateFirstWatch v-model="currentId2" />
+              <span>{{currentId2}}</span>
+            </div>
+          </anchor-col>
+        </anchor-row>
       </anchor-col>
     </anchor-row>
     <h5>Document</h5>
@@ -84,11 +95,14 @@
 <script>
   import { mapGetters } from 'vuex'
   import utils from 'src/libs/utils'
+  import AnchorRow from "../../../../../packages/layout/src/row.vue";
 
   export default {
+    components: {AnchorRow},
     data () {
       return {
         currentId: null,
+        currentId2: null,
 
         data: [
           {id: 'apple', value: '苹果'},
@@ -102,6 +116,8 @@
           {id: 'anchnet3', value: 'anchnet3'},
           {id: 'anchnet4', value: 'testchant2'},
         ],
+
+        data2: [],
 
         listData:[
           {param: 'data', type: 'array', desc: '下拉菜单数据', default: '--', range: '--', necessary: '是', remark: '示例：[{id: "id1", value: "value1"}]，数据项必须含有 id、value 属性'},
@@ -120,6 +136,7 @@
           {param: 'isFilter', type: 'boolean', desc: '是否显示数据项多选操作', default: 'false', range: 'false / true', necessary: '否 ', remark: '用于通过多项选择过滤数据'},
           {param: 'hoverToShow', type: 'boolean', desc: '是否开启在 hover 时显示下拉列表', default: 'false', range: 'false / true', necessary: '否 ', remark: ''},
           {param: 'immediate', type: 'boolean', desc: '是否立即触发回调', default: 'false', range: 'false / true', necessary: '否 ', remark: '在有默认值的情况下才会生效，返回值为默认值当前 item 及所在 key'},
+          {param: 'immediateFirstWatch', type: 'boolean', desc: '第一次 watch 时是否触发回调', default: 'false', range: 'false / true', necessary: '否 ', remark: '主要用于异步请求的列表数据；在有默认值的情况下才会生效，返回值为默认值当前 item 及所在 key'},
           {param: 'onChangeBack', type: 'function', desc: '回调函数，参数为当前 [item, key]', default: '--', range: '--', necessary: '否 ', remark: '默认通过 v-model 双向绑定，传递参数默认为 item.id，无 id 属性时怎传递当前 item，可选择手动绑定回调函数'},
         ]
       }
@@ -127,6 +144,18 @@
 
     computed: {
       ...mapGetters('table',['TheadData']),
+    },
+
+    mounted () {
+      this.updateData()
+    },
+
+    methods: {
+      updateData () {
+        setTimeout(() => {
+          this.data2 = this.data
+        }, 300)
+      }
     },
   }
 </script>

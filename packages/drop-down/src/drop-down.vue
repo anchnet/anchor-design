@@ -139,12 +139,17 @@
         type: Boolean,
         default: false,
       },
+      immediateFirstWatch: {
+        type: Boolean,
+        default: false,
+      },
       onChangeBack: Function
     },
 
     data () {
       return {
         Data: utils.clone(this.data) || [],
+        firstWatch: false, // 标记 data 第一次触发 watch
         onHover: false,
         isShow: false,
         generalStatus: false,
@@ -216,6 +221,11 @@
         }
         this.$nextTick(() => {
           this.getDefaultItem()
+          // 立即触发回调
+          if (this.immediateFirstWatch && !this.firstWatch) {
+            this.firstWatch = true
+            this.immediateCallback()
+          }
         })
       },
 
