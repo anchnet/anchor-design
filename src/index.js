@@ -64,7 +64,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
-  version: '0.22.10',
+  version: '0.22.12',
   install,
   AnchorIcon,
   AnchorMenuGroup,
