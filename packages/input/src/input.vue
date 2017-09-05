@@ -209,6 +209,10 @@
     },
 
     watch: {
+      initValue (val) {
+        this.value = val
+      },
+
       value (val, oldVal) {
         if (this.alwaysFeedback) {
           this.oldValue = oldVal

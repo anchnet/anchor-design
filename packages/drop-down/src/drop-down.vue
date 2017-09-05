@@ -135,6 +135,10 @@
         type: [String, Boolean],
         default: false
       },
+      immediate: {
+        type: Boolean,
+        default: false,
+      },
       onChangeBack: Function
     },
 
@@ -257,6 +261,7 @@
 
     mounted () {
       this.getDefaultItem()
+      if (this.immediate) this.immediateCallback()
       vQuery('body').on('click', this.bodyClickEvent)
     },
 
@@ -364,7 +369,7 @@
             this.onShowItem = {
               id: item.id,
               key: key,
-              value: item.value
+              value: item.value,
             }
           } else {
             this.generalStatus = !(item.hasOwnProperty('cancelActive') && item.cancelActive)
@@ -376,6 +381,13 @@
 
       onCheckboxClick (item, key, status) {
         this.onItemClick(item, key)
+      },
+
+      immediateCallback () {
+        if (this.onShowItem.id) {
+          let { id, key, value } = this.onShowItem
+          this.onItemClick({ id, value, }, key)
+        }
       }
     }
   }

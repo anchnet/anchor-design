@@ -6,19 +6,19 @@
       <anchor-col span="6">
         <h5>基本用法</h5>
         <div class="web-wrapper">
-          <anchor-drop-down :data="data1" />
+          <anchor-drop-down :data="data" />
         </div>
       </anchor-col>
       <anchor-col span="6">
         <h5>简易模式</h5>
         <div class="web-wrapper">
-          <anchor-drop-down mode="simple" :data="data2" />
+          <anchor-drop-down mode="simple" :data="data" />
         </div>
       </anchor-col>
       <anchor-col span="6">
         <h5>带搜索框</h5>
         <div class="web-wrapper">
-          <anchor-drop-down :width="204" :data="data3" withSearch />
+          <anchor-drop-down :width="204" :data="data" withSearch />
         </div>
       </anchor-col>
       <anchor-col span="6">
@@ -26,15 +26,15 @@
         <div class="web-wrapper">
           <div :style="{'display': 'inline-block'}">
             <h6>small</h6>
-            <anchor-drop-down :data="data4" size="small" defaultText="small" />
+            <anchor-drop-down :data="data" size="small" defaultText="small" />
           </div>
           <div :style="{'display': 'inline-block'}">
             <h6>smaller</h6>
-            <anchor-drop-down :data="data4" size="smaller" />
+            <anchor-drop-down :data="data" size="smaller" />
           </div>
           <div :style="{'display': 'inline-block'}">
             <h6>normal</h6>
-            <anchor-drop-down :data="data4" />
+            <anchor-drop-down :data="data" />
           </div>
         </div>
       </anchor-col>
@@ -43,19 +43,26 @@
       <anchor-col span="6">
         <h5>带多选过滤按钮</h5>
         <div class="web-wrapper">
-          <anchor-drop-down :data="data5" isFilter />
+          <anchor-drop-down :data="data" isFilter />
         </div>
       </anchor-col>
       <anchor-col span="6">
         <h5>根据 defaultKey 设置默认项</h5>
         <div class="web-wrapper">
-          <anchor-drop-down :data="data5" :defaultKey="2" />
+          <anchor-drop-down :data="data" :defaultKey="2" />
         </div>
       </anchor-col>
       <anchor-col span="6">
         <h5>显示图标</h5>
         <div class="web-wrapper">
-          <anchor-drop-down :data="data5" onShowIcon="device-colored__volume" />
+          <anchor-drop-down :data="data" onShowIcon="device-colored__volume" />
+        </div>
+      </anchor-col>
+      <anchor-col span="6">
+        <h5>立即触发回调</h5>
+        <div class="web-wrapper">
+          <anchor-drop-down :data="data" :defaultKey="3" :immediate="true" v-model="currentId" />
+          <span>{{currentId}}</span>
         </div>
       </anchor-col>
     </anchor-row>
@@ -81,6 +88,8 @@
   export default {
     data () {
       return {
+        currentId: null,
+
         data: [
           {id: 'apple', value: '苹果'},
           {id: 'amazon', value: '亚马逊'},
@@ -110,6 +119,7 @@
           {param: 'hasDot', type: 'boolean', desc: '是否显示数据项前置圆点', default: 'false', range: 'false / true', necessary: '否 ', remark: '此项属于样式优化项'},
           {param: 'isFilter', type: 'boolean', desc: '是否显示数据项多选操作', default: 'false', range: 'false / true', necessary: '否 ', remark: '用于通过多项选择过滤数据'},
           {param: 'hoverToShow', type: 'boolean', desc: '是否开启在 hover 时显示下拉列表', default: 'false', range: 'false / true', necessary: '否 ', remark: ''},
+          {param: 'immediate', type: 'boolean', desc: '是否立即触发回调', default: 'false', range: 'false / true', necessary: '否 ', remark: '在有默认值的情况下才会生效，返回值为默认值当前 item 及所在 key'},
           {param: 'onChangeBack', type: 'function', desc: '回调函数，参数为当前 [item, key]', default: '--', range: '--', necessary: '否 ', remark: '默认通过 v-model 双向绑定，传递参数默认为 item.id，无 id 属性时怎传递当前 item，可选择手动绑定回调函数'},
         ]
       }
@@ -117,28 +127,6 @@
 
     computed: {
       ...mapGetters('table',['TheadData']),
-
-      data1 () {
-        return utils.clone(this.data)
-      },
-      data2 () {
-        return utils.clone(this.data)
-      },
-      data3 () {
-        return utils.clone(this.data)
-      },
-      data4 () {
-        return utils.clone(this.data)
-      },
-      data5 () {
-        return utils.clone(this.data)
-      },
-      data6 () {
-        return utils.clone(this.data)
-      },
-      data7 () {
-        return utils.clone(this.data)
-      },
     },
   }
 </script>

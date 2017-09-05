@@ -1,7 +1,7 @@
 <template>
   <div :class="['page-dropdown']">
-    <h3>anchor-button</h3>
-    <div :class="['web-intro']">用于触发各种操作、展示性标签、显示可变状态文字、链接及图标</div>
+    <h3>anchor-input</h3>
+    <div :class="['web-intro']">用于表单中用户自定义输入，可以配置输入范围限制</div>
 
     <h5>基本用法</h5>
     <anchor-row class="web-wrapper">
@@ -14,6 +14,15 @@
         <h6>数字框</h6>
         <anchor-input :alwaysFeedback="false" valueType="number" :digit="4" :initValue="88" :width="100" @onChange="changeValue('input', ...arguments)" />
         <p class="text">{{inputNumber}}</p>
+      </anchor-col>
+      <anchor-col span="6">
+        <h6>初始值</h6>
+        <anchor-input :initValue="initValue" />
+        <anchor-drop-down
+          defaultText="请选择初始值"
+          :data="dropDownData"
+          v-model="initValue"
+        />
       </anchor-col>
     </anchor-row>
 
@@ -106,10 +115,14 @@
 
 <script>
   import { mapGetters } from 'vuex'
+  import AnchorDropDown from "../../../../../packages/drop-down/src/drop-down.vue";
 
   export default {
+    components: {AnchorDropDown},
     data () {
       return {
+        dropDownData: [{id: 'value1', value: 'value1'},{id: 'value2', value: 'value2'},{id: 'value3', value: 'value3'},],
+        initValue: null,
         inputValue: 'placeholder',
         inputNumber: '88.0000',
         listData:[
