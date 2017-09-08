@@ -151,7 +151,7 @@
       return {
         oldValue: this.initValue,
         value: this.initValue,
-        active: this.isActive,
+        active: false,
         hover: false,
         sizeMap: {
           small: {
@@ -169,17 +169,19 @@
     computed: {
       inputStyle () {
         let width = this.mode === 'search' ? this.__width - 22 : this.__width
+        let height = this.__height ? this.__height + 'px' : ''
         return {
           width: width - 2 + 'px',
-          height: this.__height + 'px',
-          'line-height': this.__height + 'px',
+          height: height,
+          'line-height': height,
         }
       },
 
       iconStyle () {
+        let height = this.__height ? this.__height + 'px' : ''
         return {
-          height: this.__height + 'px',
-          'line-height': this.__height + 'px',
+          height: height,
+          'line-height': height,
         }
       },
 
@@ -225,8 +227,11 @@
         }
       },
 
-      isActive (val) {
-        this.active = val
+      isActive: {
+        immediate: true,
+        handler (val) {
+          this.active = val
+        }
       }
     },
 
