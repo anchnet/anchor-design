@@ -100,7 +100,7 @@
 
     <h5>Document</h5>
     <anchor-row>
-      <anchor-col span="20">
+      <anchor-col span="24">
         <anchor-table :hasCheckbox="false" :theadData="TheadData" :listData="listData">
           <tbody>
           <tr v-for="(item, key) in listData">
@@ -126,8 +126,19 @@
         inputValue: 'placeholder',
         inputNumber: '88.0000',
         listData:[
-          {param: 'mode', type: 'string', desc: '按钮模式', default: 'button', range: 'button / tag', necessary: '否', remark: '目前两种模式区别仅限于样式'},
-          {param: 'onChangeBack', type: 'function', desc: '回调函数', default: '--', range: '--', necessary: '否 ', remark: '默认通过 onSelect 事件触发回调，可选择手动绑定回调函数'},
+          {param: 'mode', type: 'string', desc: '输入框模式', default: 'input', range: 'input/search/radio/checkbox', necessary: '否', remark: '切换组件显示模式'},
+          {param: 'valueType', type: 'string', desc: 'input 模式下的输入值类型', default: 'string', range: 'string/number', necessary: '否', remark: ''},
+          {param: 'size', type: 'string', desc: 'input 模式下输入框尺寸', default: 'string', range: 'small/smaller/normal/largger/large', necessary: '否', remark: ''},
+          {param: 'width', type: 'number', desc: 'input 模式下输入框宽度', default: 'number', range: '--', necessary: '否', remark: ' 优先级高于 size'},
+          {param: 'height', type: 'number', desc: 'input 模式下输入框高度', default: 'number', range: '--', necessary: '否', remark: ' 优先级高于 size'},
+          {param: 'digit', type: 'number', desc: 'input 模式下输入值为 number 时的数值单位', default: 1, range: '--', necessary: '否', remark: ''},
+          {param: 'initValue', type: 'string', desc: 'input 模式下初始输入值', default: '--', range: '--', necessary: '否', remark: '既在初始化组件时生效，也可以通过更新 initValue 二次改变输入值并自动触发回调事件'},
+          {param: 'defaultValue', type: 'string', desc: 'input 模式下默认输入值', default: '--', range: '--', necessary: '否', remark: '当 valueType 为 number 时，若用户输入不合法，如果设置了 defaultValue，输入框会被重置 defaultValue'},
+          {param: 'alwaysFeedback', type: 'boolean', desc: '是否持续返回输入值', default: true, range: '--', necessary: '否', remark: '即采用 this.$emit("input") 事件回调，可配合使用双向绑定特性'},
+          {param: 'isActive', type: 'boolean', desc: '是否处于 active', default: '--', range: '--', necessary: '否', remark: '仅在初始状态时有效'},
+          {param: 'alwaysActive', type: 'boolean', desc: '是否处于 active', default: '--', range: '--', necessary: '否', remark: '持续生效，不受 hover、focus 事件影响'},
+          {param: 'disabled', type: 'boolean', desc: '是否处于禁用状态', default: '--', range: '--', necessary: '否', remark: '禁止输入，并且优先级高于 isActive和 alwaysActive'},
+          {param: 'onChangeBack', type: 'function', desc: '回调函数', default: '--', range: '--', necessary: '否 ', remark: '无回调时采用 this.$emit(\'handleClick\', params) 触发父组件事件'},
         ]
       }
     },
