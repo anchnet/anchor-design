@@ -138,6 +138,8 @@
           {param: 'isActive', type: 'boolean', desc: '是否处于 active', default: '--', range: '--', necessary: '否', remark: '仅在初始状态时有效'},
           {param: 'alwaysActive', type: 'boolean', desc: '是否处于 active', default: '--', range: '--', necessary: '否', remark: '持续生效，不受 hover、focus 事件影响'},
           {param: 'disabled', type: 'boolean', desc: '是否处于禁用状态', default: '--', range: '--', necessary: '否', remark: '禁止输入，并且优先级高于 isActive和 alwaysActive'},
+          {param: 'onChange', type: 'function', desc: '回调函数', default: '--', range: '--', necessary: '否 ', remark: '即input 原生 change 事件，在 alwaysFeedback 为 false 时采用 this.$emit(\'onChange\', params) 触发父组件事件'},
+          {param: 'handleClick', type: 'function', desc: '回调函数', default: '--', range: '--', necessary: '否 ', remark: '模式为\'checkbox\' 时采用 this.$emit(\'handleClick\', params) 触发父组件事件'},
           {param: 'onChangeBack', type: 'function', desc: '回调函数', default: '--', range: '--', necessary: '否 ', remark: '无回调时采用 this.$emit(\'handleClick\', params) 触发父组件事件'},
         ]
       }
