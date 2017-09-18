@@ -68,24 +68,6 @@
   import AnchorIcon from 'packages/icons/src/icons'
   import AnchorInput from 'packages/input/src/input'
 
-  /**
-   * param
-   *   mode {string} 'normal'                    //菜单模式，分为'simple'，'normal'两种，默认为'normal'
-   *   hoverToShow {boolean} false               // 是否在 hover 时显示下拉菜单
-   *   isFilter { boolean} false                 // 是否采用可筛选模式，即下拉菜单中出现多选框
-   *   onShowIcon {string, boolean} ''           // 是否显示图标， 图标名称来源于 anchor-icon 组件
-   *   width {number} 120                        //drop-down 宽度，默认为120px
-   *   height {number} 28                        //drop-down 高度，默认为28px
-   *   size {string}                             //菜单尺寸, 内置多种菜单尺寸，['small', 'smaller', 'normal', 'larger', 'large']
-   *   onDisplayStyle {string}                   //要显示的菜单样式, 内置两种，['1', '2'】
-   *   data {array} [{id: id1, value: value1}]   //列表数据
-   *   defaultId {string|number}                 //默认显示的数据的id，优先级最高
-   *   defaultKey {string|number}                //默认显示的数据的key，优先级中，有 defaultId 时则无效
-   *   defaultText {string}                      //默认显示的文字，优先级低，有 defaultId/defaultKey 时则无效
-   *   type {string}                             //列表数据类型，会影响显示样式，目前只有'image'字段可选，默认无
-   *   hasDot {boolean}                          //列表数据前是否有小圆点，默认无
-   *   onChangeBack {function}                   //点击列表数据时触发回调
-   */
   export default {
     name: 'anchor-drop-down',
 
@@ -241,14 +223,18 @@
         if (val) {
           this.$nextTick(() => {
             this.fixListWidth()
+            this.fixListHeight()
           })
         } else {
+          this.$nextTick(() => {
+            this.fixListHeight('hide')
+          })
           //清空搜索关键词
           if (this.withSearch) {
             setTimeout(() => {
               this.searchWord = ''
               this.$refs.search.updateValue('')
-            }, 200)
+            }, 245)
           }
         }
       },
@@ -257,10 +243,8 @@
         if (this.isAsynSearch) {
           this.$emit('onSearch', val, oldVal)
         } else {
-          console.log('searchword')
           if (val) {
             let result = utils.getDataBySearch({data: this.Data, regExp: val})
-            console.log('result',result)
             this.Data = result
           } else {
             this.Data = utils.clone(this.data)
@@ -341,10 +325,35 @@
       },
 
       /**
+       * 重新计算列表高度：超出浏览器窗口则滚动
+       * */
+      fixListHeight (action = 'show') {
+        let $droplist = vQuery(this.$refs.droplist)
+
+        if (action === 'hide') {
+          setTimeout(() => {
+            $droplist.css({'height': '', 'overflow': ''})
+          }, 300)
+        }
+
+        let windowHeight = window.innerHeight
+        let droplistTop = $droplist.offset().top
+        let droplistHeight = $droplist.height()
+        let remainHeight = windowHeight - droplistTop
+        console.log(windowHeight, droplistTop, remainHeight - 24, droplistHeight)
+        if (remainHeight - 24 < droplistHeight) {
+          $droplist.css({'height': remainHeight - 10 + 'px', 'overflow': 'auto',})
+        }
+      },
+
+      /**
        * 点击 body 关闭下拉菜单窗口
        */
       bodyClickEvent (e) {
-        if (this.isShow && !vQuery(this.$refs.dropdown).find(e.target).getDOM().length) {
+        if (
+          this.isShow &&
+          (!vQuery(this.$refs.dropdown).find(e.target) || !vQuery(this.$refs.dropdown).find(e.target).getDOM().length)
+        ) {
           this.isShow = false
         }
       },

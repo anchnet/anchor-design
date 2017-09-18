@@ -8,6 +8,25 @@
   text-align: left;
   vertical-align: middle;
 
+  ::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+    background-color: #ffffff;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 3px 3px;
+    background-color: #b9b9b9;
+  }
+
+  SCROLLBAR-ARROW-COLOR:#FFFFFF;
+  SCROLLBAR-FACE-COLOR:#CCCCCC;
+  SCROLLBAR-DARKSHADOW-COLOR:#FFFFFF;
+  SCROLLBAR-HIGHLIGHT-COLOR:#FFFFFF;
+  SCROLLBAR-3DLIGHT-COLOR:#FFFFFF;
+  SCROLLBAR-SHADOW-COLOR:#FFFFFF;
+  SCROLLBAR-TRACK-COLOR:#FFFFFF;
+
   @include e('on-display'){
     position: relative;
     display: block;
@@ -87,6 +106,7 @@
     top: 104%;
     left: 0;
     padding: 8px 0px;
+    box-sizing: border-box;
     border-radius: 2px;
     box-shadow: 0 0 6px rgb(177,178,180);
     background-color: #FFF;

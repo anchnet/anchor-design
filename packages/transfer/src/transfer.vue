@@ -81,7 +81,6 @@
       subHeight () {
         let totalHeight = this.config && this.config.height ? this.config.height : 300
         let count = this.subData ? utils.isObject(this.subData) ? 1 : this.subData.length : 1
-        console.log(count)
         let padding = 20 * (count - 1)
         return (totalHeight - padding) / count
       },
@@ -124,7 +123,6 @@
 
     methods: {
       onLeftClick (filters) {
-        console.log(filters)
         this.filters = filters
       },
 
@@ -137,7 +135,6 @@
       },
 
       onTransfer (key, action) {
-        console.log(key, action)
         if (action === 'toRight') {
           // 清除左侧栏已选中数据状态
           this.Data.forEach((i, k) => {

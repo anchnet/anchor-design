@@ -46,7 +46,7 @@
     </span>
     <span v-if="computedMode.showGoTo" :class="['anchor-pagination__text']">
       前往
-      <anchor-input valueType="number" size="ip" :alwaysFeedback="false" @onChange="onPageChange" />
+      <anchor-input valueType="number" size="smaller" :alwaysFeedback="false" @onChange="onPageChange" />
       页
     </span>
   </div>
