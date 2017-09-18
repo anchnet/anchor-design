@@ -342,7 +342,7 @@
         let remainHeight = windowHeight - droplistTop
         console.log(windowHeight, droplistTop, remainHeight - 24, droplistHeight)
         if (remainHeight - 24 < droplistHeight) {
-          $droplist.css({'height': remainHeight - 10 + 'px', 'overflow': 'auto',})
+          $droplist.css({'height': remainHeight - 15 + 'px', 'overflow': 'auto',})
         }
       },
 
