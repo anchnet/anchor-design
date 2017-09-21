@@ -108,6 +108,11 @@ module.exports = {
           text: 'Input 输入框',
           link: '/form/input',
         },
+        {
+          id: 'checkbox',
+          text: 'Checkbox 复选框',
+          link: '/form/checkbox',
+        },
       ],
     },
     {

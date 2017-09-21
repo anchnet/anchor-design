@@ -20,7 +20,7 @@
     </anchor-row>
     <h5>Document</h5>
     <anchor-row>
-      <anchor-col span="20">
+      <anchor-col span="24">
         <anchor-table :hasCheckbox="false" :theadData="TheadData" :listData="listData">
           <tbody>
           <tr v-for="(item, key) in listData">

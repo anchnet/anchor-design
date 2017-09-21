@@ -16,7 +16,8 @@ const router = new Router({
         { path: 'form/', name: 'form', component: templete.Form,
           children: [
             { path: 'button', name: 'button', component: templete.AnchorButton, },
-            { path: 'input', name: 'input', component: templete.AnchorInput, }
+            { path: 'input', name: 'input', component: templete.AnchorInput, },
+            { path: 'checkbox', name: 'checkbox', component: templete.AnchorCheckbox, },
           ]
         },
 

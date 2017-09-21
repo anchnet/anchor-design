@@ -32,14 +32,6 @@ module.exports = {
     },
   ],
 
-  checkboxData: [
-    {id: 'xiaomi', value: '小米',},
-    {id: 'huawei', value: '华为', active: true,},
-    {id: 'lenovo', value: '联想',},
-    {id: 'chuizi', value: '锤子', disabled: true, active: true,},
-    {id: 'sanxing', value: '三星', disabled: true,},
-  ],
-
   radioData: [
     {id: 'xiaomi', value: '小米',},
     {id: 'huawei', value: '华为', active: true,},

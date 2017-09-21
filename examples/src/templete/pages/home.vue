@@ -59,17 +59,6 @@
         </div>
       </li>
       <li>
-        <h4>anchor-checkbox</h4>
-        <div class="demo-layout">
-          <h4>横向排列模式</h4>
-          <anchor-checkbox :data="checkboxData" />
-        </div>
-        <div class="demo-layout">
-          <h4>纵向排列模式</h4>
-          <anchor-checkbox type="vertical" :data="checkboxData" />
-        </div>
-      </li>
-      <li>
         <h4>anchor-radio</h4>
         <div class="demo-layout">
           <anchor-radio :data="radioData" />

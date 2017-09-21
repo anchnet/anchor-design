@@ -208,6 +208,25 @@ const VQuery = class _VQuery {
     return offset
   }
 
+  // 获取元素相对浏览器视口位置信息
+  offsetViewport () {
+    let $selector = this._getNode()
+    let offset = {
+      bottom: 0,
+      height: 0,
+      left: 0,
+      right: 0,
+      top: 0,
+      width: 0,
+      x: 0,
+      y: 0,
+    }
+    if (document.body.getBoundingClientRect) {
+      offset = $selector.getBoundingClientRect()
+    }
+    return offset
+  }
+
   scrollLeft (value) {
     let $selector = this._getNode()
     if (typeof value === 'number') {

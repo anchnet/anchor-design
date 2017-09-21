@@ -3,7 +3,7 @@
     <li
       v-for="(item, key) in Data"
       :class="['anchor-checkbox__element', {
-        'anchor-checkbox__element-vertical': type === 'vertical',
+        'anchor-checkbox__element-vertical': mode === 'vertical',
         'anchor-checkbox__element--disabled': item.disabled
       }]"
       @click="item.disabled ? '' : onClick(item, key)"
@@ -29,7 +29,7 @@
     },
 
     props: {
-      type: {
+      mode: {
         type: String,
         default: 'horizontal'
       },
