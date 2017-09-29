@@ -243,11 +243,12 @@
         if (this.isAsynSearch) {
           this.$emit('onSearch', val, oldVal)
         } else {
+          let Data = utils.clone(this.data)
           if (val) {
-            let result = utils.getDataBySearch({data: this.Data, regExp: val})
+            let result = utils.getDataBySearch({data: Data, regExp: val})
             this.Data = result
           } else {
-            this.Data = utils.clone(this.data)
+            this.Data = Data
           }
         }
       },

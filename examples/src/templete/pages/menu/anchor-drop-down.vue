@@ -107,7 +107,7 @@
         data: [
           {id: 'apple', value: '苹果'},
           {id: 'amazon', value: '亚马逊'},
-          {id: 'facebook', value: 'fackbook'},
+          {id: 'facebook', value: 'facebook'},
           {id: 'google', value: 'google'},
           {id: 'alibaba', value: '阿里巴巴'},
           {id: 'tencent', value: '腾讯'},

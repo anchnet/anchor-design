@@ -7,7 +7,7 @@
       </div>
       <div :class="['anchor-transfer__list-wrapper']" :style="listWrapperStyle">
         <anchor-checkbox
-          type="vertical"
+          mode="vertical"
           :data="Data"
           :class="['anchor-transfer__box-list']"
           @handleClick="onClick"
